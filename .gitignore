@@ -1,0 +1,32 @@
+# keys — never
+.env
+*.env
+.gemini.env
+*.key
+credentials.json
+
+# your work, not the toolkit
+brands/*/
+!brands/_TEMPLATE/
+runs/
+out/
+output/
+*.db
+
+# media — too big for git
+*.mp4
+*.mov
+*.jpg
+*.jpeg
+*.png
+*.webp
+*.gif
+*.zip
+
+# noise
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/

@@ -1,0 +1,215 @@
+<title>Open Source Outliers — Setup</title>
+<style>
+:root{
+  --ground:#000000;--panel:#0B0D10;--panel2:#0F1319;--rule:#1A1E24;
+  --ink:#FFFFFF;--ink2:rgba(255,255,255,.84);--ink3:rgba(255,255,255,.58);
+  --signal:#EBFF00;--cyan:#4DD7C8;--rose:#AF545E;--green:#46A643;
+  --display:Jost,"Century Gothic",Futura,"Avenir Next",ui-sans-serif,sans-serif;
+  --body:Archivo,"Helvetica Neue",Inter,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+}
+[data-t="warm"]{
+  --ground:#DFC1B8;--panel:#C9A796;--panel2:#BA9279;--rule:rgba(63,34,30,.22);
+  --ink:#000000;--ink2:#141414;--ink3:#3F221E;
+  --signal:#3F221E;--cyan:#8C2F1E;--rose:#8C2F1E;--green:#5A4230;
+}
+*{box-sizing:border-box}
+html,body{background:#000}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  min-height:100vh;transition:background .3s ease,color .3s ease}
+.top{display:flex;align-items:center;gap:14px;padding:16px 26px;border-bottom:1px solid var(--rule)}
+.mark{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  display:flex;align-items:center;gap:9px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--signal)}
+.tbtn{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink3);background:none;border:0;cursor:pointer}
+.tbtn:hover{color:var(--ink)}
+
+.bar{height:2px;background:var(--rule)}
+.bar i{display:block;height:100%;background:var(--signal);width:0;transition:width .4s ease}
+
+.tracks{display:flex;gap:8px;justify-content:center;padding:18px 26px 0}
+  .tracks button{font-family:var(--mono);font-size:10px;letter-spacing:.13em;
+    text-transform:uppercase;background:none;border:1px solid var(--rule);
+    color:var(--ink3);padding:9px 16px;cursor:pointer}
+  .tracks button[aria-pressed=true]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  html:not(.js) .tracks{display:none}
+  .stage{max-width:640px;margin:0 auto;padding:56px 26px 140px}
+  .step{margin-bottom:70px}
+  .step+.step{border-top:1px solid var(--rule);padding-top:56px}
+  html.js .step{margin-bottom:0;border-top:0;padding-top:0}
+  html.js .step[hidden]{display:none}
+.count{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:20px}
+h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-spacing:.06em;
+  font-size:clamp(30px,6vw,50px);line-height:1.04;margin:0 0 26px}
+p{color:var(--ink2);margin:0 0 18px}
+b{color:var(--ink);font-weight:600}
+code{font-family:var(--mono);font-size:.86em;background:var(--panel2);color:var(--ink);
+  padding:.14em .4em;border-radius:2px}
+
+.os{display:flex;gap:8px;margin:0 0 22px}
+.os button{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  background:none;border:1px solid var(--rule);color:var(--ink3);padding:8px 14px;cursor:pointer}
+.os button[aria-pressed=true]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+
+.cmd{position:relative;background:var(--panel);border-left:3px solid var(--signal);
+  padding:18px 20px;margin:0 0 18px;overflow-x:auto}
+.cmd code{background:none;padding:0;font-size:15px;color:var(--ink);white-space:pre}
+.cp{position:absolute;top:9px;right:9px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;background:var(--ground);color:var(--ink3);border:1px solid var(--rule);
+  padding:5px 10px;cursor:pointer}
+.cp:hover{color:var(--ink)}
+.cp.done{color:var(--signal);border-color:var(--signal)}
+
+.quote{background:var(--panel);border-left:3px solid var(--cyan);padding:16px 20px;margin:0 0 18px;
+  font-family:var(--mono);font-size:14px;line-height:1.7;color:var(--ink)}
+
+.box{padding:16px 20px;margin:0 0 18px;font-size:15.5px;color:var(--ink2)}
+.box.after{background:var(--panel);border-left:3px solid var(--green)}
+.box.note{border:1px solid var(--rule)}
+.box.fail{background:var(--panel);border-left:3px solid var(--rose)}
+.box h4{margin:0 0 7px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase}
+.box.after h4{color:var(--green)} .box.note h4{color:var(--ink3)} .box.fail h4{color:var(--rose)}
+
+.lk{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;background:var(--signal);color:#000;padding:14px 22px;
+  text-decoration:none;margin:0 0 18px}
+[data-t="warm"] .lk{color:#DFC1B8}
+
+.nav{position:fixed;bottom:0;left:0;right:0;background:var(--ground);
+  border-top:1px solid var(--rule);padding:14px 26px;display:flex;gap:10px;align-items:center}
+.nav .in{max-width:640px;margin:0 auto;width:100%;display:flex;gap:10px;align-items:center}
+.nav button{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:14px 24px;cursor:pointer;border:1px solid var(--rule);background:none;color:var(--ink3)}
+.nav button:hover:not(:disabled){color:var(--ink);border-color:var(--ink3)}
+.nav .next{margin-left:auto;background:var(--signal);border-color:var(--signal);color:#000}
+[data-t="warm"] .nav .next{color:#DFC1B8}
+.nav button:disabled{opacity:.3;cursor:default}
+.done{text-align:center;padding:80px 0}
+.done h1{margin-bottom:14px}
+</style>
+
+<div class="top">
+  <span class="mark"><span class="dot"></span>Open Source Outliers</span>
+  <button class="tbtn" id="reset" style="margin-left:auto">Start over</button>
+  <button class="tbtn" id="tt" style="margin-left:14px">Warm</button>
+</div>
+<div class="bar"><i id="prog"></i></div>
+<div class="tracks" id="tracks">
+  <button data-track-btn="fast" aria-pressed="true">The fast way · 1 line</button>
+  <button data-track-btn="long" aria-pressed="false">The long way · by hand</button>
+</div>
+
+<div class="stage" id="stage">
+<section class="step" data-track="fast" data-i="0"><div class="count">The fast way · Step 1 of 5</div><h1>Open the Terminal</h1><div class="os"><button data-os="mac" aria-pressed="true">Mac</button><button data-os="win" aria-pressed="false">Windows</button></div><p class="p-mac">Hold <b>Command</b> and press <b>Space</b>.<br>Type <b>terminal</b>.<br>Press <b>Return</b>.</p><p class="p-win" hidden>Windows doesn't work with the one-line setup. Skip to <b>the long way</b> below — it's the same thing, just by hand.</p><div class="box after"><h4>What happens</h4>A window opens with some text in it. That's all it is — a box where you type instead of click.</div><div class="box note"><h4>Good to know</h4>You can't break your computer with anything in this guide.</div></section>
+<section class="step" data-track="fast" data-i="1"><div class="count">The fast way · Step 2 of 5</div><h1>Paste one line</h1><p>Copy the line below, paste it into the Terminal, press <b>Return</b>. Then leave it alone.</p><div class="cmd"><button class="cp">copy</button><code>curl -fsSL https://raw.githubusercontent.com/daemnapps/outlier/main/install.sh | bash</code></div><div class="box after"><h4>What happens</h4>It checks what you already have, installs what's missing, downloads the toolkit, and asks you for one key. Takes about five minutes.<br><br>It prints a <b>✓</b> for each thing it finishes.</div><div class="box note"><h4>Good to know</h4>It's safe to run twice. If it stops partway, run the same line again — it picks up where it left off and skips whatever's already done.</div></section>
+<section class="step" data-track="fast" data-i="2"><div class="count">The fast way · Step 3 of 5</div><h1>Get your Google key</h1><p>Partway through, it stops and asks for a key. This is the only thing it needs from you.</p><a class="lk" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Get your Google key →</a><div class="box after"><h4>What happens</h4>Sign in, create a key, copy it, paste it into the Terminal, press Return.<br><br>Free tier — you probably won't ever pay for this one.</div><div class="box note"><h4>Good to know</h4>Rather skip it? Press Return with nothing typed. Everything except video analysis still works, and you can add it later by running the same line again.</div></section>
+<section class="step" data-track="fast" data-i="3"><div class="count">The fast way · Step 4 of 5</div><h1>Start it</h1><p>When it says <b>Done</b>, paste these two lines, one at a time:</p><div class="cmd"><button class="cp">copy</button><code>cd ~/outlier</code></div><div class="box after"><h4>What happens</h4>The first time, it asks you to sign in to Anthropic — follow what it says, it opens your browser. You'll add a card there; this is the part that actually costs money, and you're paying them directly.</div><div class="cmd"><button class="cp">copy</button><code>claude</code></div><div class="box note"><h4>Good to know</h4>If <b>claude</b> isn't found, close the Terminal, open a new one, and try again. The new window is the one that knows it exists.</div></section>
+<section class="step" data-track="fast" data-i="4"><div class="count">The fast way · Step 5 of 5</div><h1>Your first real thing</h1><p>When you see a prompt, type this and press Return:</p><div class="quote">Read the README and tell me what this toolkit can do.</div><div class="box after"><h4>What happens</h4>It reads the folder and explains itself. <b>That's it working.</b><br><br>Then try a real job:</div><div class="quote">Set up a brand called [your brand]. Here's our website: [your url]. Read it and build the language bank.</div><div class="box note"><h4>Good to know</h4>You're done. Everything from here is just asking for things in plain English.</div></section>
+<section class="step" data-track="fast" data-i="5"><div class="done"><div class="count">Setup complete</div><h1>That's it</h1><p>The whole toolkit is running on your machine.</p><div class="box note"><h4>If something breaks</h4>Open a question and paste the red text into it — all of it, even the parts that look irrelevant. <a href="https://github.com/daemnapps/outlier/issues/new?template=question.yml">Ask here</a>. It gets answered under your question and stays there.<br><br>Never paste an API key. If the error text has one in it, replace it with <code>XXXX</code> first.</div><div class="box after"><h4>Two rules</h4><b>Read what it writes before it goes anywhere.</b> It won't publish, send or spend on its own.<br><br><b>Tell it when it's wrong.</b> It keeps the correction, and the second run is much better than the first.</div></div></section>
+<section class="step" data-track="long" data-i="0"><div class="count">The long way · Step 1 of 14</div><h1>Open the Terminal</h1><div class="os"><button data-os="mac" aria-pressed="true">Mac</button><button data-os="win" aria-pressed="false">Windows</button></div><p class="p-mac">Hold <b>Command</b> and press <b>Space</b>.<br>Type <b>terminal</b>.<br>Press <b>Return</b>.</p><p class="p-win" hidden>Click <b>Start</b>.<br>Type <b>powershell</b>.<br>Click <b>Windows PowerShell</b>.</p><div class="box after"><h4>What happens</h4>A window opens with some text in it. Leave it open — you'll use it the whole way through.</div><div class="box note"><h4>Good to know</h4>This is just a box where you type instead of click. You'll type about eight lines in total. You can't break your computer with anything in this guide.</div></section>
+<section class="step" data-track="long" data-i="1"><div class="count">The long way · Step 2 of 14</div><h1>Check you have Git</h1><p>Copy the line below. Paste it into the Terminal. Press Return.</p><div class="cmd"><button class="cp">copy</button><code>git --version</code></div><div class="box after"><h4>What happens</h4>You should see something like <code>git version 2.39.5</code>.</div><div class="box fail"><h4>If that didn't work</h4>If it says <b>command not found</b>:<br><br><b>Mac</b> — paste <code>xcode-select --install</code>, click through the installer, then try again.<br><br><b>Windows</b> — get it from git-scm.com/downloads, run the installer, click Next on everything. Then close the Terminal, open a new one, and try again.</div></section>
+<section class="step" data-track="long" data-i="2"><div class="count">The long way · Step 3 of 14</div><h1>Check you have Python</h1><p>Same thing. Copy, paste, Return.</p><div class="cmd"><button class="cp">copy</button><code>python3 --version</code></div><div class="box after"><h4>What happens</h4>You want a number that starts with <b>3.9</b> or higher.</div><div class="box fail"><h4>If that didn't work</h4>If it says <b>command not found</b>, get it from python.org/downloads.<br><br>On Windows, tick the box that says <b>Add Python to PATH</b> during install. It's easy to miss and it matters.</div></section>
+<section class="step" data-track="long" data-i="3"><div class="count">The long way · Step 4 of 14</div><h1>Install Claude Code</h1><p>This is the program that runs everything else.</p><div class="cmd"><button class="cp">copy</button><code>curl -fsSL https://claude.ai/install.sh | bash</code></div><div class="box after"><h4>What happens</h4>Wait for it to finish. Then <b>close the Terminal window and open a new one</b>.<br><br>That part matters — the new window is the one that knows the program exists.</div><div class="box note"><h4>Good to know</h4>On Windows, if that line doesn't work, download it from claude.ai/download and run the installer instead.</div></section>
+<section class="step" data-track="long" data-i="4"><div class="count">The long way · Step 5 of 14</div><h1>Check it installed</h1><p>In your new Terminal window:</p><div class="cmd"><button class="cp">copy</button><code>claude --version</code></div><div class="box after"><h4>What happens</h4>A version number means you're past the hardest part.</div><div class="box fail"><h4>If that didn't work</h4>Nothing? You probably didn't open a <b>new</b> window. Close it, open a fresh one, try again.</div></section>
+<section class="step" data-track="long" data-i="5"><div class="count">The long way · Step 6 of 14</div><h1>Make your folder</h1><p>One folder holds everything. Paste this:</p><div class="cmd"><button class="cp">copy</button><code>mkdir -p ~/outlier</code></div><div class="box after"><h4>What happens</h4>Nothing visible happens. That's normal — it made a folder called <b>outlier</b>.</div><div class="box note"><h4>Good to know</h4>On a Mac you can see it: open Finder, hold Command and Shift, press H. It's a normal folder. You can open it and look inside whenever you want.</div></section>
+<section class="step" data-track="long" data-i="6"><div class="count">The long way · Step 7 of 14</div><h1>Go into the folder</h1><p>Now move into it:</p><div class="cmd"><button class="cp">copy</button><code>cd ~/outlier</code></div><div class="box after"><h4>What happens</h4>Again, nothing visible. To check it worked, paste <code>pwd</code> — it should print something ending in <b>/outlier</b>.</div><div class="box note"><h4>Good to know</h4><b>cd</b> means change directory. You'll use this line every time you come back.</div></section>
+<section class="step" data-track="long" data-i="7"><div class="count">The long way · Step 8 of 14</div><h1>Copy the toolkit in</h1><p>This downloads everything into your folder.</p><div class="cmd"><button class="cp">copy</button><code>git clone https://github.com/daemnapps/outlier.git .</code></div><div class="box after"><h4>What happens</h4>The dot at the end matters. It means <i>put it right here</i>.<br><br>When it finishes, paste <code>ls</code> — you should see a list of folder names.</div><div class="box note"><h4>Good to know</h4>This might take a minute. Let it run.</div></section>
+<section class="step" data-track="long" data-i="8"><div class="count">The long way · Step 9 of 14</div><h1>Install a browser it can use</h1><p>The toolkit needs its own browser to look at competitor pages.</p><div class="cmd"><button class="cp">copy</button><code>python3 -m pip install --user playwright</code></div><div class="box after"><h4>What happens</h4>Lots of text will scroll past. That's fine. Wait for it to stop.</div></section>
+<section class="step" data-track="long" data-i="9"><div class="count">The long way · Step 10 of 14</div><h1>Install a video tool</h1><div class="os"><button data-os="mac" aria-pressed="true">Mac</button><button data-os="win" aria-pressed="false">Windows</button></div><p class="p-mac">Paste this:<br><br><code>brew install ffmpeg</code><br><br>If it says <b>brew: command not found</b>, first paste this and let it finish, then try again:<br><br><code>/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"</code></p><p class="p-win" hidden>Go to ffmpeg.org/download.html and follow their Windows steps.</p><div class="box after"><h4>What happens</h4>This one's only needed for video work. If it gives you trouble, skip it and come back later — everything else still works.</div><div class="box note"><h4>Good to know</h4>Optional for now. Don't get stuck here.</div></section>
+<section class="step" data-track="long" data-i="10"><div class="count">The long way · Step 11 of 14</div><h1>Get your first key</h1><p>A key is a long password that lets the toolkit use an AI service <b>on your account</b>. You pay them directly. Nothing goes through me.</p><a class="lk" href="https://console.anthropic.com" target="_blank" rel="noopener">Get your Anthropic key →</a><div class="box after"><h4>What happens</h4>Sign up, add a card, create a key. Copy it somewhere safe for a second.</div><div class="box note"><h4>Good to know</h4>You don't need to save this one in a file. Claude Code will ask you for it the first time you run it.</div></section>
+<section class="step" data-track="long" data-i="11"><div class="count">The long way · Step 12 of 14</div><h1>Get your second key</h1><p>This one powers video analysis. The free tier is generous — you probably won't pay anything.</p><a class="lk" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Get your Google key →</a><div class="cmd"><button class="cp">copy</button><code>echo &#x27;GEMINI_API_KEY=PASTE_YOUR_KEY_HERE&#x27; &gt; ~/.gemini.env</code></div><div class="box after"><h4>What happens</h4>Copy the key, then paste the line below into the Terminal — but <b>swap PASTE_YOUR_KEY_HERE for your actual key</b> first.</div><div class="box note"><h4>Good to know</h4>Paste it into a notes app first, swap the key in, then copy the finished line. Easier than editing in the Terminal.</div></section>
+<section class="step" data-track="long" data-i="12"><div class="count">The long way · Step 13 of 14</div><h1>Start it up</h1><p>Make sure you're in your folder, then start it:</p><div class="cmd"><button class="cp">copy</button><code>cd ~/outlier</code></div><div class="box after"><h4>What happens</h4>The first time, it'll ask you to sign in. Follow what it says — it opens your browser.</div><div class="cmd"><button class="cp">copy</button><code>claude</code></div><div class="box note"><h4>Good to know</h4>That's the setup done. One more step.</div></section>
+<section class="step" data-track="long" data-i="13"><div class="count">The long way · Step 14 of 14</div><h1>Your first real thing</h1><p>When you see a prompt, type this and press Return:</p><div class="quote">Read the README and tell me what this toolkit can do.</div><div class="box after"><h4>What happens</h4>It reads the folder and explains itself. <b>That's it working.</b><br><br>Then try a real job:</div><div class="quote">Set up a brand called [your brand]. Here's our website: [your url]. Read it and build the language bank.</div><div class="box note"><h4>Good to know</h4>You're done. Everything from here is just asking it for things.</div></section>
+<section class="step" data-track="long" data-i="14"><div class="done"><div class="count">Setup complete</div><h1>That's it</h1><p>The whole toolkit is running on your machine.</p></div></section>
+</div>
+
+<div class="nav" id="nav" hidden><div class="in">
+  <button id="back">← Back</button>
+  <button class="next" id="next">Done, next →</button>
+</div></div>
+
+<script>
+/* Progressive enhancement only. Every step is already in the HTML and
+   visible; this narrows it to one at a time. If any of it fails, the page
+   is still a complete, readable guide. */
+(function(){
+  var doc=document, root=doc.documentElement;
+  var all=[].slice.call(doc.querySelectorAll('.step'));
+  var track = ls(function(){return localStorage.getItem('oso-track')},null)||'fast';
+  var steps=[];
+  function setTrack(t){
+    track=t; ls(function(){localStorage.setItem('oso-track',t)});
+    steps=all.filter(function(s){return s.getAttribute('data-track')===t});
+    [].forEach.call(doc.querySelectorAll('[data-track-btn]'),function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-track-btn')===t)); });
+  }
+  var nav=doc.getElementById('nav'), prog=doc.getElementById('prog');
+  var back=doc.getElementById('back'), next=doc.getElementById('next');
+  var tt=doc.getElementById('tt'), reset=doc.getElementById('reset');
+  if(!all.length||!nav) return;
+  setTrack(track);
+
+  function ls(fn,d){ try{ return fn() }catch(e){ return d } }
+  function clamp(n){ n=Number(n);
+    return isFinite(n)?Math.max(0,Math.min(Math.round(n),steps.length-1)):0; }
+
+  var i = clamp(ls(function(){return localStorage.getItem('oso-step')},0));
+  var os = ls(function(){return localStorage.getItem('oso-os')},null)
+        || (navigator.platform.toLowerCase().indexOf('win')>-1?'win':'mac');
+
+  root.classList.add('js');           // only now do we hide anything
+  nav.hidden=false;
+
+  function showOS(){
+    [].forEach.call(doc.querySelectorAll('.p-mac'),function(e){e.hidden=os!=='mac'});
+    [].forEach.call(doc.querySelectorAll('.p-win'),function(e){e.hidden=os!=='win'});
+    [].forEach.call(doc.querySelectorAll('[data-os]'),function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-os')===os)); });
+  }
+  function show(){
+    i=clamp(i);
+    all.forEach(function(s){ s.hidden=true; });
+    steps.forEach(function(s,n){ s.hidden = n!==i; });
+    if(prog) prog.style.width=(i/(steps.length-1)*100)+'%';
+    if(back) back.disabled = i===0;
+    if(next) next.textContent = i===steps.length-1 ? 'Start over'
+                              : (i===steps.length-2 ? 'Finish →' : 'Done, next →');
+    ls(function(){ localStorage.setItem('oso-step',i) });
+    window.scrollTo(0,0);
+  }
+  if(next) next.onclick=function(){ i = i>=steps.length-1?0:i+1; show(); };
+  if(back) back.onclick=function(){ i=i-1; show(); };
+  if(reset) reset.onclick=function(){
+    ls(function(){ ['oso-step','oso-os','oso-guide-theme','oso-track']
+      .forEach(function(k){localStorage.removeItem(k)}) });
+    i=0; os='mac'; setTrack('fast'); showOS(); show(); };
+  doc.addEventListener('click',function(e){
+    var t=e.target.closest&&e.target.closest('[data-track-btn]');
+    if(t){ setTrack(t.getAttribute('data-track-btn')); i=0; show(); }
+  });
+  doc.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-os]');
+    if(b){ os=b.getAttribute('data-os'); ls(function(){localStorage.setItem('oso-os',os)}); showOS(); }
+    var c=e.target.closest&&e.target.closest('.cp');
+    if(c){ var t=c.parentElement.querySelector('code').innerText;
+      if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){
+        c.textContent='copied'; c.className='cp done';
+        setTimeout(function(){c.textContent='copy'; c.className='cp';},1400);
+      }).catch(function(){c.textContent='select it'});
+    }
+  });
+
+  function setT(t){ root.setAttribute('data-t',t);
+    if(tt) tt.textContent = t==='warm'?'Void':'Warm';
+    ls(function(){ localStorage.setItem('oso-guide-theme',t) }); }
+  setT(ls(function(){return localStorage.getItem('oso-guide-theme')},null)||'void');
+  if(tt) tt.onclick=function(){ setT(root.getAttribute('data-t')==='warm'?'void':'warm'); };
+
+  showOS(); show();
+})();
+
+</script>
