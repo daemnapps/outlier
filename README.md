@@ -13,6 +13,11 @@ assumes you have never opened one.
 
 ## What's in here
 
+> **Status: the guide is up, the toolkit is landing.** Right now this repo has
+> the installer and the walkthrough. The four folders below are being moved in.
+> Watch the repo and you'll see them arrive.
+
+
 | | |
 |---|---|
 | `swipe/` | Competitor intelligence. Point it at a rival's domain, get their whole live ad library ranked by what they're actually spending behind. |
