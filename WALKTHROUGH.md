@@ -187,7 +187,7 @@ Powers video analysis. Free tier is generous.
 ### Higgsfield — optional
 Image and video generation. Only needed if you want the toolkit making
 visuals as well as words.
-→ https://higgsfield.ai
+→ https://higgsfield.ai?fpr=damon61
 
 ### AdPlexity — optional, and it is not cheap
 Competitor ad libraries. Only needed for the swipe tools. Skip it at first.

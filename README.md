@@ -87,7 +87,7 @@ sign up directly. This is the only way this project makes money.
 |---|---|---|
 | Anthropic | yes | the writing |
 | Google Gemini | yes | video analysis |
-| Higgsfield | no | image + video generation |
+| [Higgsfield](https://higgsfield.ai?fpr=damon61) | no | image + video generation |
 | AdPlexity | no | competitor ad libraries (the swipe tools) |
 
 Start with the first two. Add the others when you need them.
