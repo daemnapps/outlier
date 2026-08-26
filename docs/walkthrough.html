@@ -1,3 +1,9 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" id="tc">
 <title>Open Source Outliers — Setup</title>
 <style>
 :root{
@@ -17,7 +23,7 @@
 html,body{background:#000}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
   font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
-  min-height:100vh;transition:background .3s ease,color .3s ease}
+  min-height:100vh;min-height:100dvh;transition:background .3s ease,color .3s ease}
 .top{display:flex;align-items:center;gap:14px;padding:16px 26px;border-bottom:1px solid var(--rule)}
 .mark{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
   display:flex;align-items:center;gap:9px}
@@ -56,7 +62,7 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel2);color:var(
 
 .cmd{position:relative;background:var(--panel);border-left:3px solid var(--signal);
   padding:18px 20px;margin:0 0 18px;overflow-x:auto}
-.cmd code{background:none;padding:0;font-size:15px;color:var(--ink);white-space:pre}
+.cmd code{background:none;padding:0;font-size:15px;color:var(--ink);white-space:pre;display:block;padding-right:64px}
 .cp{position:absolute;top:9px;right:9px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;
   text-transform:uppercase;background:var(--ground);color:var(--ink3);border:1px solid var(--rule);
   padding:5px 10px;cursor:pointer}
@@ -90,6 +96,42 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel2);color:var(
 .nav button:disabled{opacity:.3;cursor:default}
 .done{text-align:center;padding:80px 0}
 .done h1{margin-bottom:14px}
+
+/* ---- phones ---------------------------------------------------------- */
+@media(max-width:640px){
+  body{font-size:16px}
+  .top{padding:14px 16px;gap:8px}
+  /* the bar was wrapping onto two lines at 375px */
+  .mark{font-size:10px;letter-spacing:.1em;gap:7px;white-space:nowrap}
+  .top .tbtn{font-size:9px;letter-spacing:.1em;white-space:nowrap;padding:10px 2px;margin:-10px 0}
+  #tt{margin-left:12px!important}
+  #reset{margin-left:auto!important}
+  .tracks{padding:14px 18px 0;flex-wrap:wrap}
+  .tracks button{padding:10px 14px}
+  .stage{padding:34px 18px 128px}
+  .step{margin-bottom:52px}
+  .step+.step{padding-top:44px}
+  h1{letter-spacing:.04em;margin-bottom:22px}
+  .count{margin-bottom:16px}
+  .os button{padding:10px 14px}
+  .cmd{padding:16px 16px}
+  /* long install lines wrap instead of hiding off the right edge */
+  .cmd code{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;padding-right:52px}
+  .quote{padding:14px 16px;font-size:13.5px}
+  .box{padding:14px 16px;font-size:15px}
+  .lk{display:block;text-align:center;padding:16px 18px}
+  .nav{padding:12px 16px}
+  .nav .in{gap:8px}
+  .nav button{padding:14px 16px;font-size:10px;letter-spacing:.1em}
+  .done{padding:48px 0}
+}
+@media (hover:none){
+  .tbtn:hover{color:var(--ink3)}
+  .cp:hover{color:var(--ink3)}
+  .nav button:hover:not(:disabled){color:var(--ink3);border-color:var(--rule)}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
 </style>
 
 <div class="top">
@@ -205,6 +247,8 @@ code{font-family:var(--mono);font-size:.86em;background:var(--panel2);color:var(
 
   function setT(t){ root.setAttribute('data-t',t);
     if(tt) tt.textContent = t==='warm'?'Void':'Warm';
+    var tc=doc.getElementById('tc');
+    if(tc) tc.setAttribute('content', t==='warm'?'#DFC1B8':'#000000');
     ls(function(){ localStorage.setItem('oso-guide-theme',t) }); }
   setT(ls(function(){return localStorage.getItem('oso-guide-theme')},null)||'void');
   if(tt) tt.onclick=function(){ setT(root.getAttribute('data-t')==='warm'?'void':'warm'); };

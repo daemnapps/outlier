@@ -1,3 +1,10 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" id="tc">
+<meta name="description" content="The whole marketing machine, open source and free. Swipe machine, teardown chain, brief generators, prompts — the same tools I run on real brands.">
 <title>Open Source Outliers</title>
 <style>html,body{background:#000}</style>
 <style>
@@ -17,6 +24,29 @@
   --cyan:#AF545E; --indigo:#71503E; --rose:#8C2F1E; --green:#845A46; --signal:#3F221E;
   --btn-bg:#3F221E; --btn-ink:#DFC1B8; --field:rgba(63,34,30,.34);
 }
+/* ask form */
+.ask{margin-top:22px}
+.ask .f{margin-bottom:16px}
+.ask label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:7px}
+.ask label .opt{opacity:.6;text-transform:none;letter-spacing:.04em}
+.ask input[type=text],.ask textarea,.ask select{width:100%;background:var(--panel);
+  border:1px solid var(--field);color:var(--ink);font-family:var(--body);font-size:15px;
+  padding:12px 13px;border-radius:0;-webkit-appearance:none;appearance:none}
+.ask textarea{min-height:96px;resize:vertical;line-height:1.5}
+.ask textarea.mono{font-family:var(--mono);font-size:12.5px;min-height:80px}
+.ask input:focus,.ask textarea:focus,.ask select:focus{outline:2px solid var(--acc);outline-offset:1px}
+.ask .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.ask .two{display:grid;grid-template-columns:1fr 190px;gap:14px}
+@media(max-width:620px){.ask .two{grid-template-columns:1fr}}
+.ask .send{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  background:var(--btn-bg);color:var(--btn-ink);border:0;padding:15px 26px;cursor:pointer}
+.ask .send[disabled]{opacity:.45;cursor:default}
+.ask .msg{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;margin-top:12px;line-height:1.6}
+.ask .msg.bad{color:var(--rose)}
+.ask .msg.good{color:var(--acc)}
+.ask .priv{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--ink3);
+  margin-top:14px;line-height:1.7}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
   font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
@@ -108,6 +138,61 @@ footer .disclosure{max-width:78ch;margin-top:18px;text-transform:none;letter-spa
 @keyframes orbdrift{0%{transform:translate(-1.5%,1.2%) scale(1)}100%{transform:translate(1.5%,-1.2%) scale(1.021)}}
 @keyframes rimspin{to{transform:rotate(360deg)}}
 @keyframes roll{to{transform:rotate(360deg)}}
+
+/* ---- phones & small tablets ------------------------------------------ */
+@media(max-width:900px){
+  .wrap{padding:0 22px}
+  section{padding:104px 0 0}
+  nav{padding:13px 22px}
+  .hero{gap:38px;padding-top:104px}
+  .orbwrap{margin-top:6px}
+  .orb{width:min(64vw,300px)}
+  .slab{padding:24px 22px}
+  .slab p{max-width:none}
+  footer{margin-top:96px}
+}
+@media(max-width:620px){
+  .wrap{padding:0 18px}
+  nav{padding:12px 18px;gap:14px}
+  section{padding:86px 0 0}
+  h1{letter-spacing:.05em}
+  h2{letter-spacing:.06em}
+  .hsub{letter-spacing:.14em;margin-bottom:22px}
+  p{max-width:none}
+  .btns{gap:10px}
+  .btn{flex:1 1 100%;text-align:center;padding:17px 18px}
+  .grid3,.grid2{gap:30px}
+  .grid4 h3,.grid3 h3{font-size:20px}
+  /* icon beside the text, not above it — four stacked cards was a lot of thumb */
+  .grid4{gap:26px}
+  .grid4>div{display:grid;grid-template-columns:54px 1fr;column-gap:16px}
+  .grid4>div img{grid-column:1;grid-row:1/4;width:54px;height:54px;margin:3px 0 0}
+  .grid4>div .n{grid-column:2;grid-row:1}
+  .grid4>div h3{grid-column:2;grid-row:2;margin:5px 0 6px}
+  .grid4>div p{grid-column:2;grid-row:3;margin-bottom:0}
+  .slab{padding:22px 20px}
+  .list li{padding-left:28px}
+  .chan{gap:10px}
+  /* the theme toggle was a 42x14 target — too small for a thumb */
+  .tbtn{padding:10px 4px;margin:-10px -4px}
+  /* 16px stops iOS zooming the whole page when a field is tapped */
+  .ask input[type=text],.ask textarea,.ask select{font-size:16px;padding:13px 12px}
+  .ask .send{width:100%;padding:17px 20px}
+  .ask .two{gap:12px}
+  footer{margin-top:80px;padding-bottom:48px}
+  footer .row{flex-direction:column;gap:7px}
+  footer .disclosure{max-width:none}
+}
+/* smallest phones still in the wild — the headline was kissing the edge */
+@media(max-width:380px){
+  h1{font-size:36px;letter-spacing:.03em}
+  .wrap{padding:0 16px}
+}
+@media (hover:none){
+  .btn.ghost:hover{border-color:var(--field)}
+  .tbtn:hover{color:var(--ink3)}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 
@@ -237,10 +322,35 @@ footer .disclosure{max-width:78ch;margin-top:18px;text-transform:none;letter-spa
       <div>
         <p>Once you have it running, you'll hit something. Ask it right here on this page — type the question, send it. No account, no sign-up, no group to join.</p>
         <p><b>No email list, no phone number, no group chat.</b> I'm not building a database. I run the answers against the actual toolkit — the prompts, the code, the runs I've done — and the answer comes back.</p>
-        <div class="chan">
-          <a class="btn sig" href="#ask">Ask a question →</a>
-        </div>
-        <div class="note">Small on purpose. If it stops being useful, I'll close it.</div>
+        <form class="ask" id="ask" novalidate>
+          <div class="f">
+            <label for="q">What are you trying to do?</label>
+            <textarea id="q" name="question" required
+              placeholder="I wanted it to pull a competitor's ads but nothing came back."></textarea>
+          </div>
+          <div class="f">
+            <label for="e">What actually happened? <span class="opt">&mdash; paste the red text, all of it</span></label>
+            <textarea id="e" name="happened" class="mono" placeholder="Paste it here."></textarea>
+          </div>
+          <div class="f two">
+            <div>
+              <label for="w">Where were you? <span class="opt">&mdash; optional</span></label>
+              <input type="text" id="w" name="step" placeholder="Step 4 of the fast way">
+            </div>
+            <div>
+              <label for="o">Mac or Windows?</label>
+              <select id="o" name="os">
+                <option>Mac</option><option>Windows</option>
+                <option>Linux</option><option>Not sure</option>
+              </select>
+            </div>
+          </div>
+          <div class="hp"><label>Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <button type="submit" class="send" id="asksend">Send the question</button>
+          <div class="msg" id="askmsg" role="status" aria-live="polite"></div>
+          <div class="priv">No account. No email. No name unless you put one in the box.<br>
+            Never paste an API key &mdash; if the error text has one, swap it for XXXX first.</div>
+        </form>
       </div>
       <div>
         <div class="slab" style="--acc:var(--rose)">
@@ -269,6 +379,7 @@ function swapArt(t){
   if(set) $('#seq').querySelectorAll('img').forEach((im,i)=>{ if(set[i]) im.setAttribute('src',set[i]); });
 }
 function setT(t){ root.dataset.t=t; $('#tt').textContent=t==='warm'?'Void':'Warm';
+  var tc=document.getElementById('tc'); if(tc) tc.setAttribute('content',t==='warm'?'#DFC1B8':'#000000');
   swapArt(t); try{localStorage.setItem('oso-theme',t)}catch(e){} }
 
 const SEQ=[
@@ -283,4 +394,42 @@ $('#seq').innerHTML=SEQ.map(([t,b],i)=>
 setT((()=>{try{return localStorage.getItem('oso-theme')||'void'}catch(e){return 'void'}})());
 $('#tt').onclick=()=>setT(root.dataset.t==='warm'?'void':'warm');
 
+</script>
+
+<script>
+/* Ask form → the receiver, which commits the question into the repo.
+   Degrades honestly: if the receiver isn't reachable the page says so
+   rather than pretending the question went somewhere. */
+(function(){
+  var ENDPOINT = "https://ask.daemn.co/";
+  var f=document.getElementById('ask'); if(!f) return;
+  var btn=document.getElementById('asksend'), msg=document.getElementById('askmsg');
+  function say(t,cls){ msg.textContent=t; msg.className='msg'+(cls?' '+cls:''); }
+
+  f.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var q=f.question.value.trim();
+    if(q.length<15){ say('Add a bit more — a sentence or two about what you were trying to do.','bad');
+                     f.question.focus(); return; }
+    if(f.website.value){ return; }                    // bot filled the hidden field
+
+    btn.disabled=true; say('Sending…');
+    fetch(ENDPOINT, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ question:q, happened:f.happened.value.trim(),
+                             step:f.step.value.trim(), os:f.os.value })
+    }).then(function(r){
+      if(!r.ok) throw new Error(r.status);
+      return r.json();
+    }).then(function(d){
+      f.innerHTML = '<div class="sent"><h4>Got it.</h4>'
+        + '<p>Your question is in the queue. Answers get written up publicly '
+        + 'in the repo, so check back there.</p>'
+        + (d && d.url ? '<p><a href="'+d.url+'">See it →</a></p>' : '') + '</div>';
+    }).catch(function(){
+      btn.disabled=false;
+      say('That didn\'t send. Questions aren\'t switched on yet — try the repo instead.','bad');
+    });
+  });
+})();
 </script>
