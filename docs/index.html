@@ -82,12 +82,12 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
 .orb{position:relative;width:min(40vw,380px);aspect-ratio:1;animation:orbdrift 34s ease-in-out infinite alternate}
 .rim{position:absolute;inset:-3px;border-radius:50%;
   background:conic-gradient(from 0deg,#4DD7C8,#8E86DF,#AF545E,#46A643,#EBFF00,#4DD7C8);
-  animation:rimspin 96s linear infinite;filter:drop-shadow(0 0 5px rgba(77,215,200,.5))}
+  animation:rimspin 30s linear infinite;filter:drop-shadow(0 0 5px rgba(77,215,200,.5))}
 [data-t="warm"] .rim{background:conic-gradient(from 0deg,#845A46,#AF545E,#A67E6A,#71503E,#845A46);
   filter:drop-shadow(0 0 4px rgba(63,34,30,.28))}
 .disc{position:absolute;inset:0;border-radius:50%;overflow:hidden;background:var(--ground)}
 .disc img{position:absolute;width:200%;height:200%;left:-49.2%;top:-50.3%;
-  transform-origin:49.6% 50.1%;animation:roll 240s linear infinite}
+  transform-origin:49.6% 50.1%;animation:roll 60s linear infinite}
 .gloss{position:absolute;inset:0;border-radius:50%;mix-blend-mode:screen;
   background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.30),transparent 46%)}
 
@@ -135,7 +135,7 @@ footer .row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;t
 footer .disclosure{max-width:78ch;margin-top:18px;text-transform:none;letter-spacing:.04em;font-size:11px}
 
 @keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
-@keyframes orbdrift{0%{transform:translate(-1.5%,1.2%) scale(1)}100%{transform:translate(1.5%,-1.2%) scale(1.021)}}
+@keyframes orbdrift{0%{transform:translate(-2.4%,1.9%) scale(1)}100%{transform:translate(2.4%,-1.9%) scale(1.035)}}
 @keyframes rimspin{to{transform:rotate(360deg)}}
 @keyframes roll{to{transform:rotate(360deg)}}
 
