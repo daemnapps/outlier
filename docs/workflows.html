@@ -92,8 +92,10 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
 .dnote,.dfoot{font-size:13px;color:var(--ink3);margin-top:16px;line-height:1.6;max-width:46ch}
 
 /* video block */
-.vid{position:relative;aspect-ratio:9/13;max-width:210px;background:var(--panel2);
+.vid{position:relative;aspect-ratio:9/16;max-width:200px;background:var(--panel2);
   border:1px solid var(--track);overflow:hidden}
+.vid.small{max-width:130px}
+.vplayer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .vfill{position:absolute;inset:0;background:
   repeating-linear-gradient(180deg,transparent 0 11px,color-mix(in srgb,var(--ink) 6%,transparent) 11px 12px)}
 .vcap{position:absolute;left:12px;right:12px;top:30%;font-size:12px;text-align:center;
@@ -216,8 +218,8 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
       <div class="hsub">Nothing to install · works in Claude and Higgsfield Supercomputer</div>
       <p>Hand it a video that already worked — a competitor's ad, an organic post, anything — and you get back a finished brief with <b>your</b> brand in it: the scenes, what is said, what people wear, and a prompt for every shot. You fill in one folder about your brand, once. Everything here reads it.</p>
       <div class="btns">
-        <a class="btn" href="downloads/video-teardown-kit.zip" download>Get the teardown engine</a>
-        <a class="btn ghost" href="#how">How the system fits together</a>
+        <a class="btn" href="downloads/brand-folder-kit.zip" download>Start here — the brand folder</a>
+        <a class="btn ghost" href="#how">Watch how it works</a>
       </div>
       <div class="note">Works in Claude chat or Cowork · nothing to install · MIT licensed</div>
     </div>
@@ -246,12 +248,11 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
       <div class="dpane on" data-p="0">
         <div class="dleft">
           <div class="vid">
-            <div class="vfill"></div>
-            <div class="vcap">“I made this for the cold-aholics”</div>
-            <div class="vplay"></div>
+            <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
+                   muted loop playsinline preload="metadata"></video>
             <div class="vscan"></div>
           </div>
-          <div class="dnote">Upload it to Supercomputer. It has a model that can actually watch video — that is the part a chat window cannot do on its own.</div>
+          <div class="dnote">Drop the video into Supercomputer and ask it to describe every scene. That is the one thing a normal chat window cannot do — it needs to actually watch the video.</div>
         </div>
         <div class="dright">
           <div class="dlabel">What comes back</div>
@@ -324,46 +325,36 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
           <div class="dnote">One image prompt and one motion note per scene. Paste them into Supercomputer.</div>
         </div>
         <div class="dright">
-          <div class="dlabel">And you get the shot</div>
+          <div class="dlabel">And you get the video</div>
           <div class="shots">
-            <div class="shot s1"><span>frame</span></div>
+            <div class="shot s1"><span>the frame</span></div>
             <div class="arrow">→</div>
-            <div class="shot s2 moving"><span>shot</span></div>
+            <div class="vid small">
+              <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
+                     muted loop playsinline preload="none"></video>
+            </div>
           </div>
-          <div class="dfoot">Generate every scene of one person from the same starting frame, or they will be a different human in every shot.</div>
+          <div class="dfoot">That clip was made this way — no camera, no actors, no studio. Generate every scene of a person from the same starting frame or they will be a different human in every shot.</div>
         </div>
       </div>
     </div>
 
     <div class="btns" style="margin-top:34px">
-      <a class="btn" href="downloads/video-teardown-kit.zip" download>Start with the teardown kit</a>
-      <a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Just the brand folder</a>
+      <a class="btn" href="downloads/brand-folder-kit.zip" download>Step one — the brand folder</a>
+      <a class="btn ghost" href="downloads/video-teardown-kit.zip" download>Then the teardown kit</a>
     </div>
   </section>
 
   <section>
     <p class="lab" style="--acc:var(--indigo)"><i>02</i> &nbsp;The system</p>
-    <h2>Four tools,<br>one folder</h2>
-    <p>The engine tears down any video. The folder tells it who you are. The swipe packs are ammunition — videos already taken apart, so you can skip straight to the brief.</p>
+    <h2>Start with<br>the folder</h2>
+    <p>Fill in the folder first — an afternoon, once. Everything after it reads that folder, so nothing you build later makes you re-explain your brand.</p>
     <div class="grid2" style="--acc:var(--indigo)">
 
       <div class="dl">
         <div class="tag">Tool 01 · start here</div>
-        <h3>Video Teardown</h3>
-        <p>Any video in, your brief out. Comes with a seven-step walkthrough written for someone who has never done this before.</p>
-        <ul>
-          <li>What to upload, and where</li>
-          <li>What to paste into Claude, in order</li>
-          <li>The finished brief, ready for whoever makes your videos</li>
-          <li>The empty brand folder is inside it</li>
-        </ul>
-        <div class="foot"><a class="btn" href="downloads/video-teardown-kit.zip" download>Download</a></div>
-      </div>
-
-      <div class="dl">
-        <div class="tag">Tool 02 · everything reads it</div>
         <h3>Your brand folder</h3>
-        <p>The one thing you fill in. Put it in your Google Drive, fill it in once, and every tool here knows your brand forever.</p>
+        <p><b>Do this one first.</b> Put it in your Google Drive and fill it in once — every other tool reads it, so this is the only setup there is.</p>
         <ul>
           <li>Who you're selling to — the person, not the age bracket</li>
           <li>Their actual sentences, and words you'd never say</li>
@@ -371,6 +362,19 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
           <li>Your offers, objections, and what's allowed on screen</li>
         </ul>
         <div class="foot"><a class="btn" href="downloads/brand-folder-kit.zip" download>Download</a></div>
+      </div>
+
+      <div class="dl">
+        <div class="tag">Tool 02 · then this</div>
+        <h3>Video Teardown</h3>
+        <p>Any video in, your brief out. Seven steps, written for someone who has never done this. Needs your brand folder filled in first.</p>
+        <ul>
+          <li>What to upload, and where</li>
+          <li>What to paste into Claude, in order</li>
+          <li>The finished brief, ready for whoever makes your videos</li>
+          <li>The empty brand folder is inside it</li>
+        </ul>
+        <div class="foot"><a class="btn" href="downloads/video-teardown-kit.zip" download>Download</a></div>
       </div>
 
       <div class="dl">
@@ -385,50 +389,53 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
         <div class="foot"><a class="btn" href="downloads/swipe-to-scene-kit.zip" download>Download</a></div>
       </div>
 
-      <div class="dl soon">
-        <div class="tag">Tool 04 · next</div>
+      <div class="dl">
+        <div class="tag">Tool 04 · ready to use</div>
         <h3>Paid ad swipe pack</h3>
-        <p>The other half: what competitors are paying to put in front of your customer, taken apart the same way.</p>
+        <p>What four brands are actually paying to put in front of customers — 2,626 live ads across 223 pitches, boiled down to the ten shapes that keep working.</p>
         <ul>
-          <li>What each brand is running, by brand</li>
-          <li>The angles they're spending on, ranked</li>
-          <li>The pages those ads send people to</li>
+          <li>Ten angle shapes, as fill-in-the-blank templates</li>
+          <li>What the spending pattern tells you to copy</li>
+          <li>A prompt to make a video version of each</li>
         </ul>
-        <div class="foot"><a class="btn ghost" href="/">Watch this page</a></div>
+        <div class="foot"><a class="btn" href="downloads/paid-ad-swipe-pack.zip" download>Download</a></div>
       </div>
 
     </div>
   </section>
 
   <section>
-    <p class="lab" style="--acc:var(--green)"><i>04</i> &nbsp;What to expect</p>
+    <p class="lab" style="--acc:var(--green)"><i>04</i> &nbsp;Is this for you</p>
     <div class="two">
       <div>
-        <h2>Read this<br>before you<br>download</h2>
-        <p>Honest about what this is: a system that does the thinking between a video that worked and a brief someone can shoot. It is worth your time if you are already making creative and losing to the blank page.</p>
+        <h2>Is this<br>for you?</h2>
+        <p>If you can save a file to Google Drive and paste text into a chat box, you can run this. No experience needed, and nothing to install.</p><p>What you are learning is the actual job: take something that already worked, work out why, and rebuild it for someone else's product. Brands pay for that.</p>
       </div>
       <ul class="rules">
-        <li><b>What it is</b>A process you follow, not a button you press. You bring a video and your brand; it does the watching, the structuring and the writing — and tells you when it does not know something instead of making it up.</li>
-        <li><b>What you need</b>Claude (the chat or Cowork), Higgsfield Supercomputer, and a Google Drive. That is the whole list — nothing gets installed and nothing runs on your computer.</li>
-        <li><b>What it will not do</b>Invent your product, your customer or your offer. Every gap in your brand folder shows up as a question, never as a confident guess.</li>
-        <li><b>The rule that makes it work</b>Rebuild the structure, never the content. A scalp treatment and a countertop demo can be the same format — that is the whole point.</li>
-        <li><b>How long it takes</b>Your brand folder is an afternoon, once. After that a teardown is about twenty minutes of pasting, plus however long you spend generating scenes.</li>
-        <li><b>What it costs</b>Nothing. MIT licensed, and it stays that way.</li>
+        <li><b>What you actually do</b>Find a video that did well. Feed it in. Answer nothing — the brand folder already did that. Get back a script and a shot list, then make the shots. That is the loop.</li>
+        <li><b>What you need</b>Three things: Claude (the free chat is fine), Higgsfield Supercomputer, and a Google Drive. Nothing gets installed and nothing runs on your computer.</li>
+        <li><b>Where people go wrong</b>Skipping the brand folder. If it does not know what your product looks like, it will say so instead of guessing — that is it working correctly, not breaking. Go fill that part in.</li>
+        <li><b>The one rule</b>Copy the shape, not the content. A hair product and a frying-pan oil can use the exact same video structure. That is the whole trick.</li>
+        <li><b>How long it takes</b>The brand folder is one afternoon, once. After that, about twenty minutes per video plus whatever you spend generating scenes.</li>
+        <li><b>What it costs</b>All four downloads are free forever. The only thing you might pay for is Supercomputer, and only once you are generating a lot.</li>
       </ul>
     </div>
   </section>
 
   <section>
-    <p class="lab" style="--acc:var(--rose)"><i>05</i> &nbsp;The production step</p>
-    <h2>Where the watching<br>and making happen</h2>
+    <p class="lab" style="--acc:var(--rose)"><i>05</i> &nbsp;The one tool you need</p>
+    <h2>What is<br>Supercomputer?</h2>
     <div class="tool" style="--acc:var(--rose)">
-      <p>Two of the seven steps happen in <b>Higgsfield Supercomputer</b>: it is where the video actually gets watched (it has a Gemini model on it, so you hand it the video directly) and where your scenes get made from the prompts the brief writes.</p>
-      <p>Nothing here is locked to it — the prompts are plain description and work in any generator. Supercomputer is what these instructions are written for, so it is the path with no guesswork.</p>
+      <p><b>What it is.</b> Higgsfield Supercomputer is a chat where you make things. You type what you want, or upload a file and ask about it, and it does the work — images, video, edits. If you have used ChatGPT, it looks familiar; the difference is that it makes pictures and video rather than just text.</p>
+      <p><b>Why you need it here.</b> Two of the seven steps happen in it. First, it is where the video gets watched — you upload the clip and ask it to describe every scene, and a normal chat window cannot do that. Second, it is where your scenes get made from the prompts the brief writes.</p>
+      <p><b>Which model?</b> You do not pick one. It has a setting called <b>Auto</b> that chooses for you, and for these steps Auto is the right answer. Ignore every other setting until you have made something.</p>
+      <p><b>What it costs.</b> There is a free tier to try it and paid plans if you make a lot. Everything on this page is free either way — Supercomputer is the only thing you might pay for, and only when you are generating.</p>
+      <p style="color:var(--ink3);font-size:13.5px">Nothing here is locked to it. The prompts are plain description and work in any generator. This is just the path with no guesswork.</p>
       <div class="btns" style="margin-top:20px">
-        <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Get Supercomputer →</a>
-        <a class="btn ghost" href="downloads/video-teardown-kit.zip" download>Get the engine first</a>
+        <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Open Supercomputer →</a>
+        <a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Do the brand folder first</a>
       </div>
-      <div class="note">Affiliate link. It costs you nothing extra and the kit works identically without it.</div>
+      <div class="note">Affiliate link. It costs you nothing extra and everything here works identically without it.</div>
     </div>
   </section>
 
@@ -484,6 +491,10 @@ function showD(n,manual){
   d=(n+panes.length)%panes.length;
   panes.forEach((p,k)=>p.classList.toggle('on',k===d));
   tabs.forEach((t,k)=>t.classList.toggle('on',k===d));
+  document.querySelectorAll('.vplayer').forEach(v=>{
+    const on=v.closest('.dpane').classList.contains('on');
+    if(on){ v.play().catch(()=>{}); } else { v.pause(); }
+  });
   if(d===2) fillScript(); else clearInterval(fillTimer);
   if(d===3) typePrompt(); else clearInterval(typeTimer);
   if(manual) startD();
