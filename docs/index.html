@@ -390,11 +390,10 @@ $('#tt').onclick=()=>setT(root.dataset.t==='warm'?'void':'warm');
 </script>
 
 <script>
-/* Ask form → the receiver, which commits the question into the repo.
-   Degrades honestly: if the receiver isn't reachable the page says so
-   rather than pretending the question went somewhere. */
+/* Ask form → composes an email. There is no server behind this on purpose:
+   nothing to deploy, nothing to maintain, and no address sitting in the
+   source as plain text. Swap for a form link if one ever exists. */
 (function(){
-  var ENDPOINT = "https://ask.daemn.co/";
   var f=document.getElementById('ask'); if(!f) return;
   var btn=document.getElementById('asksend'), msg=document.getElementById('askmsg');
   function say(t,cls){ msg.textContent=t; msg.className='msg'+(cls?' '+cls:''); }
@@ -406,23 +405,20 @@ $('#tt').onclick=()=>setT(root.dataset.t==='warm'?'void':'warm');
                      f.question.focus(); return; }
     if(f.website.value){ return; }                    // bot filled the hidden field
 
-    btn.disabled=true; say('Sending…');
-    fetch(ENDPOINT, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ question:q, happened:f.happened.value.trim(),
-                             step:f.step.value.trim(), os:f.os.value })
-    }).then(function(r){
-      if(!r.ok) throw new Error(r.status);
-      return r.json();
-    }).then(function(d){
-      f.innerHTML = '<div class="sent"><h4>Got it.</h4>'
-        + '<p>Your question is in the queue. Answers get written up publicly '
-        + 'in the repo, so check back there.</p>'
-        + (d && d.url ? '<p><a href="'+d.url+'">See it →</a></p>' : '') + '</div>';
-    }).catch(function(){
-      btn.disabled=false;
-      say('That didn\'t send. Questions aren\'t switched on yet — try the repo instead.','bad');
-    });
+    /* No server: compose the email with everything they typed. Works today,
+       stores nothing, and nobody finds out it is broken after writing. */
+    var who=['ddixon','gradientmediallc.com'];
+    var body=['What I was trying to do:', q, '',
+              'What actually happened:', (f.happened.value.trim()||'—'), '',
+              'Where: '+(f.step.value.trim()||'—'),
+              'OS: '+(f.os.value||'not sure'), '',
+              'Sent from daemn.co'].join('\n');
+    window.location.href='mailto:'+who.join('@')
+      +'?subject='+encodeURIComponent('OSO question: '+q.slice(0,60))
+      +'&body='+encodeURIComponent(body);
+    f.innerHTML='<div class="sent"><h4>Your email is opening.</h4>'
+      +'<p>It is written out already — just send it. Answers usually come back '
+      +'the same day, and the good ones get written up in the repo.</p></div>';
   });
 })();
 </script>

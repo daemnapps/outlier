@@ -517,7 +517,7 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
         <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
         <button class="btn" id="gsend" type="submit">Request the sweeps</button>
         <div class="gmsg" id="gmsg"></div>
-        <div class="gpriv">Your email is used to send you the files and nothing else. It is not published anywhere, not added to a list, and not passed on.</div>
+        <div class="gpriv">This opens your email with the details filled in — nothing is stored on this site and no list exists to add you to.</div>
       </form>
     </div>
   </section>
@@ -658,34 +658,29 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.2});
 io.observe(document.querySelector('.demo'));
 
-/* The gate. Posts to the receiver, which keeps the request private — it never
-   lands in this repo. Fails out loud if the receiver cannot be reached. */
+/* The gate. No server: it composes an email with what they typed, which works
+   today and stores nothing. Swap this for a form link when one exists. */
 (function(){
   var f=document.getElementById('gate'); if(!f) return;
-  var btn=document.getElementById('gsend'), msg=document.getElementById('gmsg');
-  function say(t,c){ msg.textContent=t; msg.className='gmsg'+(c?' '+c:''); }
+  var msg=document.getElementById('gmsg');
+  var who=['ddixon','gradientmediallc.com'];          // assembled, not sitting in the source
   f.addEventListener('submit',function(ev){
     ev.preventDefault();
     if(f.website.value) return;
-    btn.disabled=true; say('Sending…');
-    fetch('https://ask.daemn.co/',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({kind:'access',name:f.name.value,email:f.email.value,
-        brand:f.brand.value,work:f.work.value})})
-      .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
-      .then(function(x){
-        if(x.ok&&x.d.ok){ say('Got it. The files come back to that address — usually same day.','good'); f.reset(); }
-        else if(x.d&&x.d.error==='requests are not open yet'){ notLive(); }
-        else { say((x.d&&x.d.error)||'That did not go through. Try again in a minute.','bad'); btn.disabled=false; }
-      })
-      .catch(notLive);
-  /* The receiver may not be up yet. Say so plainly and give them a route that
-     works today, rather than an error that reads like their fault. */
-  function notLive(){
-    msg.innerHTML='Requests are not wired up yet — that is on me, not you.<br>'+
-      'Email <b>the address on the home page</b> with your name and who you make ads for, '+
-      'and the files come straight back.';
-    msg.className='gmsg bad'; btn.disabled=false;
-  }
+    if(!f.name.value.trim()||!f.email.value.trim()){
+      msg.textContent='Name and email, then it can write the message for you.';
+      msg.className='gmsg bad'; return;
+    }
+    var body=['Name: '+f.name.value,'Email: '+f.email.value,
+              'Makes ads for: '+(f.brand.value||'—'),'',
+              'Working on:',(f.work.value||'—'),'',
+              'Sent from daemn.co/workflows'].join('\n');
+    window.location.href='mailto:'+who.join('@')+
+      '?subject='+encodeURIComponent('Raw competitor sweeps — access request')+
+      '&body='+encodeURIComponent(body);
+    msg.innerHTML='Your email app should be opening with it written out. '+
+      'Send it and the files come back to you — usually same day.';
+    msg.className='gmsg good';
   });
 })();
 </script>
