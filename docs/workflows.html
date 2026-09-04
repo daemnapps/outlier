@@ -674,9 +674,18 @@ io.observe(document.querySelector('.demo'));
       .then(function(r){ return r.json().then(function(d){ return {ok:r.ok,d:d}; }); })
       .then(function(x){
         if(x.ok&&x.d.ok){ say('Got it. The files come back to that address — usually same day.','good'); f.reset(); }
+        else if(x.d&&x.d.error==='requests are not open yet'){ notLive(); }
         else { say((x.d&&x.d.error)||'That did not go through. Try again in a minute.','bad'); btn.disabled=false; }
       })
-      .catch(function(){ say('Could not reach the server. Try again shortly.','bad'); btn.disabled=false; });
+      .catch(notLive);
+  /* The receiver may not be up yet. Say so plainly and give them a route that
+     works today, rather than an error that reads like their fault. */
+  function notLive(){
+    msg.innerHTML='Requests are not wired up yet — that is on me, not you.<br>'+
+      'Email <b>the address on the home page</b> with your name and who you make ads for, '+
+      'and the files come straight back.';
+    msg.className='gmsg bad'; btn.disabled=false;
+  }
   });
 })();
 </script>
