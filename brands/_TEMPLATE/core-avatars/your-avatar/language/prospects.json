@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "avatar": "your-avatar",
+  "funnel": "prospect",
+  "_readme": "One row per real sentence. Verbatim or it does not enter. No source, no row. Never any personal data — strip names, emails, phones, order numbers before a row lands here. Copy this file for other funnel stages: leads.json, customers/*.json, churned/*.json.",
+  "entries": [
+    {
+      "id": "ava-pro-0001",
+      "text": "the person's exact words, typos and all",
+      "avatar": "your-avatar",
+      "funnel": "prospect",
+      "speaker": "prospect",
+      "source": { "name": "where you found it", "type": "community | review | survey | ticket | comment", "date": "2026-09", "ref": "link or file" },
+      "signal": { "count": null, "likes": null, "tier": null },
+      "topics": ["what it is about"],
+      "use": "problem-language | result-language | objection | hook | why-bought",
+      "sub": null,
+      "status": "active"
+    }
+  ]
+}
