@@ -25,6 +25,10 @@ output/
 # …except what the site actually delivers. The blanket rule above keeps swiped
 # media and stray archives out; a download offered on the page has to ship.
 !docs/downloads/*.zip
+# …and what the page shows. Same reasoning: swiped media stays out, the
+# examples the site actually displays have to ship.
+!docs/media/*.mp4
+!docs/media/*.jpg
 
 # noise
 .DS_Store
