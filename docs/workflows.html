@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#000000" id="tc">
-<meta name="description" content="Free tools for generative-AI creative: tear down any video and inject your own brand, a brand-context folder every tool reads, and swipe packs of formats already reverse-engineered.">
+<meta name="description" content="Everything an editor or affiliate needs to make ads at volume: tear down any video, rebuild it for a brand, and generate the scenes. Free, nothing to install.">
 <title>Workflows — Open Source Outliers</title>
 <style>html,body{background:#000}</style>
 <style>
@@ -53,6 +53,15 @@ nav .sp{margin-left:auto}
 
 .hero{min-height:82vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;
   gap:50px;padding-top:110px}
+.herostage{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+@media(max-width:560px){.herostage{grid-template-columns:1fr}}
+.hfig{margin:0;width:min(46vw,232px)}
+.hfig .vplayer{position:static}
+.hero-v{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;border:1px solid var(--track);
+  background:var(--panel2)}
+.hfig figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink3);margin-top:10px;line-height:1.7}
+.hstats{display:grid;gap:22px}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:120px}}
 h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-spacing:.09em;
   line-height:1.0;font-size:clamp(38px,6.4vw,86px);margin:0 0 18px}
@@ -95,7 +104,7 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
 .vid{position:relative;aspect-ratio:9/16;max-width:200px;background:var(--panel2);
   border:1px solid var(--track);overflow:hidden}
 .vid.small{max-width:130px}
-.vplayer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vid .vplayer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .vfill{position:absolute;inset:0;background:
   repeating-linear-gradient(180deg,transparent 0 11px,color-mix(in srgb,var(--ink) 6%,transparent) 11px 12px)}
 .vcap{position:absolute;left:12px;right:12px;top:30%;font-size:12px;text-align:center;
@@ -123,8 +132,8 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
 .qs{display:grid;gap:10px}
 .q{border-left:2px solid var(--track);padding:8px 0 8px 14px;opacity:0}
 .dpane.on .q{animation:slidein .5s ease forwards}
-.dpane.on .q:nth-child(1){animation-delay:.1s}.dpane.on .q:nth-child(2){animation-delay:.5s}
-.dpane.on .q:nth-child(3){animation-delay:.9s}.dpane.on .q:nth-child(4){animation-delay:1.3s}
+.dpane.on .q:nth-child(1){animation-delay:.75s}.dpane.on .q:nth-child(2){animation-delay:1.05s}
+.dpane.on .q:nth-child(3){animation-delay:1.35s}.dpane.on .q:nth-child(4){animation-delay:1.65s}
 .q b{display:block;font-size:13.5px;margin-bottom:3px}
 .q span{font-size:13px;color:var(--ink3)}
 
@@ -156,7 +165,24 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
   font-family:var(--mono);font-size:11.5px;line-height:1.8;color:var(--ink2)}
 .term2 .cur{display:inline-block;width:7px;height:12px;background:var(--acc);vertical-align:-2px;
   animation:blip 1s steps(1) infinite}
-.shots{display:flex;align-items:center;gap:16px}
+.shots{display:flex;align-items:flex-start;gap:16px}
+.shotfig{margin:0;width:150px}
+.shotfig .vplayer{position:static}
+.shotfig img,.shotfig video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;
+  border:1px solid var(--track);background:var(--panel2)}
+.shotfig figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);margin-top:8px}
+.fstrip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:18px}
+.fstrip img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;
+  border:1px solid var(--track);opacity:0}
+.dpane.on .fstrip img{animation:rise .45s ease forwards}
+.dpane.on .fstrip img:nth-child(1){animation-delay:.05s}
+.dpane.on .fstrip img:nth-child(2){animation-delay:.16s}
+.dpane.on .fstrip img:nth-child(3){animation-delay:.27s}
+.dpane.on .fstrip img:nth-child(4){animation-delay:.38s}
+.dpane.on .fstrip img:nth-child(5){animation-delay:.49s}
+.dpane.on .fstrip img:nth-child(6){animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
 .shot{width:118px;aspect-ratio:9/14;background:var(--panel2);border:1px solid var(--track);
   display:grid;place-items:center;position:relative;overflow:hidden}
 .shot span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
@@ -213,21 +239,28 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
 
   <div class="hero">
     <div>
-      <p class="lab" style="--acc:var(--signal)"><i>WORKFLOWS</i> &nbsp;Free · no signup</p>
-      <h1>Tear down<br>any video.<br>Make it yours.</h1>
-      <div class="hsub">Nothing to install · works in Claude and Higgsfield Supercomputer</div>
-      <p>Hand it a video that already worked — a competitor's ad, an organic post, anything — and you get back a finished brief with <b>your</b> brand in it: the scenes, what is said, what people wear, and a prompt for every shot. You fill in one folder about your brand, once. Everything here reads it.</p>
+      <p class="lab" style="--acc:var(--signal)"><i>WORKFLOWS</i> &nbsp;For the people who make our ads</p>
+      <h1>Make ads<br>at will.</h1>
+      <div class="hsub">For editors and affiliates · everything you need, free · nothing to install</div>
+      <p>Take any video that already worked and rebuild it for a brand you're making ads for. You get the script, the shot list and a prompt for every frame — then you generate the shots and cut it. The clip on the right was made exactly this way.</p><p>Point it at whatever you want. Nobody has to brief you.</p>
       <div class="btns">
         <a class="btn" href="downloads/brand-folder-kit.zip" download>Start here — the brand folder</a>
         <a class="btn ghost" href="#how">Watch how it works</a>
       </div>
       <div class="note">Works in Claude chat or Cowork · nothing to install · MIT licensed</div>
     </div>
-    <div class="stats" style="align-content:center">
-      <div class="stat"><div class="k">7</div><div class="v">steps, start to finish</div></div>
-      <div class="stat"><div class="k">1</div><div class="v">folder to fill in, once</div></div>
-      <div class="stat"><div class="k">34</div><div class="v">formats, done for you</div></div>
-      <div class="stat"><div class="k">$0</div><div class="v">for all of it</div></div>
+    <div class="herostage">
+      <figure class="hfig">
+        <video class="vplayer hero-v" src="media/example.mp4" poster="media/example-poster.jpg"
+               autoplay muted loop playsinline></video>
+        <figcaption>Made with this kit — no camera, no actors, no studio.</figcaption>
+      </figure>
+      <div class="hstats">
+        <div class="stat"><div class="k">7</div><div class="v">steps, start to finish</div></div>
+        <div class="stat"><div class="k">34</div><div class="v">formats, done for you</div></div>
+        <div class="stat"><div class="k">10</div><div class="v">paid angles that work</div></div>
+        <div class="stat"><div class="k">$0</div><div class="v">for all of it</div></div>
+      </div>
     </div>
   </div>
 
@@ -271,21 +304,26 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
       <!-- 02 · the structure gets named -->
       <div class="dpane" data-p="1">
         <div class="dleft">
-          <div class="dlabel">The four questions, every time</div>
+          <div class="dlabel">Six moments, pulled from the video</div>
+          <div class="fstrip">
+            <img src="media/beat-1.jpg" alt=""><img src="media/beat-2.jpg" alt="">
+            <img src="media/beat-3.jpg" alt=""><img src="media/beat-4.jpg" alt="">
+            <img src="media/beat-5.jpg" alt=""><img src="media/beat-6.jpg" alt="">
+          </div>
           <div class="qs">
-            <div class="q"><b>What does the camera do?</b><span>Handheld, subject height, never cuts to a face.</span></div>
-            <div class="q"><b>What does the text do?</b><span>One line, pinned, never changes.</span></div>
-            <div class="q"><b>What order are the beats in?</b><span>Sealed → unfolded → placed → used → the mechanism.</span></div>
-            <div class="q"><b>What is doing the persuading?</b><span>The unbroken run of hands. Nothing is argued; it is all shown.</span></div>
+            <div class="q"><b>What does the camera do?</b><span>One locked room, cuts between two distances.</span></div>
+            <div class="q"><b>What does the text do?</b><span>One line of dialogue per shot, always mid-argument.</span></div>
+            <div class="q"><b>What order are the beats in?</b><span>Caught → accused → panic → explain → the product held up.</span></div>
+            <div class="q"><b>What is doing the persuading?</b><span>The misunderstanding. You stay to find out what it really was.</span></div>
           </div>
         </div>
         <div class="dright">
           <div class="dlabel">So the format is</div>
           <div class="fcard">
-            <div class="fname">Sticky-line maker demo</div>
-            <div class="fmeta">146,726,835 views proved it · 9 more of these in the pack</div>
-            <p class="fbody">One line pinned for the entire runtime while one continuous hands-only demonstration plays out. The line never changes, so nothing competes with the product.</p>
-            <div class="fwhy">Why it works — no cut to a talking head means the viewer is never asked to grant a stranger their attention. They just watch a pair of hands open something.</div>
+            <div class="fname">Caught-in-the-act misread</div>
+            <div class="fmeta">one of 34 formats in the pack · each with the post that proved it</div>
+            <p class="fbody">Someone walks in on a scene that looks like something it is not. The argument runs while the real explanation — the product — waits until the last beat.</p>
+            <div class="fwhy">Why it works — the viewer knows something the character does not, and cannot leave until the misunderstanding lands. The product arrives as the answer, not as an interruption.</div>
           </div>
           <div class="dfoot">Same four questions on any video. That is why a scalp treatment and a countertop demo come back as the same format.</div>
         </div>
@@ -327,12 +365,16 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
         <div class="dright">
           <div class="dlabel">And you get the video</div>
           <div class="shots">
-            <div class="shot s1"><span>the frame</span></div>
+            <figure class="shotfig">
+              <img src="media/frame-still.jpg" alt="a generated frame">
+              <figcaption>the frame you generate</figcaption>
+            </figure>
             <div class="arrow">→</div>
-            <div class="vid small">
+            <figure class="shotfig">
               <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
-                     muted loop playsinline preload="none"></video>
-            </div>
+                     muted loop playsinline preload="metadata"></video>
+              <figcaption>the shot it becomes</figcaption>
+            </figure>
           </div>
           <div class="dfoot">That clip was made this way — no camera, no actors, no studio. Generate every scene of a person from the same starting frame or they will be a different human in every shot.</div>
         </div>
@@ -354,7 +396,7 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
       <div class="dl">
         <div class="tag">Tool 01 · start here</div>
         <h3>Your brand folder</h3>
-        <p><b>Do this one first.</b> Put it in your Google Drive and fill it in once — every other tool reads it, so this is the only setup there is.</p>
+        <p><b>Do this one first, for each brand you work on.</b> Put it in your Google Drive and fill it in once — every other tool reads it, so this is the only setup there is.</p>
         <ul>
           <li>Who you're selling to — the person, not the age bracket</li>
           <li>Their actual sentences, and words you'd never say</li>
@@ -405,19 +447,19 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
   </section>
 
   <section>
-    <p class="lab" style="--acc:var(--green)"><i>04</i> &nbsp;Is this for you</p>
+    <p class="lab" style="--acc:var(--green)"><i>04</i> &nbsp;How to use it</p>
     <div class="two">
       <div>
-        <h2>Is this<br>for you?</h2>
-        <p>If you can save a file to Google Drive and paste text into a chat box, you can run this. No experience needed, and nothing to install.</p><p>What you are learning is the actual job: take something that already worked, work out why, and rebuild it for someone else's product. Brands pay for that.</p>
+        <h2>How you<br>actually<br>use this</h2>
+        <p>If you can save a file to Google Drive and paste text into a chat box, you can run this. No experience needed.</p><p>Pick a brand you make ads for, fill in its folder once, then go as hard as you want. Every video you turn around is one they did not have to brief, storyboard or shoot.</p>
       </div>
       <ul class="rules">
-        <li><b>What you actually do</b>Find a video that did well. Feed it in. Answer nothing — the brand folder already did that. Get back a script and a shot list, then make the shots. That is the loop.</li>
+        <li><b>The loop</b>Find a video that did well. Feed it in. Get back a script and a shot list. Make the shots, cut it, send it. Then do it again — there is no limit and no approval step in the middle.</li>
         <li><b>What you need</b>Three things: Claude (the free chat is fine), Higgsfield Supercomputer, and a Google Drive. Nothing gets installed and nothing runs on your computer.</li>
-        <li><b>Where people go wrong</b>Skipping the brand folder. If it does not know what your product looks like, it will say so instead of guessing — that is it working correctly, not breaking. Go fill that part in.</li>
+        <li><b>Where people go wrong</b>Skipping the brand folder. If it does not know what the product looks like, it will say so instead of guessing — that is it working, not breaking. Go fill that part in and it stops happening.</li>
         <li><b>The one rule</b>Copy the shape, not the content. A hair product and a frying-pan oil can use the exact same video structure. That is the whole trick.</li>
-        <li><b>How long it takes</b>The brand folder is one afternoon, once. After that, about twenty minutes per video plus whatever you spend generating scenes.</li>
-        <li><b>What it costs</b>All four downloads are free forever. The only thing you might pay for is Supercomputer, and only once you are generating a lot.</li>
+        <li><b>How fast</b>The brand folder is one afternoon, once per brand. After that, about twenty minutes per ad plus generating time. That is the whole reason this exists — volume without a meeting.</li>
+        <li><b>What it costs you</b>Nothing. All four downloads are free. The only thing you might pay for is Supercomputer once you are generating at volume.</li>
       </ul>
     </div>
   </section>
@@ -491,9 +533,9 @@ function showD(n,manual){
   d=(n+panes.length)%panes.length;
   panes.forEach((p,k)=>p.classList.toggle('on',k===d));
   tabs.forEach((t,k)=>t.classList.toggle('on',k===d));
-  document.querySelectorAll('.vplayer').forEach(v=>{
-    const on=v.closest('.dpane').classList.contains('on');
-    if(on){ v.play().catch(()=>{}); } else { v.pause(); }
+  document.querySelectorAll('.dpane .vplayer').forEach(v=>{
+    const p=v.closest('.dpane');
+    if(p && p.classList.contains('on')){ v.play().catch(()=>{}); } else { v.pause(); }
   });
   if(d===2) fillScript(); else clearInterval(fillTimer);
   if(d===3) typePrompt(); else clearInterval(typeTimer);
