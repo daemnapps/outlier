@@ -1,0 +1,36 @@
+#!/bin/sh
+# Refuse to commit anything that looks like a key, a credential, or a private
+# file. This repo is PUBLIC and its history is permanent: a key pushed here is
+# a key that has to be rotated, not deleted. Cheap check, expensive miss.
+#
+# Install once:  git config core.hooksPath .githooks
+# Skip once (you had better be sure):  git commit --no-verify
+
+fail() { printf '\nBLOCKED: %s\n\n' "$1" >&2; exit 1; }
+
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+
+# 1 · files that should never be here at all
+for f in $staged; do
+  case "$f" in
+    *.env|*.key|*.pem|*.p12|*credentials*.json|*service-account*.json|.npmrc|.netrc)
+      fail "$f is a credential file. Add it to .gitignore instead." ;;
+  esac
+done
+
+# 2 · key-shaped strings inside the diff
+hits=$(git diff --cached -U0 | grep -nE '^\+' | grep -oE \
+  'sk-[A-Za-z0-9_-]{20,}|AIza[0-9A-Za-z_-]{30,}|gh[pousr]_[A-Za-z0-9]{30,}|xox[baprs]-[A-Za-z0-9-]{10,}|apify_api_[A-Za-z0-9]{20,}|AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|glpat-[A-Za-z0-9_-]{20,}|figd_[A-Za-z0-9_-]{20,}' \
+  | sort -u)
+[ -n "$hits" ] && fail "this looks like a live credential:
+$(echo "$hits" | sed 's/^/    /' | cut -c1-60)
+If it is real, rotate it now — do not just unstage it."
+
+# 3 · someone's email or a home path leaking into a public repo
+paths=$(git diff --cached -U0 | grep -E '^\+' | grep -oE '/Users/[a-z0-9._-]+/' | sort -u)
+[ -n "$paths" ] && fail "a path off someone's own machine is in the diff:
+$(echo "$paths" | sed 's/^/    /')
+Use a relative path, or nothing."
+
+exit 0
