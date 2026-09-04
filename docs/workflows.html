@@ -247,6 +247,10 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
   display:flex;gap:8px;align-items:center}
 .chatin span{border:1px solid var(--field);padding:3px 9px;color:var(--ink)}
 .sccap{font-size:13px;color:var(--ink3);margin-top:10px;line-height:1.6;max-width:52ch}
+.mtab{border-collapse:collapse;margin:6px 0 16px;font-size:13.5px}
+.mtab td{padding:7px 0;border-bottom:1px solid var(--track);vertical-align:top}
+.mtab td:first-child{color:var(--ink3);padding-right:22px;white-space:nowrap}
+.mtab code{font-family:var(--mono);font-size:12px;color:var(--acc)}
 footer{margin-top:150px;padding:40px 0 60px;border-top:1px solid var(--track)}
 footer .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:22px;gap:20px;flex-wrap:wrap}
@@ -496,7 +500,14 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
       <div class="sccopy">
         <p><b>What it is.</b> A chat where you make things. You type what you want — or drop a file in and ask about it — and it does the work: images, video, edits. If you have used ChatGPT it will look familiar; the difference is this one makes pictures and video, not just words.</p>
         <p><b>Why you need it here.</b> Two of the seven steps happen in it, and they are the two a normal chat cannot do.</p>
-        <p><b>Which model?</b> You do not pick one. There is a setting called <b>Auto</b> that chooses for you, and for both of these steps Auto is the right answer. Ignore every other setting until you have made something.</p>
+        <p><b>Which models.</b> Do not leave it on Auto — these are the ones behind every video this system has made:</p>
+        <table class="mtab">
+          <tr><td>reading the video</td><td><code>gemini-3-flash-preview</code></td></tr>
+          <tr><td>making the frames</td><td><code>text2image_soul_v2</code></td></tr>
+          <tr><td>frames → video</td><td><code>seedance_2_0</code></td></tr>
+          <tr><td>voice, if you need it</td><td><code>seed_audio</code></td></tr>
+        </table>
+        <p>The settings matter as much as the names — portrait 1536×2048, prompt-enhance <b>off</b>, a fixed seed per character, 9:16 video in 4-second beats. Every kit ships a <b>WHICH-MODELS</b> sheet with all of it, including what to change when a shot comes back wrong.</p>
         <p><b>What it costs.</b> There is a free tier to start on. Everything on this page is free either way — Supercomputer is the only thing you might ever pay for, and only once you are generating at volume.</p>
         <div class="btns" style="margin-top:22px">
           <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Open Supercomputer →</a>
@@ -513,7 +524,7 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
             <div class="msg me"><span class="clip">▣ swipe-video.mp4</span>
               Watch this and write down every scene — what's on screen, what's said, what they're wearing.</div>
             <div class="msg it">0:01 — Hands hold a sealed pack at chest height. Bedroom, lamp at frame left…<br>0:03 — Pack gone, product bunched in both hands, held to the lens…<span class="cur2"></span></div>
-            <div class="chatin"><span>Auto</span> · describe the video</div>
+            <div class="chatin"><span>gemini-3-flash-preview</span> · describe the video</div>
           </div>
           <div class="sccap">Step 1 — it watches the video. This is the part a normal chat window cannot do.</div>
         </div>
@@ -524,7 +535,7 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
             <div class="chatbar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><b>Supercomputer</b></div>
             <div class="msg me">vertical 9:16, hands only, no face, holding a matte black tin over a kitchen counter, window light from the left, phone-camera look</div>
             <div class="msg shotmsg"><img src="media/frame-still.jpg" alt="a generated frame"></div>
-            <div class="chatin"><span>Auto</span> · make the frame, then the shot</div>
+            <div class="chatin"><span>soul_v2 → seedance_2_0</span> · frame, then shot</div>
           </div>
           <div class="sccap">Step 2 — paste a prompt from your brief, get the frame, turn it into the shot.</div>
         </div>
