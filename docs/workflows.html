@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" id="tc">
+<meta name="description" content="Free workflows for generative-AI creative. 34 proven organic video formats, reverse-engineered from posts that already worked, each one with the prompts to rebuild it.">
+<title>Workflows — Open Source Outliers</title>
+<style>html,body{background:#000}</style>
+<style>
+:root{
+  --ground:#000000; --panel:#0B0D10; --panel2:#0F1319; --strip:#06080A; --track:#1A1E24;
+  --ink:#FFFFFF; --ink2:rgba(255,255,255,.84); --ink3:rgba(255,255,255,.62);
+  --cyan:#4DD7C8; --indigo:#8E86DF; --rose:#AF545E; --green:#46A643; --signal:#EBFF00;
+  --btn-bg:#FFFFFF; --btn-ink:#000000; --field:rgba(255,255,255,.34);
+  --display:Jost,"Century Gothic",Futura,"Avenir Next",ui-sans-serif,sans-serif;
+  --body:Archivo,"Helvetica Neue",Inter,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+}
+[data-t="warm"]{
+  --ground:#DFC1B8; --panel:#C9A796; --panel2:#BA9279; --strip:#BA9279;
+  --track:rgba(63,34,30,.22);
+  --ink:#000000; --ink2:#141414; --ink3:#3F221E;
+  --cyan:#AF545E; --indigo:#71503E; --rose:#8C2F1E; --green:#845A46; --signal:#3F221E;
+  --btn-bg:#3F221E; --btn-ink:#DFC1B8; --field:rgba(63,34,30,.34);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+  font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background .32s ease,color .32s ease}
+.wrap{max-width:1240px;margin:0 auto;padding:0 30px}
+section{padding:130px 0 0}
+h2{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-spacing:.09em;
+  line-height:1.02;font-size:clamp(28px,4.2vw,48px);margin:0 0 20px}
+.lab{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);margin:0 0 14px}
+.lab i{font-style:normal;color:var(--acc,var(--cyan))}
+p{color:var(--ink2);max-width:56ch;margin:0 0 15px}
+b{color:var(--ink);font-weight:500}
+a{color:var(--ink)}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:24px;
+  padding:14px 30px;backdrop-filter:blur(18px);
+  background:color-mix(in srgb,var(--ground) 72%,transparent)}
+.mark{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+  display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink)}
+.blip{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:blip 2.6s ease-in-out infinite}
+@keyframes blip{0%,100%{opacity:1}50%{opacity:.25}}
+nav .sp{margin-left:auto}
+.tbtn{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);background:none;border:0;cursor:pointer}
+.tbtn:hover{color:var(--ink)}
+
+.hero{min-height:82vh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;
+  gap:50px;padding-top:110px}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;padding-top:120px}}
+h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-spacing:.09em;
+  line-height:1.0;font-size:clamp(38px,6.4vw,86px);margin:0 0 18px}
+.hsub{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:26px}
+.btn{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;background:var(--btn-bg);color:var(--btn-ink);
+  text-decoration:none;padding:16px 28px;border:0}
+.btn:hover{opacity:.86}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--field)}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.note{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink3);margin-top:14px}
+
+/* ── the walkthrough ─────────────────────────────────────────── */
+.walk{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
+@media(max-width:900px){.walk{grid-template-columns:1fr;gap:26px}}
+.steps{display:grid;gap:2px}
+.step{border-left:1px solid var(--track);padding:14px 0 14px 18px;cursor:pointer;
+  transition:border-color .3s ease}
+.step.on{border-left-color:var(--acc)}
+.step .n{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink3)}
+.step h3{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.07em;
+  font-size:19px;margin:5px 0 0;color:var(--ink3);transition:color .3s ease}
+.step.on h3{color:var(--ink)}
+.step p{font-size:13.5px;margin:7px 0 0;max-width:44ch;color:var(--ink3);
+  max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease}
+.step.on p{max-height:120px;opacity:1}
+.stage{background:var(--panel);border:1px solid var(--track);aspect-ratio:16/11;
+  position:relative;overflow:hidden}
+.stage .bar{position:absolute;left:0;top:0;height:2px;background:var(--acc);width:0;z-index:6}
+.scene{position:absolute;inset:0;display:grid;place-items:center;opacity:0;
+  transition:opacity .45s ease;pointer-events:none}
+.scene.on{opacity:1}
+.phone{width:104px;aspect-ratio:9/16;background:var(--panel2);border:1px solid var(--field);
+  position:relative;overflow:hidden}
+.ph-fill{position:absolute;inset:0;background:
+  repeating-linear-gradient(180deg,transparent 0 9px,color-mix(in srgb,var(--ink) 7%,transparent) 9px 10px)}
+.cap{position:absolute;left:8px;right:8px;top:38%;height:7px;background:var(--ink);opacity:.9}
+.cap.s{top:52%;right:34%}
+.bkmk{position:absolute;right:9px;bottom:9px;width:13px;height:18px;background:var(--signal);
+  clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);transform:scale(.2);opacity:0}
+.scene.on .bkmk{animation:pop .5s .5s ease forwards}
+@keyframes pop{to{transform:scale(1);opacity:1}}
+.strip{display:flex;gap:6px}
+.fr{width:52px;aspect-ratio:9/14;background:var(--panel2);border:1px solid var(--track);
+  position:relative;opacity:0;transform:translateY(9px)}
+.scene.on .fr{animation:rise .42s ease forwards}
+.scene.on .fr:nth-child(1){animation-delay:.05s}.scene.on .fr:nth-child(2){animation-delay:.14s}
+.scene.on .fr:nth-child(3){animation-delay:.23s}.scene.on .fr:nth-child(4){animation-delay:.32s}
+.scene.on .fr:nth-child(5){animation-delay:.41s}.scene.on .fr:nth-child(6){animation-delay:.5s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.fr:after{content:"";position:absolute;left:5px;right:5px;bottom:6px;height:4px;
+  background:var(--ink);opacity:.34}
+.card{width:min(74%,360px);background:var(--panel2);border:1px solid var(--track);padding:16px 18px}
+.card .ttl{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.08em;
+  font-size:15px;margin-bottom:10px}
+.beat{height:6px;background:var(--track);margin-bottom:6px;position:relative;overflow:hidden}
+.beat:after{content:"";position:absolute;inset:0;width:0;background:var(--acc)}
+.scene.on .beat:after{animation:fill .5s ease forwards}
+.scene.on .beat:nth-child(2):after{animation-delay:.15s}
+.scene.on .beat:nth-child(3):after{animation-delay:.3s}
+.scene.on .beat:nth-child(4):after{animation-delay:.45s}
+.scene.on .beat:nth-child(5):after{animation-delay:.6s}
+@keyframes fill{to{width:100%}}
+.term{width:min(80%,420px);background:var(--strip);border:1px solid var(--track);padding:15px 17px;
+  font-family:var(--mono);font-size:11.5px;line-height:1.75;color:var(--ink2);min-height:104px}
+.term .cur{display:inline-block;width:7px;height:13px;background:var(--acc);vertical-align:-2px;
+  animation:blip 1s steps(1) infinite}
+.out{display:flex;gap:8px;align-items:flex-end}
+.out .fr{width:44px;opacity:0}
+.scene.on .out .fr{animation:rise .4s ease forwards}
+.tick{position:absolute;bottom:14px;left:0;right:0;text-align:center;
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+
+/* ── downloads ───────────────────────────────────────────────── */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:26px}
+.dl{background:var(--panel);border:1px solid var(--track);padding:26px 26px 24px;
+  display:flex;flex-direction:column}
+.dl .tag{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--acc);margin-bottom:12px}
+.dl h3{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.07em;
+  font-size:22px;margin:0 0 12px}
+.dl p{font-size:14px;margin-bottom:14px}
+.dl ul{list-style:none;padding:0;margin:0 0 20px;font-family:var(--mono);font-size:11.5px;
+  color:var(--ink3);line-height:2}
+.dl ul li:before{content:"→ ";color:var(--acc)}
+.dl .foot{margin-top:auto}
+.soon{opacity:.62}
+.stats{display:flex;gap:34px;flex-wrap:wrap;margin:34px 0 0}
+.stat .k{font-family:var(--display);font-weight:200;font-size:clamp(30px,4vw,44px);line-height:1}
+.stat .v{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);margin-top:6px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:820px){.two{grid-template-columns:1fr;gap:22px}}
+.rules{list-style:none;padding:0;margin:0}
+.rules li{border-top:1px solid var(--track);padding:16px 0;color:var(--ink2);font-size:14.5px}
+.rules li b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:6px;font-weight:400}
+
+.tool{background:var(--panel);border:1px solid var(--track);padding:34px 32px;margin-top:26px}
+footer{margin-top:150px;padding:40px 0 60px;border-top:1px solid var(--track)}
+footer .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:22px;gap:20px;flex-wrap:wrap}
+.disclosure{font-family:var(--mono);font-size:10.5px;line-height:1.9;color:var(--ink3);max-width:92ch}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<nav>
+  <a class="mark" href="/"><span class="blip"></span>Open Source Outliers</a>
+  <span class="sp"></span>
+  <button class="tbtn" id="tt">Warm</button>
+</nav>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div>
+      <p class="lab" style="--acc:var(--signal)"><i>WORKFLOWS</i> &nbsp;Free · no signup</p>
+      <h1>Steal the<br>structure.<br>Not the ad.</h1>
+      <div class="hsub">Generative AI can make any shot you describe · it cannot tell you which shot to make</div>
+      <p>Thirty-four organic video formats, reverse-engineered frame by frame from posts that already worked — some past a hundred million views. Each one names what the camera does, what the text does, the order of the beats, and the one thing doing the persuading. Then it hands you the prompts to rebuild it for your own product.</p>
+      <div class="btns">
+        <a class="btn" href="downloads/swipe-to-scene-kit.zip" download>Download the kit</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <div class="note">0.7 MB · plain Markdown · opens in anything · MIT licensed</div>
+    </div>
+    <div class="stats" style="align-content:center">
+      <div class="stat"><div class="k">34</div><div class="v">proven formats</div></div>
+      <div class="stat"><div class="k">210</div><div class="v">posts torn down</div></div>
+      <div class="stat"><div class="k">6</div><div class="v">beats per teardown</div></div>
+      <div class="stat"><div class="k">$0</div><div class="v">to use all of it</div></div>
+    </div>
+  </div>
+
+  <section id="how">
+    <p class="lab" style="--acc:var(--cyan)"><i>01</i> &nbsp;How it works</p>
+    <h2>Swipe → Scene</h2>
+    <p style="margin-bottom:44px">Five steps. The first four are done for you and sitting in the download; the fifth is where your product goes in.</p>
+    <div class="walk" style="--acc:var(--cyan)">
+      <div class="steps" id="steps">
+        <div class="step on" data-i="0"><div class="n">STEP 01</div><h3>Swipe</h3>
+          <p>A post that already worked gets saved. Not an ad someone paid to show you — organic content real people chose to watch.</p></div>
+        <div class="step" data-i="1"><div class="n">STEP 02</div><h3>Strip</h3>
+          <p>Six frames pulled across its runtime. Enough to read the structure without watching a thing.</p></div>
+        <div class="step" data-i="2"><div class="n">STEP 03</div><h3>Name the structure</h3>
+          <p>What the camera does, what the text does, the beats in order, and what carries the persuasion. Same four questions every time — which is why the same structure keeps showing up under different topics.</p></div>
+        <div class="step" data-i="3"><div class="n">STEP 04</div><h3>Write the prompts</h3>
+          <p>An image prompt and a motion prompt for the beat that matters, with your product and person left as blanks. Nothing invented — a placeholder is a question, not a guess.</p></div>
+        <div class="step" data-i="4"><div class="n">STEP 05</div><h3>Generate and cut</h3>
+          <p>Fill the blanks, generate the scenes, cut to the beat list. Same shape that already earned the views, wearing your product.</p></div>
+      </div>
+      <div class="stage" id="stage">
+        <div class="bar" id="bar"></div>
+        <div class="scene" data-s="0"><div class="phone"><div class="ph-fill"></div>
+          <div class="cap"></div><div class="cap s"></div><div class="bkmk"></div></div></div>
+        <div class="scene" data-s="1"><div class="strip">
+          <div class="fr"></div><div class="fr"></div><div class="fr"></div>
+          <div class="fr"></div><div class="fr"></div><div class="fr"></div></div></div>
+        <div class="scene" data-s="2"><div class="card"><div class="ttl">Word-per-beat procedure</div>
+          <div class="beat"></div><div class="beat"></div><div class="beat"></div>
+          <div class="beat"></div><div class="beat"></div></div></div>
+        <div class="scene" data-s="3"><div class="term" id="term"></div></div>
+        <div class="scene" data-s="4"><div class="out">
+          <div class="fr"></div><div class="fr"></div><div class="fr"></div>
+          <div class="fr"></div><div class="fr"></div><div class="fr"></div></div></div>
+        <div class="tick" id="tick">the post</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="lab" style="--acc:var(--indigo)"><i>02</i> &nbsp;Active workflows</p>
+    <h2>What you download</h2>
+    <p>Everything is plain text and pictures. No install, no account, no dependency on me.</p>
+    <div class="grid2" style="--acc:var(--indigo)">
+      <div class="dl">
+        <div class="tag">Available now</div>
+        <h3>Swipe → Scene kit</h3>
+        <p>The format library and every teardown behind it, filed so you pick a structure and start.</p>
+        <ul>
+          <li>34 format cards — mechanic, beats, camera and text rules</li>
+          <li>210 posts torn down beat by beat, with timestamps</li>
+          <li>An image and motion prompt on every one</li>
+          <li>The teardown chain's own prompts, in order</li>
+        </ul>
+        <div class="foot"><a class="btn" href="downloads/swipe-to-scene-kit.zip" download>Download · 0.7 MB</a></div>
+      </div>
+      <div class="dl soon">
+        <div class="tag">Next</div>
+        <h3>The teardown machine</h3>
+        <p>The chain that produced those sheets, running on your own machine: a video goes in, a shot-ready brief comes out with a picture on every scene.</p>
+        <ul>
+          <li>Reads the video and writes the scenes</li>
+          <li>Substitutes your brand into the format</li>
+          <li>Writes hooks, brief and reference frames</li>
+        </ul>
+        <div class="foot"><a class="btn ghost" href="/">Watch this page</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="lab" style="--acc:var(--green)"><i>03</i> &nbsp;What to expect</p>
+    <div class="two">
+      <div>
+        <h2>Read this<br>before you<br>download</h2>
+        <p>This is a swipe file with the reasoning attached, not a button that makes ads. It is worth your time if you are already making creative and losing to the blank page.</p>
+      </div>
+      <ul class="rules">
+        <li><b>It gives you</b>The structure that earned the views, in enough detail to rebuild it — and the prompts to generate it rather than shoot it.</li>
+        <li><b>It does not give you</b>Your product, your customer, or your offer. Those are yours, and every prompt leaves a blank where they go.</li>
+        <li><b>The rule that makes it work</b>Rebuild the structure, never the content. A scalp treatment and a countertop demo can be the same format — that is the whole point.</li>
+        <li><b>The rule that keeps it honest</b>Nothing invented. If a brief does not say how the product looks or what the person is wearing, ask. A generated frame that guesses is worse than no frame.</li>
+        <li><b>What it costs</b>Nothing. It is MIT licensed and it stays that way.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <p class="lab" style="--acc:var(--rose)"><i>04</i> &nbsp;The production step</p>
+    <h2>Where the scenes<br>get made</h2>
+    <div class="tool" style="--acc:var(--rose)">
+      <p>The kit ends with a prompt. Something has to turn that prompt into a shot — I use <b>Higgsfield</b> for that, and the prompts in every sheet are written in its shape: an image prompt for the frame, a motion prompt for what the camera does.</p>
+      <p>Nothing here is locked to it. The prompts are plain description and work in any generator you already pay for.</p>
+      <div class="btns" style="margin-top:20px">
+        <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield →</a>
+        <a class="btn ghost" href="downloads/swipe-to-scene-kit.zip" download>Get the kit first</a>
+      </div>
+      <div class="note">Affiliate link. It costs you nothing extra and the kit works identically without it.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="row"><span>Open Source Outliers · OSO</span><span><a href="/" style="color:inherit">daemn.co</a></span><span>MIT licensed</span></div>
+    <div class="disclosure"><b style="color:var(--ink)">Affiliate disclosure.</b> Links to Claude, Higgsfield and other tools used by this system are affiliate links. If you sign up through them I receive a percentage of your spend at no additional cost to you. The software here is free, unaffected by whether you use those links, and works identically if you sign up directly. This is the only way this project makes money.</div>
+  </footer>
+</div>
+
+<script>
+const $=s=>document.querySelector(s), root=document.documentElement;
+function setT(t){ root.dataset.t=t; $('#tt').textContent=t==='warm'?'Void':'Warm';
+  var tc=document.getElementById('tc'); if(tc) tc.setAttribute('content',t==='warm'?'#DFC1B8':'#000000');
+  try{localStorage.setItem('oso-theme',t)}catch(e){} }
+try{ setT(localStorage.getItem('oso-theme')||'void'); }catch(e){ setT('void'); }
+$('#tt').onclick=()=>setT(root.dataset.t==='warm'?'void':'warm');
+
+/* The walkthrough: five stages on a timer, clickable, and it stops
+   advancing while the page is out of view so it is not talking to itself. */
+const TICKS=['the post','six frames','the structure, named','the prompt','your version'];
+const PROMPT=['vertical 9:16, top-down, locked frame,','{SUBJECT} treating {PRODUCT},','even indoor light, phone-camera look,','no on-screen text, no retouching'];
+const scenes=[...document.querySelectorAll('.scene')], steps=[...document.querySelectorAll('.step')];
+const bar=$('#bar'), tick=$('#tick'), term=$('#term');
+let i=0, timer=null, typer=null, DUR=4200;
+
+function type(){
+  clearInterval(typer); term.innerHTML='';
+  let l=0,c=0;
+  typer=setInterval(()=>{
+    if(l>=PROMPT.length){ clearInterval(typer); term.innerHTML+='<span class="cur"></span>'; return; }
+    term.innerHTML=PROMPT.slice(0,l).join('<br>')+(l?'<br>':'')+PROMPT[l].slice(0,c);
+    c++; if(c>PROMPT[l].length){ l++; c=0; }
+  },26);
+}
+function show(n,manual){
+  i=(n+scenes.length)%scenes.length;
+  scenes.forEach((s,k)=>s.classList.toggle('on',k===i));
+  steps.forEach((s,k)=>s.classList.toggle('on',k===i));
+  tick.textContent=TICKS[i];
+  bar.style.transition='none'; bar.style.width='0';
+  requestAnimationFrame(()=>{ bar.style.transition='width '+DUR+'ms linear'; bar.style.width='100%'; });
+  if(i===3) type();
+  if(manual) start();
+}
+function start(){ clearInterval(timer); timer=setInterval(()=>show(i+1),DUR); }
+steps.forEach(s=>s.onclick=()=>show(+s.dataset.i,true));
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ show(i); start(); } else { clearInterval(timer); clearInterval(typer); }
+}),{threshold:.25});
+io.observe($('#stage'));
+</script>
+</html>

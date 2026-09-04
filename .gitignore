@@ -22,6 +22,9 @@ output/
 *.webp
 *.gif
 *.zip
+# …except what the site actually delivers. The blanket rule above keeps swiped
+# media and stray archives out; a download offered on the page has to ship.
+!docs/downloads/*.zip
 
 # noise
 .DS_Store
