@@ -1,80 +1,89 @@
 # Your brand folder
 
-The teardown machine is brand-agnostic on purpose: it knows how to read a
-video and rebuild it, and it knows nothing about you. Everything it needs
-about your brand lives in one folder — this one — and it reads that folder
-fresh on every run.
+The tools know how to take a video apart and write an ad. They know nothing
+about your brand — on purpose. Everything about you lives in one folder, and
+they read it fresh every single time.
 
-Copy this folder, rename it to your brand, fill it in once. Every tool in the
-kit reads the same folder, so filling it in is the only setup you ever do.
+**Fill this in once. That is the only setup there is.**
+
+## Where to put it
+
+Put a copy of this whole folder in your Google Drive and rename it after your
+brand. Open each file and replace the prompts in angle brackets with your own
+answers — you can edit them as Google Docs, or in any text editor you like.
+Keep the folder shape and the file names exactly as they are; that is how the
+tools find each part.
 
 ```
-your-brand/
-  variables/video.md          ← THE CONTRACT. The machine reads this first.
+Your Brand/
   core-avatars/
-    objection-bank.md         what stops them buying, in their words
-    <avatar>/
-      profile.md              who they are — the 6 categories
-      language/rules.md       how they talk, and what you may never say
-      language/prospects.json their real sentences, raw
-      sub-avatars/            narrower versions of the same person
+    your-avatar/
+      profile.md            ← who you are selling to
+      language/
+        rules.md            ← how to write for them, and what never to say
+        prospects.json      ← their real sentences, copied exactly
+      sub-avatars/          ← narrower versions of the same person (optional)
+    objection-bank.md       ← why they don't buy
   products/
-    <product>.md              what it is, exactly as it looks
-    offer-bank.md             every offer, by avatar
-  identity-anchors.md         names and claims the machine may use
-  hook-ledger.md              hooks already spent, so they never repeat
+    your-product.md         ← what it is, and what it looks like
+    offer-bank.md           ← what you're selling, and for how much
+  identity-anchors.md       ← names and claims allowed on camera
+  hook-ledger.md            ← opening lines you have already used
+  variables/video.md        ← the map. Leave it alone.
 ```
 
-## Fill it in this order
+If you use Claude Cowork, connect your Drive and point it at this folder — it can read
+the files itself. If you use the Claude chat, open a file and paste it in
+when a step asks for it.
 
-Nothing below is busywork — each file answers a question the machine will
-otherwise get wrong, and it fails loudly rather than inventing an answer.
+## Fill them in in this order
 
-**1. `core-avatars/<avatar>/profile.md`** — one real person, not a segment.
-Give the avatar a name that tells their story, never a demographic label.
-"The Marks-That-Stay Kid" beats "Males 18–24"; the demographics go in the
-description line, last. If you sell to two people who would never say the
-same sentence, that is two avatars, not one — and they never blend.
+Each one answers a question the tools will otherwise get wrong. They are
+built to say *"I don't know this"* rather than invent an answer — so an
+empty document shows up as a question, not a fake.
 
-**2. `core-avatars/<avatar>/language/`** — how they actually talk. Real
-sentences from reviews, comments, tickets, surveys, forums. Verbatim, with
-a source on every line. The point is not summary; it is that the ad can use
-words your customer has already said. `rules.md` is the other half: the
-registers to write in, and the words you may never use.
+**1 · `profile.md`** — the avatar. One real person, not a group. Give them a name that tells
+their story, never a demographic label: "the guy whose marks never fade"
+beats "males 18–24". The age and location go at the end, in one line. If you
+sell to two people who would never say the same sentence, that is two
+avatars — write two documents, and never blend them.
 
-**3. `products/<product>.md`** — what the product *is*, described the way a
-camera sees it. Colour, finish, the label text, the cap, the size. A model
-that is not told what the packaging looks like will invent packaging, and
-the frame comes back with a product that is not yours.
+**2 · `language/prospects.json`** — their words. Real sentences from real people: Reviews, comments,
+DMs, support tickets, Reddit threads. Copy them exactly, typos and all, and
+note where each came from. This is what lets an ad use words your customer
+has already said. Never include anyone's name, email or phone number.
 
-**4. `products/offer-bank.md`** — the actual offers, per avatar. Price,
-what is included, the guarantee, the subscription terms.
+**3 · `language/rules.md`** — how to write for them, and the words you may never use.
 
-**5. `core-avatars/objection-bank.md`** — the reasons people do not buy,
-in their words. This is what the middle of every script answers.
+**4 · `products/your-product.md`** — describe it the way a camera sees it. The container, the
+colour, the finish, the cap, every word printed on the label. **This is the
+one people skip and regret**: a model that is not told what your product
+looks like will invent packaging, and every image you generate will show a
+product that is not yours.
 
-**6. `identity-anchors.md`** — who and what the machine is allowed to name:
-your founder, your ingredients, your certifications, your real results. If
-it is not in here, it does not go in an ad.
+**5 · `products/offer-bank.md`** — what is actually for sale. Price, what is included, the
+guarantee, subscription terms.
 
-**7. `variables/video.md`** — the map from a variable to a path. Leave it
-alone unless you move a file; it is already wired.
+**6 · `objection-bank.md`** — the reasons people do not buy, in their words. The
+middle of every script answers one of these.
 
-## The rule that keeps output honest
+**7 · `identity-anchors.md`** — who and what is allowed on camera: your founder,
+your ingredients, your certifications, results you can actually back. If it
+is not on that list, it does not go in an ad.
 
-**Nothing invented.** Every one of these files exists so the machine can be
-specific without guessing. When a file is missing or thin, the machine says
-so instead of filling the gap — a brief that admits it does not know your
-packaging is useful; one that confidently describes the wrong packaging is
-not.
+## How you know it is finished
 
-## What "good" looks like
+Give the avatar profile and their words to someone who has never met your
+customer. Ask them to write one line. If you read it and think *"that is
+exactly how they talk"* — you are done. If not, add more real sentences.
 
-A brand folder is finished when someone who has never met your customer can
-read `profile.md` and `language/`, write a line, and have you say *"yes, that
-is exactly how they talk."* Until then, keep adding real sentences.
+## The rule underneath all of it
+
+**Nothing invented.** Every document here exists so the tools can be specific
+without guessing. A brief that admits it does not know your packaging is
+useful. One that confidently describes the wrong packaging is not.
 
 ---
 
-*Part of Open Source Outliers — daemn.co. MIT licensed. Your brand folder is
-yours: nothing here phones home, and this template ships empty on purpose.*
+*Open Source Outliers — daemn.co. Free, MIT licensed. Your brand folder is
+yours: it lives in your Drive, and nothing here sends it anywhere.*

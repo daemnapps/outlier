@@ -1,20 +1,16 @@
-# {{brand}} — video variables
+# Where each part lives
 
-**One map per brand, per surface.** The video machine reads ONLY this file to
-find your brand's parts. Nothing brand-specific lives inside the machine.
+The tools look up your brand's parts by name. This is the map. If you keep
+the file names below, everything just works — you never touch this file.
 
-**A run declares an avatar.** Everything avatar-shaped resolves through it,
-and there is no default — a run that does not name an avatar is writing to
-nobody.
-
-| Variable | Resolves to |
+| What the tools ask for | Which of your documents answers it |
 |---|---|
-| `{avatar}` | `core-avatars/<avatar>/profile.md` |
-| `{language_bank}` | `core-avatars/<avatar>/language/rules.md` |
-| `{product_file}` | `products/` |
-| `{objection_bank}` | `core-avatars/objection-bank.md` |
-| `{offer_file}` | `products/offer-bank.md` |
-| `{identity_anchors}` | `identity-anchors.md` |
+| the avatar | `core-avatars/<avatar>/profile.md` |
+| how they talk | `core-avatars/<avatar>/language/rules.md` |
+| the product | `products/` |
+| the objections | `core-avatars/objection-bank.md` |
+| the offers | `products/offer-bank.md` |
+| what may be claimed | `identity-anchors.md` |
 
-Leave this file alone unless you move something. If you do move a file,
-change the path here and every tool follows.
+Only change this if you rename a file — then change the right-hand column
+to match, and everything follows.

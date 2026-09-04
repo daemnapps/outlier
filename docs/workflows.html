@@ -66,66 +66,106 @@ h1{font-family:var(--display);font-weight:200;text-transform:uppercase;letter-sp
 .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
 .note{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink3);margin-top:14px}
 
-/* ── the walkthrough ─────────────────────────────────────────── */
-.walk{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center}
-@media(max-width:900px){.walk{grid-template-columns:1fr;gap:26px}}
-.steps{display:grid;gap:2px}
-.step{border-left:1px solid var(--track);padding:14px 0 14px 18px;cursor:pointer;
+/* ── the demo ────────────────────────────────────────────────── */
+.demo{border:1px solid var(--track);background:var(--panel)}
+.dtabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--track)}
+@media(max-width:820px){.dtabs{grid-template-columns:1fr 1fr}}
+.dtab{background:none;border:0;border-right:1px solid var(--track);color:var(--ink3);cursor:pointer;
+  font-family:var(--body);font-size:13.5px;text-align:left;padding:16px 18px;line-height:1.35;
+  transition:color .25s ease,background .25s ease;position:relative}
+.dtab:last-child{border-right:0}
+.dtab span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  color:var(--ink3);margin-bottom:6px}
+.dtab.on{color:var(--ink);background:var(--panel2)}
+.dtab.on span{color:var(--acc)}
+.dtab.on:after{content:"";position:absolute;left:0;bottom:-1px;height:2px;background:var(--acc);
+  width:0;animation:tabbar 9s linear forwards}
+@keyframes tabbar{to{width:100%}}
+.dpane{display:none;grid-template-columns:1fr 1fr;gap:0}
+.dpane.on{display:grid}
+@media(max-width:820px){.dpane.on{grid-template-columns:1fr}}
+.dleft{padding:28px 26px;border-right:1px solid var(--track)}
+.dright{padding:28px 26px}
+@media(max-width:820px){.dleft{border-right:0;border-bottom:1px solid var(--track)}}
+.dlabel{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:14px}
+.dnote,.dfoot{font-size:13px;color:var(--ink3);margin-top:16px;line-height:1.6;max-width:46ch}
+
+/* video block */
+.vid{position:relative;aspect-ratio:9/13;max-width:210px;background:var(--panel2);
+  border:1px solid var(--track);overflow:hidden}
+.vfill{position:absolute;inset:0;background:
+  repeating-linear-gradient(180deg,transparent 0 11px,color-mix(in srgb,var(--ink) 6%,transparent) 11px 12px)}
+.vcap{position:absolute;left:12px;right:12px;top:30%;font-size:12px;text-align:center;
+  color:var(--ink);text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.vplay{position:absolute;left:50%;top:50%;width:0;height:0;transform:translate(-50%,-50%);
+  border-left:16px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;opacity:.5}
+.vscan{position:absolute;left:0;right:0;height:2px;background:var(--acc);top:0;
+  box-shadow:0 0 14px var(--acc)}
+.dpane.on .vscan{animation:scan 3.4s ease-in-out infinite}
+@keyframes scan{0%{top:0}50%{top:calc(100% - 2px)}100%{top:0}}
+
+/* beat rows */
+.beats{display:grid;gap:1px}
+.brow{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:9px 0;
+  border-bottom:1px solid var(--track);opacity:0;transform:translateX(-8px)}
+.dpane.on .brow{animation:slidein .45s ease forwards}
+.dpane.on .brow:nth-child(1){animation-delay:.15s}.dpane.on .brow:nth-child(2){animation-delay:.45s}
+.dpane.on .brow:nth-child(3){animation-delay:.75s}.dpane.on .brow:nth-child(4){animation-delay:1.05s}
+.dpane.on .brow:nth-child(5){animation-delay:1.35s}.dpane.on .brow:nth-child(6){animation-delay:1.65s}
+@keyframes slidein{to{opacity:1;transform:translateX(0)}}
+.bt{font-family:var(--mono);font-size:11.5px;color:var(--acc)}
+.bd{font-size:13px;color:var(--ink2);line-height:1.5}
+
+/* the four questions */
+.qs{display:grid;gap:10px}
+.q{border-left:2px solid var(--track);padding:8px 0 8px 14px;opacity:0}
+.dpane.on .q{animation:slidein .5s ease forwards}
+.dpane.on .q:nth-child(1){animation-delay:.1s}.dpane.on .q:nth-child(2){animation-delay:.5s}
+.dpane.on .q:nth-child(3){animation-delay:.9s}.dpane.on .q:nth-child(4){animation-delay:1.3s}
+.q b{display:block;font-size:13.5px;margin-bottom:3px}
+.q span{font-size:13px;color:var(--ink3)}
+
+/* format card */
+.fcard{background:var(--panel2);border:1px solid var(--track);padding:20px}
+.fname{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.07em;
+  font-size:20px;margin-bottom:6px}
+.fmeta{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--acc);margin-bottom:14px}
+.fbody{font-size:13.5px;margin:0 0 12px}
+.fwhy{font-size:13px;color:var(--ink3);border-top:1px solid var(--track);padding-top:12px;line-height:1.6}
+
+/* the brand fill */
+.fields{display:grid;gap:8px}
+.fld{background:var(--panel2);border:1px solid var(--track);padding:11px 13px;position:relative;
   transition:border-color .3s ease}
-.step.on{border-left-color:var(--acc)}
-.step .n{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--ink3)}
-.step h3{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.07em;
-  font-size:19px;margin:5px 0 0;color:var(--ink3);transition:color .3s ease}
-.step.on h3{color:var(--ink)}
-.step p{font-size:13.5px;margin:7px 0 0;max-width:44ch;color:var(--ink3);
-  max-height:0;opacity:0;overflow:hidden;transition:max-height .4s ease,opacity .3s ease}
-.step.on p{max-height:120px;opacity:1}
-.stage{background:var(--panel);border:1px solid var(--track);aspect-ratio:16/11;
-  position:relative;overflow:hidden}
-.stage .bar{position:absolute;left:0;top:0;height:2px;background:var(--acc);width:0;z-index:6}
-.scene{position:absolute;inset:0;display:grid;place-items:center;opacity:0;
-  transition:opacity .45s ease;pointer-events:none}
-.scene.on{opacity:1}
-.phone{width:104px;aspect-ratio:9/16;background:var(--panel2);border:1px solid var(--field);
-  position:relative;overflow:hidden}
-.ph-fill{position:absolute;inset:0;background:
-  repeating-linear-gradient(180deg,transparent 0 9px,color-mix(in srgb,var(--ink) 7%,transparent) 9px 10px)}
-.cap{position:absolute;left:8px;right:8px;top:38%;height:7px;background:var(--ink);opacity:.9}
-.cap.s{top:52%;right:34%}
-.bkmk{position:absolute;right:9px;bottom:9px;width:13px;height:18px;background:var(--signal);
-  clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%);transform:scale(.2);opacity:0}
-.scene.on .bkmk{animation:pop .5s .5s ease forwards}
-@keyframes pop{to{transform:scale(1);opacity:1}}
-.strip{display:flex;gap:6px}
-.fr{width:52px;aspect-ratio:9/14;background:var(--panel2);border:1px solid var(--track);
-  position:relative;opacity:0;transform:translateY(9px)}
-.scene.on .fr{animation:rise .42s ease forwards}
-.scene.on .fr:nth-child(1){animation-delay:.05s}.scene.on .fr:nth-child(2){animation-delay:.14s}
-.scene.on .fr:nth-child(3){animation-delay:.23s}.scene.on .fr:nth-child(4){animation-delay:.32s}
-.scene.on .fr:nth-child(5){animation-delay:.41s}.scene.on .fr:nth-child(6){animation-delay:.5s}
-@keyframes rise{to{opacity:1;transform:translateY(0)}}
-.fr:after{content:"";position:absolute;left:5px;right:5px;bottom:6px;height:4px;
-  background:var(--ink);opacity:.34}
-.card{width:min(74%,360px);background:var(--panel2);border:1px solid var(--track);padding:16px 18px}
-.card .ttl{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.08em;
-  font-size:15px;margin-bottom:10px}
-.beat{height:6px;background:var(--track);margin-bottom:6px;position:relative;overflow:hidden}
-.beat:after{content:"";position:absolute;inset:0;width:0;background:var(--acc)}
-.scene.on .beat:after{animation:fill .5s ease forwards}
-.scene.on .beat:nth-child(2):after{animation-delay:.15s}
-.scene.on .beat:nth-child(3):after{animation-delay:.3s}
-.scene.on .beat:nth-child(4):after{animation-delay:.45s}
-.scene.on .beat:nth-child(5):after{animation-delay:.6s}
-@keyframes fill{to{width:100%}}
-.term{width:min(80%,420px);background:var(--strip);border:1px solid var(--track);padding:15px 17px;
-  font-family:var(--mono);font-size:11.5px;line-height:1.75;color:var(--ink2);min-height:104px}
-.term .cur{display:inline-block;width:7px;height:13px;background:var(--acc);vertical-align:-2px;
+.fld.fire{border-color:var(--acc)}
+.fk{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:5px}
+.fv{font-size:13px;color:var(--ink2)}
+.script{background:var(--strip);border:1px solid var(--track);padding:18px;
+  font-family:var(--mono);font-size:12px;line-height:2.1}
+.sline{color:var(--ink3);white-space:normal}
+.slot{font-style:normal;color:var(--acc);border-bottom:1px dashed var(--acc);padding:0 3px;
+  transition:background .3s ease}
+.slot.hit{background:color-mix(in srgb,var(--acc) 22%,transparent)}
+
+/* prompt + shots */
+.term2{background:var(--strip);border:1px solid var(--track);padding:15px 16px;min-height:132px;
+  font-family:var(--mono);font-size:11.5px;line-height:1.8;color:var(--ink2)}
+.term2 .cur{display:inline-block;width:7px;height:12px;background:var(--acc);vertical-align:-2px;
   animation:blip 1s steps(1) infinite}
-.out{display:flex;gap:8px;align-items:flex-end}
-.out .fr{width:44px;opacity:0}
-.scene.on .out .fr{animation:rise .4s ease forwards}
-.tick{position:absolute;bottom:14px;left:0;right:0;text-align:center;
-  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3)}
+.shots{display:flex;align-items:center;gap:16px}
+.shot{width:118px;aspect-ratio:9/14;background:var(--panel2);border:1px solid var(--track);
+  display:grid;place-items:center;position:relative;overflow:hidden}
+.shot span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);z-index:2}
+.shot:before{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 50% 30%,color-mix(in srgb,var(--acc) 26%,transparent),transparent 70%)}
+.shot.s2:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 30%,color-mix(in srgb,var(--ink) 12%,transparent) 50%,transparent 70%)}
+.dpane.on .shot.moving:after{animation:sweep 2.4s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.arrow{color:var(--ink3);font-size:18px}
 
 /* ── downloads ───────────────────────────────────────────────── */
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:26px}
@@ -173,134 +213,190 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
     <div>
       <p class="lab" style="--acc:var(--signal)"><i>WORKFLOWS</i> &nbsp;Free · no signup</p>
       <h1>Tear down<br>any video.<br>Make it yours.</h1>
-      <div class="hsub">Four tools · one brand folder · they all read the same thing</div>
-      <p>Give the machine a video that already worked — a competitor's ad, an organic post, anything — and it writes back the scenes, the hooks and a shot-ready brief with <b>your</b> brand in it. It knows nothing about you until you fill in one folder; then every tool here reads that same folder.</p>
+      <div class="hsub">Nothing to install · works in Claude and Higgsfield Supercomputer</div>
+      <p>Hand it a video that already worked — a competitor's ad, an organic post, anything — and you get back a finished brief with <b>your</b> brand in it: the scenes, what is said, what people wear, and a prompt for every shot. You fill in one folder about your brand, once. Everything here reads it.</p>
       <div class="btns">
         <a class="btn" href="downloads/video-teardown-kit.zip" download>Get the teardown engine</a>
         <a class="btn ghost" href="#how">How the system fits together</a>
       </div>
-      <div class="note">Plain Markdown · runs in Claude Code · MIT licensed</div>
+      <div class="note">Works in Claude chat or Cowork · nothing to install · MIT licensed</div>
     </div>
     <div class="stats" style="align-content:center">
-      <div class="stat"><div class="k">13</div><div class="v">chain stages</div></div>
-      <div class="stat"><div class="k">1</div><div class="v">folder to fill in</div></div>
-      <div class="stat"><div class="k">34</div><div class="v">formats, torn down</div></div>
+      <div class="stat"><div class="k">7</div><div class="v">steps, start to finish</div></div>
+      <div class="stat"><div class="k">1</div><div class="v">folder to fill in, once</div></div>
+      <div class="stat"><div class="k">34</div><div class="v">formats, done for you</div></div>
       <div class="stat"><div class="k">$0</div><div class="v">for all of it</div></div>
     </div>
   </div>
 
   <section id="how">
-    <p class="lab" style="--acc:var(--cyan)"><i>01</i> &nbsp;How it works</p>
-    <h2>Video in, your<br>brief out</h2>
-    <p style="margin-bottom:44px">The engine runs the same five moves on anything you feed it. Step three is the only one that needs you — and you do it once.</p>
-    <div class="walk" style="--acc:var(--cyan)">
-      <div class="steps" id="steps">
-        <div class="step on" data-i="0"><div class="n">STEP 01</div><h3>Feed it a video</h3>
-          <p>A competitor's ad, an organic post, a creator video someone sent you. If it already worked, it qualifies.</p></div>
-        <div class="step" data-i="1"><div class="n">STEP 02</div><h3>It reads every scene</h3>
-          <p>Shot by shot: what is on screen, what is said, what they are wearing, where the beats land. Then it writes the spec you could rebuild it from.</p></div>
-        <div class="step" data-i="2"><div class="n">STEP 03</div><h3>It reads your brand folder</h3>
-          <p>Your avatar, how they talk, what the product actually looks like, the objections, the offers. One folder, filled in once, read fresh on every run.</p></div>
-        <div class="step" data-i="3"><div class="n">STEP 04</div><h3>Your brand goes in</h3>
-          <p>The structure stays; the content becomes yours. Hooks written off the source, your product placed where theirs was, the middle built out and closed.</p></div>
-        <div class="step" data-i="4"><div class="n">STEP 05</div><h3>Out comes the brief</h3>
-          <p>Scenes, wardrobe, hooks, and a prompt for every frame — enough that an editor who has never seen your brand can cut it without asking you a question.</p></div>
+    <p class="lab" style="--acc:var(--cyan)"><i>01</i> &nbsp;Watch it happen</p>
+    <h2>A video goes in.<br>Your version<br>comes out.</h2>
+    <p style="margin-bottom:40px">This is the whole thing, playing out on one real example. Nothing to install and nothing to read first — press a step to jump to it.</p>
+
+    <div class="demo" style="--acc:var(--cyan)">
+      <div class="dtabs" id="dtabs">
+        <button class="dtab on" data-d="0"><span>01</span>The video gets watched</button>
+        <button class="dtab" data-d="1"><span>02</span>The structure gets named</button>
+        <button class="dtab" data-d="2"><span>03</span>Your brand fills it in</button>
+        <button class="dtab" data-d="3"><span>04</span>The scenes get made</button>
       </div>
-      <div class="stage" id="stage">
-        <div class="bar" id="bar"></div>
-        <div class="scene" data-s="0"><div class="phone"><div class="ph-fill"></div>
-          <div class="cap"></div><div class="cap s"></div><div class="bkmk"></div></div></div>
-        <div class="scene" data-s="1"><div class="strip">
-          <div class="fr"></div><div class="fr"></div><div class="fr"></div>
-          <div class="fr"></div><div class="fr"></div><div class="fr"></div></div></div>
-        <div class="scene" data-s="2"><div class="card"><div class="ttl">your-brand/</div>
-          <div class="beat"></div><div class="beat"></div><div class="beat"></div>
-          <div class="beat"></div><div class="beat"></div></div></div>
-        <div class="scene" data-s="3"><div class="term" id="term"></div></div>
-        <div class="scene" data-s="4"><div class="out">
-          <div class="fr"></div><div class="fr"></div><div class="fr"></div>
-          <div class="fr"></div><div class="fr"></div><div class="fr"></div></div></div>
-        <div class="tick" id="tick">their video</div>
+
+      <!-- 01 · the video gets watched -->
+      <div class="dpane on" data-p="0">
+        <div class="dleft">
+          <div class="vid">
+            <div class="vfill"></div>
+            <div class="vcap">“I made this for the cold-aholics”</div>
+            <div class="vplay"></div>
+            <div class="vscan"></div>
+          </div>
+          <div class="dnote">Upload it to Supercomputer. It has a model that can actually watch video — that is the part a chat window cannot do on its own.</div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">What comes back</div>
+          <div class="beats" id="beatlist">
+            <div class="brow"><span class="bt">0:01</span><span class="bd">Hands hold a sealed pack at chest height. Bedroom, lamp at frame left. Face cropped out.</span></div>
+            <div class="brow"><span class="bt">0:03</span><span class="bd">Pack gone — the product bunched in both hands, held toward the lens.</span></div>
+            <div class="brow"><span class="bt">0:05</span><span class="bd">Unfurled and hanging, filling the top of frame. Cord swinging below.</span></div>
+            <div class="brow"><span class="bt">0:08</span><span class="bd">Leaning over the bed, spreading it flat. Head fully out of frame.</span></div>
+            <div class="brow"><span class="bt">0:10</span><span class="bd">Close on both hands holding the controller against the fabric.</span></div>
+            <div class="brow"><span class="bt">0:12</span><span class="bd">Tighter: one setting lit red on the controller face.</span></div>
+          </div>
+          <div class="dfoot">Every scene, written down — not summarised. That record is what everything below works from.</div>
+        </div>
       </div>
+
+      <!-- 02 · the structure gets named -->
+      <div class="dpane" data-p="1">
+        <div class="dleft">
+          <div class="dlabel">The four questions, every time</div>
+          <div class="qs">
+            <div class="q"><b>What does the camera do?</b><span>Handheld, subject height, never cuts to a face.</span></div>
+            <div class="q"><b>What does the text do?</b><span>One line, pinned, never changes.</span></div>
+            <div class="q"><b>What order are the beats in?</b><span>Sealed → unfolded → placed → used → the mechanism.</span></div>
+            <div class="q"><b>What is doing the persuading?</b><span>The unbroken run of hands. Nothing is argued; it is all shown.</span></div>
+          </div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">So the format is</div>
+          <div class="fcard">
+            <div class="fname">Sticky-line maker demo</div>
+            <div class="fmeta">146,726,835 views proved it · 9 more of these in the pack</div>
+            <p class="fbody">One line pinned for the entire runtime while one continuous hands-only demonstration plays out. The line never changes, so nothing competes with the product.</p>
+            <div class="fwhy">Why it works — no cut to a talking head means the viewer is never asked to grant a stranger their attention. They just watch a pair of hands open something.</div>
+          </div>
+          <div class="dfoot">Same four questions on any video. That is why a scalp treatment and a countertop demo come back as the same format.</div>
+        </div>
+      </div>
+
+      <!-- 03 · your brand fills it in -->
+      <div class="dpane" data-p="2">
+        <div class="dleft">
+          <div class="dlabel">Your brand folder</div>
+          <div class="fields" id="fields">
+            <div class="fld" data-k="product"><span class="fk">product</span><span class="fv">a matte black tin, gold lettering, “KETTLE &amp; CO · SEASONING OIL”</span></div>
+            <div class="fld" data-k="avatar"><span class="fk">avatar</span><span class="fv">the guy whose pan keeps sticking</span></div>
+            <div class="fld" data-k="line"><span class="fk">their words</span><span class="fv">“I've re-seasoned this thing four times”</span></div>
+            <div class="fld" data-k="offer"><span class="fk">offer</span><span class="fv">one tin, $24, lasts a year</span></div>
+          </div>
+          <div class="dnote">Filled in once, in your Drive. Read fresh on every run, by every tool.</div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">The script, filling itself in</div>
+          <div class="script" id="script">
+            <div class="sline">ON SCREEN, ALL RUNTIME &nbsp;<em class="slot" data-k="line">…</em></div>
+            <div class="sline">SCENE 1 &nbsp;hands lift <em class="slot" data-k="product">…</em> out of the box</div>
+            <div class="sline">SCENE 3 &nbsp;spread flat on the counter, one unbroken take</div>
+            <div class="sline">SCENE 5 &nbsp;close on the seasoned surface — the proof detail</div>
+            <div class="sline">SPEAKING TO &nbsp;<em class="slot" data-k="avatar">…</em></div>
+            <div class="sline">CAPTION ENDS &nbsp;<em class="slot" data-k="offer">…</em></div>
+          </div>
+          <div class="dfoot">The structure stayed exactly as it was. Only what is yours changed — and none of it was invented.</div>
+        </div>
+      </div>
+
+      <!-- 04 · the scenes get made -->
+      <div class="dpane" data-p="3">
+        <div class="dleft">
+          <div class="dlabel">The brief hands you this</div>
+          <div class="term2" id="term2"></div>
+          <div class="dnote">One image prompt and one motion note per scene. Paste them into Supercomputer.</div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">And you get the shot</div>
+          <div class="shots">
+            <div class="shot s1"><span>frame</span></div>
+            <div class="arrow">→</div>
+            <div class="shot s2 moving"><span>shot</span></div>
+          </div>
+          <div class="dfoot">Generate every scene of one person from the same starting frame, or they will be a different human in every shot.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns" style="margin-top:34px">
+      <a class="btn" href="downloads/video-teardown-kit.zip" download>Start with the teardown kit</a>
+      <a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Just the brand folder</a>
     </div>
   </section>
 
   <section>
     <p class="lab" style="--acc:var(--indigo)"><i>02</i> &nbsp;The system</p>
     <h2>Four tools,<br>one folder</h2>
-    <p>The engine tears down any video. The folder tells it who you are. The swipe packs are ammunition — videos already torn down, so you can skip straight to the brief.</p>
+    <p>The engine tears down any video. The folder tells it who you are. The swipe packs are ammunition — videos already taken apart, so you can skip straight to the brief.</p>
     <div class="grid2" style="--acc:var(--indigo)">
 
       <div class="dl">
-        <div class="tag">Tool 01 · available now</div>
+        <div class="tag">Tool 01 · start here</div>
         <h3>Video Teardown</h3>
-        <p>The engine. Thirteen stages, in order, that take any video apart and put your brand in its place.</p>
+        <p>Any video in, your brief out. Comes with a seven-step walkthrough written for someone who has never done this before.</p>
         <ul>
-          <li>Triage, scene-by-scene teardown, replication spec</li>
-          <li>Brand injection, then the hook / middle / close loop</li>
-          <li>The maker's brief, with a frame prompt on every scene</li>
-          <li>Ships with the empty brand folder inside it</li>
+          <li>What to upload, and where</li>
+          <li>What to paste into Claude, in order</li>
+          <li>The finished brief, ready for whoever makes your videos</li>
+          <li>The empty brand folder is inside it</li>
         </ul>
-        <div class="foot"><a class="btn" href="downloads/video-teardown-kit.zip" download>Download the engine</a></div>
+        <div class="foot"><a class="btn" href="downloads/video-teardown-kit.zip" download>Download</a></div>
       </div>
 
       <div class="dl">
-        <div class="tag">Tool 02 · required by everything</div>
+        <div class="tag">Tool 02 · everything reads it</div>
         <h3>Your brand folder</h3>
-        <p>The one thing you fill in. Every tool reads it, fresh, on every run — so brand context is set up once, not re-explained per task.</p>
+        <p>The one thing you fill in. Put it in your Google Drive, fill it in once, and every tool here knows your brand forever.</p>
         <ul>
-          <li>Your avatar — the person, not the segment</li>
-          <li>Their real sentences, and the words you may never use</li>
-          <li>The product exactly as a camera sees it</li>
-          <li>Objections, offers, and what may be named on camera</li>
+          <li>Who you're selling to — the person, not the age bracket</li>
+          <li>Their actual sentences, and words you'd never say</li>
+          <li>What your product looks like to a camera</li>
+          <li>Your offers, objections, and what's allowed on screen</li>
         </ul>
-        <div class="foot"><a class="btn" href="downloads/brand-folder-kit.zip" download>Download the template</a></div>
+        <div class="foot"><a class="btn" href="downloads/brand-folder-kit.zip" download>Download</a></div>
       </div>
 
       <div class="dl">
-        <div class="tag">Tool 03 · available now</div>
+        <div class="tag">Tool 03 · ready to use</div>
         <h3>Organic swipe pack</h3>
-        <p>Ammunition. 34 organic formats reverse-engineered from posts that already worked, 227 of them torn down beat by beat, prompts included.</p>
+        <p>34 formats already taken apart, from posts that really worked — some past a hundred million views. Skip the teardown and go straight to building.</p>
         <ul>
-          <li>What the camera does, what the text does, the beat order</li>
-          <li>The one thing carrying the persuasion, named</li>
-          <li>An image and motion prompt on every teardown</li>
+          <li>What each format is, and why it works</li>
+          <li>Every beat, with its timestamp</li>
+          <li>Prompts to make each one, ready to paste</li>
         </ul>
-        <div class="foot"><a class="btn" href="downloads/swipe-to-scene-kit.zip" download>Download the pack</a></div>
+        <div class="foot"><a class="btn" href="downloads/swipe-to-scene-kit.zip" download>Download</a></div>
       </div>
 
       <div class="dl soon">
         <div class="tag">Tool 04 · next</div>
         <h3>Paid ad swipe pack</h3>
-        <p>The other half of the ammunition: what competitors are paying to put in front of your customer, torn down the same way.</p>
+        <p>The other half: what competitors are paying to put in front of your customer, taken apart the same way.</p>
         <ul>
-          <li>Advertiser sweeps, by brand</li>
-          <li>The angles they are spending on, ranked</li>
-          <li>Landing pages behind the ads</li>
+          <li>What each brand is running, by brand</li>
+          <li>The angles they're spending on, ranked</li>
+          <li>The pages those ads send people to</li>
         </ul>
         <div class="foot"><a class="btn ghost" href="/">Watch this page</a></div>
       </div>
 
-    </div>
-  </section>
-
-  <section>
-    <p class="lab" style="--acc:var(--cyan)"><i>03</i> &nbsp;The folder everything reads</p>
-    <div class="two">
-      <div>
-        <h2>Set up<br>once</h2>
-        <p>Every tool is brand-agnostic on purpose. They know how to tear a video apart and write a brief; they know nothing about you until they read this.</p>
-        <p>Fill it in once and it keeps paying: the same folder feeds the teardown chain, the swipe packs, and everything shipped after them.</p>
-        <div class="btns"><a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Get the empty folder</a></div>
-      </div>
-      <ul class="rules">
-        <li><b>core-avatars/&lt;avatar&gt;/profile.md</b>One real person — what they have already tried, what they actually want, what makes them stop scrolling. A story name, never "males 18–24".</li>
-        <li><b>language/</b>Their real sentences, verbatim, with a source on each. Plus the rules: how to write, and the words you may never use.</li>
-        <li><b>products/&lt;product&gt;.md</b>What it looks like to a camera — container, colour, finish, every word on the label. Skip this and a generated frame invents packaging that is not yours.</li>
-        <li><b>objection-bank.md</b>The reasons people do not buy, in their words. Every script's middle answers one of these.</li>
-        <li><b>identity-anchors.md</b>Who and what may be named on camera. If it is not on the list, it does not go in an ad.</li>
-        <li><b>variables/video.md</b>The map from a variable to a path. Already wired — leave it alone unless you move a file.</li>
-      </ul>
     </div>
   </section>
 
@@ -312,11 +408,11 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
         <p>Honest about what this is: a system that does the thinking between a video that worked and a brief someone can shoot. It is worth your time if you are already making creative and losing to the blank page.</p>
       </div>
       <ul class="rules">
-        <li><b>What it is</b>A working process, not a button. You bring a video and a brand; it does the reading, the structuring and the writing — and tells you when it does not know something.</li>
-        <li><b>What you need</b>Something that can watch a video and read files. It was built against Claude Code. The prompts are plain Markdown, so any capable assistant can run them.</li>
+        <li><b>What it is</b>A process you follow, not a button you press. You bring a video and your brand; it does the watching, the structuring and the writing — and tells you when it does not know something instead of making it up.</li>
+        <li><b>What you need</b>Claude (the chat or Cowork), Higgsfield Supercomputer, and a Google Drive. That is the whole list — nothing gets installed and nothing runs on your computer.</li>
         <li><b>What it will not do</b>Invent your product, your customer or your offer. Every gap in your brand folder shows up as a question, never as a confident guess.</li>
         <li><b>The rule that makes it work</b>Rebuild the structure, never the content. A scalp treatment and a countertop demo can be the same format — that is the whole point.</li>
-        <li><b>Not shipped yet</b>The unattended runner — watch, run all thirteen stages, write the brief into a Google Doc. It needs API keys and a Drive connection, so it ships on its own.</li>
+        <li><b>How long it takes</b>Your brand folder is an afternoon, once. After that a teardown is about twenty minutes of pasting, plus however long you spend generating scenes.</li>
         <li><b>What it costs</b>Nothing. MIT licensed, and it stays that way.</li>
       </ul>
     </div>
@@ -324,12 +420,12 @@ footer .row{display:flex;justify-content:space-between;font-family:var(--mono);f
 
   <section>
     <p class="lab" style="--acc:var(--rose)"><i>05</i> &nbsp;The production step</p>
-    <h2>Where the scenes<br>get made</h2>
+    <h2>Where the watching<br>and making happen</h2>
     <div class="tool" style="--acc:var(--rose)">
-      <p>The chain ends with a prompt on every scene. Something has to turn that prompt into a shot — I use <b>Higgsfield</b> for that, and the prompts the chain writes are in its shape: an image prompt for the frame, a motion prompt for what the camera does.</p>
-      <p>Nothing here is locked to it. The prompts are plain description and work in any generator you already pay for.</p>
+      <p>Two of the seven steps happen in <b>Higgsfield Supercomputer</b>: it is where the video actually gets watched (it has a Gemini model on it, so you hand it the video directly) and where your scenes get made from the prompts the brief writes.</p>
+      <p>Nothing here is locked to it — the prompts are plain description and work in any generator. Supercomputer is what these instructions are written for, so it is the path with no guesswork.</p>
       <div class="btns" style="margin-top:20px">
-        <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield →</a>
+        <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Get Supercomputer →</a>
         <a class="btn ghost" href="downloads/video-teardown-kit.zip" download>Get the engine first</a>
       </div>
       <div class="note">Affiliate link. It costs you nothing extra and the kit works identically without it.</div>
@@ -350,39 +446,54 @@ function setT(t){ root.dataset.t=t; $('#tt').textContent=t==='warm'?'Void':'Warm
 try{ setT(localStorage.getItem('oso-theme')||'void'); }catch(e){ setT('void'); }
 $('#tt').onclick=()=>setT(root.dataset.t==='warm'?'void':'warm');
 
-/* The walkthrough: five stages on a timer, clickable, and it stops
-   advancing while the page is out of view so it is not talking to itself. */
-const TICKS=['their video','every scene, written down','your brand folder','your brand, injected','the brief'];
-const PROMPT=['scene 3 · your product enters','wardrobe: from your brand folder','line: from your avatar\\'s own words','frame prompt: written, not guessed'];
-const scenes=[...document.querySelectorAll('.scene')], steps=[...document.querySelectorAll('.step')];
-const bar=$('#bar'), tick=$('#tick'), term=$('#term');
-let i=0, timer=null, typer=null, DUR=4200;
+/* The demo: four panes on a timer, clickable, paused while off-screen. */
+const panes=[...document.querySelectorAll('.dpane')], tabs=[...document.querySelectorAll('.dtab')];
+const VALUES={product:'a matte black tin, gold lettering',avatar:"the guy whose pan keeps sticking",
+  line:'"I\'ve re-seasoned this thing four times"',offer:'one tin, $24, lasts a year'};
+const PROMPT2=['vertical 9:16, hands only, no face','holding {PRODUCT} over a kitchen counter','window light from the left, phone-camera look','no on-screen text, nothing retouched','','MOTION  handheld, no zoom, one take'];
+let d=0, dTimer=null, fillTimer=null, typeTimer=null;
 
-function type(){
-  clearInterval(typer); term.innerHTML='';
+function fillScript(){
+  clearInterval(fillTimer);
+  const slots=[...document.querySelectorAll('#script .slot')];
+  const flds=[...document.querySelectorAll('#fields .fld')];
+  slots.forEach(s=>{s.textContent='…';s.classList.remove('hit')});
+  flds.forEach(f=>f.classList.remove('fire'));
+  let n=0;
+  fillTimer=setInterval(()=>{
+    if(n>=slots.length){ clearInterval(fillTimer); return; }
+    const s=slots[n], k=s.dataset.k;
+    const f=flds.find(x=>x.dataset.k===k);
+    if(f){ f.classList.add('fire'); setTimeout(()=>f.classList.remove('fire'),900); }
+    s.textContent=VALUES[k]||'…'; s.classList.add('hit');
+    setTimeout(()=>s.classList.remove('hit'),900);
+    n++;
+  },1100);
+}
+function typePrompt(){
+  clearInterval(typeTimer);
+  const el=$('#term2'); if(!el) return; el.innerHTML='';
   let l=0,c=0;
-  typer=setInterval(()=>{
-    if(l>=PROMPT.length){ clearInterval(typer); term.innerHTML+='<span class="cur"></span>'; return; }
-    term.innerHTML=PROMPT.slice(0,l).join('<br>')+(l?'<br>':'')+PROMPT[l].slice(0,c);
-    c++; if(c>PROMPT[l].length){ l++; c=0; }
-  },26);
+  typeTimer=setInterval(()=>{
+    if(l>=PROMPT2.length){ clearInterval(typeTimer); el.innerHTML+='<span class="cur"></span>'; return; }
+    el.innerHTML=PROMPT2.slice(0,l).join('<br>')+(l?'<br>':'')+PROMPT2[l].slice(0,c);
+    c++; if(c>PROMPT2[l].length){ l++; c=0; }
+  },24);
 }
-function show(n,manual){
-  i=(n+scenes.length)%scenes.length;
-  scenes.forEach((s,k)=>s.classList.toggle('on',k===i));
-  steps.forEach((s,k)=>s.classList.toggle('on',k===i));
-  tick.textContent=TICKS[i];
-  bar.style.transition='none'; bar.style.width='0';
-  requestAnimationFrame(()=>{ bar.style.transition='width '+DUR+'ms linear'; bar.style.width='100%'; });
-  if(i===3) type();
-  if(manual) start();
+function showD(n,manual){
+  d=(n+panes.length)%panes.length;
+  panes.forEach((p,k)=>p.classList.toggle('on',k===d));
+  tabs.forEach((t,k)=>t.classList.toggle('on',k===d));
+  if(d===2) fillScript(); else clearInterval(fillTimer);
+  if(d===3) typePrompt(); else clearInterval(typeTimer);
+  if(manual) startD();
 }
-function start(){ clearInterval(timer); timer=setInterval(()=>show(i+1),DUR); }
-steps.forEach(s=>s.onclick=()=>show(+s.dataset.i,true));
-
+function startD(){ clearInterval(dTimer); dTimer=setInterval(()=>showD(d+1),9000); }
+tabs.forEach(t=>t.onclick=()=>showD(+t.dataset.d,true));
 const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){ show(i); start(); } else { clearInterval(timer); clearInterval(typer); }
-}),{threshold:.25});
-io.observe($('#stage'));
+  if(e.isIntersecting){ showD(d); startD(); }
+  else { clearInterval(dTimer); clearInterval(fillTimer); clearInterval(typeTimer); }
+}),{threshold:.2});
+io.observe(document.querySelector('.demo'));
 </script>
 </html>
