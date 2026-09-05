@@ -91,6 +91,41 @@
   background:color-mix(in srgb,var(--halo) 80%,transparent);padding:10px 14px;
   display:inline-block;margin-top:12px;border-radius:8px}
 @media(prefers-reduced-motion:reduce){#field{transform:none}}
+
+/* ── the bones: a skeleton that evolves as you scroll ────────── */
+#bonestage{position:relative;height:520vh;margin-top:6vh}
+.bsticky{position:sticky;top:0;height:100vh;display:grid;
+  grid-template-columns:1fr minmax(280px,420px) 1fr;align-items:center;gap:30px}
+@media(max-width:900px){.bsticky{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:0;
+  padding-top:64px}}
+.bfig{grid-column:2;display:grid;place-items:center;position:relative}
+#skel{width:min(52vh,340px);height:auto;overflow:visible}
+.bone{stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;fill:none;
+  transition:stroke-width .4s ease}
+.bone.fill{fill:color-mix(in srgb,var(--ink) 9%,transparent);stroke-width:2}
+.bone.fill.soft{fill:color-mix(in srgb,var(--ink) 5%,transparent);stroke-width:1.4;
+  stroke:color-mix(in srgb,var(--ink) 55%,transparent)}
+.joint{fill:var(--ink);opacity:.55}
+.bnames{position:absolute;bottom:-46px;left:0;right:0;display:flex;justify-content:center;gap:26px}
+.bname{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink3);opacity:.32;transition:opacity .5s ease,color .5s ease}
+.bname.on{opacity:1;color:var(--ink)}
+/* the seven steps, arriving as it evolves */
+.bsteps{grid-column:3;display:grid;gap:2px;align-content:center;max-width:340px}
+@media(max-width:900px){.bsteps{grid-column:1;grid-row:2;max-width:none;align-content:start;
+  padding:24px 0 40px}.bfig{grid-column:1;grid-row:1}#skel{width:min(34vh,220px)}
+  .bnames{bottom:-34px;gap:16px}}
+.bstep{display:grid;grid-template-columns:26px 1fr;gap:14px;padding:9px 0;
+  opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
+.bstep.on{opacity:1;transform:none}
+.bstep.past{opacity:.42}
+.bstep .n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ink3);padding-top:3px}
+.bstep b{font-weight:400;font-size:14.5px;display:block}
+.bstep span{font-size:12.5px;color:var(--ink3);display:block;line-height:1.5}
+.bintro{grid-column:1;align-self:center;max-width:300px}
+@media(max-width:900px){.bintro{display:none}}
+#breveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+#breveal.on{opacity:1;transform:none}
 </style>
 
 <div id="field" aria-hidden="true"></div>
@@ -126,7 +161,35 @@
       text was made that way.</p>
   </section>
 
-  <section id="work">
+
+  <div id="bonestage">
+    <div class="bsticky">
+      <div class="bintro">
+        <p class="eyebrow">What we actually do</p>
+        <h2 style="font-size:clamp(22px,2.6vw,32px)">Every ad<br>has a skeleton</h2>
+        <p style="font-size:14px">Find the bones of one that worked. Keep them. Put a
+          completely different body on top. Scroll — that is the whole method, in seven
+          steps.</p>
+      </div>
+      <div class="bfig">
+        <svg id="skel" viewBox="0 0 300 520" aria-label="a skeleton evolving from ape to human to machine"></svg>
+        <div class="bnames">
+          <span class="bname on">Ape</span><span class="bname">Human</span><span class="bname">Machine</span>
+        </div>
+      </div>
+      <div class="bsteps">
+        <div class="bstep"><span class="n">01</span><span><b>Fill in the brand folder</b><span>Once per brand. Who it is for, how they talk, what the product looks like.</span></span></div>
+        <div class="bstep"><span class="n">02</span><span><b>Find a video that worked</b><span>A competitor's ad, an organic post. Anything with proof behind it.</span></span></div>
+        <div class="bstep"><span class="n">03</span><span><b>Let it be watched</b><span>Upload it and ask for every scene, written down.</span></span></div>
+        <div class="bstep"><span class="n">04</span><span><b>Strip it to the bones</b><span>What the camera does, what the text does, the beat order, what persuades.</span></span></div>
+        <div class="bstep"><span class="n">05</span><span><b>Put your brand in</b><span>The skeleton stays. Everything you would see on camera changes.</span></span></div>
+        <div class="bstep"><span class="n">06</span><span><b>Make the scenes</b><span>A prompt per shot. Generate the frame, then the motion.</span></span></div>
+        <div class="bstep"><span class="n">07</span><span><b>Cut it to the beats</b><span>The scene list is the edit. Then do it again, and again.</span></span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="work"
     <p class="eyebrow">The work</p>
     <div class="rlab">
       <h2>One structure,<br>somewhere else<br>entirely</h2>
@@ -157,6 +220,7 @@
       <div class="tnum" id="tnum">0:00</div>
     </div>
     <div class="note">Drag the line — all three move together</div>
+    </div>
   </section>
 
   <section id="tools">
@@ -188,9 +252,14 @@
         <h2>What it<br>sounds like<br>in here</h2>
         <p class="lede">Studios have a sound. This is what plays while the work gets made —
           put it on and build something.</p>
+        <div class="btns"><a class="btn ghost" href="https://open.spotify.com/playlist/0Ai8Cym5dafFxc0w9lTuC2" target="_blank" rel="noopener">Open in Spotify →</a></div>
       </div>
       <div class="spot">
-        <div class="spotph">Playlist not connected yet.<br>Drop the Spotify link in and it lives here.</div>
+        <iframe title="DÆMN STUDIO playlist" style="border-radius:12px;display:block;border:0"
+          src="https://open.spotify.com/embed/playlist/0Ai8Cym5dafFxc0w9lTuC2?utm_source=generator"
+          width="100%" height="352" allowfullscreen
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"></iframe>
       </div>
     </div>
   </section>
@@ -285,5 +354,93 @@ track.addEventListener('pointermove',e=>{if(drag)from(e)});
 track.addEventListener('pointerup',()=>drag=false);
 document.querySelectorAll('.cell').forEach(c=>c.addEventListener('click',()=>{
   seek(0); vs.forEach(v=>v.play().catch(()=>{})); }));
+</script>
+<script>/* ── THE BONES ────────────────────────────────────────────────
+   One skeleton, three states. Every pose is the same 21 joints in
+   different places, so the figure genuinely morphs rather than
+   cross-fading between drawings. Scroll drives it.               */
+const POSE = {
+  ape: [[120,132],[136,162],[146,182],[160,226],[172,266],
+        [120,184],[102,252],[94,332],[170,180],[188,250],[198,332],
+        [154,273],[139,341],[135,401],[113,411],[190,271],[205,339],[209,399],[233,409],
+        [140,192],[163,242]],
+  man: [[150,62],[150,106],[150,126],[150,190],[150,250],
+        [116,129],[104,196],[98,258],[184,129],[196,196],[202,258],
+        [132,257],[126,351],[122,441],[103,453],[168,257],[174,351],[178,441],[197,453],
+        [150,141],[150,206]],
+  bot: [[150,54],[150,101],[150,123],[150,189],[150,253],
+        [104,123],[92,197],[92,265],[196,123],[208,197],[208,265],
+        [126,259],[122,357],[120,449],[95,459],[174,259],[178,357],[180,449],[205,459],
+        [150,139],[150,207]]
+};
+/* head and ribcage are polygons of matched point counts, so they morph too */
+const HEAD = {
+  ape:[[104,128],[124,116],[142,124],[150,142],[144,158],[128,166],[110,160],[100,144]],
+  man:[[132,52],[152,48],[168,60],[170,80],[162,98],[144,104],[130,94],[126,72]],
+  bot:[[130,44],[170,44],[176,58],[176,84],[170,98],[130,98],[124,84],[124,58]]
+};
+const RIBS = {
+  ape:[[139,186],[158,184],[171,206],[168,236],[152,248],[136,240],[128,216],[130,196]],
+  man:[[132,136],[168,136],[178,158],[176,192],[164,210],[136,210],[124,192],[122,158]],
+  bot:[[128,134],[172,134],[180,156],[180,192],[172,210],[128,210],[120,192],[120,156]]
+};
+const BONES=[[0,1],[1,2],[2,3],[3,4],[5,6],[6,7],[8,9],[9,10],
+             [11,12],[12,13],[13,14],[15,16],[16,17],[17,18],
+             [5,2],[8,2],[11,4],[15,4]];
+
+const lerp=(a,b,t)=>a+(b-a)*t;
+const lerpPts=(A,B,t)=>A.map((p,i)=>[lerp(p[0],B[i][0],t),lerp(p[1],B[i][1],t)]);
+function poseAt(p){                       /* p: 0 → 1 across all three */
+  if(p<.5){ const t=ease(p/.5);  return {j:lerpPts(POSE.ape,POSE.man,t), h:lerpPts(HEAD.ape,HEAD.man,t), r:lerpPts(RIBS.ape,RIBS.man,t)}; }
+  const t=ease((p-.5)/.5);       return {j:lerpPts(POSE.man,POSE.bot,t), h:lerpPts(HEAD.man,HEAD.bot,t), r:lerpPts(RIBS.man,RIBS.bot,t)};
+}
+const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+const path=pts=>'M'+pts.map(p=>p[0].toFixed(1)+' '+p[1].toFixed(1)).join('L')+'Z';
+
+(function(){
+  const svg=document.getElementById('skel'); if(!svg) return;
+  const NS='http://www.w3.org/2000/svg';
+  const g=document.createElementNS(NS,'g'); g.setAttribute('id','skelg'); svg.appendChild(g);
+  const head=document.createElementNS(NS,'path'); head.setAttribute('class','bone fill');
+  const ribs=document.createElementNS(NS,'path'); ribs.setAttribute('class','bone fill soft');
+  const lines=BONES.map(()=>{ const l=document.createElementNS(NS,'line'); l.setAttribute('class','bone'); g.appendChild(l); return l; });
+  const dots=POSE.man.map(()=>{ const c=document.createElementNS(NS,'circle'); c.setAttribute('r','2.6'); c.setAttribute('class','joint'); g.appendChild(c); return c; });
+  g.appendChild(ribs); g.appendChild(head);
+
+  const stage=document.getElementById('bonestage');
+  const steps=[...document.querySelectorAll('.bstep')];
+  const names=[...document.querySelectorAll('.bname')];
+  let cur=-1;
+
+  function draw(p){
+    const {j,h,r}=poseAt(p);
+    BONES.forEach((b,i)=>{ const a=j[b[0]],c=j[b[1]];
+      lines[i].setAttribute('x1',a[0]); lines[i].setAttribute('y1',a[1]);
+      lines[i].setAttribute('x2',c[0]); lines[i].setAttribute('y2',c[1]); });
+    j.forEach((p2,i)=>{ dots[i].setAttribute('cx',p2[0]); dots[i].setAttribute('cy',p2[1]); });
+    head.setAttribute('d',path(h)); ribs.setAttribute('d',path(r));
+    /* a little dimension: the figure turns as it evolves */
+    g.setAttribute('transform','rotate('+lerp(-13,13,p).toFixed(2)+' 150 260)');
+    const which = p<.28?0 : p<.72?1 : 2;
+    if(which!==cur){ cur=which; names.forEach((n,i)=>n.classList.toggle('on',i===which)); }
+  }
+
+  function onScroll(){
+    const r=stage.getBoundingClientRect();
+    const total=stage.offsetHeight-innerHeight;
+    const p=Math.max(0,Math.min(1,(-r.top)/total));
+    draw(p);
+    /* the seven steps arrive across the middle of the journey */
+    steps.forEach((s,i)=>{
+      const from=.10+i*.115;
+      s.classList.toggle('on', p>=from);
+      s.classList.toggle('past', p>=from+.115);
+    });
+    document.getElementById('breveal').classList.toggle('on', p>=.94);
+  }
+  addEventListener('scroll',onScroll,{passive:true});
+  addEventListener('resize',onScroll);
+  draw(0); onScroll();
+})();
 </script>
 </html>
