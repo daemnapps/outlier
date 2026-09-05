@@ -101,6 +101,31 @@
   display:inline-block;margin-top:12px;border-radius:8px}
 @media(prefers-reduced-motion:reduce){#field{transform:none}}
 
+
+/* ── the map: how it all connects ─────────────────────────────── */
+.map{margin-top:30px;border:1px solid var(--line);border-radius:14px;overflow-x:auto;
+  background:color-mix(in srgb,var(--halo) 62%,transparent)}
+.mapinner{min-width:860px;padding:38px 34px 30px}
+.mrow{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;align-items:stretch}
+.mcol{display:grid;gap:10px;align-content:start}
+.mhead{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink3);padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:4px}
+.node{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:var(--halo)}
+.node b{display:block;font-size:14px;font-weight:500;margin-bottom:3px}
+.node span{display:block;font-size:12px;color:var(--ink3);line-height:1.5}
+.node.you{border-color:var(--ink);border-width:1.5px}
+.node.you b:after{content:" ← you";font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+  color:var(--ink3);font-weight:400}
+.node.out{background:var(--ink)}
+.node.out b,.node.out span{color:var(--halo)}
+.node.out span{opacity:.72}
+.marrow{display:grid;place-items:center;font-size:15px;color:var(--ink3);padding:6px 0}
+.mfeed{margin-top:26px;padding-top:20px;border-top:1px dashed var(--line);
+  display:flex;gap:14px;align-items:flex-start;font-size:13px;color:var(--ink2)}
+.mfeed b{white-space:nowrap;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink3);padding-top:3px}
+.mnote{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink3);
+  padding:0 34px 24px;line-height:1.9}
 </style>
 
 <div id="field" aria-hidden="true"></div>
@@ -178,6 +203,64 @@
       <div class="tnum" id="tnum">0:00</div>
     </div>
     <div class="note">Drag the line — all three move together</div>
+  </section>
+
+
+  <section id="map">
+    <p class="eyebrow">The whole thing, on one page</p>
+    <h2>How it all<br>connects</h2>
+    <p class="lede">Four tools, one folder, and a loop you can run as often as you like.
+      Nothing here talks to a server of ours — every arrow is a file moving between things
+      you already have.</p>
+
+    <div class="map">
+      <div class="mapinner">
+        <div class="mrow">
+
+          <div class="mcol">
+            <div class="mhead">01 · set up, once per brand</div>
+            <div class="node you"><b>Your brand folder</b><span>Avatar, their real words, the product as a camera sees it, offers, objections.</span></div>
+            <div class="marrow">↓</div>
+            <div class="node"><b>Lives in your Drive</b><span>Every tool below reads it fresh, every run. You never re-explain your brand.</span></div>
+          </div>
+
+          <div class="mcol">
+            <div class="mhead">02 · find something that worked</div>
+            <div class="node you"><b>A video you pick</b><span>A competitor's ad, an organic post, anything with proof behind it.</span></div>
+            <div class="marrow">or</div>
+            <div class="node"><b>The swipe packs</b><span>48 organic formats and 10 paid angle shapes, already pulled apart. Skip straight to building.</span></div>
+          </div>
+
+          <div class="mcol">
+            <div class="mhead">03 · the teardown</div>
+            <div class="node"><b>Supercomputer watches it</b><span>Upload the video, get every scene written down. A chat window alone cannot do this.</span></div>
+            <div class="marrow">↓</div>
+            <div class="node"><b>Claude runs the chain</b><span>Structure → spec → your brand injected → hooks → the brief. Your folder is what makes it yours.</span></div>
+          </div>
+
+          <div class="mcol">
+            <div class="mhead">04 · what you get</div>
+            <div class="node out"><b>The brief</b><span>Scenes, wardrobe, hooks, and an image prompt plus a motion note for every shot.</span></div>
+            <div class="marrow">↓</div>
+            <div class="node out"><b>The finished ad</b><span>Generate the frames in Supercomputer, cut to the beat list, send it.</span></div>
+          </div>
+
+        </div>
+
+        <div class="mfeed">
+          <b>and around again</b>
+          <span>Every ad you make is another swipe. The formats that work for you get added to
+            your own pack, your brand folder gets sharper each time you fill a gap the chain
+            found, and the next one takes twenty minutes instead of an afternoon.</span>
+        </div>
+      </div>
+      <div class="mnote">Scroll the map sideways on a narrow screen · Nothing above requires a terminal — the last column is the only place you need an account</div>
+    </div>
+
+    <div class="btns" style="margin-top:26px">
+      <a class="btn" href="downloads/brand-folder-kit.zip" download>Start at 01 — the brand folder</a>
+      <a class="btn ghost" href="/workflows.html">The seven steps in full</a>
+    </div>
   </section>
 
   <section id="tools">
