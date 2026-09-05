@@ -247,66 +247,74 @@
 
   <section id="how">
     <p class="eyebrow" style="--acc:var(--ink)"><i style="color:var(--ink2)">01</i> &nbsp;Watch it happen</p>
-    <h2>A video goes in.<br>Your version<br>comes out.</h2>
-    <p style="margin-bottom:40px">This is the whole thing, playing out on one real example. Nothing to install and nothing to read first — press a step to jump to it.</p>
+    <h2>A source goes in.<br>Your version<br>comes out.</h2>
+    <p style="margin-bottom:40px">One real example, start to finish: somebody else's ad, what the machine reads in it, your brand going in, and what came out the other side. Press a step to jump to it.</p>
 
     <div class="demo" style="--acc:var(--ink)">
       <div class="dtabs" id="dtabs">
-        <button class="dtab on" data-d="0"><span>01</span>The video gets watched</button>
+        <button class="dtab on" data-d="0"><span>01</span>The source gets watched</button>
         <button class="dtab" data-d="1"><span>02</span>The structure gets named</button>
         <button class="dtab" data-d="2"><span>03</span>Your brand fills it in</button>
-        <button class="dtab" data-d="3"><span>04</span>The scenes get made</button>
+        <button class="dtab" data-d="3"><span>04</span>The outcome</button>
       </div>
 
       <!-- 01 · the video gets watched -->
       <div class="dpane on" data-p="0">
         <div class="dleft">
+          <div class="dlabel">The source video</div>
           <div class="vid">
-            <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
-                   muted loop playsinline preload="metadata"></video>
+            <video class="vplayer" src="media/source.mp4" poster="media/source-poster.jpg"
+                   autoplay muted loop playsinline preload="metadata"></video>
             <div class="vscan"></div>
           </div>
-          <div class="dnote">Drop the video into Supercomputer and ask it to describe every scene. That is the one thing a normal chat window cannot do — it needs to actually watch the video.</div>
+          <div class="dnote">Somebody else's ad — a woman confessing that her husband
+            cheated on her. Drop it into Supercomputer and ask it to describe every
+            scene. That's the one thing a normal chat window cannot do.</div>
         </div>
         <div class="dright">
           <div class="dlabel">What comes back</div>
           <div class="beats" id="beatlist">
-            <div class="brow"><span class="bt">0:01</span><span class="bd">Hands hold a sealed pack at chest height. Bedroom, lamp at frame left. Face cropped out.</span></div>
-            <div class="brow"><span class="bt">0:03</span><span class="bd">Pack gone — the product bunched in both hands, held toward the lens.</span></div>
-            <div class="brow"><span class="bt">0:05</span><span class="bd">Unfurled and hanging, filling the top of frame. Cord swinging below.</span></div>
-            <div class="brow"><span class="bt">0:08</span><span class="bd">Leaning over the bed, spreading it flat. Head fully out of frame.</span></div>
-            <div class="brow"><span class="bt">0:10</span><span class="bd">Close on both hands holding the controller against the fabric.</span></div>
-            <div class="brow"><span class="bt">0:12</span><span class="bd">Tighter: one setting lit red on the controller face.</span></div>
+            <div class="brow"><span class="bt">0:01</span><span class="bd">Lying in bed at night, eyes closed. Grey top, dark room. On screen: “I found out my husband was cheating on me”.</span></div>
+            <div class="brow"><span class="bt">0:03</span><span class="bd">Awake now, turned toward the lens, not blinking. Same caption still held.</span></div>
+            <div class="brow"><span class="bt">0:05</span><span class="bd">Sitting on the edge of the bed, sheets pushed back, wide. Caption moves on: “three weeks after I refuse to be intimate with him”.</span></div>
+            <div class="brow"><span class="bt">0:07</span><span class="bd">Hard cut to a tight close-up. Eyes down, no expression played for camera.</span></div>
+            <div class="brow"><span class="bt">0:09</span><span class="bd">Standing in a lamplit living room, wide again. “and the only reason I'm still standing here”.</span></div>
+            <div class="brow"><span class="bt">0:11</span><span class="bd">Closer on her, looking down. The sentence still isn't finished.</span></div>
           </div>
-          <div class="dfoot">Every scene, written down — not summarised. That record is what everything below works from.</div>
+          <div class="dfoot">Every scene written down — not summarised. That record is what
+            everything below works from.</div>
         </div>
       </div>
 
       <!-- 02 · the structure gets named -->
       <div class="dpane" data-p="1">
         <div class="dleft">
-          <div class="dlabel">Six moments, pulled from the video</div>
+          <div class="dlabel">Six moments, pulled from the source</div>
           <div class="fstrip">
-            <img src="media/beat-1.jpg" alt=""><img src="media/beat-2.jpg" alt="">
-            <img src="media/beat-3.jpg" alt=""><img src="media/beat-4.jpg" alt="">
-            <img src="media/beat-5.jpg" alt=""><img src="media/beat-6.jpg" alt="">
+            <img src="media/src-beat-1.jpg" alt=""><img src="media/src-beat-2.jpg" alt="">
+            <img src="media/src-beat-3.jpg" alt=""><img src="media/src-beat-4.jpg" alt="">
+            <img src="media/src-beat-5.jpg" alt=""><img src="media/src-beat-6.jpg" alt="">
           </div>
           <div class="qs">
-            <div class="q"><b>What does the camera do?</b><span>One locked room, cuts between two distances.</span></div>
-            <div class="q"><b>What does the text do?</b><span>One line of dialogue per shot, always mid-argument.</span></div>
-            <div class="q"><b>What order are the beats in?</b><span>Caught → accused → panic → explain → the product held up.</span></div>
-            <div class="q"><b>What is doing the persuading?</b><span>The misunderstanding. You stay to find out what it really was.</span></div>
+            <div class="q"><b>What does the camera do?</b><span>Documentary distance. Wide, then a hard cut to a close-up. It never moves.</span></div>
+            <div class="q"><b>What does the text do?</b><span>One fragment at a time, never finishing the sentence.</span></div>
+            <div class="q"><b>What order are the beats in?</b><span>Confession → the detail that stings → where she is now.</span></div>
+            <div class="q"><b>What is doing the persuading?</b><span>The unfinished sentence. You cannot leave mid-admission.</span></div>
           </div>
         </div>
         <div class="dright">
           <div class="dlabel">So the format is</div>
           <div class="fcard">
-            <div class="fname">Caught-in-the-act misread</div>
+            <div class="fname">Unfinished confession</div>
             <div class="fmeta">one of 48 formats in the pack · each with the post that proved it</div>
-            <p class="fbody">Someone walks in on a scene that looks like something it is not. The argument runs while the real explanation — the product — waits until the last beat.</p>
-            <div class="fwhy">Why it works — the viewer knows something the character does not, and cannot leave until the misunderstanding lands. The product arrives as the answer, not as an interruption.</div>
+            <p class="fbody">Someone admits something costly, straight down the lens, in
+              caption fragments that never complete. The room is ordinary and the
+              performance is flat — nothing is played for camera.</p>
+            <div class="fwhy">Why it works — a confession creates an obligation to hear
+              the end of it, and the captions make sure the end never quite arrives.</div>
           </div>
-          <div class="dfoot">Same four questions on any video. That is why a scalp treatment and a countertop demo come back as the same format.</div>
+          <div class="dfoot">Those same four questions on any video. That's why a scalp
+            treatment and a countertop demo come back as the same format.</div>
         </div>
       </div>
 
@@ -336,28 +344,26 @@
         </div>
       </div>
 
-      <!-- 04 · the scenes get made -->
+      <!-- 04 · the outcome -->
       <div class="dpane" data-p="3">
         <div class="dleft">
           <div class="dlabel">The brief hands you this</div>
           <div class="term2" id="term2"></div>
-          <div class="dnote">One image prompt and one motion note per scene. Paste them into Supercomputer.</div>
+          <div class="dnote">One image prompt and one motion note per scene. Paste them
+            into Supercomputer.</div>
         </div>
         <div class="dright">
-          <div class="dlabel">And you get the video</div>
+          <div class="dlabel">The outcome</div>
           <div class="shots">
             <figure class="shotfig">
-              <img src="media/frame-still.jpg" alt="a generated frame">
-              <figcaption>the frame you generate</figcaption>
-            </figure>
-            <div class="arrow">→</div>
-            <figure class="shotfig">
-              <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
-                     muted loop playsinline preload="metadata"></video>
-              <figcaption>the shot it becomes</figcaption>
+              <video class="vplayer" src="media/variation.mp4" poster="media/variation-poster.jpg"
+                     autoplay muted loop playsinline preload="none"></video>
+              <figcaption>ours — same bones, new world</figcaption>
             </figure>
           </div>
-          <div class="dfoot">That clip was made this way — no camera, no actors, no studio. Generate every scene of a person from the same starting frame or they will be a different human in every shot.</div>
+          <div class="dfoot">Same structure as the confession: a costly admission, flat
+            performance, captions that never finish. Different century, different genre,
+            different medium — and nobody filmed anything.</div>
         </div>
       </div>
     </div>
