@@ -1,6 +1,6 @@
 # Running caption over borrowed cutaways
 
-**14,320,106 views proved it** · 26 of Damon's swipes use this format
+**14,320,106 views proved it** · 27 of Damon's swipes use this format
 
 ## What it is
 

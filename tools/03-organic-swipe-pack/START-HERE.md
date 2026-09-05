@@ -1,6 +1,6 @@
 # The organic swipe pack
 
-Built 2026-09-05 · 48 formats · 376 real posts, taken apart
+Built 2026-09-05 · 48 formats · 377 real posts, taken apart
 
 Every format in here came from a post that actually worked — some past a
 hundred million views. Nothing is theory and nothing is invented.
