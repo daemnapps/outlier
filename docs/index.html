@@ -44,7 +44,18 @@
 .gquiet{position:absolute;bottom:44px;left:0;right:0;font-family:var(--mono);font-size:10px;
   letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);background:none;border:0;
   cursor:pointer;text-decoration:underline;text-underline-offset:5px}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:0}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;
+  gap:clamp(28px,5vw,64px);padding-top:0}
+.hfig{margin:0;justify-self:center;width:min(34vh,286px)}
+.hfig video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;border-radius:12px;
+  background:var(--mist);box-shadow:0 24px 60px -30px rgba(63,34,30,.45)}
+.hfig figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink3);margin-top:12px;line-height:1.7;text-align:center}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;min-height:auto;padding-top:112px;gap:34px}
+  .hfig{width:min(52vw,220px);justify-self:start}
+  .hfig figcaption{text-align:left}
+}
 /* three-up */
 .rlab{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;
   border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:28px}
@@ -117,12 +128,22 @@
 
 <div class="wrap">
   <section class="hero">
-    <p class="eyebrow">One structure · any world</p>
-    <h1>Steal the<br>bones.<br>Change<br>everything<br>else.</h1>
-    <p class="lede">An ad that works is a structure wearing a style. Keep the structure,
-      change the world it lives in — the tone, the medium, the joke, the century — and
-      what earned somebody else millions goes to work for you. Everything behind this
-      text was made that way.</p>
+    <div>
+      <p class="eyebrow">One structure · any world</p>
+      <h1>Steal the<br>bones.<br>Change<br>everything<br>else.</h1>
+      <p class="lede">An ad that works is a structure wearing a style. Keep the structure,
+        change the world it lives in — the tone, the medium, the joke, the century — and
+        what earned somebody else millions goes to work for you.</p>
+      <div class="btns">
+        <a class="btn" href="#work">See it happen ↓</a>
+        <a class="btn ghost" href="/workflows.html">Take the tools</a>
+      </div>
+    </div>
+    <figure class="hfig">
+      <video src="media/variation.mp4" poster="media/variation-poster.jpg"
+             autoplay muted loop playsinline preload="auto"></video>
+      <figcaption>Made this way — no camera, no actors, no studio.</figcaption>
+    </figure>
   </section>
 
 
