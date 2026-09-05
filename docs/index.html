@@ -22,15 +22,13 @@
     color-mix(in srgb,var(--halo) 78%,transparent) 0%,
     color-mix(in srgb,var(--sky) 88%,transparent) 58%, var(--sky) 100%)}
 @media(hover:hover){
-  body{cursor:none}
-  #cur{position:fixed;top:0;left:0;width:11px;height:11px;border-radius:50%;background:var(--ink);
-    z-index:99;pointer-events:none;transform:translate(-50%,-50%);
-    transition:width .3s,height .3s,opacity .3s}
-  #cur.big{width:72px;height:72px;background:var(--ink);opacity:.94}
-  #cur.mid{width:30px;height:30px;opacity:.6}
+  #cur{position:fixed;top:0;left:0;width:0;height:0;border-radius:50%;background:var(--ink);
+    z-index:99;pointer-events:none;transform:translate(-50%,-50%);opacity:0;
+    transition:width .3s ease,height .3s ease,opacity .3s ease}
+  #cur.big{width:70px;height:70px;opacity:.94}
   #cur .lab{position:absolute;inset:0;display:grid;place-items:center;opacity:0;
     font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
-    color:var(--halo);transition:opacity .25s}
+    color:var(--halo);transition:opacity .25s;white-space:nowrap}
   #cur.big .lab{opacity:1}
 }
 #cur{display:none}@media(hover:hover){#cur{display:block}}
@@ -302,24 +300,25 @@ const FRAMES=["f01.jpg", "f02.jpg", "f03.jpg", "f04.jpg", "f05.jpg", "f06.jpg", 
     cs.forEach((c,i)=>{ c.style.transform='translate3d(0,'+(y*parseFloat(c.dataset.sp)-t*(6+i*1.4))+'px,0)'; });
     requestAnimationFrame(loop); })();
 })();
-(function(){ const cur=$('#cur'); if(!matchMedia('(hover:hover)').matches) return;
-  let x=innerWidth/2,y=innerHeight/2,cx=x,cy=y;
-  addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY},{passive:true});
+(function(){
+  const cur=$('#cur'); if(!cur || !matchMedia('(hover:hover)').matches) return;
+  let x=0,y=0,cx=0,cy=0,seen=false;
+  addEventListener('pointermove',e=>{ x=e.clientX; y=e.clientY;
+    if(!seen){ cx=x; cy=y; seen=true; } },{passive:true});
   (function l(){ cx+=(x-cx)*.22; cy+=(y-cy)*.22;
-    cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; requestAnimationFrame(l); })();
-  /* Every interactive thing gets a word. If we cannot name it honestly the
-     bubble stays small rather than opening empty. */
+    cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)';
+    requestAnimationFrame(l); })();
+  /* A word for everything it can name. When it cannot name something the
+     bubble simply does not appear — the real cursor is always there. */
   function labelFor(el){
     if(el.dataset.cur) return el.dataset.cur;
     if(el.closest('.cell')) return 'Watch';
     if(el.closest('.track')) return 'Drag';
     if(el.hasAttribute('download')) return 'Download';
-    if(el.tagName==='A'){
-      const h=el.getAttribute('href')||'';
+    if(el.tagName==='A'){ const h=el.getAttribute('href')||'';
       if(h.startsWith('#')) return 'Jump';
       if(/^https?:/.test(h)) return 'Open';
-      return 'Go';
-    }
+      return 'Go'; }
     if(el.tagName==='BUTTON') return el.textContent.trim().split(/\s+/)[0].slice(0,9);
     return '';
   }
@@ -327,9 +326,9 @@ const FRAMES=["f01.jpg", "f02.jpg", "f03.jpg", "f04.jpg", "f05.jpg", "f06.jpg", 
     const el=e.target.closest('a,button,.cell,.track');
     const lab=el?labelFor(el):'';
     cur.querySelector('.lab').textContent=lab;
-    cur.classList.toggle('big', !!lab);
-    cur.classList.toggle('mid', !!el && !lab);
+    cur.classList.toggle('big',!!lab);
   });
+  document.addEventListener('pointerleave',()=>cur.classList.remove('big'));
 })();
 const L='DÆMN'.split(''); let li=0;
 const mt=setInterval(()=>{ $('#mark').textContent=L[li=(li+1)%L.length]; },220);
