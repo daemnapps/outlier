@@ -126,11 +126,42 @@
   text-transform:uppercase;color:var(--ink3);padding-top:3px}
 .mnote{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink3);
   padding:0 34px 24px;line-height:1.9}
+
+/* ── the player ───────────────────────────────────────────────── */
+#lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;
+  background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);padding:4vh 4vw}
+#lb.on{display:grid}
+.lbin{display:grid;gap:14px;justify-items:center;max-height:92vh}
+#lbv{max-height:80vh;max-width:min(92vw,460px);width:auto;border-radius:12px;display:block;
+  background:#000;box-shadow:0 40px 90px -40px rgba(0,0,0,.8)}
+.lbcap{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:color-mix(in srgb,var(--halo) 78%,transparent);text-align:center;line-height:1.9}
+.lbcap b{color:var(--halo);font-weight:400}
+#lbx{position:fixed;top:22px;right:26px;background:none;border:1px solid rgba(255,255,255,.35);
+  color:var(--halo);width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:17px;
+  line-height:1;transition:background .3s}
+#lbx:hover{background:rgba(255,255,255,.14)}
+.cell:after,.hfig:after{content:"WATCH WITH SOUND";position:absolute;left:50%;
+  transform:translateX(-50%);font-family:var(--mono);font-size:9px;letter-spacing:.12em;
+  color:var(--halo);background:color-mix(in srgb,var(--ink) 74%,transparent);
+  padding:6px 13px;border-radius:999px;opacity:0;transition:opacity .3s ease;white-space:nowrap}
+.cell:after{bottom:14px}
+.hfig:after{bottom:52px}
+.cell:hover:after,.hfig:hover:after{opacity:1}
+.hfig{position:relative;cursor:pointer}
 </style>
 
 <div id="field" aria-hidden="true"></div>
 <div class="veil" aria-hidden="true"></div>
 <div id="cur"><span class="lab"></span></div>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="video player">
+  <button id="lbx" aria-label="close">&#10005;</button>
+  <div class="lbin">
+    <video id="lbv" controls playsinline preload="metadata"></video>
+    <div class="lbcap" id="lbc"></div>
+  </div>
+</div>
 
 <div id="gate">
   <div>
@@ -165,7 +196,7 @@
       </div>
     </div>
     <figure class="hfig">
-      <video src="media/variation.mp4" poster="media/variation-poster.jpg"
+      <video data-full="media/variation-full.mp4" data-cap="<b>Same bones, drawn</b> &mdash; ours &middot; animated &middot; 56 seconds, in full" src="media/variation.mp4" poster="media/variation-poster.jpg"
              autoplay muted loop playsinline preload="auto"></video>
       <figcaption>Made this way — no camera, no actors, no studio.</figcaption>
     </figure>
@@ -183,17 +214,17 @@
     <div class="three" id="three">
       <div class="cell src">
         <span class="badge">The swipe</span>
-        <video id="v0" src="media/source.mp4" poster="media/source-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <video id="v0" data-full="media/source-full.mp4" data-cap="<b>The confession</b> &mdash; somebody else&rsquo;s ad &middot; first 60 seconds of a longer one" src="media/source.mp4" poster="media/source-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <div class="cn"><b>The confession</b><span>somebody else's ad</span></div>
       </div>
       <div class="cell">
         <span class="badge">Ours — v1</span>
-        <video id="v1" src="media/original.mp4" poster="media/original-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <video id="v1" data-full="media/original-full.mp4" data-cap="<b>Morphed to comedy</b> &mdash; ours &middot; photoreal &middot; 50 seconds, in full" src="media/original.mp4" poster="media/original-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <div class="cn"><b>Morphed to comedy</b><span>ours · photoreal</span></div>
       </div>
       <div class="cell">
         <span class="badge">Ours — v2</span>
-        <video id="v2" src="media/variation.mp4" poster="media/variation-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
+        <video id="v2" data-full="media/variation-full.mp4" data-cap="<b>Same again, drawn</b> &mdash; ours &middot; animated &middot; 56 seconds, in full" src="media/variation.mp4" poster="media/variation-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <div class="cn"><b>Same again, drawn</b><span>ours · animated</span></div>
       </div>
     </div>
@@ -395,6 +426,34 @@ track.addEventListener('pointermove',e=>{if(drag)from(e)});
 track.addEventListener('pointerup',()=>drag=false);
 document.querySelectorAll('.cell').forEach(c=>c.addEventListener('click',()=>{
   seek(0); vs.forEach(v=>v.play().catch(()=>{})); }));
+
+/* ── the player: any clip opens full size, with sound ─────────── */
+(function(){
+  const lb=$('#lb'), v=$('#lbv'), cap=$('#lbc'), x=$('#lbx'); if(!lb) return;
+  let last=null;
+  function open(src,html,from){
+    v.src=src; cap.innerHTML=html||''; lb.classList.add('on');
+    document.body.style.overflow='hidden'; last=from||null;
+    v.currentTime=0; v.play().catch(()=>{}); x.focus();
+  }
+  function close(){
+    lb.classList.remove('on'); v.pause(); v.removeAttribute('src'); v.load();
+    document.body.style.overflow=''; if(last) last.focus();
+  }
+  x.onclick=close;
+  lb.addEventListener('click',e=>{ if(e.target===lb) close(); });
+  addEventListener('keydown',e=>{ if(e.key==='Escape'&&lb.classList.contains('on')) close(); });
+  document.querySelectorAll('video[data-full]').forEach(el=>{
+    const host=el.closest('.cell')||el.closest('.hfig')||el;
+    host.style.cursor='pointer';
+    host.setAttribute('tabindex','0');
+    host.setAttribute('role','button');
+    host.setAttribute('aria-label','Watch the full video with sound');
+    const go=e=>{ e.preventDefault(); e.stopPropagation(); open(el.dataset.full, el.dataset.cap, host); };
+    host.addEventListener('click',go);
+    host.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' ') go(e); });
+  });
+})();
 </script>
 
 </html>
