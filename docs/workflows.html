@@ -56,6 +56,132 @@
 .gmsg{font-family:var(--mono);font-size:11.5px;line-height:1.7;margin-top:12px}
 .gpriv{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--ink3);
   margin-top:14px;line-height:1.8}
+/* ── the demo ────────────────────────────────────────────────── */
+.demo{border:1px solid var(--line);background:color-mix(in srgb,var(--halo) 72%,transparent)}
+.dtabs{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+@media(max-width:820px){.dtabs{grid-template-columns:1fr 1fr}}
+.dtab{background:none;border:0;border-right:1px solid var(--line);color:var(--ink3);cursor:pointer;
+  font-family:var(--body);font-size:13.5px;text-align:left;padding:16px 18px;line-height:1.35;
+  transition:color .25s ease,background .25s ease;position:relative}
+.dtab:last-child{border-right:0}
+.dtab span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  color:var(--ink3);margin-bottom:6px}
+.dtab.on{color:var(--ink);background:var(--mist)}
+.dtab.on span{color:var(--ink)}
+.dtab.on:after{content:"";position:absolute;left:0;bottom:-1px;height:2px;background:var(--ink);
+  width:0;animation:tabbar 9s linear forwards}
+@keyframes tabbar{to{width:100%}}
+.dpane{display:none;grid-template-columns:1fr 1fr;gap:0}
+.dpane.on{display:grid}
+@media(max-width:820px){.dpane.on{grid-template-columns:1fr}}
+.dleft{padding:28px 26px;border-right:1px solid var(--line)}
+.dright{padding:28px 26px}
+@media(max-width:820px){.dleft{border-right:0;border-bottom:1px solid var(--line)}}
+.dlabel{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:14px}
+.dnote,.dfoot{font-size:13px;color:var(--ink3);margin-top:16px;line-height:1.6;max-width:46ch}
+
+/* video block */
+.vid{position:relative;aspect-ratio:9/16;max-width:200px;background:var(--mist);
+  border:1px solid var(--line);overflow:hidden}
+.vid.small{max-width:130px}
+.vid .vplayer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.vfill{position:absolute;inset:0;background:
+  repeating-linear-gradient(180deg,transparent 0 11px,color-mix(in srgb,var(--ink) 6%,transparent) 11px 12px)}
+.vcap{position:absolute;left:12px;right:12px;top:30%;font-size:12px;text-align:center;
+  color:var(--ink);text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.vplay{position:absolute;left:50%;top:50%;width:0;height:0;transform:translate(-50%,-50%);
+  border-left:16px solid var(--ink);border-top:11px solid transparent;border-bottom:11px solid transparent;opacity:.5}
+.vscan{position:absolute;left:0;right:0;height:2px;background:var(--ink);top:0;
+  box-shadow:0 0 14px var(--ink)}
+.dpane.on .vscan{animation:scan 3.4s ease-in-out infinite}
+@keyframes scan{0%{top:0}50%{top:calc(100% - 2px)}100%{top:0}}
+
+/* beat rows */
+.beats{display:grid;gap:1px}
+.brow{display:grid;grid-template-columns:52px 1fr;gap:12px;padding:9px 0;
+  border-bottom:1px solid var(--line);opacity:0;transform:translateX(-8px)}
+.dpane.on .brow{animation:slidein .45s ease forwards}
+.dpane.on .brow:nth-child(1){animation-delay:.15s}.dpane.on .brow:nth-child(2){animation-delay:.45s}
+.dpane.on .brow:nth-child(3){animation-delay:.75s}.dpane.on .brow:nth-child(4){animation-delay:1.05s}
+.dpane.on .brow:nth-child(5){animation-delay:1.35s}.dpane.on .brow:nth-child(6){animation-delay:1.65s}
+@keyframes slidein{to{opacity:1;transform:translateX(0)}}
+.bt{font-family:var(--mono);font-size:11.5px;color:var(--ink)}
+.bd{font-size:13px;color:var(--ink2);line-height:1.5}
+
+/* the four questions */
+.qs{display:grid;gap:10px}
+.q{border-left:2px solid var(--line);padding:8px 0 8px 14px;opacity:0}
+.dpane.on .q{animation:slidein .5s ease forwards}
+.dpane.on .q:nth-child(1){animation-delay:.75s}.dpane.on .q:nth-child(2){animation-delay:1.05s}
+.dpane.on .q:nth-child(3){animation-delay:1.35s}.dpane.on .q:nth-child(4){animation-delay:1.65s}
+.q b{display:block;font-size:13.5px;margin-bottom:3px}
+.q span{font-size:13px;color:var(--ink3)}
+
+/* format card */
+.fcard{background:var(--mist);border:1px solid var(--line);padding:20px}
+.fname{font-family:var(--display);font-weight:300;text-transform:uppercase;letter-spacing:.07em;
+  font-size:20px;margin-bottom:6px}
+.fmeta{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--ink);margin-bottom:14px}
+.fbody{font-size:13.5px;margin:0 0 12px}
+.fwhy{font-size:13px;color:var(--ink3);border-top:1px solid var(--line);padding-top:12px;line-height:1.6}
+
+/* the brand fill */
+.fields{display:grid;gap:8px}
+.fld{background:var(--mist);border:1px solid var(--line);padding:11px 13px;position:relative;
+  transition:border-color .3s ease}
+.fld.fire{border-color:var(--ink)}
+.fk{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:5px}
+.fv{font-size:13px;color:var(--ink2)}
+.script{background:var(--halo);border:1px solid var(--line);padding:18px;
+  font-family:var(--mono);font-size:12px;line-height:2.1}
+.sline{color:var(--ink3);white-space:normal}
+.slot{font-style:normal;color:var(--ink);border-bottom:1px dashed var(--ink);padding:0 3px;
+  transition:background .3s ease}
+.slot.hit{background:color-mix(in srgb,var(--ink) 22%,transparent)}
+
+/* prompt + shots */
+.term2{background:var(--halo);border:1px solid var(--line);padding:15px 16px;min-height:132px;
+  font-family:var(--mono);font-size:11.5px;line-height:1.8;color:var(--ink2)}
+.term2 .cur{display:inline-block;width:7px;height:12px;background:var(--ink);vertical-align:-2px;
+  animation:blip 1s steps(1) infinite}
+.shots{display:flex;align-items:flex-start;gap:16px}
+.shotfig{margin:0;width:150px}
+.shotfig .vplayer{position:static}
+.shotfig img,.shotfig video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;
+  border:1px solid var(--line);background:var(--mist)}
+.shotfig figcaption{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink3);margin-top:8px}
+.fstrip{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:18px}
+.fstrip img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;
+  border:1px solid var(--line);opacity:0}
+.dpane.on .fstrip img{animation:rise .45s ease forwards}
+.dpane.on .fstrip img:nth-child(1){animation-delay:.05s}
+.dpane.on .fstrip img:nth-child(2){animation-delay:.16s}
+.dpane.on .fstrip img:nth-child(3){animation-delay:.27s}
+.dpane.on .fstrip img:nth-child(4){animation-delay:.38s}
+.dpane.on .fstrip img:nth-child(5){animation-delay:.49s}
+.dpane.on .fstrip img:nth-child(6){animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+.shot{width:118px;aspect-ratio:9/14;background:var(--mist);border:1px solid var(--line);
+  display:grid;place-items:center;position:relative;overflow:hidden}
+.shot span{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink3);z-index:2}
+.shot:before{content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 50% 30%,color-mix(in srgb,var(--ink) 26%,transparent),transparent 70%)}
+.shot.s2:after{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,transparent 30%,color-mix(in srgb,var(--ink) 12%,transparent) 50%,transparent 70%)}
+.dpane.on .shot.moving:after{animation:sweep 2.4s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.arrow{color:var(--ink3);font-size:18px}
+
+
+.demo{border-radius:14px;overflow:hidden}
+.dtab{font-family:var(--body)}
+.vid,.shotfig img,.shotfig video,.fstrip img,.msg.shotmsg img{border-radius:8px}
+.fcard,.term,.term2,.script,.chat{border-radius:10px}
+
 </style>
 
 <nav>
@@ -116,6 +242,129 @@
         <p>Every scene comes with an image prompt and a motion note. Paste them into Supercomputer.</p></div></div>
       <div class="step"><div class="n">07</div><div><h3>Cut it to the beats</h3>
         <p>The brief's scene list is your edit order. Then do it again — there's no approval step in the middle.</p></div></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <p class="eyebrow" style="--acc:var(--ink)"><i style="color:var(--ink2)">01</i> &nbsp;Watch it happen</p>
+    <h2>A video goes in.<br>Your version<br>comes out.</h2>
+    <p style="margin-bottom:40px">This is the whole thing, playing out on one real example. Nothing to install and nothing to read first — press a step to jump to it.</p>
+
+    <div class="demo" style="--acc:var(--ink)">
+      <div class="dtabs" id="dtabs">
+        <button class="dtab on" data-d="0"><span>01</span>The video gets watched</button>
+        <button class="dtab" data-d="1"><span>02</span>The structure gets named</button>
+        <button class="dtab" data-d="2"><span>03</span>Your brand fills it in</button>
+        <button class="dtab" data-d="3"><span>04</span>The scenes get made</button>
+      </div>
+
+      <!-- 01 · the video gets watched -->
+      <div class="dpane on" data-p="0">
+        <div class="dleft">
+          <div class="vid">
+            <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
+                   muted loop playsinline preload="metadata"></video>
+            <div class="vscan"></div>
+          </div>
+          <div class="dnote">Drop the video into Supercomputer and ask it to describe every scene. That is the one thing a normal chat window cannot do — it needs to actually watch the video.</div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">What comes back</div>
+          <div class="beats" id="beatlist">
+            <div class="brow"><span class="bt">0:01</span><span class="bd">Hands hold a sealed pack at chest height. Bedroom, lamp at frame left. Face cropped out.</span></div>
+            <div class="brow"><span class="bt">0:03</span><span class="bd">Pack gone — the product bunched in both hands, held toward the lens.</span></div>
+            <div class="brow"><span class="bt">0:05</span><span class="bd">Unfurled and hanging, filling the top of frame. Cord swinging below.</span></div>
+            <div class="brow"><span class="bt">0:08</span><span class="bd">Leaning over the bed, spreading it flat. Head fully out of frame.</span></div>
+            <div class="brow"><span class="bt">0:10</span><span class="bd">Close on both hands holding the controller against the fabric.</span></div>
+            <div class="brow"><span class="bt">0:12</span><span class="bd">Tighter: one setting lit red on the controller face.</span></div>
+          </div>
+          <div class="dfoot">Every scene, written down — not summarised. That record is what everything below works from.</div>
+        </div>
+      </div>
+
+      <!-- 02 · the structure gets named -->
+      <div class="dpane" data-p="1">
+        <div class="dleft">
+          <div class="dlabel">Six moments, pulled from the video</div>
+          <div class="fstrip">
+            <img src="media/beat-1.jpg" alt=""><img src="media/beat-2.jpg" alt="">
+            <img src="media/beat-3.jpg" alt=""><img src="media/beat-4.jpg" alt="">
+            <img src="media/beat-5.jpg" alt=""><img src="media/beat-6.jpg" alt="">
+          </div>
+          <div class="qs">
+            <div class="q"><b>What does the camera do?</b><span>One locked room, cuts between two distances.</span></div>
+            <div class="q"><b>What does the text do?</b><span>One line of dialogue per shot, always mid-argument.</span></div>
+            <div class="q"><b>What order are the beats in?</b><span>Caught → accused → panic → explain → the product held up.</span></div>
+            <div class="q"><b>What is doing the persuading?</b><span>The misunderstanding. You stay to find out what it really was.</span></div>
+          </div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">So the format is</div>
+          <div class="fcard">
+            <div class="fname">Caught-in-the-act misread</div>
+            <div class="fmeta">one of 48 formats in the pack · each with the post that proved it</div>
+            <p class="fbody">Someone walks in on a scene that looks like something it is not. The argument runs while the real explanation — the product — waits until the last beat.</p>
+            <div class="fwhy">Why it works — the viewer knows something the character does not, and cannot leave until the misunderstanding lands. The product arrives as the answer, not as an interruption.</div>
+          </div>
+          <div class="dfoot">Same four questions on any video. That is why a scalp treatment and a countertop demo come back as the same format.</div>
+        </div>
+      </div>
+
+      <!-- 03 · your brand fills it in -->
+      <div class="dpane" data-p="2">
+        <div class="dleft">
+          <div class="dlabel">Your brand folder</div>
+          <div class="fields" id="fields">
+            <div class="fld" data-k="product"><span class="fk">product</span><span class="fv">a matte black tin, gold lettering, “KETTLE &amp; CO · SEASONING OIL”</span></div>
+            <div class="fld" data-k="avatar"><span class="fk">avatar</span><span class="fv">the guy whose pan keeps sticking</span></div>
+            <div class="fld" data-k="line"><span class="fk">their words</span><span class="fv">“I've re-seasoned this thing four times”</span></div>
+            <div class="fld" data-k="offer"><span class="fk">offer</span><span class="fv">one tin, $24, lasts a year</span></div>
+          </div>
+          <div class="dnote">Filled in once, in your Drive. Read fresh on every run, by every tool.</div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">The script, filling itself in</div>
+          <div class="script" id="script">
+            <div class="sline">ON SCREEN, ALL RUNTIME &nbsp;<em class="slot" data-k="line">…</em></div>
+            <div class="sline">SCENE 1 &nbsp;hands lift <em class="slot" data-k="product">…</em> out of the box</div>
+            <div class="sline">SCENE 3 &nbsp;spread flat on the counter, one unbroken take</div>
+            <div class="sline">SCENE 5 &nbsp;close on the seasoned surface — the proof detail</div>
+            <div class="sline">SPEAKING TO &nbsp;<em class="slot" data-k="avatar">…</em></div>
+            <div class="sline">CAPTION ENDS &nbsp;<em class="slot" data-k="offer">…</em></div>
+          </div>
+          <div class="dfoot">The structure stayed exactly as it was. Only what is yours changed — and none of it was invented.</div>
+        </div>
+      </div>
+
+      <!-- 04 · the scenes get made -->
+      <div class="dpane" data-p="3">
+        <div class="dleft">
+          <div class="dlabel">The brief hands you this</div>
+          <div class="term2" id="term2"></div>
+          <div class="dnote">One image prompt and one motion note per scene. Paste them into Supercomputer.</div>
+        </div>
+        <div class="dright">
+          <div class="dlabel">And you get the video</div>
+          <div class="shots">
+            <figure class="shotfig">
+              <img src="media/frame-still.jpg" alt="a generated frame">
+              <figcaption>the frame you generate</figcaption>
+            </figure>
+            <div class="arrow">→</div>
+            <figure class="shotfig">
+              <video class="vplayer" src="media/example.mp4" poster="media/example-poster.jpg"
+                     muted loop playsinline preload="metadata"></video>
+              <figcaption>the shot it becomes</figcaption>
+            </figure>
+          </div>
+          <div class="dfoot">That clip was made this way — no camera, no actors, no studio. Generate every scene of a person from the same starting frame or they will be a different human in every shot.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns" style="margin-top:34px">
+      <a class="btn" href="downloads/brand-folder-kit.zip" download>Step one — the brand folder</a>
+      <a class="btn ghost" href="downloads/video-teardown-kit.zip" download>Then the teardown kit</a>
     </div>
   </section>
 
@@ -248,6 +497,7 @@
 </div>
 
 <script>
+const $=s=>document.querySelector(s);
 (function(){
   var f=document.getElementById('gate'); if(!f) return;
   var msg=document.getElementById('gmsg');
@@ -266,5 +516,58 @@
     msg.textContent='Your email app should be opening with it written out. Send it and the files come back to you.';
   });
 })();
+/* The demo: four panes on a timer, clickable, paused while off-screen. */
+const panes=[...document.querySelectorAll('.dpane')], tabs=[...document.querySelectorAll('.dtab')];
+const VALUES={product:'a matte black tin, gold lettering',avatar:"the guy whose pan keeps sticking",
+  line:'"I\'ve re-seasoned this thing four times"',offer:'one tin, $24, lasts a year'};
+const PROMPT2=['vertical 9:16, hands only, no face','holding {PRODUCT} over a kitchen counter','window light from the left, phone-camera look','no on-screen text, nothing retouched','','MOTION  handheld, no zoom, one take'];
+let d=0, dTimer=null, fillTimer=null, typeTimer=null;
+
+function fillScript(){
+  clearInterval(fillTimer);
+  const slots=[...document.querySelectorAll('#script .slot')];
+  const flds=[...document.querySelectorAll('#fields .fld')];
+  slots.forEach(s=>{s.textContent='…';s.classList.remove('hit')});
+  flds.forEach(f=>f.classList.remove('fire'));
+  let n=0;
+  fillTimer=setInterval(()=>{
+    if(n>=slots.length){ clearInterval(fillTimer); return; }
+    const s=slots[n], k=s.dataset.k;
+    const f=flds.find(x=>x.dataset.k===k);
+    if(f){ f.classList.add('fire'); setTimeout(()=>f.classList.remove('fire'),900); }
+    s.textContent=VALUES[k]||'…'; s.classList.add('hit');
+    setTimeout(()=>s.classList.remove('hit'),900);
+    n++;
+  },1100);
+}
+function typePrompt(){
+  clearInterval(typeTimer);
+  const el=$('#term2'); if(!el) return; el.innerHTML='';
+  let l=0,c=0;
+  typeTimer=setInterval(()=>{
+    if(l>=PROMPT2.length){ clearInterval(typeTimer); el.innerHTML+='<span class="cur"></span>'; return; }
+    el.innerHTML=PROMPT2.slice(0,l).join('<br>')+(l?'<br>':'')+PROMPT2[l].slice(0,c);
+    c++; if(c>PROMPT2[l].length){ l++; c=0; }
+  },24);
+}
+function showD(n,manual){
+  d=(n+panes.length)%panes.length;
+  panes.forEach((p,k)=>p.classList.toggle('on',k===d));
+  tabs.forEach((t,k)=>t.classList.toggle('on',k===d));
+  document.querySelectorAll('.dpane .vplayer').forEach(v=>{
+    const p=v.closest('.dpane');
+    if(p && p.classList.contains('on')){ v.play().catch(()=>{}); } else { v.pause(); }
+  });
+  if(d===2) fillScript(); else clearInterval(fillTimer);
+  if(d===3) typePrompt(); else clearInterval(typeTimer);
+  if(manual) startD();
+}
+function startD(){ clearInterval(dTimer); dTimer=setInterval(()=>showD(d+1),9000); }
+tabs.forEach(t=>t.onclick=()=>showD(+t.dataset.d,true));
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ showD(d); startD(); }
+  else { clearInterval(dTimer); clearInterval(fillTimer); clearInterval(typeTimer); }
+}),{threshold:.2});
+io.observe(document.querySelector('.demo'));
 </script>
 </html>

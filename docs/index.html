@@ -14,6 +14,7 @@
 #field{position:fixed;inset:-8vh -8vw;z-index:0;pointer-events:none;
   display:grid;grid-template-columns:repeat(8,1fr);gap:1.1vw;
   transform:rotate(-9deg) scale(1.28);opacity:.20;will-change:transform}
+@media(max-width:760px){#field{grid-template-columns:repeat(4,1fr);opacity:.14;transform:rotate(-9deg) scale(1.6)}}
 #field img{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;filter:saturate(.55) contrast(.9)}
 #field .col{display:grid;gap:1.1vw;will-change:transform}
 .veil{position:fixed;inset:0;z-index:1;pointer-events:none;
@@ -26,6 +27,7 @@
     z-index:99;pointer-events:none;transform:translate(-50%,-50%);
     transition:width .3s,height .3s,opacity .3s}
   #cur.big{width:72px;height:72px;background:var(--ink);opacity:.94}
+  #cur.mid{width:30px;height:30px;opacity:.6}
   #cur .lab{position:absolute;inset:0;display:grid;place-items:center;opacity:0;
     font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;
     color:var(--halo);transition:opacity .25s}
@@ -50,7 +52,16 @@
   border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:28px}
 .rlab p{margin:0;font-size:13.5px;color:var(--ink3);max-width:46ch}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:760px){.three{grid-template-columns:1fr}}
+@media(max-width:760px){
+  .three{grid-template-columns:repeat(3,1fr);gap:8px}
+  .cn{flex-direction:column;gap:2px;font-size:8.5px;letter-spacing:.08em}
+  .cn span{font-size:8px}
+  .badge{font-size:7.5px;padding:3px 6px;top:7px;left:7px;letter-spacing:.08em}
+  .rlab{display:block}
+  .rlab p{margin-top:10px}
+  .transport{gap:12px;flex-wrap:wrap}
+  .transport .btn{flex:1 1 100%}
+}
 .cell{position:relative;cursor:pointer}
 .cell video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:var(--mist);
   border-radius:10px}
@@ -227,9 +238,29 @@ const FRAMES=["f01.jpg", "f02.jpg", "f03.jpg", "f04.jpg", "f05.jpg", "f06.jpg", 
   addEventListener('pointermove',e=>{x=e.clientX;y=e.clientY},{passive:true});
   (function l(){ cx+=(x-cx)*.22; cy+=(y-cy)*.22;
     cur.style.transform='translate('+cx+'px,'+cy+'px) translate(-50%,-50%)'; requestAnimationFrame(l); })();
-  document.addEventListener('pointerover',e=>{ const t=e.target.closest('a,button,.cell,.track');
-    if(t){ cur.classList.add('big'); cur.querySelector('.lab').textContent=t.dataset.cur||(t.closest('.cell')?'Watch':''); }
-    else cur.classList.remove('big'); });
+  /* Every interactive thing gets a word. If we cannot name it honestly the
+     bubble stays small rather than opening empty. */
+  function labelFor(el){
+    if(el.dataset.cur) return el.dataset.cur;
+    if(el.closest('.cell')) return 'Watch';
+    if(el.closest('.track')) return 'Drag';
+    if(el.hasAttribute('download')) return 'Download';
+    if(el.tagName==='A'){
+      const h=el.getAttribute('href')||'';
+      if(h.startsWith('#')) return 'Jump';
+      if(/^https?:/.test(h)) return 'Open';
+      return 'Go';
+    }
+    if(el.tagName==='BUTTON') return el.textContent.trim().split(/\s+/)[0].slice(0,9);
+    return '';
+  }
+  document.addEventListener('pointerover',e=>{
+    const el=e.target.closest('a,button,.cell,.track');
+    const lab=el?labelFor(el):'';
+    cur.querySelector('.lab').textContent=lab;
+    cur.classList.toggle('big', !!lab);
+    cur.classList.toggle('mid', !!el && !lab);
+  });
 })();
 const L='DÆMN'.split(''); let li=0;
 const mt=setInterval(()=>{ $('#mark').textContent=L[li=(li+1)%L.length]; },220);
