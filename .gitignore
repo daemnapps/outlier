@@ -29,6 +29,8 @@ output/
 # examples the site actually displays have to ship.
 !docs/media/*.mp4
 !docs/media/*.jpg
+!docs/media/**/*.jpg
+!docs/media/field/*.jpg
 
 # noise
 .DS_Store

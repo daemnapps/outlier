@@ -1,62 +1,70 @@
-# Open Source Outliers
+# DÆMN STUDIO — the tools
 
-A marketing machine you run yourself. Same tools I use on real brands — the
-swipe machine, the teardown chain, the brief generators, the prompts.
+A production studio for generative advertising, giving away its machine.
 
-**Free. MIT licensed. Runs on your machine with your own keys.** There is no
-account, no dashboard, and no server of mine holding your data.
+Take a video that already worked — a competitor's ad, an organic post,
+anything — keep its structure, and rebuild it for your own brand in whatever
+world you like. You get a script, a shot list, and a prompt for every frame.
 
-Never used a terminal? Start with **[WALKTHROUGH.md](WALKTHROUGH.md)** — it
-assumes you have never opened one.
+**Free. MIT licensed. Nothing to install.** No account, no dashboard, no
+server of ours holding your data.
 
----
-
-## What's in here
-
-> **Status: the guide is up, the toolkit is landing.** Right now this repo has
-> the installer and the walkthrough. The four folders below are being moved in.
-> Watch the repo and you'll see them arrive.
-
-
-| | |
-|---|---|
-| `swipe/` | Competitor intelligence. Point it at a rival's domain, get their whole live ad library ranked by what they're actually spending behind. |
-| `video-teardown/` | Creative → brief. Thirteen stages: triage, teardown, replication spec, injection, hooks, brief. |
-| `prompts/` | Every prompt the chain runs. Plain markdown. Read them, change them. |
-| `brands/` | Where your brands live — language bank, rules, offer bank. Yours, local. |
+**→ [daemn.co](https://daemn.co)** — see it working, with the same ad rebuilt
+three different ways.
 
 ---
 
-## Quick start
+## Start here
 
-```bash
-mkdir -p ~/outlier && cd ~/outlier
-git clone https://github.com/daemnapps/outlier.git .
-python3 -m pip install --user playwright
-claude
-```
+Everything is plain text. Read it on GitHub, or download the zips from the
+site if you would rather have it as a folder.
 
-Then, in Claude Code:
+| | What it is | Read it | Download |
+|---|---|---|---|
+| **01** | **Your brand folder** — the one thing you fill in. Every tool reads it, so you set your brand up once and never explain it again. | [`brands/_TEMPLATE/`](brands/_TEMPLATE/) | [zip](https://daemn.co/downloads/brand-folder-kit.zip) |
+| **02** | **Video teardown** — any video in, your brief out. Seven steps, written for someone who has never done this. | [`tools/02-video-teardown/`](tools/02-video-teardown/) | [zip](https://daemn.co/downloads/video-teardown-kit.zip) |
+| **03** | **Organic swipe pack** — 48 formats pulled apart from 377 posts that worked, some past a hundred million views. | [`tools/03-organic-swipe-pack/`](tools/03-organic-swipe-pack/) | [zip](https://daemn.co/downloads/swipe-to-scene-kit.zip) |
+| **04** | **Paid ad swipe pack** — 2,626 live competitor ads reduced to the ten angle shapes that keep working. | [`tools/04-paid-ad-swipe-pack/`](tools/04-paid-ad-swipe-pack/) | [zip](https://daemn.co/downloads/paid-ad-swipe-pack.zip) |
 
-```
-Read the README and tell me what this toolkit can do.
-```
+**Do 01 first.** Nothing else works well on an empty brand folder — the tools
+are built to say *"I don't know this"* rather than invent an answer, so an
+empty file shows up as a question instead of a fake.
+
+Then read
+[`tools/02-video-teardown/HOW-TO-RUN-IT.md`](tools/02-video-teardown/HOW-TO-RUN-IT.md)
+— the whole process in seven numbered steps.
 
 ---
 
-## What it does
+## What you need
 
-**Writes** — static ads, video scripts, advertorials, landing pages, quiz
-funnels, a month of email, post-purchase paths.
+1. **Claude** — the free chat at claude.ai, or Cowork.
+2. **Higgsfield Supercomputer** — where the video gets watched and where your
+   scenes get made. ([affiliate link](https://higgsfield.ai?fpr=damon61) —
+   costs you nothing extra, everything here works without it.)
+3. **Google Drive** — where your brand folder and finished briefs live.
 
-**Researches** — pulls a competitor's live ad library, clusters it into copy
-blocks, ranks them by how hard the competitor is duplicating each one, and
-captures the landing pages behind them.
+Nothing gets installed. Nothing runs on your computer.
 
-**Tears down** — takes a single creative and returns an objective record, a
-replication spec, and a brief you can hand to production.
+The exact models and settings are in
+[`WHICH-MODELS.md`](tools/02-video-teardown/WHICH-MODELS.md) — don't leave it
+on Auto.
 
-## What it will not do
+---
+
+## The two rules
+
+**Copy the structure, not the content.** The shape is what earned the views;
+your product is what changes. A scalp treatment and a countertop demo can be
+the same format — that's the whole point.
+
+**Nothing invented.** If your brand folder doesn't say what your product looks
+like or how your customer talks, the tools tell you they don't know rather than
+guessing. That's them working correctly. Go fill that part in.
+
+---
+
+## What it won't do
 
 Publish anything. Spend anything on ads. Invent a customer quote. Make a
 medical claim. Write in a voice it hasn't been given evidence for.
@@ -67,54 +75,22 @@ Those are hard stops in the prompts, not guidelines.
 
 ## What it costs
 
-The code is free. The models are not — you pay Anthropic and Google directly
-for what you use, on your own accounts.
+The tools are free and stay free. The models are not — you pay Higgsfield (or
+whichever generator you use) directly, at their prices, from your own account.
+Nothing bills through us.
 
-Rough shape: a working session costs a few dollars in Claude credits. Image
-and video generation costs more, and is optional.
-
-**Affiliate disclosure.** Links to Claude, Higgsfield and other tools used by
-this system are affiliate links. If you sign up through them I receive a
-percentage of your spend at no additional cost to you. The software here is
-free, unaffected by whether you use those links, and works identically if you
-sign up directly. This is the only way this project makes money.
+Affiliate links to tools we actually use are the only way this project makes
+money. They cost you nothing extra and everything works identically without
+them.
 
 ---
 
-## Keys you need
+## Also in here
 
-| service | required | what for |
-|---|---|---|
-| Anthropic | yes | the writing |
-| Google Gemini | yes | video analysis |
-| [Higgsfield](https://higgsfield.ai?fpr=damon61) | no | image + video generation |
-| AdPlexity | no | competitor ad libraries (the swipe tools) |
+| | |
+|---|---|
+| [`docs/`](docs/) | The site itself — daemn.co is served straight from this folder. Fork it. |
+| [`SECURITY.md`](SECURITY.md) | What's exposed, what isn't, and the commit guard that keeps keys out. |
+| [`receiver/`](receiver/) | An optional Cloudflare Worker, if you want forms that file themselves. Not required. |
 
-Start with the first two. Add the others when you need them.
-
----
-
-## Honest state of things
-
-These are live experiments, not a maintained product. Things break. Prompts
-change without warning. There is no roadmap and no SLA.
-
-**Questions go in the Questions tab, not to me directly.** No group chat, no
-support email, no DMs — one place, answered in the open so the next person
-finds it already written. See **[ASK.md](ASK.md)**.
-
-If you improve a prompt, send it back. That's the whole deal.
-
----
-
-## Two rules
-
-1. **Read what it writes before it goes anywhere.** It will not publish, send
-   or spend on its own. The last check is always you.
-2. **Correct it out loud.** It gets meaningfully better on the second run
-   because you told it what was wrong on the first. People who skip this think
-   the tools don't work.
-
----
-
-MIT — do what you like with it.
+MIT licensed. Take it, strip it, use it on your own brands.
