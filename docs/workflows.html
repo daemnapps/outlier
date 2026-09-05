@@ -245,7 +245,7 @@
     </div>
   </section>
 
-  <section id="how">
+  <section id="steps">
     <p class="eyebrow" style="--acc:var(--ink)"><i style="color:var(--ink2)">01</i> &nbsp;Watch it happen</p>
     <h2>A source goes in.<br>Your version<br>comes out.</h2>
     <p style="margin-bottom:40px">One real example, start to finish: somebody else's ad, what the machine reads in it, your brand going in, and what came out the other side. Press a step to jump to it.</p>
@@ -403,8 +403,7 @@
         <ul><li>Ten angle shapes, as fill-in-the-blank templates</li>
             <li>What the spending pattern tells you to copy</li>
             <li>A prompt to make a video version of each</li></ul>
-        <div class="foot"><a class="btn ghost" href="downloads/paid-ad-swipe-pack.zip" download>Download</a>
-        <a class="btn ghost" href="#dataset" style="margin-top:8px">Want the raw sweeps?</a></div></div>
+        <div class="foot"><a class="btn ghost" href="downloads/paid-ad-swipe-pack.zip" download>Download</a></div></div>
     </div>
   </section>
 
@@ -459,33 +458,29 @@
     </div>
   </section>
 
-  <section id="dataset">
-    <p class="eyebrow">By request · not a public download</p>
-    <div class="panel">
-      <div class="two">
-        <div>
-          <h2>The raw<br>competitor sweeps</h2>
-          <p>Behind that pack sit the actual records: four brands, every angle each one is
-            running with the real copy on it, how many creatives sit on each, and the pages
-            the traffic lands on.</p>
-          <p>That's not going on the open internet — it goes to people who make ads for us.
-            Tell me who you are and I'll send it over.</p>
+  <section id="repo">
+    <p class="eyebrow">05 — for anyone who wants the whole machine</p>
+    <div class="two">
+      <div>
+        <h2>Run it the<br>way we run it</h2>
+        <p class="lede">The four kits are the hand-operated version — paste a file, get a
+          result. If you use <b>Claude Code</b>, you can point it at the whole repo instead
+          and have it drive the chain for you, the same way we do here.</p>
+        <p class="lede">Everything is in there: the prompts, the format library, the angle
+          shapes, the brand-folder template, and this site.</p>
+      </div>
+      <div>
+        <p class="mono" style="margin-bottom:10px">Clone it</p>
+        <div class="panel" style="margin-top:0">
+          <code style="font-family:var(--mono);font-size:12.5px;display:block;line-height:1.9">git clone https://github.com/daemnapps/outlier<br>cd outlier<br>claude</code>
+          <p style="margin-top:16px;font-size:13.5px">Then tell it: <b>“Read the README and
+            set me up with a brand folder.”</b></p>
         </div>
-        <form class="gform" id="gate">
-          <div class="gf"><label for="g-name">Your name</label>
-            <input id="g-name" name="name" type="text" required maxlength="120" autocomplete="name"></div>
-          <div class="gf"><label for="g-email">Email to send it to</label>
-            <input id="g-email" name="email" type="email" required maxlength="200" autocomplete="email"></div>
-          <div class="gf"><label for="g-brand">Who do you make ads for?</label>
-            <input id="g-brand" name="brand" type="text" maxlength="200"></div>
-          <div class="gf"><label for="g-work">What are you working on?</label>
-            <textarea id="g-work" name="work" maxlength="600" rows="3"></textarea></div>
-          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button class="btn" type="submit">Request the sweeps</button>
-          <div class="gmsg" id="gmsg"></div>
-          <div class="gpriv">This opens your email with the details filled in — nothing is
-            stored on this site and no list exists to add you to.</div>
-        </form>
+        <div class="btns" style="margin-top:18px">
+          <a class="btn" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Open the repo →</a>
+          <a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Or just the folder</a>
+        </div>
+        <div class="note">MIT licensed. Fork it, strip it, run it on your own brands.</div>
       </div>
     </div>
   </section>
@@ -502,78 +497,5 @@
     directly. This is the only way this project makes money.</div>
 </div>
 
-<script>
-const $=s=>document.querySelector(s);
-(function(){
-  var f=document.getElementById('gate'); if(!f) return;
-  var msg=document.getElementById('gmsg');
-  var who=['ddixon','gradientmediallc.com'];
-  f.addEventListener('submit',function(ev){
-    ev.preventDefault();
-    if(f.website.value) return;
-    if(!f.name.value.trim()||!f.email.value.trim()){
-      msg.textContent='Name and email, then it can write the message for you.'; return; }
-    var body=['Name: '+f.name.value,'Email: '+f.email.value,
-      'Makes ads for: '+(f.brand.value||'—'),'','Working on:',(f.work.value||'—'),'',
-      'Sent from daemn.co/workflows'].join('\n');
-    window.location.href='mailto:'+who.join('@')
-      +'?subject='+encodeURIComponent('Raw competitor sweeps — access request')
-      +'&body='+encodeURIComponent(body);
-    msg.textContent='Your email app should be opening with it written out. Send it and the files come back to you.';
-  });
-})();
-/* The demo: four panes on a timer, clickable, paused while off-screen. */
-const panes=[...document.querySelectorAll('.dpane')], tabs=[...document.querySelectorAll('.dtab')];
-const VALUES={product:'a matte black tin, gold lettering',avatar:"the guy whose pan keeps sticking",
-  line:'"I\'ve re-seasoned this thing four times"',offer:'one tin, $24, lasts a year'};
-const PROMPT2=['vertical 9:16, hands only, no face','holding {PRODUCT} over a kitchen counter','window light from the left, phone-camera look','no on-screen text, nothing retouched','','MOTION  handheld, no zoom, one take'];
-let d=0, dTimer=null, fillTimer=null, typeTimer=null;
 
-function fillScript(){
-  clearInterval(fillTimer);
-  const slots=[...document.querySelectorAll('#script .slot')];
-  const flds=[...document.querySelectorAll('#fields .fld')];
-  slots.forEach(s=>{s.textContent='…';s.classList.remove('hit')});
-  flds.forEach(f=>f.classList.remove('fire'));
-  let n=0;
-  fillTimer=setInterval(()=>{
-    if(n>=slots.length){ clearInterval(fillTimer); return; }
-    const s=slots[n], k=s.dataset.k;
-    const f=flds.find(x=>x.dataset.k===k);
-    if(f){ f.classList.add('fire'); setTimeout(()=>f.classList.remove('fire'),900); }
-    s.textContent=VALUES[k]||'…'; s.classList.add('hit');
-    setTimeout(()=>s.classList.remove('hit'),900);
-    n++;
-  },1100);
-}
-function typePrompt(){
-  clearInterval(typeTimer);
-  const el=$('#term2'); if(!el) return; el.innerHTML='';
-  let l=0,c=0;
-  typeTimer=setInterval(()=>{
-    if(l>=PROMPT2.length){ clearInterval(typeTimer); el.innerHTML+='<span class="cur"></span>'; return; }
-    el.innerHTML=PROMPT2.slice(0,l).join('<br>')+(l?'<br>':'')+PROMPT2[l].slice(0,c);
-    c++; if(c>PROMPT2[l].length){ l++; c=0; }
-  },24);
-}
-function showD(n,manual){
-  d=(n+panes.length)%panes.length;
-  panes.forEach((p,k)=>p.classList.toggle('on',k===d));
-  tabs.forEach((t,k)=>t.classList.toggle('on',k===d));
-  document.querySelectorAll('.dpane .vplayer').forEach(v=>{
-    const p=v.closest('.dpane');
-    if(p && p.classList.contains('on')){ v.play().catch(()=>{}); } else { v.pause(); }
-  });
-  if(d===2) fillScript(); else clearInterval(fillTimer);
-  if(d===3) typePrompt(); else clearInterval(typeTimer);
-  if(manual) startD();
-}
-function startD(){ clearInterval(dTimer); dTimer=setInterval(()=>showD(d+1),9000); }
-tabs.forEach(t=>t.onclick=()=>showD(+t.dataset.d,true));
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){ showD(d); startD(); }
-  else { clearInterval(dTimer); clearInterval(fillTimer); clearInterval(typeTimer); }
-}),{threshold:.2});
-io.observe(document.querySelector('.demo'));
-</script>
 </html>
