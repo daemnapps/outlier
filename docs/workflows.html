@@ -226,6 +226,54 @@
   .fout{padding-left:0;border-left:0;border-top:1px solid var(--line);padding-top:8px;
     font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
 }
+
+/* ── the flow chart, running ──────────────────────────────────── */
+.flow{position:relative}
+.frow{transition:opacity .5s ease}
+.fnode{transition:transform .5s cubic-bezier(.2,.9,.3,1),border-color .5s ease,
+  background .5s ease,box-shadow .5s ease}
+.frow.idle .fnode{opacity:.42}
+.frow.live .fnode{transform:translateX(6px) scale(1.012);border-color:var(--ink);
+  box-shadow:0 18px 40px -28px rgba(63,34,30,.55);background:var(--halo)}
+.frow.done .fnode{opacity:1;border-color:var(--line)}
+.frow.idle .fwhere,.frow.idle .fout{opacity:.35}
+.fwhere,.fout{transition:opacity .5s ease,color .4s ease}
+.frow.live .fwhere{color:var(--ink)}
+.frow.live .fwhere:before{content:"";position:absolute;margin-left:-14px;width:2px;height:100%;
+  background:var(--ink)}
+.fwhere{position:relative}
+/* the output arrives when the step finishes */
+.fout{transform:translateX(-6px);opacity:0}
+.frow.done .fout,.frow.live .fout{transform:none;opacity:1}
+.frow.idle .fout{opacity:0}
+/* the connector fills as the work travels down it */
+.fline{overflow:visible}
+.fline i{position:absolute;left:0;top:0;width:1px;height:0;background:var(--ink);
+  transition:height .6s linear;display:block}
+.fgap.running .fline i{height:100%}
+.fline em{position:absolute;left:-3.5px;top:0;width:8px;height:8px;border-radius:50%;
+  background:var(--ink);opacity:0;transform:translateY(-4px)}
+.fgap.running .fline em{animation:travel .6s linear forwards}
+@keyframes travel{0%{opacity:1;transform:translateY(-4px)}100%{opacity:1;transform:translateY(18px)}}
+/* the brand folder feeding in at step five */
+.ffeed{opacity:0;transform:translateX(-10px);transition:opacity .5s ease,transform .5s ease}
+.frow.live .ffeed,.frow.done .ffeed{opacity:1;transform:none}
+.frow.live .ffeed{color:var(--ink)}
+/* the loop line at the end */
+.floop{transition:color .5s ease}
+.floop.on{color:var(--ink)}
+.fctl{display:flex;align-items:center;gap:14px;margin-top:18px}
+.fctl button{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  background:none;border:1px solid var(--line);color:var(--ink3);padding:9px 18px;
+  border-radius:999px;cursor:pointer;transition:border-color .3s,color .3s}
+.fctl button:hover{border-color:var(--ink);color:var(--ink)}
+.fprog{flex:1;height:1px;background:var(--line);position:relative}
+.fprog i{position:absolute;left:0;top:-1px;height:3px;background:var(--ink);width:0;
+  transition:width .3s linear}
+@media(prefers-reduced-motion:reduce){
+  .frow.idle .fnode,.frow.idle .fwhere,.frow.idle .fout{opacity:1}
+  .fout{opacity:1;transform:none}.ffeed{opacity:1;transform:none}
+}
 </style>
 
 <nav>
@@ -280,7 +328,7 @@
           <span class="fd">Once per brand — who you're selling to, how they talk, what the product looks like.</span></div>
         <div class="fout">A folder that every tool reads</div>
       </div>
-      <div class="fgap"><span class="fline"></span><span class="flab">set up once · then never again</span></div>
+      <div class="fgap"><span class="fline"><i></i><em></em></span><span class="flab">set up once · then never again</span></div>
 
       <div class="frow">
         <div class="fwhere">Anywhere</div>
@@ -288,7 +336,7 @@
           <span class="fd">A competitor's ad, an organic post, anything with proof behind it.</span></div>
         <div class="fout">One source video</div>
       </div>
-      <div class="fgap"><span class="fline"></span></div>
+      <div class="fgap"><span class="fline"><i></i><em></em></span></div>
 
       <div class="frow">
         <div class="fwhere sc">Supercomputer</div>
@@ -296,7 +344,7 @@
           <span class="fd">Upload it and ask for every scene. The one thing a chat window cannot do.</span></div>
         <div class="fout">The scene record</div>
       </div>
-      <div class="fgap"><span class="fline"></span></div>
+      <div class="fgap"><span class="fline"><i></i><em></em></span></div>
 
       <div class="frow">
         <div class="fwhere cl">Claude</div>
@@ -304,7 +352,7 @@
           <span class="fd">Paste the chain files in order. It names the structure, then writes the spec.</span></div>
         <div class="fout">Structure + replication spec</div>
       </div>
-      <div class="fgap"><span class="fline"></span></div>
+      <div class="fgap"><span class="fline"><i></i><em></em></span></div>
 
       <div class="frow join">
         <div class="fwhere cl">Claude</div>
@@ -313,7 +361,7 @@
           <span class="ffeed">↑ your brand folder feeds in here</span></div>
         <div class="fout">The brief — scenes, hooks, prompts</div>
       </div>
-      <div class="fgap"><span class="fline"></span></div>
+      <div class="fgap"><span class="fline"><i></i><em></em></span></div>
 
       <div class="frow">
         <div class="fwhere sc">Supercomputer</div>
@@ -321,7 +369,7 @@
           <span class="fd">An image prompt and a motion note per shot. Frame first, then the movement.</span></div>
         <div class="fout">Every shot, generated</div>
       </div>
-      <div class="fgap"><span class="fline"></span></div>
+      <div class="fgap"><span class="fline"><i></i><em></em></span></div>
 
       <div class="frow">
         <div class="fwhere">Your editor</div>
@@ -330,6 +378,11 @@
         <div class="fout final">A finished ad</div>
       </div>
 
+      <div class="fctl">
+        <button id="fplay">Pause</button>
+        <div class="fprog"><i id="fbar"></i></div>
+        <span class="mono" id="fstep">01 / 07</span>
+      </div>
       <div class="floop">↻ &nbsp;Then do it again — the folder is already done, so the next one is about twenty minutes.</div>
     </div>
   </section>
@@ -642,5 +695,44 @@ const io=new IntersectionObserver(es=>es.forEach(e=>{
   else { clearInterval(dTimer); clearInterval(fillTimer); clearInterval(typeTimer); }
 }),{threshold:.2});
 io.observe(document.querySelector('.demo'));
+
+/* ── the chart runs itself ────────────────────────────────────── */
+(function(){
+  const flow=document.querySelector('.flow'); if(!flow) return;
+  const rows=[...flow.querySelectorAll('.frow')], gaps=[...flow.querySelectorAll('.fgap')];
+  const loop=flow.querySelector('.floop'), btn=document.getElementById('fplay'),
+        bar=document.getElementById('fbar'), lab=document.getElementById('fstep');
+  const HOLD=1500, TRAVEL=650;
+  let i=0, playing=false, timer=null, seen=false;
+
+  function paint(){
+    rows.forEach((r,k)=>{
+      r.classList.toggle('live',k===i);
+      r.classList.toggle('done',k<i);
+      r.classList.toggle('idle',k>i);
+    });
+    gaps.forEach(g=>g.classList.remove('running'));
+    loop.classList.toggle('on', i===rows.length-1);
+    bar.style.width=((i+1)/rows.length*100)+'%';
+    lab.textContent=String(i+1).padStart(2,'0')+' / 0'+rows.length;
+  }
+  function step(){
+    paint();
+    timer=setTimeout(()=>{
+      if(i<gaps.length) gaps[i].classList.add('running');
+      timer=setTimeout(()=>{ i=(i+1)%rows.length; if(playing) step(); }, TRAVEL);
+    }, HOLD);
+  }
+  function play(){ if(playing) return; playing=true; btn.textContent='Pause'; step(); }
+  function pause(){ playing=false; btn.textContent='Play'; clearTimeout(timer); }
+  btn.onclick=()=>playing?pause():play();
+  rows.forEach((r,k)=>r.addEventListener('click',()=>{ pause(); i=k; paint(); }));
+
+  paint();
+  new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){ if(!seen){ seen=true; i=0; } play(); } else pause();
+  }),{threshold:.2}).observe(flow);
+})();
+
 </script>
 </html>
