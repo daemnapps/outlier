@@ -210,17 +210,17 @@ footer{border-top:1px solid var(--line);padding:28px 0 60px;font-family:var(--mo
     <div class="three" id="three">
       <div class="cell src">
         <span class="badge">The swipe</span>
-        <video id="v0" src="media/source.mp4" poster="media/source-poster.jpg" muted playsinline preload="auto"></video>
+        <video id="v0" src="media/source.mp4" poster="media/source-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <div class="cn"><b>The confession</b><span>somebody else's ad</span></div>
       </div>
       <div class="cell">
         <span class="badge">Ours — v1</span>
-        <video id="v1" src="media/original.mp4" poster="media/original-poster.jpg" muted playsinline preload="auto"></video>
+        <video id="v1" src="media/original.mp4" poster="media/original-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <div class="cn"><b>Morphed to comedy</b><span>ours · photoreal</span></div>
       </div>
       <div class="cell">
         <span class="badge">Ours — v2</span>
-        <video id="v2" src="media/variation.mp4" poster="media/variation-poster.jpg" muted playsinline preload="auto"></video>
+        <video id="v2" src="media/variation.mp4" poster="media/variation-poster.jpg" autoplay muted loop playsinline preload="auto"></video>
         <div class="cn"><b>Same again, drawn</b><span>ours · animated</span></div>
       </div>
     </div>
@@ -386,13 +386,10 @@ let dragging=false;
 track.addEventListener('pointerdown',e=>{ dragging=true; track.setPointerCapture(e.pointerId); fromEvent(e); });
 track.addEventListener('pointermove',e=>{ if(dragging) fromEvent(e); });
 track.addEventListener('pointerup',()=>{ dragging=false; });
-function ready(){ return vs.every(v=>v.readyState>=1); }
+/* They autoplay on their own. This only nudges them back into step. */
 new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting && !playing){
-    const go=()=>{ seek(0); toggle(); };
-    ready() ? go() : vs[0].addEventListener('loadedmetadata',go,{once:true});
-  } else if(!e.isIntersecting && playing){ toggle(); }
-}),{threshold:.15}).observe($('#three'));
+  if(e.isIntersecting){ vs.forEach(v=>v.play().catch(()=>{})); setTimeout(sync,300); }
+}),{threshold:.1}).observe($('#three'));
 /* and keep the button honest if the browser stops them for its own reasons */
 vs.forEach(v=>{ v.addEventListener('pause',()=>setTimeout(sync,0));
                 v.addEventListener('play',()=>setTimeout(sync,0)); });
