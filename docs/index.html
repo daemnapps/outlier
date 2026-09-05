@@ -108,6 +108,12 @@ section{padding:16vh 0 0}
 @media(max-width:760px){.three{grid-template-columns:1fr}}
 .cell{position:relative}
 .cell video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:var(--panel2)}
+.cell{cursor:pointer}
+.cell:after{content:"";position:absolute;left:50%;top:calc(50% - 18px);width:0;height:0;
+  transform:translate(-50%,-50%);border-left:19px solid #fff;border-top:13px solid transparent;
+  border-bottom:13px solid transparent;filter:drop-shadow(0 2px 10px rgba(0,0,0,.5));
+  opacity:0;transition:opacity .3s ease;pointer-events:none}
+.three.idle .cell:after{opacity:.92}
 .cn{display:flex;justify-content:space-between;gap:10px;margin-top:12px;
   font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase}
 .cn span{color:var(--ink3)}
@@ -344,15 +350,34 @@ $('#enter').onclick=open_; $('#quiet').onclick=open_;
 const vs=[$('#v0'),$('#v1'),$('#v2')], track=$('#track'), fill=$('#fill'),
       knob=$('#knob'), tnum=$('#tnum'), playBtn=$('#play');
 let playing=false;
-const dur=()=>Math.max(...vs.map(v=>v.duration||0),0.01);
+const dur=()=>{ const d=Math.max(...vs.map(v=>isFinite(v.duration)?v.duration:0)); return d>0?d:0.01; };
 function paint(t){ const p=Math.min(t/dur(),1)*100;
   fill.style.width=p+'%'; knob.style.left=p+'%';
-  tnum.textContent='0:'+String(Math.floor(t)).padStart(2,'0'); }
-function seek(t){ vs.forEach(v=>{ if(v.duration) v.currentTime=Math.min(t,v.duration-0.05); }); paint(t); }
-function toggle(){ playing=!playing;
-  vs.forEach(v=>playing?v.play().catch(()=>{}):v.pause());
+  tnum.textContent='0:'+String(Math.floor(t||0)).padStart(2,'0'); }
+/* Guard every seek: before metadata lands, duration is NaN and setting
+   currentTime to NaN throws — which used to kill playback on a cold load. */
+function seek(t){
+  if(!isFinite(t)||t<0) t=0;
+  vs.forEach(v=>{ if(isFinite(v.duration)&&v.duration>0){
+    try{ v.currentTime=Math.min(t,v.duration-0.05); }catch(e){}
+  }});
+  paint(t);
+}
+/* Play can be refused. Ask, then believe the videos rather than our own
+   variable, so the button never lies about what is happening. */
+function sync(){ playing=vs.some(v=>!v.paused);
   playBtn.textContent=playing?'Pause':'Play all three'; }
+function toggle(){
+  const want=!playing;
+  Promise.all(vs.map(v=>want?(v.play()||Promise.resolve()).catch(()=>{}):(v.pause(),null)))
+    .then(sync).catch(sync);
+  playing=want; playBtn.textContent=want?'Pause':'Play all three';
+  setTimeout(sync,400);
+}
 playBtn.onclick=toggle;
+document.querySelectorAll('.cell').forEach(c=>c.addEventListener('click',()=>{ if(!playing) toggle(); }));
+function idle(){ document.getElementById('three').classList.toggle('idle',!playing); }
+setInterval(idle,300);
 vs[0].addEventListener('timeupdate',()=>{ if(playing) paint(vs[0].currentTime); });
 vs[0].addEventListener('ended',()=>{ seek(0); vs.forEach(v=>v.play().catch(()=>{})); });
 function fromEvent(e){ const r=track.getBoundingClientRect();
@@ -361,9 +386,15 @@ let dragging=false;
 track.addEventListener('pointerdown',e=>{ dragging=true; track.setPointerCapture(e.pointerId); fromEvent(e); });
 track.addEventListener('pointermove',e=>{ if(dragging) fromEvent(e); });
 track.addEventListener('pointerup',()=>{ dragging=false; });
+function ready(){ return vs.every(v=>v.readyState>=1); }
 new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting && !playing){ seek(0); toggle(); }
-  else if(!e.isIntersecting && playing){ toggle(); }
-}),{threshold:.3}).observe($('#three'));
+  if(e.isIntersecting && !playing){
+    const go=()=>{ seek(0); toggle(); };
+    ready() ? go() : vs[0].addEventListener('loadedmetadata',go,{once:true});
+  } else if(!e.isIntersecting && playing){ toggle(); }
+}),{threshold:.15}).observe($('#three'));
+/* and keep the button honest if the browser stops them for its own reasons */
+vs.forEach(v=>{ v.addEventListener('pause',()=>setTimeout(sync,0));
+                v.addEventListener('play',()=>setTimeout(sync,0)); });
 </script>
 </html>
