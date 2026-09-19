@@ -25,7 +25,7 @@ jobs:
           for m in tools/05-portal/worlds/*/frames.json; do
             world="$(basename "$(dirname "$m")")"
             out="docs/media/portal/$world"; mkdir -p "$out"
-            jq -r 'to_entries[] | "\(.key) \(.value)"' "$m" | while read -r name url; do
+            jq -r 'to_entries[] | select(.key | startswith("_") | not) | "\(.key) \(.value)"' "$m" | while read -r name url; do
               if [ -s "$out/$name" ]; then echo "$world/$name already here"; continue; fi
               curl -fsSL --retry 3 -o "$out/$name" "$url"
               echo "$world/$name $(stat -c %s "$out/$name") bytes"

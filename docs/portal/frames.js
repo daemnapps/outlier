@@ -1,5 +1,6 @@
 // hosted copies of the frames, used only when docs/media/portal/barbershop/<file> is missing
 window.PORTAL_IMAGES = {
+  "_note": "hosted copies of the frames. The portal \u00b7 fetch frames workflow pulls these into docs/media/portal/barbershop/ and commits them; the player prefers the local file.",
   "00-door.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/f56b8177-5b72-4321-bd24-8dfb01009f4e.jpg",
   "01-wait.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/af4939fa-0a4d-4947-b123-3b8eb4d1e224.jpg",
   "02-talk.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/8849b788-3cac-4a61-b7a6-e100c48a0318.jpg",
