@@ -63,9 +63,9 @@ window.PORTAL_WORLD = {
         { y: 'Not you. Not for a while.' },
       ],
       hotspots: [
-        { x: 0.66, y: 0.20, label: 'The clock', text: '10:41. It’s gonna say 2:15 before you’re in that chair. That’s the deal. You knew that when you came.' },
+        { x: 0.82, y: 0.20, label: 'The clock', text: '10:41. It’s gonna say 2:15 before you’re in that chair. That’s the deal. You knew that when you came.' },
         { x: 0.22, y: 0.48, label: 'Unc', text: 'Been asleep since the first cut. Still ahead of you.' },
-        { x: 0.52, y: 0.60, label: 'Little man', text: 'First fade. He’s more nervous than you are.' },
+        { x: 0.78, y: 0.50, label: 'Little man', text: 'First fade'. He’s more nervous than you are.' },
       ],
       action: {
         type: 'choice', key: 'cut', who: 'Barber', ask: 'What you getting today?', next: 'Sit down',

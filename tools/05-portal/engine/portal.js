@@ -196,7 +196,7 @@
       b.addEventListener('click', (e) => {
         e.stopPropagation();
         hscap.innerHTML = '<b>' + esc(h.label) + '</b>' + esc(h.text);
-        hscap.style.top = 'calc(' + Math.min(h.y * 100 + 6, 55) + '% )';
+        hscap.style.top = 'calc(' + Math.min(h.y * 100 + 6, 34) + '% )';
         hscap.classList.add('on'); b.classList.add('seen');
         emit('hotspot', { hotspot: h.label });
       });
@@ -374,12 +374,10 @@
   };
   function renderLesson(beat, act) {
     const cfg = beat.lesson || {}; const fn = LESSONS[cfg.kind || 'ingrown'];
-    lesson.innerHTML = ''; lesson.classList.add('on');
     if (!fn) { act.appendChild(el('p', 'line note on', 'Unknown lesson kind: ' + esc(cfg.kind))); continueBtn(beat, act); return; }
-    // the cutaway sits in the picture area; the slider and steps are its own
-    const holder = el('div', 'act on'); lesson.appendChild(holder);
-    fn(cfg, holder, beat);
-    later(() => holder.querySelector('.cut') && holder.querySelector('.cut').classList.add('on'), 50);
+    // the cutaway, the slider and the steps all live in the sheet, which scrolls when a beat runs long
+    fn(cfg, act, beat);
+    later(() => act.querySelector('.cut') && act.querySelector('.cut').classList.add('on'), 50);
   }
 
   // ── the exit: the product where it lives, and the door out ─────
@@ -423,6 +421,17 @@
     const again = el('button', 'small', esc(A.again || 'Back to the door')); again.type = 'button'; again.addEventListener('click', () => { emit('restart', {}); S.ctx = {}; go(0); }); act.appendChild(again);
   }
 
+  // a beat that runs longer than the screen (the lesson, a long choice) scrolls
+  // inside the sheet; anything new that appears is scrolled into view
+  let sheetObs = null;
+  function watchSheet() {
+    const check = () => { sheet.classList.toggle('scroll', sheet.scrollHeight > sheet.clientHeight + 4); };
+    check();
+    if (sheetObs) sheetObs.disconnect();
+    sheetObs = new MutationObserver(() => { check(); if (sheet.classList.contains('scroll')) requestAnimationFrame(() => sheet.scrollTo({ top: sheet.scrollHeight, behavior: reduced ? 'auto' : 'smooth' })); });
+    sheetObs.observe(sheet, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
+  }
+
   // ── render a beat ──────────────────────────────────────────────
   function go(i) {
     if (i < 0 || i >= W.beats.length) return;
@@ -439,6 +448,7 @@
     const after = renderLines(beat, sheet);
     renderAction(beat, sheet, after + 200);
     live.textContent = (beat.lines || []).map(L => L.s || L.y || L.t || L.n || '').join(' ');
+    watchSheet();
     emit('beat', { index: i });
     if (director) renderDirector();
   }
