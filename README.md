@@ -25,6 +25,7 @@ site if you would rather have it as a folder.
 | **02** | **Video teardown** — any video in, your brief out. Seven steps, written for someone who has never done this. | [`tools/02-video-teardown/`](tools/02-video-teardown/) | [zip](https://daemn.co/downloads/video-teardown-kit.zip) |
 | **03** | **Organic swipe pack** — 48 formats pulled apart from 377 posts that worked, some past a hundred million views. | [`tools/03-organic-swipe-pack/`](tools/03-organic-swipe-pack/) | [zip](https://daemn.co/downloads/swipe-to-scene-kit.zip) |
 | **04** | **Paid ad swipe pack** — 2,626 live competitor ads reduced to the ten angle shapes that keep working. | [`tools/04-paid-ad-swipe-pack/`](tools/04-paid-ad-swipe-pack/) | [zip](https://daemn.co/downloads/paid-ad-swipe-pack.zip) |
+| **05** | **The portal** — where the ad click lands. A place your customer already knows, rebuilt from the brand folder; they walk through it and the store learns what a quiz would have asked. Player included. | [`tools/05-portal/`](tools/05-portal/) · [walk through it](https://daemn.co/portal/) | [zip](https://daemn.co/downloads/portal-kit.zip) |
 
 **Do 01 first.** Nothing else works well on an empty brand folder — the tools
 are built to say *"I don't know this"* rather than invent an answer, so an

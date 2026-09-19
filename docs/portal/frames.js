@@ -1,0 +1,13 @@
+// hosted copies of the frames, used only when docs/media/portal/barbershop/<file> is missing
+window.PORTAL_IMAGES = {
+  "00-door.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/f56b8177-5b72-4321-bd24-8dfb01009f4e.jpg",
+  "01-wait.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/af4939fa-0a4d-4947-b123-3b8eb4d1e224.jpg",
+  "02-talk.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/8849b788-3cac-4a61-b7a6-e100c48a0318.jpg",
+  "03-she-walks-in.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/bb34c535-666f-44da-b567-d215912e5ef1.jpg",
+  "04-chair.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/89b322b3-b8be-4419-9ec8-8f971ecde6c5.jpg",
+  "05-mirror.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/d0d4fb21-37ed-41f0-a8fa-909cde375772.jpg",
+  "06-station.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/1297a06c-f26b-4fd7-b400-a38577f2a751.jpg",
+  "07-aftershave.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/48e7fbc4-ab0c-4869-8963-910facb109c6.jpg",
+  "08-exit.jpg": "https://d2ol7oe51mr4n9.cloudfront.net/user_36c0fo7ubzgkpamMa7xUa1gvZKf/4c7fd5f1-e77e-4f06-ad7e-790390be7f38.jpg"
+}
+;

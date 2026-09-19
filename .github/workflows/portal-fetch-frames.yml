@@ -1,0 +1,43 @@
+# Pull a portal world's generated frames into docs/media/portal/.
+#
+# The frames are made in Higgsfield and land on its CDN. This job fetches
+# the ones listed in a world's frames.json into the repo, so the site
+# serves them itself and the world no longer depends on a third-party URL.
+# Run it by hand from the Actions tab (or `gh workflow run`), pointing it
+# at the branch that carries the world.
+name: portal · fetch frames
+on:
+  workflow_dispatch:
+    inputs:
+      world:
+        description: "world folder under tools/05-portal/worlds/"
+        default: barbershop
+        required: true
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.ref_name }}" }
+      - name: fetch the frames listed in frames.json
+        env: { WORLD: "${{ inputs.world }}" }
+        run: |
+          set -eu
+          m="tools/05-portal/worlds/$WORLD/frames.json"
+          test -f "$m" || { echo "no $m"; exit 1; }
+          mkdir -p "docs/media/portal/$WORLD"
+          jq -r 'to_entries[] | "\(.key) \(.value)"' "$m" | while read -r name url; do
+            curl -fsSL --retry 3 -o "docs/media/portal/$WORLD/$name" "$url"
+            echo "$name $(stat -c %s "docs/media/portal/$WORLD/$name") bytes"
+          done
+      - name: commit them
+        env: { WORLD: "${{ inputs.world }}" }
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "docs/media/portal/$WORLD"
+          git diff --cached --quiet && { echo "nothing new"; exit 0; }
+          git commit -m "portal: fetch $WORLD frames into docs/media/portal"
+          git push
