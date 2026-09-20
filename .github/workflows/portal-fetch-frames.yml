@@ -11,7 +11,7 @@
 name: portal · fetch frames
 on:
   push:
-    paths: ["tools/05-portal/worlds/*/frames.json"]
+    paths: ["tools/05-portal/worlds/*/frames.json", ".github/workflows/portal-fetch-frames.yml"]
   workflow_dispatch:
 permissions:
   contents: write
