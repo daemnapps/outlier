@@ -10,12 +10,13 @@ A landing page does the second by writing. Both make the person do work
 they did not come to do.
 
 A portal does both by putting the person somewhere they already know how
-to be. Nobody has to be taught how to wait in a barbershop. Nobody has to
-be told what the blue jar is. They walk in, and everything they do there —
-what they order, how long it has been, what they admit to when the room
-goes quiet — is the quiz, answered without noticing. And the one true
-thing you needed to tell them is shown to them by someone in that world
-who has no reason to lie.
+to be, and playing it the way a game would. Nobody has to be taught how to
+wait in a barbershop. Nobody has to be told what the blue jar is, or what
+a yellow marker on the floor means, or what MISSION PASSED means. They
+walk in, and everything they do there — what they order, how long it has
+been, what they admit to when the room goes quiet — is the quiz, answered
+off a wheel without noticing. And the one true thing you needed to tell
+them is shown to them by someone in that world who has no reason to lie.
 
 ## The four parts
 
@@ -24,8 +25,9 @@ problem. Not a metaphor, not a "brand world". A room with a smell. Found
 by stage 0 from the avatar, and only from the avatar: if the profile does
 not say where this person spends their Saturdays, the chain asks you.
 
-**The beats.** Eight to ten. Each one is a picture, a few lines, and one
-thing to do. The shape almost always runs:
+**The missions.** Eight to eleven. Each one is a place to stand, a marker
+to walk to, a few lines of subtitle, and one thing to do. The shape
+almost always runs:
 
 1. *The threshold* — arriving. One tap. Establish the place in one breath.
 2. *The wait* — being there. The first choice: what they came for.
@@ -47,6 +49,15 @@ thing to do. The shape almost always runs:
 
 Not every world has all ten. Every world has 1, 4, 7, 8 and 10.
 
+A mission is played, not read. The person stands in a wide plate and
+drags to look around it; the objective sits at the bottom in the HUD
+with the key noun in yellow; the marker floats over the thing to walk to;
+tapping it opens a close look and the people talk in subtitles, one tap
+per line. Then the one thing to do: **go**, a **wheel** (the quiz
+question, as a weapon wheel), a **hold** (something happening to you), a
+**get** (the product into your inventory), the **scan** (the lesson), or
+the **exit**.
+
 **The lesson.** One true mechanism, drawn, with a control the person
 moves. The barbershop's is a curly hair and a razor: slide it closer and
 watch the tip go under the skin. The player has that one built in; a new
@@ -58,10 +69,10 @@ The lesson ends with three or four things to actually do. The last of
 them is where the product lives, without its name. The product is named
 one beat later, by a person, as an object.
 
-**The context.** Every choice with a `key` is remembered. At the door the
-world says it back — *your cut: low fade · your neck: bumps and marks* —
-and the exit link carries it to the store as plain query fields, along
-with whatever tags the ad click arrived with. Your landing page, your
+**The context.** Every wheel with a `key` is remembered. On the passed
+screen the world says it back in the stats — *your cut: low fade · your
+neck: bumps and marks* — and the exit link carries it to the store as
+plain query fields, along with whatever tags the ad click arrived with. Your landing page, your
 quiz-result page, your Klaviyo flow: whatever reads those fields no longer
 has to ask.
 
@@ -77,12 +88,12 @@ That person describes it the way a person would — what it is, where it
 sits, what to do with it — never what it "delivers". If the barber sounds
 like a landing page the world collapses.
 
-**One thing per beat.** One action. Never a choice and a hold. Never two
-questions. If a beat needs two things, it is two beats.
+**One thing per mission.** One action. Never a wheel and a hold. Never
+two questions. If a mission needs two things, it is two missions.
 
-**Every question is one the funnel would have asked.** If a choice does
+**Every question is one the funnel would have asked.** If a wheel does
 not map to a field the store can use, it had better be there for the
-world's sake (beat 3) — and there is only one of those.
+world's sake (mission 3) — and there is only one of those.
 
 **Short.** A sense line is one breath. A spoken line is one thing someone
 would say out loud. The whole portal is under four minutes for a slow
@@ -94,9 +105,18 @@ learned. Nothing is inferred that the person did not say.
 ## The player
 
 `engine/` is three files and no build. It reads one world file and plays
-it. Pictures fade and drift; text arrives a line at a time; the one action
-appears last. Sound is synthesised — a room, a pair of clippers — and off
-until asked for. Holds vibrate on phones that can.
+it like a mission. A wide plate you drag to look around (tilt, on a
+phone); markers that float and bob over what to walk to, with edge
+arrows when they are off screen; a HUD you already know: cash and the
+clock top right, wanted stars, a radar bottom left with health, armor and
+a special meter under it, the objective bottom centre with the key noun in
+yellow, notifications sliding in top left, inventory slots bottom right.
+Subtitles with the speaker's name in colour. A title card with letterbox
+bars. A weapon-wheel for choices that slows the world down. A hold
+button that fills. The scan, drawn, with a slider. MISSION PASSED in gold
+with the stats ticking in and the reward card under them. Sound is
+synthesised — a room, a pair of clippers, a bell — and off until asked
+for.
 
 It runs from a file on disk, from GitHub Pages, from a Shopify asset
 folder. It phones nobody. Events go to `window.dataLayer` (so a tag
@@ -111,13 +131,13 @@ it before an ad points here.
 
 The numbers, in the order they matter:
 
-1. **Reached the lesson.** Of everyone who arrived, how many made it to
-   beat 7. If this is under half, the world is boring or the wait is
-   too long. Cut a beat.
+1. **Reached the scan.** Of everyone who arrived, how many made it to
+   mission 7. If this is under half, the world is boring or the wait is
+   too long. Cut a mission.
 2. **Moved the slider to the end.** Of those who reached the lesson, how
    many watched the bump form. If they don't, the lesson is unclear or
    the control is broken on their phone.
-3. **Took it with them.** Exit clicks over arrivals. Compare to your
+3. **Took it with them.** Reward clicks over arrivals. Compare to your
    quiz funnel's click-through at the same step.
 4. **What the store did with it.** Conversion on the landing page for
    people who arrived with context fields versus without. This is the
@@ -128,10 +148,12 @@ better than a slow one that ends at the chair.
 
 ## What it is not
 
-Not a game. There is no score and no way to lose. Not a film — nothing
-plays without them. Not a brand world — the brand is a guest. Not a quiz
-with pictures — if the choices feel like a quiz, the world is not real
-enough yet.
+Not a slideshow. If they are reading, it failed; they should be looking
+around, walking, choosing, holding. Not a real game either: there is no
+way to lose, and the mission always passes. Not a film — nothing plays
+without them. Not a brand world — the brand is a guest. Not a quiz with
+pictures — if the wheel feels like a quiz, the world is not real enough
+yet.
 
 ---
 

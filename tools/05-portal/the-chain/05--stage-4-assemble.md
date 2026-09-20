@@ -1,4 +1,4 @@
-Here are the beats: {beats}
+Here are the missions and scenes: {missions}
 Here is the lesson: {lesson}
 Here is the product: {product_file}
 Here is the offer: {offer_file}
@@ -15,10 +15,11 @@ shape, nothing else, so it can be saved as `world.js` and run.
 
 # WHAT GOES WHERE
 
-- `id`, `title`, `voice` — from the beats' place name and the person with
-  authority.
-- `theme.accent` — one colour that lives in the world. Name where it
-  comes from in a comment.
+- `id`, `title` — from the missions' place name. `title` is the title
+  card, in caps.
+- `player` — who they are in here and what is in their pocket.
+- `speakers` — every person who talks: `name` and a colour class.
+- `theme.accent` — objective yellow unless the world has its own colour.
 - `brand.name`, `brand.shopUrl` — from the variables above.
 - `brand.product.name`, `.what` — from the product file, exactly. The
   label's name, and one line of what it is.
@@ -26,23 +27,26 @@ shape, nothing else, so it can be saved as `world.js` and run.
   phrases above, verbatim. Never a phrase that is not in that list.
 - `brand.product.price`, `.priceNote` — from the offer file, only if it
   states them. Otherwise omit the fields.
-- `context` — one entry per choice key, with `say` mapping every value
-  to how it reads on the chip at the door.
-- `beats` — one per beat, in order. Fields: `id`, `time`, `eyebrow`,
-  `image` (numbered `NN-id.jpg`), `sound`, `mood` (a dark hex that
-  matches the picture, for when it is missing), `lines`, `hotspots`,
-  `action`, and for the lesson beat `lesson`, and for the hand-over beat
-  `showProduct: true`.
-- `lines` — `{ s }` sense, `{ who, t }` spoken, `{ y }` thought, `{ n }`
-  note. In the order they are read.
-- `hotspots` — `x` and `y` as fractions of the frame, estimated from the
-  picture sentence; the brand adjusts after generating.
-- `action` — `tap` / `choice` / `hold` / `lesson` / `exit`, with the
-  fields the template shows.
+- `context` — one entry per wheel key, with `say` mapping every value
+  to how it reads in the stats on the passed screen.
+- `items` — the product as a thing that can be picked up.
+- `scenes` — one per scene: `plate` (`p-id.jpg`), `ratio: 16 / 9`,
+  `mood` (a dark hex for when the picture is missing), `sound`.
+- `map` — the radar: rooms as blocks and a spot per scene, 0..1.
+- `missions` — one per mission, in order. Fields: `id`, `scene` (only
+  when it changes), `heading` (0..1, where the view starts), `facing`
+  (degrees, for the radar arrow), `clock`, `objective` (with `~y~…~s~`),
+  `marker` (`x`, `y` as fractions of the plate, `label`, `kind`, `look`),
+  `hotspots`, `lines`, `action`; and when the world would, `title`/`sub`/
+  `tag` (first mission), `note`, `cash`, `stars`, `special`.
+- `lines` — `{ who, t }`; `who: 'think'` is a thought. Optional on a
+  line: `sfx`, `note`, `stars`, `cash`, `special`, `give`.
+- `action` — `go` / `wheel` / `hold` / `get` / `scan` / `exit`, with the
+  fields the template shows. The scan carries the lesson's copy.
 
-Also produce `prompts.md`: every beat's image prompt, numbered to match
-its file name, with the anchor sentence at the top of the file and at the
-end of every prompt.
+Also produce `prompts.md`: the style block at the top, the references
+table, then one prompt per plate and per look, named to match the file
+names in the world file.
 
 # THE RULES
 
