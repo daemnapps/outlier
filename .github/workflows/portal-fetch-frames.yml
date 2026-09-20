@@ -3,7 +3,8 @@
 # The frames are made in Higgsfield and land on its CDN. A world lists
 # them in its frames.json; this job fetches any that are not in the repo
 # yet and commits them, so the site serves its own copies and the world
-# stops depending on a third-party URL.
+# stops depending on a third-party URL. A frame listed as .jpg is converted
+# and capped at 2048px on its long side so a phone never downloads a 6 MB png.
 #
 # Runs on its own when a frames.json changes on any branch, or by hand
 # from the Actions tab.
@@ -27,7 +28,11 @@ jobs:
             out="docs/media/portal/$world"; mkdir -p "$out"
             jq -r 'to_entries[] | select(.key | startswith("_") | not) | "\(.key) \(.value)"' "$m" | while read -r name url; do
               if [ -s "$out/$name" ]; then echo "$world/$name already here"; continue; fi
-              curl -fsSL --retry 3 -o "$out/$name" "$url"
+              curl -fsSL --retry 3 -o /tmp/frame "$url"
+              case "$name" in
+                *.jpg|*.jpeg) convert /tmp/frame -resize '2048x2048>' -strip -interlace Plane -quality 84 "$out/$name" ;;
+                *) mv /tmp/frame "$out/$name" ;;
+              esac
               echo "$world/$name $(stat -c %s "$out/$name") bytes"
             done
           done
