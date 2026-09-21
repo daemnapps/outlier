@@ -238,7 +238,7 @@ that we've worked with… analyze the audio specifically and create voice
 prints"): `research_gatherer/voiceprint.py`. For every ready post in the
 brand drive's newest `SELECTED-<date>.json` it pulls the audio with ffmpeg
 (mono 16 kHz), transcribes it ONCE on ElevenLabs Scribe with word
-timestamps (kept at `brands/<brand>/creators/<handle>/transcripts/<post>.json`,
+timestamps (kept at `runs/research/<brand>/creators/<handle>/transcripts/<post>.json`,
 so a second run spends nothing), and measures the SPOKEN PROFILE — words per
 minute, sentence length, fragment rate, contraction rate, marker inventory,
 openers, sign-offs, questions, pauses, energy off the wav, in-words and

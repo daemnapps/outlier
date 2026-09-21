@@ -34,7 +34,7 @@ rather than guessing. `components/video-teardown/machine/research.py` and
 any sibling chain's shim hand in their own map; this engine holds none.
 
 Reuses rather than re-implements (workspace convention — CC-3):
-  - `control-room/tools/reddit.py` — the Reddit door: its actor,
+  - `components/apify/reddit.py` — the Reddit door: its actor,
     its flags, its cap, its 403 handling. Driven through its own CLI
     contract (`main()` + `sys.argv`).
   - `swipe-organic/apify.py` — the shared Apify layer (token,
@@ -83,10 +83,23 @@ def configure(workspace=None):
 
 
 def _reddit_tool():
+    c = WORKSPACE / "components" / "apify" / "reddit.py"
+    if c.is_file():
+        return c
     return WORKSPACE / "lab" / "damon" / "control-room" / "tools" / "reddit.py"
 
 
 def _swipe_apify():
+    """The Apify layer — a component since 2026-09-22.
+
+    It used to live in one person's lab folder, which made this component
+    depend on that folder and shipped a path that does not exist in the
+    public repo. The old location still re-exports, so it stays as a
+    fallback for a workspace that has not moved yet.
+    """
+    c = WORKSPACE / "components" / "apify" / "apify.py"
+    if c.is_file():
+        return c
     return WORKSPACE / "lab" / "damon" / "swipe-organic" / "apify.py"
 
 
@@ -172,7 +185,7 @@ def _load_module(path, name):
 
 
 def reddit_door():
-    """`control-room/tools/reddit.py`, loaded once. Pure at import
+    """`components/apify/reddit.py`, loaded once. Pure at import
     time — no network call happens until `.main()` runs."""
     global _reddit_mod
     if _reddit_mod is None:

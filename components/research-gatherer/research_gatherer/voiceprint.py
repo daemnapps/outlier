@@ -24,8 +24,9 @@ drive:
    inventory · openers · sign-offs · questions per minute · pause profile ·
    energy (RMS and zero-crossing summary off the wav — no numpy) · the top
    in-words and phrases, each with one receipt (post id + timestamp);
-4. writes `brands/<brand>/creators/<handle>/voiceprint.json` + `voiceprint.md`
-   and the brand roll-up `brands/<brand>/creators/VOICEPRINTS.md`, keyed to
+4. writes `runs/research/<brand>/creators/<handle>/voiceprint.json` +
+   `voiceprint.md` and the roll-up `runs/research/<brand>/creators/VOICEPRINTS.md`,
+   keyed to
    the avatar and sub-avatar each creator's profile.md names.
 
 Every number carries its denominator. Every phrase carries a receipt. The
@@ -508,7 +509,19 @@ def roll_up(handle: str, posts: list[dict]) -> dict:
 # --------------------------------------------------------------- brand side
 
 def creators_root(brand: str, root: Path | None = None) -> Path:
+    """The creators' ROSTER — `profile.md` per handle. Brand truth, curated by
+    people; this machine only ever READS it."""
     return (root or WORKSPACE) / "brands" / brand / "creators"
+
+
+def research_root(brand: str, root: Path | None = None) -> Path:
+    """Where this machine's own output lives — transcripts, per-creator
+    voiceprints and the brand roll-up. Damon ruled 2026-09-21 "all research
+    should live in the research component moving forward"; the phase-1 rule
+    (runs/README.md) keeps a machine's record under `runs/<machine>/<brand>/`
+    and out of `brands/`, which is read-only to machines. 65 <brand> files
+    moved here from `brands/<brand>/creators/` at that ruling."""
+    return (root or WORKSPACE) / "runs" / "research" / brand / "creators"
 
 
 def avatar_slugs(brand: str, root: Path | None = None) -> tuple[list[str], dict[str, list[str]]]:
@@ -698,7 +711,7 @@ def render_rollup(brand: str, rows: list[dict]) -> str:
 def run_creator(brand: str, handle: str, posts: list[dict], key: str | None,
                 dry_run: bool = False, transport=None, root: Path | None = None,
                 scratch: Path | None = None, ffmpeg: str = FFMPEG) -> dict | None:
-    home = creators_root(brand, root) / handle
+    home = research_root(brand, root) / handle
     tdir = home / "transcripts"
     scratch = scratch or Path(tempfile.mkdtemp(prefix="voiceprint-"))
     measured = []
@@ -782,13 +795,14 @@ def main(argv=None) -> int:
     # the roll-up reads EVERY voiceprint.json on file, so a single-creator run
     # still refreshes the brand page rather than shrinking it to one row
     all_rows = []
-    for d in sorted(creators_root(a.brand, root).iterdir()):
+    vroot = research_root(a.brand, root)
+    for d in (sorted(vroot.iterdir()) if vroot.is_dir() else []):
         f = d / "voiceprint.json"
         if f.is_file():
             vp = read_json(f)
             all_rows.append({"vp": vp, "fit": vp.get("avatar_fit") or avatar_fit(a.brand, d.name, root)})
     if all_rows and not a.dry_run:
-        out = creators_root(a.brand, root) / "VOICEPRINTS.md"
+        out = research_root(a.brand, root) / "VOICEPRINTS.md"
         out.write_text(render_rollup(a.brand, all_rows))
         print(f"\nroll-up: {out} ({len(all_rows)} creators)")
     return 0
