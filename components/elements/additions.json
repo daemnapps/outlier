@@ -1,0 +1,35 @@
+{
+ "_what": "Rows Damon has named that no source list holds yet. Each one is a draft until he defines and signs it; the 'what' says so rather than guessing a definition for him.",
+ "rows": [
+  {
+   "element": "format",
+   "asset": "video",
+   "id": "storytelling",
+   "name": "Storytelling ad",
+   "what": "[TO DEFINE — named by Damon 2026-09-19 as a format we collect]",
+   "status": "draft",
+   "signed": null,
+   "evidence": "Damon, 2026-09-19: \"the storytelling ad\""
+  },
+  {
+   "element": "format",
+   "asset": "video",
+   "id": "holistic-healer-authority",
+   "name": "Holistic healer authority",
+   "what": "[TO DEFINE — named by Damon 2026-09-19 as a format we collect]",
+   "status": "draft",
+   "signed": null,
+   "evidence": "Damon, 2026-09-19: \"the holistic healer authority\""
+  },
+  {
+   "element": "format",
+   "asset": "image",
+   "id": "native-facebook-image",
+   "name": "Native Facebook image",
+   "what": "[TO DEFINE — named by Damon 2026-09-19 as a format we collect]",
+   "status": "draft",
+   "signed": null,
+   "evidence": "Damon, 2026-09-19: \"a native-looking image on Facebook\""
+  }
+ ]
+}

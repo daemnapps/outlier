@@ -1,0 +1,499 @@
+{
+ "element": "format",
+ "asset": "image",
+ "source": "image-production/format-bank.json",
+ "enforced_by": null,
+ "note": null,
+ "rows": [
+  {
+   "id": "stickynote",
+   "name": "Handwritten note, held",
+   "what": "A hand holds a small handwritten note to camera beside the product, shallow focus, real surface. The claim is entirely in the handwriting.",
+   "why_it_works": "Handwriting reads as a person, not a brand, so the claim lands before the defence goes up. Cheapest shape in the bank — no model, no studio, no retouching.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1dh5bcyJtexV675SQFxupYytQQd9X0gty/view",
+   "evidence": "duplicated ×4 in the sample, across two different copy blocks",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a first-person realisation",
+     "a rejection of the expensive alternative",
+     "a plain result"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "ugcscreenshot",
+   "name": "UGC post, screenshotted",
+   "what": "A real woman at her mirror or holding her phone, shot as if it were her own post, with review cards or step panels laid over it. Often framed as a phone screen.",
+   "why_it_works": "It is the closest thing in the paid set to what she already scrolls. The ad borrows the shape of organic content rather than interrupting it.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1VtT7oCLRuBYAW9wDQ2mkp3-37Iq78EqG/view",
+   "evidence": "duplicated ×4 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a demonstration",
+     "a first-person result",
+     "a routine"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "pricestrike",
+   "name": "Struck price",
+   "what": "Old price struck through, new price beside it, usually circled or in a pill. Product and little else.",
+   "why_it_works": "Does one job with no argument at all, which is why it survives being run at volume alongside everything else.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1vLzT3UbhlzvDz9R1eVAog8oTU4g0_M0d/view",
+   "evidence": "duplicated ×6 in the sample — the most repeated treatment overall, though it is an offer shape not an argument shape",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "an offer"
+    ]
+   }
+  },
+  {
+   "id": "splitdata",
+   "name": "Split with data labels",
+   "what": "Two macro images side by side, each with one hard label in a black pill — a number, a name, a state. No sentence.",
+   "why_it_works": "Asserts a difference without claiming a result, so it reads as information rather than advertising and survives review.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/119QUO4WOKzxux_BWQ2GHtTgOqONni9_g/view",
+   "evidence": "duplicated ×3 in the Froya science block",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a mechanism",
+     "an ingredient comparison",
+     "a why-the-others-failed"
+    ]
+   }
+  },
+  {
+   "id": "redcircle",
+   "name": "Red-circle annotation",
+   "what": "A photograph with a hand-drawn red ellipse around the thing being pointed at, usually with a short pointer label.",
+   "why_it_works": "The most recognisable 'look here' mark there is, borrowed from evidence rather than advertising.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1uMq-BVW7W7mtXhNuVR7otMJ6McRKIXFD/view",
+   "evidence": "duplicated across BOTH advertisers — 4+ in the Froya science block, plus before/after use in <competitor>",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "anything needing one detail isolated"
+    ]
+   }
+  },
+  {
+   "id": "notesapp",
+   "name": "Phone notes list",
+   "what": "A screenshot of the notes app: lowercase title, then five or six em-dash lines. No photography at all.",
+   "why_it_works": "Reads as something she wrote for herself. A list carries six objections in one ad without feeling like a feature list.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1isCLC0eJJEIGTtzwrYcmeUKj51FxncD3/view",
+   "evidence": "duplicated ×2 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "an accumulated list of failed fixes",
+     "the routine a product ends"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "handannotated",
+   "name": "Hand-annotated product",
+   "what": "The product on a plain ground with pencil arrows and handwritten notes pointing at parts of it.",
+   "why_it_works": "Same trick as the sticky note at spec-sheet scale — handwriting makes a claim list feel like a person explaining rather than a brand listing.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1zBsjNnS84PqWXYIclgOHVnwL4nfPfzKP/view",
+   "evidence": "duplicated ×3 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "the whole offer in one frame",
+     "an ingredient list made visual"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "annotateddiagram",
+   "name": "Annotated diagram",
+   "what": "A medical or technical illustration with leader lines to labelled parts, in textbook language rather than brand language.",
+   "why_it_works": "Borrows the authority of the reference book, and carries a mechanism with no person in frame — so no casting problem.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1cxkN8g60VzMM7n6GFs7u5zSjCIho4sQB/view",
+   "evidence": "duplicated ×2, plus near-relatives (histology grid, molecular render) in the same block",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a mechanism",
+     "an ingredient story",
+     "the anatomy of the problem"
+    ]
+   }
+  },
+  {
+   "id": "fakeeditorial",
+   "name": "Editorial page",
+   "what": "Laid out as a magazine or news page — masthead, standfirst, a highlighted passage — with the product inside the article.",
+   "why_it_works": "Arrives as journalism. It is the static version of the advertorial the account already runs its winner through.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1X9MD5VTc4BpU_HUfD4qtSyfhU7IKqI2u/view",
+   "evidence": "duplicated ×2 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a long argument",
+     "a study or mechanism",
+     "a founder story"
+    ]
+   }
+  },
+  {
+   "id": "studyfigure",
+   "name": "Study figure",
+   "what": "An actual scientific chart — axes, error bars, significance stars — with one result circled.",
+   "why_it_works": "The only shape in the set that looks like it was not made for the ad.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1Q9ZbDwmml58F3eDtlEMRBpw3WCal_Bgr/view",
+   "evidence": "duplicated ×2 in the Froya science block",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a mechanism with a real citation behind it"
+    ]
+   }
+  },
+  {
+   "id": "instore",
+   "name": "Shot in the shop",
+   "what": "Documentary photograph at a counter or shelf — real lighting, real staff, nothing styled.",
+   "why_it_works": "Reads as a photograph somebody took, not a set that was built. Strong pairing with the native long-form play.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1wnBWZEkXLWAq7DGc7vffJkujRhjtysQ9/view",
+   "evidence": "duplicated ×2 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a demonstration",
+     "a third-party endorsement"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "usvsthem",
+   "name": "Us versus the shelf",
+   "what": "Their whole category on one side — a wall of competing bottles — and one product on the other.",
+   "why_it_works": "Turns the number of things she has already tried into the argument.",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1eXU15S1aw81Dn0SjHokWzkOBiC_t7TSA/view",
+   "evidence": "duplicated ×2 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "a why-everything-else-failed",
+     "an accumulated list of failed fixes"
+    ]
+   }
+  },
+  {
+   "id": "annotatedface",
+   "name": "Annotated face",
+   "what": "One face, split or part-treated, with small callout labels naming each side and a headline in her voice.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1rxJvd1yX56YxBrjlVqkiN-1xUB7jubMD/view",
+   "evidence": "observed ×2 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a visible result",
+     "a same-person comparison"
+    ]
+   }
+  },
+  {
+   "id": "ugcselfie",
+   "name": "Selfie with a review pinned",
+   "what": "A real unretouched selfie with a single review card floating over it.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1W34xyC8JW3Vn5SkMaKHAwYGI79vH4iGI/view",
+   "evidence": "observed ×2",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "social proof at human scale"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "reviewcluster",
+   "name": "Review cluster",
+   "what": "Three or four review cards scattered over a plain ground with one aggregate line under them.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1dithP4vEqcB34VwxGuQpoPWhxIhJj98q/view",
+   "evidence": "observed ×1",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "social proof at volume"
+    ]
+   }
+  },
+  {
+   "id": "commentstat",
+   "name": "Comment plus number",
+   "what": "A screenshotted comment pinned top-left, one very large percentage under it, and the panel it came from named.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/117SQSPbZEQaC5vHdoR3gO0Nfb9RbikBG/view",
+   "evidence": "observed ×1, with a big-number-plus-model variant in a second block",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a claim that needs a denominator"
+    ]
+   }
+  },
+  {
+   "id": "essaycard",
+   "name": "Editorial essay card",
+   "what": "A quiet interior photograph, a serif headline and three short paragraphs — a magazine page, not an ad.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1pcfZr8mZc2McTvGTydfZULK_yu3lV0JD/view",
+   "evidence": "observed ×2",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a cost-of-the-alternative argument",
+     "anything needing length"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "specstarburst",
+   "name": "Spec callouts",
+   "what": "Product dead centre on white, five or six benefit labels radiating on thin leader lines.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1kQNzsuWq_eRWwzhv8jhB2CbduYSWJMpg/view",
+   "evidence": "observed ×1",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "the whole offer in one frame"
+    ]
+   }
+  },
+  {
+   "id": "abpoll",
+   "name": "A/B question",
+   "what": "A single face split down the middle with a literal question and two buttons under it.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1e53PjsnBVW8vuhhx7uWFFP2f1BYzGsn5/view",
+   "evidence": "observed ×1",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a demonstration that invites a reply"
+    ],
+    "native_crossover": true
+   }
+  },
+  {
+   "id": "enemyheadline",
+   "name": "Enemy headline",
+   "what": "Heavy condensed type on black naming the thing that failed her, product small and low in frame.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1VmaNBhWapEyuDvtc_uBIox4Ml6avXsOz/view",
+   "evidence": "observed ×1, but it opens the most-duplicated Froya block",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a why-everything-else-failed"
+    ]
+   }
+  },
+  {
+   "id": "splitstudyclaim",
+   "name": "Split face with a study claim",
+   "what": "A face split down the middle on black, with a percentage claim set across it.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/13Feoh5UKiukOP4Q5ScNNiIhPrqhiB2_B/view",
+   "evidence": "observed ×1",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a mechanism",
+     "a why-everything-else-failed"
+    ]
+   }
+  },
+  {
+   "id": "scancompare",
+   "name": "Scan comparison",
+   "what": "Two ultrasound or microscopy frames side by side, red circles on the difference, timeframes labelled.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1AXyCk_nO1DCAmkrgVztt_FDbk2VvsoAF/view",
+   "evidence": "observed ×2 in the Froya science block",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a mechanism",
+     "a timeline"
+    ]
+   }
+  },
+  {
+   "id": "darkbenefitlist",
+   "name": "Dark benefit stack",
+   "what": "Three or four benefit rows stacked over a dark, moody product photograph.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1D55-oVyH2U-MqmQRYLif1tO_zoZ8ml_8/view",
+   "evidence": "observed ×1",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "the whole offer in one frame"
+    ]
+   }
+  },
+  {
+   "id": "authorityborrow",
+   "name": "Borrowed authority",
+   "what": "The product in the hands of someone whose uniform does the arguing.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1vIdaYo7FAtZsFSQv9bVMgTSWICUEy_T7/view",
+   "evidence": "observed ×3 in the sample",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "observed",
+    "carries": [
+     "a trust claim"
+    ]
+   }
+  },
+  {
+   "id": "bignumberpromo",
+   "name": "Big number",
+   "what": "The discount at enormous scale, product clustered under it.",
+   "why_it_works": "",
+   "status": "draft",
+   "signed": null,
+   "examples": "https://drive.google.com/file/d/1mNni9zb5vriurSfaywaQKN3MYkMDlGwR/view",
+   "evidence": "duplicated ×8 in the Froya clearance block — the single most repeated shape in that advertiser's set",
+   "approved": false,
+   "source": "image-production/format-bank.json",
+   "extra": {
+    "provenance": "duplicated",
+    "carries": [
+     "an offer"
+    ]
+   }
+  },
+  {
+   "id": "native-facebook-image",
+   "name": "Native Facebook image",
+   "what": "[TO DEFINE — named by Damon 2026-09-19 as a format we collect]",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "Damon, 2026-09-19: \"a native-looking image on Facebook\"",
+   "approved": false,
+   "source": "components/elements/additions.json",
+   "extra": {}
+  }
+ ],
+ "duplicates": []
+}

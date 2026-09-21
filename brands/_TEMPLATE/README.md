@@ -1,89 +1,99 @@
-# Your brand folder
+# _TEMPLATE — the brand folder every brand copies
 
-The tools know how to take a video apart and write an ad. They know nothing
-about your brand — on purpose. Everything about you lives in one folder, and
-they read it fresh every single time.
-
-**Fill this in once. That is the only setup there is.**
-
-## Where to put it
-
-Put a copy of this whole folder in your Google Drive and rename it after your
-brand. Open each file and replace the prompts in angle brackets with your own
-answers — you can edit them as Google Docs, or in any text editor you like.
-Keep the folder shape and the file names exactly as they are; that is how the
-tools find each part.
+Ruled by Damon, 2026-08-30, during the naming pass. A new brand starts as a
+copy of this tree; the brand-agnostic tools assume exactly these paths, for
+every brand, no exceptions. If a folder earns a new home, it moves HERE and
+in every brand in the same commit.
 
 ```
-Your Brand/
-  core-avatars/
-    your-avatar/
-      profile.md            ← who you are selling to
-      language/
-        rules.md            ← how to write for them, and what never to say
-        prospects.json      ← their real sentences, copied exactly
-      sub-avatars/          ← narrower versions of the same person (optional)
-    objection-bank.md       ← why they don't buy
-  products/
-    your-product.md         ← what it is, and what it looks like
-    offer-bank.md           ← what you're selling, and for how much
-  identity-anchors.md       ← names and claims allowed on camera
-  hook-ledger.md            ← opening lines you have already used
-  variables/video.md        ← the map. Leave it alone.
+<brand>/
+  README.md                          what this brand is; the folder test
+  data-sources.md                    where every derived file's data comes from
+  core-avatars/                      one folder per avatar; sub-avatars inside
+    language-index.json / .md        the language bank's index
+    objection-bank.md                what stops them — the avatars' objections
+    <avatar>/profile.md              who they are
+    <avatar>/language/**/*.json      their real sentences, by funnel stage
+    <avatar>/sub-avatars/*.md
+  calendar/
+    moments.json                     cross-channel moments
+  email/                             the email channel's record
+    identity/sender.md               who emails come from
+    audience-matrix.json             segment × avatar planning cells
+    ledger · classified · learnings · performance · segments · sends/
+  strategy/
+    angles.json                      the one angle source; only Damon signs
+    board.html + build_board.py      the judgment surface
+  products/                          one profile per product, from the live feed
+  offers/
+    offer-bank.md                    the offers, split by avatar. IT IS HERE,
+                                     not under products/ — this tree said
+                                     products/ until 2026-09-19 while both live
+                                     brands had offers/offer-bank.md, and seven
+                                     config lines were repointed at the real one
+  operations/                        the brand's own operating facts
+    brand.json                       label, accounts, timezone, start month,
+                                     rates (freight, payment, lead days)
+    products.json                    every product and its SKUs, pack sizes,
+                                     sets, costs, weights, production days
+  existing-content/                  what the brand has already shipped or proven
+    ads/  emails/  organic/
+    landing-pages/                   the backbone of every page type we make:
+      quiz/ · advertorials/ · listicles/ · offer pages (acquisition,
+      pre-sell, retention) — one folder per page type
+    angles.md                        receipted angles (staying here for now)
+  variables/                         one variable map per surface (email.md, …)
+  customer-service-documentation/    the CS playbook, .html + .md
+  creators/                          the creator program: one folder per creator
+  ai-cast/                           the brand's AI characters (CHARACTER-SPEC)
+  hook-ledger.md                     {hook_ledger} — spent hooks never regenerate
+  identity-anchors.md                {identity_anchors} — who chains may name
+  position.md                        {position} — the line, the mechanism, the market
+                                     stage, as labelled slots (2026-09-19); copy
+                                     _TEMPLATE/position.md, fill every slot or write
+                                     `open`; lint_position.py gates the shape; a brand
+                                     without one refuses at the audience stage
 ```
 
-If you use Claude Cowork, connect your Drive and point it at this folder — it can read
-the files itself. If you use the Claude chat, open a file and paste it in
-when a step asks for it.
+**THIS TREE IS THE STANDARD, AND IT HAS DRIFTED FROM BOTH LIVE BRANDS BEFORE.**
+`brands/<brand>/README.md` binds a structure change to land here and there in the
+same commit, so a folder that exists in a brand and not here is a broken promise,
+not a detail. Three were found on 2026-09-19 by comparing this file against the
+two live trees: `offers/` (added above, and it was WRONG rather than missing —
+`offer-bank.md` was filed under `products/`), `operations/` (added above, the
+missed rider of MET-C24 (brand operations folder), ruled 2026-09-16 and built in
+both brands the same day), and `meta/`, which is DELIBERATELY STILL ABSENT — it
+is Damon's and undecided, and phase 2 rules it rather than this edit.
 
-## Fill them in in this order
+One thing this edit does NOT fix, so it is not lost: `brands/<brand>/` carries BOTH
+`offers/offer-bank.md` and `commerce/offer-bank.md`. Two files with one name and
+no ruling on which is the offer bank. That is brand content and a human's call,
+and it belongs to the phase-2 consolidation.
 
-Each one answers a question the tools will otherwise get wrong. They are
-built to say *"I don't know this"* rather than invent an answer — so an
-empty document shows up as a question, not a fake.
+Rules that travel with the tree: brand context is read-only to tools during a
+run · every fact derived, never typed · one variable vocabulary across lanes ·
+one avatar per piece.
 
-**1 · `profile.md`** — the avatar. One real person, not a group. Give them a name that tells
-their story, never a demographic label: "the guy whose marks never fade"
-beats "males 18–24". The age and location go at the end, in one line. If you
-sell to two people who would never say the same sentence, that is two
-avatars — write two documents, and never blend them.
+## The four axes a brand runs on
 
-**2 · `language/prospects.json`** — their words. Real sentences from real people: Reviews, comments,
-DMs, support tickets, Reddit threads. Copy them exactly, typos and all, and
-note where each came from. This is what lets an ad use words your customer
-has already said. Never include anyone's name, email or phone number.
+Everything a brand makes is one point in four independent axes
+(`components/naming/MODEL.md`), and each axis has exactly one home:
 
-**3 · `language/rules.md`** — how to write for them, and the words you may never use.
+| Axis | Answers | Lives in | Seeded here? |
+|---|---|---|---|
+| **Avatar** | who is this for? | `core-avatars/<slug>/profile.md` | yes — shell + rules |
+| **Angle** | what are we claiming? | `strategy/angles.json` | yes — shell + rules |
+| **Channel** | where does it run? | **shared, not per brand** — `copy/bank/channel-map.json` | n/a |
+| **Format** | how is it built? | 25 banks — `components/naming/registry.json` | partly: `offers/`, `email/` |
 
-**4 · `products/your-product.md`** — describe it the way a camera sees it. The container, the
-colour, the finish, the cap, every word printed on the label. **This is the
-one people skip and regret**: a model that is not told what your product
-looks like will invent packaging, and every image you generate will show a
-product that is not yours.
+**An angle is channel-free and format-free.** The same claim runs as a paid
+static, an organic video, an email and a landing page. A thing that only works
+in one container is a format. This is checked, not merely asked for.
 
-**5 · `products/offer-bank.md`** — what is actually for sale. Price, what is included, the
-guarantee, subscription terms.
+### `channels/` does not hold channels
 
-**6 · `objection-bank.md`** — the reasons people do not buy, in their words. The
-middle of every script answers one of these.
-
-**7 · `identity-anchors.md`** — who and what is allowed on camera: your founder,
-your ingredients, your certifications, results you can actually back. If it
-is not on that list, it does not go in an ad.
-
-## How you know it is finished
-
-Give the avatar profile and their words to someone who has never met your
-customer. Ask them to write one line. If you read it and think *"that is
-exactly how they talk"* — you are done. If not, add more real sentences.
-
-## The rule underneath all of it
-
-**Nothing invented.** Every document here exists so the tools can be specific
-without guessing. A brief that admits it does not know your packaging is
-useful. One that confidently describes the wrong packaging is not.
-
----
-
-*Open Source Outliers — daemn.co. Free, MIT licensed. Your brand folder is
-yours: it lives in your Drive, and nothing here sends it anywhere.*
+Both live brands have a `channels/` folder and neither holds the channel
+vocabulary — they hold creator contacts and rosters. The four channels
+(paid-social, organic-social, email, owned-pages) are shared across brands and
+live in the channel map. **The folder is named after the wrong thing**, which is
+recorded here so a new brand does not copy the confusion.

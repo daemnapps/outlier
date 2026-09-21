@@ -1,0 +1,148 @@
+{
+ "element": "format",
+ "asset": "video",
+ "source": "ai-video-production/formats/bank.json",
+ "enforced_by": "the AI video machine's preflight; the second door (compose.py)",
+ "note": null,
+ "rows": [
+  {
+   "id": "song-ad",
+   "name": "Song ad",
+   "what": "one lyric line, illustrated; shot length = line spacing; the product late and small",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "2026-09-03 (fal) and 2026-09-04 (Higgsfield) — the calls are the provider pages; 2026-09-16 again on Higgsfield, record not in the repo; filed: runs/<brand>/<run> (2026-09-16, Higgsfield)",
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "song-ad.md",
+    "notes": "the first format run end to end; its two runs became providers/fal.md and providers/higgsfield.md"
+   }
+  },
+  {
+   "id": "single-presenter",
+   "name": "Single presenter",
+   "what": "one person to camera, one line, one of several locations",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "2026-09-16 on Higgsfield with a demonstration beat inside it — runs/<brand>/<run>",
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "single-presenter.md",
+    "notes": "the UGC shape — the workhorse; profile written 2026-09-02, not yet run end to end on this machine"
+   }
+  },
+  {
+   "id": "meme",
+   "name": "Meme",
+   "what": "one swiped meme beat — the source's decisive action kept unchanged; the caption added at the edit",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "2026-09-16 on Higgsfield — record not in the repo (chat sandbox); profile drafted from the session's reports, for Damon to correct",
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "meme.md",
+    "notes": "the source's scroll-stopper is the whole format; a softened action is a failed piece — the 16 Sep pack holds no record of this piece; kzn03 and <competitor>-06 are not it"
+   }
+  },
+  {
+   "id": "expert-consult",
+   "name": "Expert consultation",
+   "what": "one presenter takes the same problem to several experts in turn; the price of each answer is the argument, the product is the last expert",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "2026-09-16 on Higgsfield — runs/<brand>/<run>",
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "expert-consult.md",
+    "notes": "Damon 2026-09-17: the storytelling piece with Keri is this format, and expert-consult is its name. Was two draft rows; now one."
+   }
+  },
+  {
+   "id": "demonstration",
+   "name": "Demonstration",
+   "what": "the product doing the work — hands, surfaces, before and after; an action is one beat",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": null,
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "demonstration.md",
+    "notes": "profile written 2026-09-02, not yet run end to end on this machine"
+   }
+  },
+  {
+   "id": "micro-drama",
+   "name": "Micro-drama",
+   "what": "several characters in one continuous set — a confrontation, a turn, an offer",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": null,
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "micro-drama.md",
+    "notes": "the method was first proven on this shape (2026-09-01 production); no piece has run this machine's route end to end"
+   }
+  },
+  {
+   "id": "testimonial-montage",
+   "name": "Testimonial montage",
+   "what": "one person, one line, one room, many times over — the accumulation is the argument",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": null,
+   "approved": false,
+   "source": "ai-video-production/formats/bank.json",
+   "extra": {
+    "profile": "testimonial-montage.md",
+    "notes": "profile written 2026-09-02, not yet run end to end on this machine"
+   }
+  },
+  {
+   "id": "storytelling",
+   "name": "Storytelling ad",
+   "what": "[TO DEFINE — named by Damon 2026-09-19 as a format we collect]",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "Damon, 2026-09-19: \"the storytelling ad\"",
+   "approved": false,
+   "source": "components/elements/additions.json",
+   "extra": {}
+  },
+  {
+   "id": "holistic-healer-authority",
+   "name": "Holistic healer authority",
+   "what": "[TO DEFINE — named by Damon 2026-09-19 as a format we collect]",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": "Damon, 2026-09-19: \"the holistic healer authority\"",
+   "approved": false,
+   "source": "components/elements/additions.json",
+   "extra": {}
+  }
+ ],
+ "duplicates": []
+}

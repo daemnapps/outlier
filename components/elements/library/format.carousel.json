@@ -1,0 +1,9 @@
+{
+ "element": "format",
+ "asset": "carousel",
+ "source": "components/elements/sources.json (inline)",
+ "enforced_by": null,
+ "note": "No carousel format list exists anywhere yet.",
+ "rows": [],
+ "duplicates": []
+}

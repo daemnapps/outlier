@@ -1,0 +1,76 @@
+{
+ "element": "style",
+ "asset": "caption",
+ "source": "video-edit/looks/bank.json",
+ "enforced_by": "the video edit's gate (cutsheet.py) refuses a caption look that is not a row",
+ "note": "Caption looks — how the words on screen look and move. A setting, never a re-edit.",
+ "rows": [
+  {
+   "id": "bold-highlight",
+   "name": "Bold highlight",
+   "what": "Big white capitals with a black outline, 2–4 words at a time, the word being spoken turns yellow and pops.",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": null,
+   "approved": false,
+   "source": "video-edit/looks/bank.json",
+   "extra": {
+    "font": "'Arial Black','Helvetica Neue',Arial,sans-serif",
+    "size_px": 84,
+    "case": "upper",
+    "color": "#FFFFFF",
+    "highlight": "#FFD84A",
+    "y_pct": 66,
+    "max_words": 3,
+    "entrance": "pop"
+   }
+  },
+  {
+   "id": "clean-lower",
+   "name": "Clean lower",
+   "what": "Sentence-case white words on a soft dark plate, low in the frame. Reads like a subtitle, not a shout.",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": null,
+   "approved": false,
+   "source": "video-edit/looks/bank.json",
+   "extra": {
+    "font": "'Helvetica Neue',Arial,sans-serif",
+    "size_px": 58,
+    "case": "sentence",
+    "color": "#FFFFFF",
+    "highlight": "#FFFFFF",
+    "y_pct": 72,
+    "max_words": 5,
+    "entrance": "rise"
+   }
+  },
+  {
+   "id": "one-word",
+   "name": "One word",
+   "what": "One huge word at a time, dead centre. For hooks and fast cuts.",
+   "why_it_works": null,
+   "status": "draft",
+   "signed": null,
+   "examples": null,
+   "evidence": null,
+   "approved": false,
+   "source": "video-edit/looks/bank.json",
+   "extra": {
+    "font": "'Arial Black','Helvetica Neue',Arial,sans-serif",
+    "size_px": 128,
+    "case": "upper",
+    "color": "#FFFFFF",
+    "highlight": "#FFFFFF",
+    "y_pct": 50,
+    "max_words": 1,
+    "entrance": "pop"
+   }
+  }
+ ],
+ "duplicates": []
+}
