@@ -1,4 +1,7 @@
 Here is a complete teardown of a video asset: {teardown_record}
+Here is the doctrine read of the source: {doctrine_read}
+Here are the five sophistication stages, with what each one leads with:
+{sophistication_stages}
 
 Turn it into a replication spec: the discrete, reusable elements that make
 this asset work, abstracted from its brand, product and subject so it can
@@ -20,7 +23,7 @@ about the brand being sold, not about vocabulary for describing a look.
 **Every element is discrete and injectable.** One element is one thing to
 build. Each one names where a new brand's material enters.
 
-Give me these six sections.
+Give me these seven sections.
 
 **1. FORMAT**
 
@@ -60,12 +63,38 @@ fill-in line with its slots marked in brackets — for example: "If you
 [REVERSE-PSYCHOLOGY REASON]." Under each beat, state its job in one line
 and quote the source's version.
 
-**5. LOAD-BEARING**
+**5. SOPHISTICATION SIGNATURE**
+
+Which stage-move this asset runs, named from the five stages supplied above
+and spelled exactly as that list spells it: the plain claim · the claim
+enlarged · a mechanism · the mechanism enlarged · identification only.
+
+**Carry the signature forward from the doctrine read above — it has already
+been read off the source and cited, so do not re-derive it here.** Print it
+with the beat the doctrine read cited. A spec that reaches a different
+signature than the banked read has silently forked the record; if the
+teardown genuinely contradicts the read, print the doctrine read's answer
+and say where the contradiction is, and let a human settle it.
+
+This is a reading of the SOURCE, not a decision about our version. An asset
+that states a benefit and stops is not running a mechanism because it
+mentions how something works later on; the signature is what the asset leads
+with, and where the weight of its argument sits.
+
+Then one line — and it is the reason this section exists: **what the
+signature makes load-bearing.** A mechanism asset's load-bearing part is the
+explanation, so a replication that keeps the pacing and drops the how has
+copied nothing. A claim-enlargement asset's load-bearing part is the scale of
+the claim itself. An identification asset carries neither, and its
+load-bearing part is who the viewer is being shown as. Section 6 must agree
+with this line; if it does not, one of the two is wrong and you say so here.
+
+**6. LOAD-BEARING**
 
 The elements that carry the performance — change them and the asset stops
 working. One line of why for each.
 
-**6. SWAPPABLE**
+**7. SWAPPABLE**
 
 The elements that can change freely per brand at no cost. One line of why
 for each.

@@ -10,11 +10,6 @@ Here are the five sophistication stages, with what each one leads with:
 Here is our brand's declared position — its LINE, SPINE, MECHANISM, the MARKET STAGE it sells
 into and what that stage LEADS WITH, as labelled slots: {position}
 Here is our brand's story — who tells our version and what happens to them: its SPINE, TELLERS, STORIES with their beats and who each fits, and, once stage 1b has run, the story and teller this run picked (THIS RUN'S STORY), as labelled slots; `[UNFILLED]` when the brand has no story yet: {story}
-Here is the audience this run was DECLARED for before it started, as labelled slots — `NONE` when nothing was declared: {declared_audience}
-
-*v10 (2026-09-20, Damon: "tighten up truly unaware-level ads for sure"): the declared slot may also carry a `DECLARED AWARENESS`. A post pulled from the entertainment lane of an organic feed is what this person watches BEFORE any problem is on their mind — so our version enters at that rung, and this pass no longer talks itself up the ladder.*
-
-*v9 (2026-09-20, Damon: "adjust so that it works if it needs a sub-avatar adjustment" — the organic feeds): reads `{declared_audience}`. A video pulled from one sub-avatar's own organic feed arrives already knowing who it is for; this pass no longer re-guesses that.*
 
 *v8 (2026-09-19, Damon: "storytelling and intent over volume" — the Conscious Bar swipe): reads `{story}`, the brand's story file beside its position. Picks ONE story and ONE teller for the run, the way it picks the avatar: who tells our version, never what the script says.*
 
@@ -50,35 +45,6 @@ files, not about who this speaks to. If the reader you name has a thin bank,
 name them anyway and say the bank is thin — that is the finding.
 
 ---
-
-**0 · THE DECLARED AUDIENCE — read this before 1 and 5**
-
-When `{declared_audience}` carries a `DECLARED AVATAR` and a `DECLARED
-SUB-AVATAR`, that decision was made upstream and it is final: the video was
-found in that person's own organic feed — it is what they already watch — and
-the run exists to rebuild it FOR them. Print those exact keys at `AVATAR:` and
-`SUB-AVATAR:`. Do not argue them from the record and do not swap them for a
-reader the source "fits better"; an entertainment swipe fits nobody's problem,
-which is the point of it. `AVATAR WHY` says it was declared, and then what in
-the teardown this person would recognise.
-
-Everything else on this page is still yours to decide, and you decide it FOR
-that declared person: the funnel, the lead desire, the awareness, the
-sophistication, the story and teller, the route, the topics.
-
-**When the slot also carries a `DECLARED AWARENESS`, that is final too.** Print
-that exact level key at `AWARENESS:`, and at `AWARENESS MUST NOT:` quote that
-level's must_not from the slice, word for word. Do not reason your way to a
-higher rung because "our reader carries the problem" — he does, and he is not
-thinking about it while he scrolls; the declared rung is where he is STANDING
-when this ad reaches him. `AWARENESS WHY` says it was declared, then names the
-beat in the teardown where our version can open on him — his world, his
-people, his humour — with nothing of ours in frame. The lead desire is still
-yours to find; at an `unaware` entry it is a desire he would own out loud,
-never the problem and never the claim.
-
-When the slot says `NONE`, this section does not exist — decide the avatar and
-the sub-avatar from the record, exactly as 1 and 5 say.
 
 **1 · AVATAR**
 

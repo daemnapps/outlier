@@ -50,21 +50,26 @@ works from it.
 
 Open Claude. Start a new chat. Paste in, in this order:
 
-1. The contents of `the-chain/stage-1-teardown.md`
+1. The contents of `the-chain/02--stage-1-teardown.md`
 2. Your scene record from step 1
 
 Claude writes back the teardown: the structure underneath the video. Keep it.
 
 ### Step 3 — Turn it into a spec
 
-Same chat. Paste in `the-chain/stage-2-replication.md`.
+Same chat. Paste in `the-chain/05--stage-2-replication.md`.
+
+*(Optional, and worth it: before this, paste `the-chain/04--stage-1c-doctrine.md`
+to read the source against direct-response doctrine first. And if you want to
+build from a framework instead of a swiped video, `the-chain/06--stage-2f-compose.md`
+replaces this step entirely.)*
 
 You get back a spec — the video described as something rebuildable, with the
 brand-specific parts pulled out and left blank.
 
 ### Step 4 — Put your brand in
 
-Same chat. Paste in `the-chain/stage-3-injection.md`, then attach or paste
+Same chat. Paste in `the-chain/07--stage-3-injection.md`, then attach or paste
 your brand folder documents — the avatar, the language, the product, the
 offers.
 
@@ -76,8 +81,8 @@ theirs was.
 
 ### Step 5 — Write the hooks and finish the script
 
-Same chat, in this order: `the-chain/stage-4-loop.md`, then
-`the-chain/stage-5-brief.md`.
+Same chat, in this order: `the-chain/08--stage-4-loop.md`, then
+`the-chain/09--stage-5-brief.md`.
 
 What comes back is the brief — the scenes, what is said, what the person
 wears, the hook options, and a prompt for every frame you need to make.

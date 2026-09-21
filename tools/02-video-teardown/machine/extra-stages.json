@@ -1,0 +1,214 @@
+{
+  "_note": "Stages Damon adds on top of the shared chain config. The shared file stays untouched; these are appended after it.",
+  "stages": [
+    {
+      "stage": "stage4r",
+      "prompt": "stage4r-read-v4-damon.md",
+      "role": "stage",
+      "vars": {
+        "baseline_injection": "@stage3",
+        "teardown_record": "@stage1",
+        "replication_spec": "@stage2",
+        "product_file": "brands/<brand>/products/body-scrub.md",
+        "objection_bank": "brands/<brand>/customer/objection-bank.md"
+      }
+    },
+    {
+      "stage": "stage7",
+      "prompt": "stage7-inject-v1-damon.md",
+      "role": "assemble",
+      "vars": {
+        "brief": "@stage5",
+        "frames": "@stage6"
+      }
+    },
+    {
+      "stage": "stage8",
+      "prompt": "stage8-profile-v1-damon.md",
+      "role": "profile",
+      "note": "Damon's ruling 2026-08-30: after a teardown run of a creator's own content, her brand-side profile refreshes itself — the avatar workflow run on a real person. Creator runs only; swipe runs record it skipped. The ~vars are gathered by creator_profile.py (her record, her runs, the brand's spec); WHERE the profile lands and WHICH spec shapes it come from brands/<brand>/channels/creators/profile-home.json, never from this machine (rule 4). A failure here never stops the run — a brief is never lost to a profile.",
+      "vars": {
+        "profile_spec": "~profile_spec",
+        "creator_record": "~creator_record",
+        "teardown_material": "~teardown_material",
+        "existing_profile": "~existing_profile",
+        "handle": "~handle",
+        "brand_name": "#brand_name",
+        "today": "!today"
+      }
+    },
+    {
+      "stage": "stage7b",
+      "prompt": "stage7b-page-v1-damon.md",
+      "role": "page",
+      "note": "Damon, 2026-09-02, after Becky, Joanna and Pam read the spec itself: one run, two documents. Stage 5 stays the spec (pictures, audit, editor); this writes the one sheet she reads from the finished spec, and the Doc holds this instead of the spec. brief_count is gathered by run.py: how many briefs this creator has in her folder.",
+      "vars": {
+        "brief": "@stage7",
+        "product_file": "brands/<brand>/products/",
+        "offer_file": "brands/<brand>/offers/offer-bank.md",
+        "creator_profile": "=UNASSIGNED. The run supplies this when it is a creator's own post.",
+        "brief_count": "~brief_count",
+        "brand_contact": "brands/<brand>/channels/creators/contact.md",
+        "today": "!today"
+      }
+    },
+    {
+      "stage": "stage1c",
+      "prompt": "stage1c-doctrine-v3-damon.md",
+      "role": "stage",
+      "note": "The doctrine read of the SOURCE AS SWIPED (Damon's ruling 2026-09-18): 'every time we run a swipe, we'll run it through a marketing doctrine step too so we have full awareness of it and can clearly identify the unique framework of that video and bank it for later.' It reads the framework, the sections carried, the awareness the source enters and exits on, the stage-move it runs, the desire it rides, the techniques visible per section, the mood, and — from v2 — the DELIVERY READ (how the source is performed: humor level, delivery style, register, pacing, the reference world it visibly leans on and what it avoids) — all off the teardown record, cited, never improved. It decides nothing about our version: 1b answers for OUR reader and takes the source's reading from here rather than re-deriving it. Its fenced json block is filed as <run>/doctrine.json and compiled into the framework bank by framework_bank.py.",
+      "vars": {
+        "video_formats": "components/elements/library/format.video.json",
+        "video_structures": "components/elements/library/structure.video.json"
+      }
+    },
+    {
+      "stage": "stage4g",
+      "prompt": "stage4g-spice-v3-damon.md",
+      "role": "stage",
+      "note": "The creative pass, after the loop and before the brief (Damon's ruling 2026-09-18). Clean injection first, then the spice: why this format lands for THIS avatar, the cast voice it is spoken in, the styling, the mood register, and — from v2 — the delivery dials (humor level, delivery style, register, pacing, reference world, avoid), each one KEPT from the source's own delivery read or SWAPPED for this avatar's world with the receipt, plus the delivery script: every line as handed in with performance direction in brackets. Every research question is ANSWERED by the gatherer (~research), never guessed — an unanswered question is [UNFILLED] and its spice item is cut. It never changes a word of the script. v3 (2026-09-19, Damon: \"humans don't use em dashes when speaking\"): section 4 becomes THE SPOKEN SCRIPT — every paragraph rewritten for the mouth at the colloquialism level the sub-avatar's dials and research rows support, matched to the brand's measured creator voiceprints (~voiceprint), printed as the voice model reads it, with the level and the receipt on every change and a voice-settings block per scene; then the performance brackets as before. Binds {spoken} (components/marketing-doctrine/slices/spoken.md).",
+      "vars": {
+        "injected_script": "@stage4d",
+        "scene_record": "@stage1",
+        "avatar": "brands/<brand>/customer/avatar.md",
+        "language_bank": "brands/<brand>/customer/language-bank.md",
+        "product_file": "brands/<brand>/products/",
+        "research": "~research",
+        "research_questions": "components/marketing-doctrine/slices/research-questions.md",
+        "techniques": "components/marketing-doctrine/slices/techniques.md",
+        "mood": "components/marketing-doctrine/slices/mood.md",
+        "delivery": "components/marketing-doctrine/slices/delivery.md",
+        "doctrine_read": "@stage1c",
+        "spoken": "components/marketing-doctrine/slices/spoken.md",
+        "voiceprint": "~voiceprint"
+      }
+    },
+    {
+      "stage": "stage2f",
+      "prompt": "stage2f-compose-v1-damon.md",
+      "role": "stage",
+      "note": "THE COMPOSE — the second door (Damon's ruling 2026-09-18): 'with all of the different sections we should begin to assemble actual frameworks to create ads strategically. We use swipes as the baseline, but since we have a fundamental system and understanding of who we are speaking to and how and what formats they're receptive to, we can pump out mounds of video and photo ads.' It runs in stage 2's slot on the FRAMEWORK lane ONLY (chain.py LANE_ONLY) and nowhere else: there is no swipe, so instead of abstracting a source into a construct it WRITES one from the chosen framework row, phase by phase, each phase naming its section id, its technique, its scene shape and the mandate. Its output is in the exact shape stage 2 prints, so stage 3 v9 consumes it unchanged and the whole chain after it is untouched. ad_framework and format_profile are supplied by compose.py as run values; market_state is 1b's own labelled-slot stand-in, written by compose.py from the flags.",
+      "vars": {
+        "ad_framework": "~ad_framework",
+        "sections": "components/marketing-doctrine/slices/sections.md",
+        "techniques": "components/marketing-doctrine/slices/techniques.md",
+        "awareness_levels": "components/marketing-doctrine/slices/awareness.md",
+        "sophistication_stages": "components/marketing-doctrine/slices/sophistication.md",
+        "format_profile": "~format_profile",
+        "market_state": "@stage1b",
+        "avatar": "brands/<brand>/customer/avatar.md",
+        "language": "?compose",
+        "research": "~research",
+        "product_file": "brands/<brand>/products/",
+        "offer_file": "brands/<brand>/offers/offer-bank.md",
+        "today": "!today"
+      }
+    }
+  ],
+  "_vars_note": "source_url and hook_set are bound per run, not from the shared config",
+  "stage_vars": {
+    "stage5": {
+      "delivery": "components/marketing-doctrine/slices/delivery.md",
+      "hook_set": "@stage4b",
+      "source_url": "~source_url",
+      "teardown_record": "@stage1",
+      "baseline_injection": "@stage3",
+      "brand_contact": "brands/<brand>/channels/creators/contact.md",
+      "spice_sheet": "@stage4g",
+      "spoken": "components/marketing-doctrine/slices/spoken.md"
+    },
+    "stage4a": {
+      "source_reading": "@stage4r",
+      "hook_set": "@stage4b",
+      "position": "brands/<brand>/position.md"
+    },
+    "stage4b": {
+      "source_reading": "@stage4r",
+      "language": "?hooks",
+      "awareness_levels": "components/marketing-doctrine/slices/awareness.md",
+      "position": "brands/<brand>/position.md",
+      "story": "~story"
+    },
+    "stage3": {
+      "language": "?injection",
+      "techniques": "components/marketing-doctrine/slices/techniques.md",
+      "position": "brands/<brand>/position.md",
+      "story": "~story"
+    },
+    "stage4c": {
+      "language": "?expansion",
+      "techniques": "components/marketing-doctrine/slices/techniques.md",
+      "sections": "components/marketing-doctrine/slices/sections.md",
+      "sophistication_stages": "components/marketing-doctrine/slices/sophistication.md",
+      "research": "~research",
+      "story": "~story"
+    },
+    "stage1": {
+      "sections": "components/marketing-doctrine/slices/sections.md"
+    },
+    "stage1c": {
+      "teardown_record": "@stage1",
+      "sections": "components/marketing-doctrine/slices/sections.md",
+      "awareness_levels": "components/marketing-doctrine/slices/awareness.md",
+      "sophistication_stages": "components/marketing-doctrine/slices/sophistication.md",
+      "techniques": "components/marketing-doctrine/slices/techniques.md",
+      "desire_dimensions": "components/marketing-doctrine/slices/desire.md",
+      "mood": "components/marketing-doctrine/slices/mood.md",
+      "delivery": "components/marketing-doctrine/slices/delivery.md"
+    },
+    "stage1b": {
+      "doctrine_read": "@stage1c",
+      "desire_dimensions": "components/marketing-doctrine/slices/desire.md",
+      "awareness_levels": "components/marketing-doctrine/slices/awareness.md",
+      "sophistication_stages": "components/marketing-doctrine/slices/sophistication.md",
+      "position": "brands/<brand>/position.md",
+      "story": "~story",
+      "declared_audience": "~declared_audience"
+    },
+    "stage2": {
+      "doctrine_read": "@stage1c",
+      "sophistication_stages": "components/marketing-doctrine/slices/sophistication.md"
+    },
+    "stage4r": {
+      "awareness_levels": "components/marketing-doctrine/slices/awareness.md"
+    },
+    "stage4d": {
+      "offer_close": "components/marketing-doctrine/slices/offer-close.md",
+      "verification": "components/marketing-doctrine/slices/verification.md"
+    },
+    "stage4e": {
+      "awareness_levels": "components/marketing-doctrine/slices/awareness.md",
+      "sophistication_stages": "components/marketing-doctrine/slices/sophistication.md"
+    },
+    "stage2f": {
+      "position": "brands/<brand>/position.md",
+      "story": "~story"
+    },
+    "stage4g": {
+      "story": "~story"
+    }
+  },
+  "order": [
+    "stage0",
+    "stage1",
+    "stage1c",
+    "stage1b",
+    "stage2",
+    "stage2f",
+    "stage3",
+    "stage4r",
+    "stage4b",
+    "stage4a",
+    "stage4c",
+    "stage4d",
+    "stage4e",
+    "stage4g",
+    "stage5",
+    "stage6",
+    "stage7",
+    "stage7b",
+    "stage8"
+  ],
+  "_position_note": "2026-09-19: {position} = brands/<brand>/position.md — the brand's declared LINE, MECHANISM and MARKET STAGE as labelled slots. Bound to the audience, compose, injection, hook and placement stages. A brand without the file refuses loudly at 1b (brand file missing), which is the intended gate: no line, no run.",
+  "_story_note": "2026-09-19: {story} = brands/<brand>/story.md — the brand's storytelling framework beside its position (SPINE, TELLERS, STORIES with beats and fits). Bound as the soft ~story fill to audience (picks STORY + TELLER), compose, injection (the main one), hooks, expansion and spice. A brand with no story.md runs as before with [UNFILLED]; story-builder drafts one. 1b's STORY/TELLER are recorded in run.json market_state and appended to {story} for every later stage."
+}

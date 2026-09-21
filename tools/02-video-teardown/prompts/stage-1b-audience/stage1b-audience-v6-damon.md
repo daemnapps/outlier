@@ -7,16 +7,6 @@ Here are the five awareness levels, with what each one must and must not do:
 {awareness_levels}
 Here are the five sophistication stages, with what each one leads with:
 {sophistication_stages}
-Here is our brand's declared position — its LINE, SPINE, MECHANISM, the MARKET STAGE it sells
-into and what that stage LEADS WITH, as labelled slots: {position}
-Here is our brand's story — who tells our version and what happens to them: its SPINE, TELLERS, STORIES with their beats and who each fits, and, once stage 1b has run, the story and teller this run picked (THIS RUN'S STORY), as labelled slots; `[UNFILLED]` when the brand has no story yet: {story}
-Here is the audience this run was DECLARED for before it started, as labelled slots — `NONE` when nothing was declared: {declared_audience}
-
-*v10 (2026-09-20, Damon: "tighten up truly unaware-level ads for sure"): the declared slot may also carry a `DECLARED AWARENESS`. A post pulled from the entertainment lane of an organic feed is what this person watches BEFORE any problem is on their mind — so our version enters at that rung, and this pass no longer talks itself up the ladder.*
-
-*v9 (2026-09-20, Damon: "adjust so that it works if it needs a sub-avatar adjustment" — the organic feeds): reads `{declared_audience}`. A video pulled from one sub-avatar's own organic feed arrives already knowing who it is for; this pass no longer re-guesses that.*
-
-*v8 (2026-09-19, Damon: "storytelling and intent over volume" — the Conscious Bar swipe): reads `{story}`, the brand's story file beside its position. Picks ONE story and ONE teller for the run, the way it picks the avatar: who tells our version, never what the script says.*
 
 The video has been broken down. Decide **who our version speaks to**.
 
@@ -50,35 +40,6 @@ files, not about who this speaks to. If the reader you name has a thin bank,
 name them anyway and say the bank is thin — that is the finding.
 
 ---
-
-**0 · THE DECLARED AUDIENCE — read this before 1 and 5**
-
-When `{declared_audience}` carries a `DECLARED AVATAR` and a `DECLARED
-SUB-AVATAR`, that decision was made upstream and it is final: the video was
-found in that person's own organic feed — it is what they already watch — and
-the run exists to rebuild it FOR them. Print those exact keys at `AVATAR:` and
-`SUB-AVATAR:`. Do not argue them from the record and do not swap them for a
-reader the source "fits better"; an entertainment swipe fits nobody's problem,
-which is the point of it. `AVATAR WHY` says it was declared, and then what in
-the teardown this person would recognise.
-
-Everything else on this page is still yours to decide, and you decide it FOR
-that declared person: the funnel, the lead desire, the awareness, the
-sophistication, the story and teller, the route, the topics.
-
-**When the slot also carries a `DECLARED AWARENESS`, that is final too.** Print
-that exact level key at `AWARENESS:`, and at `AWARENESS MUST NOT:` quote that
-level's must_not from the slice, word for word. Do not reason your way to a
-higher rung because "our reader carries the problem" — he does, and he is not
-thinking about it while he scrolls; the declared rung is where he is STANDING
-when this ad reaches him. `AWARENESS WHY` says it was declared, then names the
-beat in the teardown where our version can open on him — his world, his
-people, his humour — with nothing of ours in frame. The lead desire is still
-yours to find; at an `unaware` entry it is a desire he would own out loud,
-never the problem and never the claim.
-
-When the slot says `NONE`, this section does not exist — decide the avatar and
-the sub-avatar from the record, exactly as 1 and 5 say.
 
 **1 · AVATAR**
 
@@ -174,32 +135,6 @@ and what has already been claimed at them. A whole-category reset restarts
 the clock at the first stage — say so if one has happened. Name what the
 stage means the asset must lead with.
 
-**Then read the brand's own declaration.** `{position}` names the `MARKET STAGE`
-the brand believes it sells into, and `STAGE WHY`. Your read of the market and
-the brand's declaration are two answers to the same question. Print both, and say
-whether they agree. **A disagreement is a finding, not a fault to smooth over:**
-keep the answer your evidence supports, print the brand's beside it, cite what
-each rests on, and leave the ruling to the owner. Never move your answer to match
-the file, and never rewrite the file. If the block says `confirmed by:` a person,
-say so — a confirmed stage outranks a single swipe's read for what the asset
-leads with, and the disagreement still prints.
-
-**And the line.** `LINE` is why this product exists for this reader. Say in one
-line whether the lead desire you named is the one the LINE serves. If it is not,
-that is a second finding: either the desire is the wrong lead or the line is,
-and the owner decides which.
-
-**And the story.** `{story}` lists the brand's STORIES, each with the avatars and
-sub-avatars it **Fits** and the **Teller** who can tell it. Pick the ONE story whose
-Fits includes the avatar you named (and the sub-avatar, if you narrowed), and whose
-beats this swipe's structure can carry: a source with no turn cannot carry a story
-built on one. Then pick ONE teller from that story's Teller line. Cite the teardown
-beat that carries the story's turn. This is the same kind of decision as the avatar,
-who tells our version, and it decides nothing about the script. If `{story}` is
-`[UNFILLED]`, or no story fits, answer `STORY: none fit`. **Never invent a story,
-and never pick one whose Fits excludes the avatar.** If the story block says
-`confirmed by:` a person, say so.
-
 **4 · ROUTE RECOMMENDED**
 
 Which lane this run should be produced in: `creator`, `founder` or `ai`. One
@@ -266,12 +201,6 @@ AWARENESS WHY: <one line, citing the teardown>
 SOPHISTICATION: <one of the five stage names, spelled as the slice spells it>
 SOPHISTICATION LEADS WITH: <what that stage means this asset must lead with>
 SOPHISTICATION WHY: <one line, citing what this market has already been promised>
-BRAND STAGE: <the MARKET STAGE from {position}, spelled as the block spells it>
-STAGE VS BRAND: agrees | disagrees — <one line; on disagrees, what each rests on>
-LINE CARRIED: yes | no — <one line: does the lead desire serve the LINE>
-STORY: <a story id from the brand's STORIES, or "none fit">
-TELLER: <one teller from that story's Teller line, or "none">
-STORY WHY: <one line: the avatar it fits, and the teardown beat that carries its turn>
 ROUTE RECOMMENDED: creator | founder | ai
 ROUTE WHY: <one line>
 SUB-AVATAR: <key, or "none">
