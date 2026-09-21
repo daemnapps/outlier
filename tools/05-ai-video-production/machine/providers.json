@@ -1,0 +1,1287 @@
+{
+ "_readme": "Stations × providers × models. The only place a provider or model slug may appear; .py files never name one. A rate is a READING with a date and a source — where sources disagree both readings stay, and the ledger takes the reading that matches the tier/resolution it is asked for: an exact-resolution reading beats a later null-resolution one, and among equals the latest read wins. A null resolution on a reading means the source did not state one, so it matches any.",
+ "_registry": "Slugs are each provider's own (Higgsfield job_set_type, fal endpoint ids). Pending fold-in to components/models/ as aliases — Dayu's gate, not done here.",
+ "_house": {
+  "ruled": "2026-08-31 (archive/workplan.md, machine/sequence.py), reaffirmed 2026-09-17",
+  "ruling": "Damon: we have many providers and many models — streamline the models used so any tool, fal or Higgsfield, can do what's necessary. Approved families only: Google (Omni, Nano Banana) · ByteDance (Seedance, Seedream) · GPT Image · ElevenLabs. MiniMax and Kling retired. Role map: Seedream = stills/identity chaining · Nano Banana = editing/compositing real artifacts · GPT Image = photo-ref exact recreate · Seedance (+ Omni) = clips · ElevenLabs = voice.",
+  "rule": "one primary model per station per provider; a fallback only for a measured misfire (or a named, narrow use the primary cannot do); retired and superseded models are never deleted — their ceilings are knowledge, kept with a status of retired or alternate.",
+  "ruling_2026_09_17": "Damon, 2026-09-17, verbatim intent: GPT Image for ALL initial image generation from reference and for building the cast; discrete edits with nano_banana_pro; motion (the animation of an approved still) with seedance 2.5; talking/lip-sync ALSO on seedance — \"we nailed it directly through Higgsfield and didn't use Cinema Studio at all\"; voice = ElevenLabs; audio = the non-voice sound (the song for sung formats, music/effects otherwise — the editor's).",
+  "flags_2026_09_17": [
+   "SUPERSEDES THE-CINEMA-LINE.md's 2026-09-12 ruling on the talking beat only ('never marry audio to video' → cinematic_studio_3_0 as the whole architecture). The 16 Sep run proved seedance_2_5 with the approved still as start_image and the ElevenLabs line attached as a media with role audio — the locked-voice rule held. Cinema Studio is now the talking FALLBACK if sync drifts, not the primary route. Everything else in THE-CINEMA-LINE.md (element injection, the receipts) still stands.",
+   "The audio station (seed_audio / ace-step) makes the SONG, and only for sung formats. There is no house call for anything else in that slot — music beds and sound effects are the editor's, per Damon 2026-09-17."
+  ],
+  "principle_layer": "The reference-level doctrine behind every pick in this file is `GENERATION-METHOD.md` (the reference carries the material; generate what must be photographic, composite what must be exact; never name the camera; judge by measurement, not taste). The course write-up (Damon, 09-14) corroborates the ruling and confirms the same model split: realism of a person → GPT Image; edits → Nano Banana Pro.",
+  "ruling_2026_09_17_voice": "Damon: voice is the direct ElevenLabs account, one custom voice per character — the line is generated first, from here, via the direct API, and the audio is piped into the provider (uploaded to Higgsfield as the media the talking beat lip-syncs to; on fal attached as the audio input); fal's own ElevenLabs endpoints see library voices only and cannot reach an account-private voice id (no key passthrough, no clone/design endpoint on fal — research confirmed).",
+  "ruling_2026_09_17_song": "Damon: song is Lyria 3 Pro on fal (fal-ai/lyria3/pro, $0.08/song, up to 3 min, sings written lyrics) so model usage stays on fal/Higgsfield; fal returns no lyric timings, so the timing sheet comes from one more fal call, fal-ai/elevenlabs/speech-to-text, on the finished song; Lyria via the Gemini API direct is the alternate (it returns timings natively); fal-ai/minimax-music/v2.6 is the alternate that sings lyrics with structure tags; fal-ai/ace-step is retired (lost the test).",
+  "ruling_2026_09_18": "ONE HAND. Every station is a direct call from run.py start — voice (ElevenLabs), cast/still (OpenAI), edit (Google), song (Google Lyria), talking AND silent motion (fal Omni via machine/omni.py). Nothing in the chain needs the Higgsfield MCP (Damon 15:20). Higgsfield and fal-as-a-house remain FORCED alternates only (--provider); BytePlus direct is wired and blocked on US billing; the Higgsfield API was declined. The editor sheet (SUBMIT.md) is written only when a house is forced."
+ },
+ "stations": [
+  "cast",
+  "still",
+  "edit",
+  "motion",
+  "talking",
+  "voice",
+  "audio"
+ ],
+ "station_of_kind": {
+  "cast": "cast",
+  "still": "still",
+  "restyle": "edit",
+  "edit": "edit",
+  "motion": "motion",
+  "talking": "talking",
+  "revoice": "voice",
+  "audio": "audio"
+ },
+ "credits_per_dollar": {
+  "higgsfield": 23,
+  "_note": "Ultra plan monthly $129 / 3,000 credits = 23 per $; annual $99 / 3,000 = 30 per $ (higgsfield.ai/pricing, read 2026-09-17). The 16 Sep receipts assumed 18 — every Higgsfield figure on The Road to $10 was ~1.5x too pessimistic."
+ },
+ "gates": {
+  "line_parity": {
+   "threshold": 0.85,
+   "why": "a talking clip that says other words is not the clip — Damon 2026-09-18"
+  }
+ },
+ "providers": {
+  "fal": {
+   "label": "fal — API, key in env or vault",
+   "family": "fal",
+   "detect": {
+    "claudecode": true,
+    "key_env": "FAL_KEY"
+   },
+   "confirm": false,
+   "batch_max": 6,
+   "concurrency": 8,
+   "notes": "providers/fal.md",
+   "stations": {
+    "cast": "fal-ai/gpt-image-2",
+    "still": "fal-ai/gpt-image-2",
+    "edit": "fal-ai/nano-banana-pro/edit",
+    "motion": "fal-ai/bytedance/seedance/v2.5/pro/image-to-video",
+    "talking": "fal-ai/bytedance/omnihuman/v1.5",
+    "voice": "elevenlabs",
+    "audio": "lyria"
+   },
+   "fallback": {
+    "still": "fal-ai/bytedance/seedream/v4/edit",
+    "audio": "fal-ai/lyria3/pro"
+   },
+   "talking_recipe": {
+    "start_image": "the approved still, uploaded, as media role start_image",
+    "audio": "the ElevenLabs line, uploaded, as media role audio",
+    "mode": "omni_reference — the course write-up (Damon, 09-14), §6: seedance_2_5 with mode: omni_reference and her take attached as audio for talking beats",
+    "status": "candidate — fal's seedance i2v must accept an audio input; confirm on first run, else the talking beat runs on Higgsfield"
+   },
+   "why": {
+    "cast": "Damon's 2026-09-17 ruling: GPT Image for all initial generation from reference, including the cast — supersedes the 2026-08-31 Seedream-for-cast pick. No fal OpenAI-image endpoint has ever been named or run in this repo (checked providers/fal.md, archive/sequence-flow.md, machine/sound.py); fal-ai/gpt-image-2 is a candidate slug, not a confirmed one — do not claim a run on it until one exists.",
+    "still": "Same ruling as cast — GPT Image from reference for every still. fal-ai/bytedance/seedream/v4/edit holds the fallback slot on the strength of its own proven clone-from-source-frame run, for the same misfire class Higgsfield's gpt_image_2 shows (nsfw/ip_detected on a clean frame).",
+    "edit": "Nano Banana is the approved editor for compositing real artifacts onto a plate, not a generator of people (house ruling; providers/fal.md bake-off — 'preserves what it is handed, does not honour an aspect request').",
+    "motion": "Seedance image-to-video is the approved clip model on fal (house ruling; providers/fal.md — the worked ~$0.62/clip motion pass, 94% of a song ad's cost).",
+    "talking": "OmniHuman 1.5 — still + audio → lip-synced clip; proven live 2026-09-18; $0.16/s; the presenter still fal's Seedance refused went straight through",
+    "voice": "ElevenLabs, called directly (not through a fal endpoint) — the same voice model Higgsfield uses. The line is generated first, then uploaded to whichever provider needs it as a media. Supersedes fal-ai/elevenlabs/tts/multilingual-v2, fal's own wrapped endpoint, which is kept as an alternate.",
+    "audio": "the song, for sung formats only — fal-ai/lyria3/pro (Damon's 2026-09-17 ruling: keep model usage on fal/Higgsfield); fal returns no lyric timings, so fal-ai/elevenlabs/speech-to-text runs on the finished song for the timing sheet; Lyria 3 direct on the Gemini key (won the 2026-09-03 test, returns timings natively) is now the alternate; otherwise the editor's"
+   },
+   "voice_recipe": {
+    "where": "the direct ElevenLabs account — custom voice per character, id in brands/<brand>/ai-cast/<name>/voice.json",
+    "make": "machine/voice.py generates every line first, into <run>/voice/<line id>.mp3",
+    "pipe": "<Higgsfield: upload each line as a media, role audio, on the talking beat; register the voice as an element when the account allows> | <fal: attach the line as the audio input on the talking beat>",
+    "why_not_via_fal": "fal's ElevenLabs endpoints see library voices only; an account-private voice id cannot be reached through fal (no key passthrough, no clone/design endpoint) — research 2026-09-17"
+   },
+   "song_recipe": {
+    "song": "lyria (direct, Gemini key) — lyria-3-pro-preview for a full song, lyria-3-clip-preview for 30 s",
+    "timings": "the text part of Lyria's response when it carries them (observed, not documented); check with fal-ai/elevenlabs/speech-to-text (Scribe, word timestamps)",
+    "then": "upload the song to the provider as the audio the sung clips carry"
+   },
+   "proven": {
+    "talking": "2026-09-18 — OmniHuman 1.5 made the talking beat from the same still + line (4.84 s, 1248x1664, audio on, ~316 s); Seedance 2.5 on fal refused the still twice (real-person likeness)",
+    "talking_omni": "2026-09-18 — google/gemini-omni-flash/v1.1/image-to-video with image_url + audio_url: 6 s, 720x1280, audio on, 44 s, $0.10/s — BUT the words were not ours (10% match); audio_url is ignored"
+   }
+  },
+  "higgsfield-mcp": {
+   "label": "Higgsfield — submitted by a chat session through the MCP connector",
+   "family": "higgsfield",
+   "detect": {
+    "claudecode": true
+   },
+   "confirm": true,
+   "batch_max": 6,
+   "concurrency": 8,
+   "notes": "providers/higgsfield.md",
+   "stations": {
+    "cast": "gpt_image_2",
+    "still": "gpt_image_2",
+    "edit": "nano_banana_pro",
+    "motion": "seedance_2_5",
+    "talking": "seedance_2_5",
+    "voice": "elevenlabs",
+    "audio": "lyria"
+   },
+   "fallback": {
+    "still": "nano_banana_2",
+    "talking": "cinematic_studio_3_0"
+   },
+   "talking_recipe": {
+    "start_image": "the approved still, uploaded, as media role start_image",
+    "audio": "the ElevenLabs line, uploaded, as media role audio",
+    "mode": "omni_reference — the course write-up (Damon, 09-14), §6: seedance_2_5 with mode: omni_reference and her take attached as audio for talking beats",
+    "note": "the 16 Sep way; supersedes THE-CINEMA-LINE's 2026-09-12 ruling (never marry audio to video → cinematic_studio_3_0). The first real run confirms the sync; if it drifts, cinematic_studio_3_0 is the fallback"
+   },
+   "why": {
+    "cast": "Damon's 2026-09-17 ruling: identity comes from GPT Image working straight off a reference photo and the cast sheet, not from a trained Soul id. Supersedes soul_2, retired the same day.",
+    "still": "Same ruling — GPT Image from reference for every initial still. nano_banana_2 holds the fallback slot for the misfire class recorded 2026-09-16 (six dead jobs, clean prompts) — route_on nsfw/ip_detected; it is no longer the everyday default.",
+    "edit": "Nano Banana Pro is the discrete-edit pass run after the GPT Image still — a reference beats a description, and it is the only edit model exercised end to end (providers/higgsfield.md worked run).",
+    "motion": "Seedance 2.5 is the approved image-to-video clip model — reads the <<<element>>> bank, 30s cap, cheaper than Cinema Studio for a non-talking shot (THE-CINEMA-LINE.md model table).",
+    "talking": "Damon, 2026-09-17: 'we nailed it directly through Higgsfield and didn't use Cinema Studio at all.' The 16 Sep run built talking clips on seedance_2_5 with the approved still as start_image and the ElevenLabs line attached as a media with role audio — the locked-voice rule held. Supersedes the 2026-09-12 THE-CINEMA-LINE.md ruling that put cinematic_studio_3_0 first; that model is now the fallback if sync drifts.",
+    "voice": "ElevenLabs, called directly — the line is generated first, then uploaded to Higgsfield as a media. Supersedes voice_change as the default; voice_change remains for re-voicing a clip that already exists.",
+    "audio": "the song, for sung formats only — fal-ai/lyria3/pro (Damon's 2026-09-17 ruling: keep model usage on fal/Higgsfield); fal returns no lyric timings, so fal-ai/elevenlabs/speech-to-text runs on the finished song for the timing sheet; Lyria 3 direct on the Gemini key (won the 2026-09-03 test, returns timings natively) is now the alternate; otherwise the editor's"
+   },
+   "voice_recipe": {
+    "where": "the direct ElevenLabs account — custom voice per character, id in brands/<brand>/ai-cast/<name>/voice.json",
+    "make": "machine/voice.py generates every line first, into <run>/voice/<line id>.mp3",
+    "pipe": "<Higgsfield: upload each line as a media, role audio, on the talking beat; register the voice as an element when the account allows> | <fal: attach the line as the audio input on the talking beat>",
+    "why_not_via_fal": "fal's ElevenLabs endpoints see library voices only; an account-private voice id cannot be reached through fal (no key passthrough, no clone/design endpoint) — research 2026-09-17"
+   },
+   "song_recipe": {
+    "song": "lyria (direct, Gemini key) — lyria-3-pro-preview for a full song, lyria-3-clip-preview for 30 s",
+    "timings": "the text part of Lyria's response when it carries them (observed, not documented); check with fal-ai/elevenlabs/speech-to-text (Scribe, word timestamps)",
+    "then": "upload the song to the provider as the audio the sung clips carry"
+   },
+   "proven": {
+    "talking": "2026-09-18 — live through the MCP connector: seedance_2_5, mode omni_reference, medias start_image (machine-made still via GPT Image 2 direct) + audio_references (ElevenLabs cloned-voice line), duration 6, 720p, 9:16, generate_audio true; job 57755a28 completed in ~4 min; 39 credits (get_cost preflight matched). Output 720x1280 h264 + aac 6.04 s. Whether the aac track IS the attached line (dubbing) or model speech is confirmed by ear on this clip — the job echo listed both media ids under reference_images. Gotchas met: a preset recommendation came back first and was declined with declined_preset_id (not a re-roll); uploads are presigned PUT + media_confirm.",
+    "talking_verdict": "Damon 2026-09-18: 'working smoothly' — the clip carries the attached line, lip-synced. Recipe confirmed.",
+    "vs_fal": "2026-09-18: the same still + line on fal's Seedance 2.5 was refused twice as a real-person likeness; Higgsfield animated it. For people, Higgsfield (or direct BytePlus) is the door; fal is b-roll only."
+   }
+  },
+  "higgsfield-ui": {
+   "label": "Higgsfield — submitted by hand in the web app",
+   "family": "higgsfield",
+   "detect": {},
+   "confirm": true,
+   "batch_max": 6,
+   "concurrency": 8,
+   "notes": "providers/higgsfield.md",
+   "stations": {
+    "cast": "gpt_image_2",
+    "still": "gpt_image_2",
+    "edit": "nano_banana_pro",
+    "motion": "seedance_2_5",
+    "talking": "seedance_2_5",
+    "voice": "elevenlabs",
+    "audio": "lyria"
+   },
+   "fallback": {
+    "still": "nano_banana_2",
+    "talking": "cinematic_studio_3_0"
+   },
+   "talking_recipe": {
+    "start_image": "the approved still, uploaded, as media role start_image",
+    "audio": "the ElevenLabs line, uploaded, as media role audio",
+    "mode": "omni_reference — the course write-up (Damon, 09-14), §6: seedance_2_5 with mode: omni_reference and her take attached as audio for talking beats",
+    "note": "the 16 Sep way; supersedes THE-CINEMA-LINE's 2026-09-12 ruling (never marry audio to video → cinematic_studio_3_0). The first real run confirms the sync; if it drifts, cinematic_studio_3_0 is the fallback"
+   },
+   "why": {
+    "cast": "Same as higgsfield-mcp — one table, two doors (providers/higgsfield.md).",
+    "still": "Same as higgsfield-mcp.",
+    "edit": "Same as higgsfield-mcp.",
+    "motion": "Same as higgsfield-mcp.",
+    "talking": "Same as higgsfield-mcp.",
+    "voice": "Same as higgsfield-mcp.",
+    "audio": "the song, for sung formats only — fal-ai/lyria3/pro (Damon's 2026-09-17 ruling: keep model usage on fal/Higgsfield); fal returns no lyric timings, so fal-ai/elevenlabs/speech-to-text runs on the finished song for the timing sheet; Lyria 3 direct on the Gemini key (won the 2026-09-03 test, returns timings natively) is now the alternate; otherwise the editor's"
+   },
+   "voice_recipe": {
+    "where": "the direct ElevenLabs account — custom voice per character, id in brands/<brand>/ai-cast/<name>/voice.json",
+    "make": "machine/voice.py generates every line first, into <run>/voice/<line id>.mp3",
+    "pipe": "<Higgsfield: upload each line as a media, role audio, on the talking beat; register the voice as an element when the account allows> | <fal: attach the line as the audio input on the talking beat>",
+    "why_not_via_fal": "fal's ElevenLabs endpoints see library voices only; an account-private voice id cannot be reached through fal (no key passthrough, no clone/design endpoint) — research 2026-09-17"
+   },
+   "song_recipe": {
+    "song": "lyria (direct, Gemini key) — lyria-3-pro-preview for a full song, lyria-3-clip-preview for 30 s",
+    "timings": "the text part of Lyria's response when it carries them (observed, not documented); check with fal-ai/elevenlabs/speech-to-text (Scribe, word timestamps)",
+    "then": "upload the song to the provider as the audio the sung clips carry"
+   },
+   "proven": {
+    "talking": "2026-09-18 — live through the MCP connector: seedance_2_5, mode omni_reference, medias start_image (machine-made still via GPT Image 2 direct) + audio_references (ElevenLabs cloned-voice line), duration 6, 720p, 9:16, generate_audio true; job 57755a28 completed in ~4 min; 39 credits (get_cost preflight matched). Output 720x1280 h264 + aac 6.04 s. Whether the aac track IS the attached line (dubbing) or model speech is confirmed by ear on this clip — the job echo listed both media ids under reference_images. Gotchas met: a preset recommendation came back first and was declined with declined_preset_id (not a re-roll); uploads are presigned PUT + media_confirm.",
+    "talking_verdict": "Damon 2026-09-18: 'working smoothly' — the clip carries the attached line, lip-synced. Recipe confirmed.",
+    "vs_fal": "2026-09-18: the same still + line on fal's Seedance 2.5 was refused twice as a real-person likeness; Higgsfield animated it. For people, Higgsfield (or direct BytePlus) is the door; fal is b-roll only."
+   }
+  }
+ },
+ "models": {
+  "soul_2": {
+   "provider": "higgsfield",
+   "station": "cast",
+   "kind": "cast",
+   "status": "retired",
+   "retired": "2026-09-17 — identity comes from GPT Image from reference + the cast sheet, Damon 2026-09-17",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "identity only — style words are ignored and it returns a photograph; the look comes from a restyle pass after",
+    "soul_id goes inside params"
+   ]
+  },
+  "nano_banana_pro": {
+   "provider": "higgsfield",
+   "station": "edit",
+   "kind": "edit",
+   "status": "primary",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "medias must be [{value, role: image_references}] — any other shape validates and arrives EMPTY, and it invents a stranger; read input_images on the job",
+    "changes wardrobe when the prompt does not pin it",
+    "the ledger records this as nano_banana_2 (job_set_type) — display name and slug differ"
+   ]
+  },
+  "nano_banana_2": {
+   "provider": "higgsfield",
+   "station": "still",
+   "kind": "still",
+   "status": "fallback",
+   "fallback_for": "still only — routes on a GPT Image misfire (nsfw/ip_detected) on an otherwise clean frame; not the everyday default any more (Damon's 2026-09-17 ruling put GPT Image first)",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "was the default for stylized-animation keyframes with a human lead and a reference face before the 2026-09-17 ruling; kept here as the fallback for the same scene class"
+   ]
+  },
+  "gpt_image_2": {
+   "provider": "higgsfield",
+   "station": "cast",
+   "kind": "cast",
+   "status": "primary",
+   "primary_for": "cast and still both — Damon's 2026-09-17 ruling: GPT Image for ALL initial image generation from reference and for building the cast",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "NSFW moderation misfires on stylized-human-with-reference-face scenes — not content-related; six dead jobs on clean prompts 2026-09-16",
+    "nsfw / ip_detected twice on one subject = stop; never a third attempt on this model"
+   ],
+   "route_on": {
+    "nsfw": "nano_banana_2",
+    "ip_detected": "nano_banana_2"
+   }
+  },
+  "seedance_2_5": {
+   "provider": "higgsfield",
+   "station": "motion",
+   "kind": "motion",
+   "status": "primary",
+   "max_seconds": 15,
+   "max_seconds_readings": [
+    {
+     "max_seconds": 15,
+     "read": "2026-09-16",
+     "source": "pipeline-hardening-instructions.md"
+    },
+    {
+     "max_seconds": 30,
+     "read": "2026-09-12",
+     "source": "THE-CINEMA-LINE.md"
+    }
+   ],
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": null,
+     "credits_per_second": 4.5,
+     "read": "2026-09-16",
+     "source": "pipeline-hardening-instructions.md"
+    },
+    {
+     "tier": "fast",
+     "resolution": null,
+     "credits_per_second": 3.5,
+     "read": "2026-09-16",
+     "source": "pipeline-hardening-instructions.md"
+    },
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "credits_per_second": 6.5,
+     "read": "2026-09-12",
+     "source": "THE-CINEMA-LINE.md"
+    },
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "credits_per_second": 6.5,
+     "read": "2026-09-17",
+     "source": "higgsfield.ai/blog/seedance-2-5-pricing-2026 (52 credits / 8 s)"
+    },
+    {
+     "tier": "std",
+     "resolution": "480p",
+     "credits_per_second": 3.0,
+     "read": "2026-09-17",
+     "source": "same (24 credits / 8 s)"
+    }
+   ],
+   "ceilings": [
+    "singing lip-sync is approximate — ship FLAGGED, zero re-rolls",
+    "ip_detected = dead job; billing ambiguous",
+    "start_image must be a media UUID — a URL is rejected upstream (422 uuid_parsing)",
+    "fast tier buys the same singing sync as std — use fast for non-hero clips",
+    "singing lip-sync is approximate — mouth moves, not phoneme-exact; class CEILING, ship FLAGGED",
+    "product label must be reference-locked — garbled text or weight-flip mid-clip is a fixable deviation, re-roll with the packshot attached",
+    "hands near product merge — fix by re-composing (product on a surface), not by re-prompting",
+    "static mouth on a talking beat is fixable — re-roll with a mouth-lock prompt, then verify",
+    "also the talking-beat model since 16 Sep — start_image is the approved still, and the ElevenLabs line attaches as a media with role audio (see the provider's talking_recipe); the locked-voice rule held on the first run (Damon 2026-09-17)",
+    "audio_references DUBS the attached line — the talking beat: start_image (approved still) + audio_references (the ElevenLabs line), mode omni_reference, generate_audio true. Proven live 2026-09-18 and confirmed by Damon's ear ('working smoothly'). The 2026-09-12 note that it was a style-only reference is retired."
+   ]
+  },
+  "cinematic_studio_3_0": {
+   "provider": "higgsfield",
+   "station": "talking",
+   "kind": "motion",
+   "status": "alternate",
+   "alternate_reason": "talking fallback — used only if the 16 Sep seedance_2_5 + ElevenLabs route's sync drifts (Damon 2026-09-17; supersedes the 2026-09-12 THE-CINEMA-LINE.md ruling that made this the primary talking route)",
+   "max_seconds": 15,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "credits_per_second": 5.0,
+     "read": "2026-09-12",
+     "source": "THE-CINEMA-LINE.md"
+    }
+   ],
+   "ceilings": [
+    "performs the line and the picture together — no audio file, no start image; the voice comes from voice_change after",
+    "may answer submission_failed with a recommended preset — resubmit with declined_preset_id; that is not a re-roll",
+    "picks its own clip length — place cutaways against durations on disk, never the ones asked for",
+    "singing lip-sync is approximate — mouth moves, not phoneme-exact; class CEILING, ship FLAGGED",
+    "product label must be reference-locked — garbled text or weight-flip mid-clip is a fixable deviation, re-roll with the packshot attached",
+    "hands near product merge — fix by re-composing (product on a surface), not by re-prompting"
+   ]
+  },
+  "gemini_omni_flash_1_1": {
+   "provider": "higgsfield",
+   "station": "motion",
+   "kind": "motion",
+   "status": "audition",
+   "audition_reason": "the course write-up (Damon, 09-14): the routing rule (talking → Omni, silent → Grok) is an open audition against seedance — E2 in the write-up; seedance stands until something beats it on the same still. Previously retired 2026-09-17 when GPT Image absorbed the no-cast/no-product exception this model filled; that superseding reason no longer applies now that the course write-up reopens it under a different routing rule.",
+   "max_seconds": 10,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "credits_per_second": 3.0,
+     "read": "2026-09-12",
+     "source": "THE-CINEMA-LINE.md"
+    }
+   ],
+   "ceilings": [
+    "cannot read <<<element>>> references — placeholders go through as literal text; only for shots with no cast and no product",
+    "singing lip-sync is approximate — mouth moves, not phoneme-exact; class CEILING, ship FLAGGED",
+    "product label must be reference-locked — garbled text or weight-flip mid-clip is a fixable deviation, re-roll with the packshot attached",
+    "hands near product merge — fix by re-composing (product on a surface), not by re-prompting",
+    "audition only — no run yet under the course's routing rule; unproven against seedance_2_5 on the same still"
+   ]
+  },
+  "grok_video_v15": {
+   "provider": "higgsfield",
+   "station": "motion",
+   "kind": "motion",
+   "status": "audition",
+   "audition_reason": "the course write-up (Damon, 09-14): the routing rule (talking → Omni, silent → Grok) is an open audition against seedance — E2 in the write-up; seedance stands until something beats it on the same still.",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "audition only — no run on record; unproven against seedance_2_5 on the same still"
+   ]
+  },
+  "kling3_0": {
+   "provider": "higgsfield",
+   "station": "motion",
+   "kind": "motion",
+   "status": "retired",
+   "max_seconds": null,
+   "rates": [],
+   "retired": "2026-09-12 — eighteen talking beats came back with a mouth moving to nothing (sound off, no audio attached); THE-CINEMA-LINE.md",
+   "ceilings": [
+    "singing lip-sync is approximate — mouth moves, not phoneme-exact; class CEILING, ship FLAGGED",
+    "product label must be reference-locked — garbled text or weight-flip mid-clip is a fixable deviation, re-roll with the packshot attached",
+    "hands near product merge — fix by re-composing (product on a surface), not by re-prompting"
+   ]
+  },
+  "voice_change": {
+   "provider": "higgsfield",
+   "station": "voice",
+   "kind": "revoice",
+   "status": "alternate",
+   "alternate_reason": "re-voice an existing clip",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "keeps timing and visuals, swaps only the voice — model-agnostic on the source clip",
+    "voice_clone_limit_reached (429) blocks element registration; attach the anchor audio id directly as a fallback"
+   ]
+  },
+  "elevenlabs": {
+   "provider": "elevenlabs",
+   "used_by": [
+    "fal",
+    "higgsfield"
+   ],
+   "station": "voice",
+   "kind": "voice",
+   "status": "primary",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "direct ElevenLabs API, key in the Keychain (ELEVENLABS_API_KEY) — confirmed stored, 2026-09-17",
+    "the line is generated first, then uploaded to the provider (fal or Higgsfield) as a media — it is never called through a provider's own wrapped endpoint",
+    "used identically by both providers; the provider-specific TTS wrapper models (fal-ai/elevenlabs/tts/multilingual-v2, Higgsfield's voice_change) are kept as alternates, not this model's fallback"
+   ]
+  },
+  "seed_audio": {
+   "provider": "higgsfield",
+   "station": "audio",
+   "kind": "audio",
+   "status": "alternate",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "the only Higgsfield audio-generation model on record — every one of 328 jobs in the Jul–Aug production's voiceover stage ran on it, cast entirely from prose personas plus @Audio-slot cloning, never a voice preset (archive/evidence-record.md)",
+    "measured only on spoken VO lines, not on music — Wave 3 (Aug 18) has seedance's own generate_audio:true inventing ambient sound/dialogue instead of a separate seed_audio pass (archive/evidence-record.md)",
+    "the 2026-09-16 <run> song run (higgsfield-mcp) generated its song 'first' per the brief but was filed with no ledger — 'spend was not recorded per job' — so no run has ever logged which model made a Higgsfield song's master track (runs/video-machine/<brand>/<run>/run.json); treat any song claim on this model as unproven until a run logs the slug"
+   ],
+   "note": "the 16 Sep song's model was never recorded; not a house model"
+  },
+  "fal-ai/ideogram/character": {
+   "provider": "fal",
+   "station": "still",
+   "kind": "still",
+   "status": "retired",
+   "retired": "2026-09-17 — outside the approved model house since 2026-08-31 and no longer even the alternate once GPT Image took the still/cast role directly from reference (Damon's 2026-09-17 ruling)",
+   "max_seconds": null,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": null,
+     "usd_per_job": 0.04,
+     "read": "2026-09-03",
+     "source": "providers/fal.md"
+    }
+   ],
+   "ceilings": [
+    "reference_image_urls carry the person — every reference, every shot"
+   ]
+  },
+  "fal-ai/bytedance/seedream/v4/edit": {
+   "provider": "fal",
+   "station": "still",
+   "kind": "still",
+   "status": "fallback",
+   "fallback_for": "still only — the fal-side misfire fallback behind the new GPT Image candidate (Damon's 2026-09-17 ruling), the same clone-from-source-frame role it already proved",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "the clone-from-source-frame model when a moderation guard rejects a legitimate subject twice"
+   ]
+  },
+  "fal-ai/bytedance/seedream/v4.5/edit": {
+   "provider": "fal",
+   "station": "still",
+   "kind": "still",
+   "status": "alternate",
+   "alternate_reason": "the house's still/cast model on fal before Damon's 2026-09-17 ruling moved that role to GPT Image from reference; kept as the proven identity-chaining alternate if the new GPT Image candidate doesn't confirm",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "the approved house's identity-chained still/cast model on fal (Damon, 2026-08-31: 'Seedream = stills + identity chaining'; machine/sequence.py's MODEL_STILL_EDIT)",
+    "supersedes fal-ai/ideogram/character, which built the 2026-09-03 song-ad reference run (providers/fal.md) but sits outside the approved families",
+    "never shipped a full production before sequence.py was retired 2026-09-12 (Damon: 'Everything should have been done in Higgsfield') — the reference-beats-description technique proven under Ideogram is expected to carry over but is not separately measured on this slug"
+   ]
+  },
+  "fal-ai/bytedance/seedream/v4.5/text-to-image": {
+   "provider": "fal",
+   "station": "still",
+   "kind": "still",
+   "status": "alternate",
+   "alternate_reason": "from-scratch generation with no reference image at all — machine/sequence.py's MODEL_STILL_T2I, paired with the edit variant for continuity once a character exists; narrower use than the edit variant, and now even further from primary since Damon's 2026-09-17 ruling put GPT Image first",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "never run to completion — sequence.py was retired 2026-09-12 before a full production shipped on it"
+   ]
+  },
+  "fal-ai/gpt-image-2": {
+   "provider": "fal",
+   "station": "cast",
+   "kind": "cast",
+   "status": "primary",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "no fal OpenAI-image endpoint has ever been named or run in this repo — checked providers/fal.md, archive/sequence-flow.md, machine/sound.py; this slug is a candidate guess at fal's GPT Image wrapper, not a confirmed one",
+    "do not claim a run on this model until one has actually completed and the ledger names this exact slug",
+    "primary for cast and still both, per Damon's 2026-09-17 ruling — GPT Image for all initial generation from reference and for building the cast"
+   ],
+   "note": "GPT Image 2 — the same model as Higgsfield's gpt_image_2, pulled through fal. Damon 2026-09-17: same model, different place. Endpoint slug confirmed on the first real fal run."
+  },
+  "fal-ai/nano-banana/edit": {
+   "provider": "fal",
+   "station": "edit",
+   "kind": "edit",
+   "status": "retired",
+   "max_seconds": null,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": null,
+     "usd_per_job": 0.039,
+     "read": "2026-09-03",
+     "source": "providers/fal.md"
+    }
+   ],
+   "ceilings": [
+    "an editor, not a generator of people — preserves what it is handed",
+    "does not honour an aspect request — check output dimensions"
+   ],
+   "retired": "2026-09-17 — an older version; Nano Banana Pro is the house model"
+  },
+  "fal-ai/bytedance/seedance/v1/pro/image-to-video": {
+   "provider": "fal",
+   "station": "motion",
+   "kind": "motion",
+   "status": "retired",
+   "max_seconds": null,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "1080p",
+     "usd_per_second": 0.124,
+     "read": "2026-09-03",
+     "source": "providers/fal.md"
+    }
+   ],
+   "ceilings": [
+    "duration is a string in the call; ~$0.62 a 5s clip — motion is 94% of a song ad's cost",
+    "singing lip-sync is approximate — mouth moves, not phoneme-exact; class CEILING, ship FLAGGED",
+    "product label must be reference-locked — garbled text or weight-flip mid-clip is a fixable deviation, re-roll with the packshot attached",
+    "hands near product merge — fix by re-composing (product on a surface), not by re-prompting",
+    "also the fal talking-station candidate (Damon's 2026-09-17 ruling) — start_image + an audio media, the same shape proven on Higgsfield's seedance_2_5 16 Sep; unconfirmed on fal until a run proves it accepts the audio media (see the provider's talking_recipe)"
+   ],
+   "retired": "2026-09-17 — an older version; Seedance 2.5 is the house model"
+  },
+  "fal-ai/sync-lipsync": {
+   "provider": "fal",
+   "station": "talking",
+   "kind": "talking",
+   "status": "alternate",
+   "alternate_reason": "live on the account, never tested, alongside latentsync/sync-lipsync-v2/creatify-lipsync (providers/fal.md, STILL OPEN) — not named as the fal talking (formerly motion_talking) primary because the whole marrying-audio-to-video mechanism it needs was ruled out, not just this endpoint",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "requires marrying a pre-made audio track to the clip — the exact mechanism Damon ruled out 2026-09-12 as 'the wrong problem' after a full day chasing it on seedance, wan and this endpoint (THE-CINEMA-LINE.md); Cinema Studio's generate-both-together approach replaced the whole architecture, not just the model. The 16 Sep Higgsfield run found a different route entirely — seedance with an audio media, not a marry-after step — which is why fal's own seedance i2v is the talking candidate now, not this endpoint",
+    "other untested fal lipsync endpoints on the account: latentsync, fal-ai/sync-lipsync/v2, creatify/lipsync — none run, all inherit the same architectural objection"
+   ]
+  },
+  "fal-ai/elevenlabs/tts/multilingual-v2": {
+   "provider": "fal",
+   "station": "voice",
+   "kind": "voice",
+   "status": "alternate",
+   "alternate_reason": "superseded 2026-09-17 by the direct ElevenLabs API pseudo-model used identically on both providers (Damon's ruling: generate the line first, then upload it as a media) — kept as the fal-native wrapper alternate",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "was the approved voice model on fal (Damon, 2026-08-31: 'constantly solid'); named as machine/sequence.py's MODEL_VO",
+    "generates a line from text — it does not revoice an existing clip's audio the way Higgsfield's voice_change does",
+    "sequence.py, the only file that named it, is marked retired 2026-09-12 following Damon's full move to Higgsfield-only; no separate ledger row confirms a completed job on this exact slug, only the 2026-08-31 house ruling and the code that implemented it"
+   ]
+  },
+  "fal-ai/ace-step": {
+   "provider": "fal",
+   "station": "audio",
+   "kind": "audio",
+   "status": "retired",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "muddier vocal with heavy auto-tune against the Gemini song model; no timed lyric sheet comes back",
+    "the fal-native music/song model actually run (machine/sound.py); Lyria (lyria-3-clip-preview) won the bake-off on intelligibility but is called on the Gemini API directly, not a fal endpoint, so it cannot be named as this station's model"
+   ],
+   "note": "lost the 2026-09-03 song test to Lyria — muddier vocal, auto-tune, no timings",
+   "retired": "2026-09-17 — fal-ai/lyria3/pro is the house song model on every provider; ace-step lost the 2026-09-03 bake-off and stays only as history"
+  },
+  "fal-ai/stable-audio": {
+   "provider": "fal",
+   "station": "audio",
+   "kind": "audio",
+   "status": "fallback",
+   "fallback_for": "effects only — not a song/music substitute for ace-step",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "holds the effects slot while the ElevenLabs effects endpoint on fal 422s on a retired model id"
+   ]
+  },
+  "fal-ai/bytedance/seedance/v2.5/pro/image-to-video": {
+   "provider": "fal",
+   "station": "motion",
+   "kind": "motion",
+   "max_seconds": null,
+   "ceilings": [
+    "duration is a string in the call; ~$0.62 a 5s clip — motion is 94% of a song ad's cost",
+    "singing lip-sync is approximate — mouth moves, not phoneme-exact; class CEILING, ship FLAGGED",
+    "product label must be reference-locked — garbled text or weight-flip mid-clip is a fixable deviation, re-roll with the packshot attached",
+    "hands near product merge — fix by re-composing (product on a surface), not by re-prompting",
+    "also the fal talking-station candidate (Damon's 2026-09-17 ruling) — start_image + an audio media, the same shape proven on Higgsfield's seedance_2_5 16 Sep; unconfirmed on fal until a run proves it accepts the audio media (see the provider's talking_recipe)",
+    "BLOCKS PHOTOREAL PEOPLE (live, 2026-09-18): the identical machine-made presenter still that Higgsfield animated was refused on BOTH fal 2.5 endpoints (image-to-video and reference-to-video) — 422 content_policy_violation, 'likenesses of real people', reason partner_validation_failed. fal's Seedance 2.5 is usable only for shots with nobody in frame (product, scene b-roll). Charged or not is ambiguous — the job ran ~90 s before refusing."
+   ],
+   "status": "alternate — b-roll only",
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "usd_per_second": 0.473,
+     "read": "2026-09-17",
+     "source": "fal.ai/models/bytedance/seedance-2.5/image-to-video"
+    },
+    {
+     "tier": "std",
+     "resolution": "480p",
+     "usd_per_second": 0.2205,
+     "read": "2026-09-17",
+     "source": "same; 1080p not offered on fal's 2.5 endpoint"
+    }
+   ],
+   "note": "Seedance 2.5 — the same model as Higgsfield's, pulled through fal. Damon 2026-09-17: same model, different place. Endpoint slug and rate confirmed on the first real fal run.",
+   "fal_endpoints": {
+    "image_to_video": "bytedance/seedance-2.5/image-to-video (480p/720p; no audio input)",
+    "reference_to_video": "bytedance/seedance-2.5/reference-to-video (image_urls + audio_urls; 480p/720p)"
+   }
+  },
+  "fal-ai/nano-banana-pro/edit": {
+   "provider": "fal",
+   "station": "edit",
+   "kind": "edit",
+   "max_seconds": null,
+   "ceilings": [
+    "an editor, not a generator of people — preserves what it is handed",
+    "does not honour an aspect request — check output dimensions"
+   ],
+   "status": "primary",
+   "rates": [],
+   "note": "Nano Banana Pro — the same model as Higgsfield's, pulled through fal. Damon 2026-09-17: same model, different place. Endpoint slug and rate confirmed on the first real fal run."
+  },
+  "lyria": {
+   "provider": "google",
+   "station": "audio",
+   "kind": "audio",
+   "max_seconds": null,
+   "status": "primary",
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": null,
+     "usd_per_job": 0.0,
+     "read": "2026-09-03",
+     "source": "providers/fal.md — 'pennies'"
+    }
+   ],
+   "ceilings": [
+    "the mix must be asked for explicitly — vocal forward, sparse, no auto-tune — or the vocal gets buried",
+    "four to six words a line; a line that cannot be sung slowly and understood on one listen is too long"
+   ],
+   "note": "Lyria 3 on the Gemini key, direct: lyria-3-pro-preview (3 min, $0.08), lyria-3-clip-preview (30 s, $0.04), lyria-3.5 (newest). The same for every provider because it is pulled through none. See providers/research/lyria.md.",
+   "used_by": [
+    "fal",
+    "higgsfield"
+   ],
+   "alternate_reason": "returns the timing sheet natively; the fallback when fal's speech-to-text timings are not good enough"
+  },
+  "fal-ai/lyria3/pro": {
+   "provider": "fal",
+   "station": "audio",
+   "kind": "audio",
+   "status": "alternate",
+   "max_seconds": 180,
+   "rates": [
+    {
+     "usd_per_job": 0.08,
+     "read": "2026-09-17",
+     "source": "fal model page"
+    }
+   ],
+   "ceilings": [
+    "returns audio only — the lyric timing sheet comes from fal-ai/elevenlabs/speech-to-text on the finished song",
+    "SynthID watermark; refuses to mimic a real artist's voice",
+    "four to six words a line; ask for the mix explicitly"
+   ],
+   "used_by": [
+    "fal",
+    "higgsfield"
+   ],
+   "note": "the same model with no lyric input and no times — for a run that wants everything on one fal bill"
+  },
+  "fal-ai/minimax-music/v2.6": {
+   "provider": "fal",
+   "station": "audio",
+   "kind": "audio",
+   "status": "alternate",
+   "alternate_reason": "sings written lyrics with structure tags — an alternate song model if fal-ai/lyria3/pro misfires",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "sings written lyrics with structure tags — untested against fal-ai/lyria3/pro on this repo's own material"
+   ]
+  },
+  "fal-ai/elevenlabs/speech-to-text": {
+   "provider": "fal",
+   "station": "audio",
+   "kind": "align",
+   "status": "utility",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [
+    "word-level timestamps only — run on the finished song to build the timing sheet fal-ai/lyria3/pro does not return"
+   ]
+  },
+  "fal-ai/elevenlabs/tts/eleven-v3": {
+   "provider": "fal",
+   "station": "voice",
+   "kind": "voice",
+   "status": "alternate",
+   "alternate_reason": "fal's own ElevenLabs TTS wrapper, a newer model than multilingual-v2 — library voices only",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [],
+   "note": "library voices only"
+  },
+  "fal-ai/elevenlabs/voice-changer": {
+   "provider": "fal",
+   "station": "voice",
+   "kind": "revoice",
+   "status": "alternate",
+   "alternate_reason": "fal's own ElevenLabs voice-changer wrapper, the fal-side analogue of Higgsfield's voice_change — library voices only",
+   "max_seconds": null,
+   "rates": [],
+   "ceilings": [],
+   "note": "library voices only"
+  },
+  "gpt-image-2": {
+   "provider": "direct",
+   "station": "cast",
+   "kind": "cast",
+   "status": "alternate",
+   "primary_for": "cast and still both, called on the direct OpenAI API — providers.json doors.cast/doors.still",
+   "max_seconds": null,
+   "rates": [
+    {
+     "usd_per_job": 0.18,
+     "read": "2026-09-17",
+     "source": "providers/research/gpt-image-2.md — third-party-tracked (~$0.15-0.21 direct, high quality); OpenAI's own pricing page returned 403 on the fetch"
+    }
+   ],
+   "ceilings": [
+    "input_fidelity high + moderation low exist only on this door (providers/research/gpt-image-2.md)",
+    "the rate above is not vendor-confirmed — OpenAI's pricing page blocked the fetch; treat as a reading, not a receipt"
+   ],
+   "note": "superseded by gpt-image-2.5-sunburst on 2026-09-18 (Damon); kept as the fallback id"
+  },
+  "gemini-3-pro-image": {
+   "provider": "direct",
+   "station": "edit",
+   "kind": "edit",
+   "status": "primary",
+   "primary_for": "the edit station, called on the direct Gemini API — providers.json doors.edit",
+   "max_seconds": null,
+   "rates": [
+    {
+     "usd_per_job": 0.134,
+     "read": "2026-09-17",
+     "source": "providers/research/nano-banana-pro.md — $0.134 per 1K/2K image direct (4K is $0.24; batch mode halves both)"
+    }
+   ],
+   "ceilings": [
+    "per-category safety_settings and the 50% batch discount exist only on this door (providers/research/nano-banana-pro.md)",
+    "some third-party pages and fal use the preview id gemini-3-pro-image-preview — confirm which one this account resolves before locking it in"
+   ]
+  },
+  "lyria-3-pro-preview": {
+   "provider": "direct",
+   "station": "audio",
+   "kind": "audio",
+   "status": "primary",
+   "primary_for": "the full song, called on the direct Gemini API — providers.json doors.audio",
+   "max_seconds": 180,
+   "rates": [
+    {
+     "usd_per_job": 0.08,
+     "read": "2026-09-17",
+     "source": "providers/research/lyria.md"
+    }
+   ],
+   "ceilings": [
+    "the timed lyric sheet in the text part is observed behaviour, not a documented contract (providers/research/lyria.md) — verify per run",
+    "check with ElevenLabs Scribe (speech-to-text) when the text carries no times"
+   ]
+  },
+  "lyria-3-clip-preview": {
+   "provider": "direct",
+   "station": "audio",
+   "kind": "audio",
+   "status": "alternate",
+   "alternate_reason": "30 s clip instead of the full song — same model, same door",
+   "max_seconds": 30,
+   "rates": [
+    {
+     "usd_per_job": 0.04,
+     "read": "2026-09-17",
+     "source": "providers/research/lyria.md"
+    }
+   ],
+   "ceilings": [
+    "same timed-sheet caveat as lyria-3-pro-preview"
+   ]
+  },
+  "byteplus:seedance-2.5": {
+   "provider": "byteplus",
+   "station": "motion",
+   "kind": "motion",
+   "status": "door wired 2026-09-18 (machine/direct_byteplus.py, tests green); key in; BLOCKED — model not activated, US billing unsupported online",
+   "max_seconds": 30,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "480p",
+     "usd_per_second": 0.103,
+     "read": "2026-09-17",
+     "source": "docs.byteplus.com/en/docs/ModelArk/1544106"
+    },
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "usd_per_second": 0.231,
+     "read": "2026-09-17",
+     "source": "same"
+    },
+    {
+     "tier": "std",
+     "resolution": "1080p",
+     "usd_per_second": 0.569,
+     "read": "2026-09-17",
+     "source": "same (28% promo reflected)"
+    }
+   ],
+   "ceilings": [
+    "the only door confirmed to sell Seedance 2.5 at 1080p",
+    "reference_audio role = the documented lip-sync path",
+    "AP region only for 2.5 (ark.ap-southeast.bytepluses.com)"
+   ],
+   "note": "Seedance 2.5 direct — THE motion + talking door since 2026-09-18 (Damon). Request shapes in direct.byteplus."
+  },
+  "gpt-image-2.5-sunburst": {
+   "provider": "openai",
+   "station": "still",
+   "kind": "still",
+   "status": "primary",
+   "used_by": [
+    "fal",
+    "higgsfield"
+   ],
+   "rates": [
+    {
+     "tier": "xhigh",
+     "resolution": null,
+     "usd_per_job": null,
+     "read": "2026-09-18",
+     "source": "developers.openai.com — token rates match GPT Image 2 ($8/M image in, $30/M out)"
+    }
+   ],
+   "ceilings": [],
+   "note": "direct OpenAI door; see direct.openai"
+  },
+  "gpt-image-2.5-flare": {
+   "provider": "openai",
+   "station": "still",
+   "kind": "still",
+   "status": "alternate",
+   "used_by": [
+    "fal",
+    "higgsfield"
+   ],
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": null,
+     "usd_per_job": null,
+     "read": "2026-09-18",
+     "source": "developers.openai.com — token rates match GPT Image 2 ($8/M image in, $30/M out)"
+    }
+   ],
+   "ceilings": [],
+   "note": "direct OpenAI door; see direct.openai"
+  },
+  "fal-ai/bytedance/omnihuman/v1.5": {
+   "provider": "fal",
+   "station": "talking",
+   "kind": "talking",
+   "status": "primary — fal's talking door",
+   "used_by": [
+    "fal"
+   ],
+   "max_seconds": null,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": null,
+     "usd_per_second": 0.16,
+     "read": "2026-09-18",
+     "source": "fal.ai/models/fal-ai/bytedance/omnihuman/v1.5"
+    }
+   ],
+   "ceilings": [
+    "clip length follows the audio (4.84 s line → 4.84 s clip); no duration or aspect parameter — the 9:16 frame is the editor's crop (output was 1248x1664)",
+    "~5 minutes per clip on 2026-09-18 (Seedance on Higgsfield: ~4)",
+    "accepted the presenter still that fal's Seedance 2.5 refused as a real-person likeness — a different filter path"
+   ],
+   "note": "Proven live 2026-09-18: the machine-made still + the ElevenLabs line → lip-synced talking clip, audio on. $0.16/s → ~$0.77 for the line; Higgsfield's Seedance 2.5 talking beat was 39 credits (~$1.30–1.70). The talking beat on fal is OmniHuman, not Seedance."
+  },
+  "google/gemini-omni-flash/v1.1/image-to-video": {
+   "provider": "fal",
+   "station": "talking",
+   "kind": "talking",
+   "status": "THE talking door (Damon 2026-09-18 15:05) — via the controlled-Omni recipe, machine/omni.py",
+   "used_by": [
+    "fal"
+   ],
+   "max_seconds": null,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "usd_per_second": 0.1,
+     "read": "2026-09-18",
+     "source": "fal.ai/models/google/gemini-omni-flash/v1.1/image-to-video"
+    },
+    {
+     "tier": "std",
+     "resolution": "1080p",
+     "usd_per_second": 0.15,
+     "read": "2026-09-18",
+     "source": "same"
+    },
+    {
+     "tier": "std",
+     "resolution": "360p",
+     "usd_per_second": 0.03,
+     "read": "2026-09-18",
+     "source": "same"
+    }
+   ],
+   "ceilings": [
+    "cannot read <<<element>>> references (THE-CINEMA-LINE) — irrelevant here: the still carries the identity",
+    "44 s to make a 6 s clip — the fastest talking door tested",
+    "IGNORES audio_url — live 2026-09-18: perfect lip-sync to words it invented ('I wanted to share this with you…'), 10% match to the attached line (Scribe transcription). Higgsfield Seedance 2.5 and fal OmniHuman both said the line word for word (100%).",
+    "honoured 9:16 at 720p (720x1280) although the page lists only 16:9",
+    "the course's route — the line written INTO the prompt, Omni performing it natively — is untested; it would then need the voice swapped after (voice_change) to be our voice",
+    "NO audio input in the schema (image_url, end_image_url, prompt, duration, aspect_ratio, resolution) — audio_url was silently dropped; with the line written into the prompt it said it 100% (live 2026-09-18), then ElevenLabs speech-to-speech swapped the voice to ours with the sync intact"
+   ],
+   "note": "Fast (44 s) and cheap ($0.10/s) and lip-syncs beautifully — to whatever is in the prompt. The line goes in the prompt; ElevenLabs speech-to-speech makes the voice ours. Damon's pick over Higgsfield Seedance and Google Omni direct on the same still + line."
+  },
+  "gemini-omni-1.1-flash": {
+   "provider": "google",
+   "station": "talking",
+   "kind": "talking",
+   "status": "candidate — the controlled-Omni recipe, proven live once",
+   "used_by": [
+    "fal",
+    "higgsfield"
+   ],
+   "max_seconds": null,
+   "rates": [
+    {
+     "tier": "std",
+     "resolution": "720p",
+     "usd_per_second": null,
+     "read": "2026-09-18",
+     "source": "not on the docs page — read from the first bill"
+    }
+   ],
+   "ceilings": [
+    "no audio input and no voice control (docs: 'uploading audio references is unsupported', 'voice editing is not supported') — Omni speaks the line written into the prompt in ITS OWN voice",
+    "Interactions API: POST v1beta/interactions {model, input:[{type:image,data,mime_type},{type:text,text}]}; video comes back inline (base64) under 4 MB, else a file URI; ~41 s; 10 s clip; 720x1280 came back with no settings given — the video-settings parameter shape is unverified (aspect_ratio/resolution rejected under generation_config; response_format needs a `type`)",
+    "the recipe that makes it OURS: Omni native speech → parity check (Scribe) → ElevenLabs speech-to-speech into the character's voice → remux (ffmpeg) → parity again. Live 2026-09-18: 100% before and after the swap"
+   ],
+   "note": "Damon: 'we should be able to control this.' We can: Omni gives the sync; ElevenLabs speech-to-speech gives the voice. Same recipe works on fal's Omni (google/gemini-omni-flash/v1.1/image-to-video, $0.10/s, 43 s, line in the prompt — 100%)."
+  }
+ },
+ "_doors": "Damon's rule 2026-09-17: a sub-par door quietly neuters the process, so each model was researched at every door (providers/MODEL-HOUSE.md, providers/research/). 'direct' = the maker's own API on our key. 2026-09-18: every station's door is direct; doors[...].hand is 'machine' for all seven. Earlier door rulings are under _history.",
+ "doors": {
+  "cast": {
+   "hand": "machine",
+   "primary": "direct:openai",
+   "model": "gpt-image-2.5-sunburst",
+   "why": "input_fidelity high + moderation low exist only on the direct API",
+   "alternates": [
+    "fal",
+    "higgsfield"
+   ]
+  },
+  "still": {
+   "hand": "machine",
+   "primary": "direct:openai",
+   "model": "gpt-image-2.5-sunburst",
+   "why": "same — faces and labels hold only with input_fidelity high",
+   "alternates": [
+    "fal",
+    "higgsfield"
+   ]
+  },
+  "edit": {
+   "hand": "machine",
+   "primary": "direct:openai",
+   "model": "gpt-image-2.5-sunburst",
+   "endpoint": "images/edits",
+   "why": "2026-09-18, Damon: 'we'll just do gpt for all image work both initial reference gen and edits' — one image door: generation with references and edits with input_fidelity high, two references on every edit (previous frame first, cast sheet second), colour-matched to the first frame after; Nano Banana Pro measured 2026-09-18: held the face with the second reference but under-delivered a push-in",
+   "alternates": [
+    "direct:google",
+    "fal"
+   ],
+   "ruled": "2026-09-18"
+  },
+  "motion": {
+   "hand": "editor",
+   "primary": "higgsfield",
+   "model": "seedance_2_5",
+   "mode": "omni_reference",
+   "recipe": "first_last_frame",
+   "why": "2026-09-18 evening, Damon: 'let's just do the higgsfield seedance frame' — Seedance 2.5 on Higgsfield takes the first frame (start_image), the last frame (end_image) and the audio slice (audio_references) on one call, up to 30 s; proven live the same day on Pigment Memory scene 1 (9 s, line check 100%). The fal Omni door from the 15:05/15:20 ruling stays as an alternate: no audio input, 10 s max, voice put on afterwards.",
+   "alternates": [
+    "direct:omni",
+    "direct:byteplus"
+   ],
+   "ruled": "2026-09-18",
+   "superseded": {
+    "primary": "direct:omni",
+    "model": "google/gemini-omni-flash/v1.1/image-to-video",
+    "why": "2026-09-18 15:20, Damon: 'we don't need Higgsfield MCP for any of this now' — silent motion runs on the same fal Omni door as the talking beat (machine/omni.py "
+   }
+  },
+  "talking": {
+   "hand": "editor",
+   "primary": "higgsfield",
+   "model": "seedance_2_5",
+   "mode": "omni_reference",
+   "recipe": "omni_reference",
+   "why": "2026-09-18 evening, Damon: 'let's just do the higgsfield seedance frame' — Seedance 2.5 on Higgsfield takes the first frame (start_image), the last frame (end_image) and the audio slice (audio_references) on one call, up to 30 s; proven live the same day on Pigment Memory scene 1 (9 s, line check 100%). The fal Omni door from the 15:05/15:20 ruling stays as an alternate: no audio input, 10 s max, voice put on afterwards.",
+   "alternates": [
+    "direct:omni",
+    "direct:byteplus"
+   ],
+   "ruled": "2026-09-18",
+   "superseded": {
+    "primary": "direct:omni",
+    "model": "google/gemini-omni-flash/v1.1/image-to-video",
+    "why": "2026-09-18 15:05, Damon: 'fal Omni came out the best for what I need and obviously it's cheaper' — the talking beat runs on the machine hand through machine/omn"
+   }
+  },
+  "voice": {
+   "hand": "machine",
+   "primary": "direct:elevenlabs",
+   "model": "eleven_multilingual_v2 / eleven_v3",
+   "why": "custom voices, full settings, character timestamps, dialogue — nowhere else",
+   "alternates": []
+  },
+  "audio": {
+   "hand": "machine",
+   "primary": "direct:google",
+   "model": "lyria-3-pro-preview",
+   "why": "fal's copy has no lyric input and no times; the song is made first and travels as a file",
+   "alternates": [
+    "fal"
+   ]
+  }
+ },
+ "direct_keys": {
+  "direct:openai": "OPENAI_API_KEY (Keychain slot created 2026-09-17 — Damon pastes the key)",
+  "direct:google": "GEMINI_API_KEY (in the Keychain)",
+  "direct:elevenlabs": "ELEVENLABS_API_KEY (in the Keychain)",
+  "direct:byteplus": "BYTEPLUS_API_KEY in the Keychain (2026-09-18, verified — the account answers). Model dreamina-seedance-2-5-260628 NOT activated: activation needs a paid balance and BytePlus takes no online payment from the US (sales form only).",
+  "direct:omni": "FAL_KEY + ELEVENLABS_API_KEY (both in the Keychain) — motion AND talking"
+ },
+ "direct": {
+  "_readme": "The machine hand's own request shapes — read by machine/direct_openai.py and machine/direct_google.py, which never hardcode a model id or URL. Field names quoted from providers/research/gpt-image-2.md, nano-banana-pro.md and lyria.md, 2026-09-17.",
+  "openai": {
+   "images_edit": "https://api.openai.com/v1/images/edits",
+   "images_generate": "https://api.openai.com/v1/images/generations",
+   "model": "gpt-image-2.5-sunburst",
+   "params": {
+    "quality": "xhigh",
+    "input_fidelity": "high",
+    "moderation": "low",
+    "size": "1024x1536",
+    "output_format": "png"
+   },
+   "proven": {
+    "generations": "2026-09-18 — first live image through the door on Damon's key (1024x1536, quality high, moderation low); ~5.5k tokens",
+    "edits_with_references": "2026-09-18 15:45 — live on gpt-image-2.5-sunburst from the board's queue (drain.py): the API REJECTS input_fidelity on 2.5 (invalid_input_fidelity_model); direct_openai.py retries without it. Fidelity to the reference is whatever 2.5 does natively — judge it on the frames.",
+    "gpt-image-2.5-sunburst": "2026-09-18 — first live generation at quality xhigh, 1024x1536: sharper than GPT Image 2 on 2,489 tokens vs 5,518"
+   },
+   "model_previous": "gpt-image-2",
+   "model_fast": "gpt-image-2.5-flare",
+   "why_2_5": "Damon 2026-09-18: OpenAI's docs now steer to gpt-image-2.5 — sunburst is 'our most capable model for image generation and editing… where editing precision matters most' (snapshot gpt-image-2.5-sunburst-2026-09-08); flare is the fast everyday tier. Same endpoints and token rates as GPT Image 2; quality gains xhigh and max. Cast and stills run on sunburst at xhigh; flare is the alternate for cheap volume.",
+   "unverified_2_5": "moderation / background / custom size on 2.5 still unverified; input_fidelity is now VERIFIED ABSENT on 2.5 (2026-09-18)"
+  },
+  "google": {
+   "image_model": "gemini-3-pro-image",
+   "generate_content": "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+   "image_config": {
+    "aspectRatio": "9:16",
+    "imageSize": "2K"
+   },
+   "song_models": {
+    "full": "lyria-3-pro-preview",
+    "clip": "lyria-3-clip-preview"
+   },
+   "safety": "BLOCK_ONLY_HIGH on every category",
+   "safety_categories": [
+    "HARM_CATEGORY_HARASSMENT",
+    "HARM_CATEGORY_HATE_SPEECH",
+    "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+    "HARM_CATEGORY_DANGEROUS_CONTENT",
+    "HARM_CATEGORY_CIVIC_INTEGRITY"
+   ],
+   "_unverified": [
+    "whether gemini-3-pro-image needs a generationConfig.responseModalities field to return an image part — not documented on the model's own pages (providers/research/nano-banana-pro.md); omitted here, add it if a real call comes back text-only",
+    "the timed lyric sheet in Lyria's text part is observed behaviour, not a documented contract (providers/research/lyria.md) — verify per run, never assume it"
+   ],
+   "proven": {
+    "edit": "2026-09-18 — live: one discrete edit (white mug → matte red), everything else held, 1536×2752 (2K 9:16)",
+    "song": "2026-09-18 — live: 30.8 s clip (lyria-3-clip-preview), the timed lyric sheet came back in the text part again ([0.0:5.3] …) — observed twice now, still not documented; the API returns MP3 and rejects a requested WAV"
+   }
+  },
+  "elevenlabs": {
+   "proven": "2026-09-18 — live: one line in a cloned voice on Damon's account (eleven_multilingual_v2), 4.9 s; 8 custom voices exist on the account",
+   "speech_to_speech": "https://api.elevenlabs.io/v1/speech-to-speech/{voice_id}",
+   "sts_model_id": "eleven_multilingual_sts_v2"
+  },
+  "byteplus": {
+   "_readme": "Seedance 2.5 direct on BytePlus ModelArk — read by machine/direct_byteplus.py. Field names quoted from docs.byteplus.com/en/docs/ModelArk/1520757 (create) and /1521309 (retrieve), read 2026-09-18 in a browser. Ruled 2026-09-18 (Damon): 'let's just set up BytePlus so we just have what we need' — the Higgsfield API is the same model at 1.4–2× the price and carries none of the other four.",
+   "region": "ap-southeast-1 — the only region that serves Seedance 2.5 (EU serves seed-2-0-lite only)",
+   "create_task": "https://ark.ap-southeast.bytepluses.com/api/v3/contents/generations/tasks",
+   "get_task": "https://ark.ap-southeast.bytepluses.com/api/v3/contents/generations/tasks/{id}",
+   "model": "dreamina-seedance-2-5-260628",
+   "auth": "Authorization: Bearer <ARK API key> — Keychain daemn-BYTEPLUS_API_KEY",
+   "seconds_range": [
+    4,
+    30
+   ],
+   "defaults": {
+    "resolution": "720p",
+    "ratio": "9:16",
+    "output_format": "mp4",
+    "talking_seconds": 6
+   },
+   "motion_roles": {
+    "first": "first_frame",
+    "last": "last_frame"
+   },
+   "talking_roles": {
+    "image": "reference_image",
+    "audio": "reference_audio"
+   },
+   "talking_task_type": "reference",
+   "talking_prefix": "@Image1 is the first frame and the only person in the shot. They speak the words in @Audio1 exactly, lips matching the audio; nothing else is said.",
+   "media": "base64 data URLs (data:image/png;base64,… / data:audio/wav;base64,…) — documented; body cap 64 MB; audio wav/mp3, 2–30 s per clip, up to 10 clips / 30 s total",
+   "price": "token-metered: (in + out seconds) × W × H × 24 / 1024 tokens; ≈ $0.10/s 480p · $0.23/s 720p · $0.57/s 1080p (read 2026-09-17, docs.byteplus.com/en/docs/ModelArk/1544106)",
+   "_unverified": [
+    "that reference_image + reference_audio (task type reference) is the pairing that lip-syncs the still to OUR line — the docs show audio driving lips only in the video-edit dubbing example; the alternative pairing is first_frame + reference_audio. The first live talking beat decides; if parity fails on the first, direct_byteplus.py's talking_roles is the one slot to change",
+    "that a base64 audio part is accepted alongside a base64 image on 2.5 (documented for both, not seen combined)",
+    "the exact per-second bill — read usage.completion_tokens off the first task"
+   ],
+   "proven": {
+    "auth": "2026-09-18 — the key answers GET /contents/generations/tasks (200). POST refused: ModelNotOpen (activation needs billing; US online payment unsupported)."
+   }
+  },
+  "omni": {
+   "_readme": "The talking beat on the controlled-Omni recipe — read by machine/omni.py. Damon 2026-09-18 15:05, after watching the same still + line through Higgsfield Seedance, Google Omni direct and fal Omni: 'fal Omni came out the best for what I need and obviously it's cheaper.' Schema read from fal.ai/api/openapi/queue/openapi.json?endpoint_id=google/gemini-omni-flash/v1.1/image-to-video (2026-09-18): prompt, image_url, end_image_url, duration (default 8), aspect_ratio 16:9|9:16, resolution 360p|720p|1080p|4k. No audio field — the line goes in the prompt.",
+   "model": "google/gemini-omni-flash/v1.1/image-to-video",
+   "host": "fal — queue.fal.run; FAL_KEY in the Keychain",
+   "defaults": {
+    "aspect_ratio": "9:16",
+    "resolution": "720p",
+    "seconds": 6
+   },
+   "seconds_range": [
+    4,
+    10
+   ],
+   "prompt_template": "The person in the image looks straight into the lens and says, clearly and naturally, in their own voice: \"{line}\" Locked frame, no camera movement, no cuts, nothing else is said. Single continuous take.",
+   "ffmpeg": "/opt/homebrew/bin/ffmpeg",
+   "price": "$0.10/s at 720p, $0.15/s at 1080p, $0.03/s at 360p (fal page, read 2026-09-18) + ElevenLabs speech-to-speech on the clip's seconds; ~44 s to make a 6 s clip",
+   "proven": {
+    "2026-09-18": "live by hand: line in the prompt → Omni said it 100% (Scribe); ElevenLabs speech-to-speech into the character's voice → remux → 100% again; 720x1280 6 s; Damon picked this clip over Higgsfield Seedance and Google Omni direct",
+    "2026-09-18 machine": "omni.py talk, one call, 63 s wall clock: Omni request 01a0b390 → parity 100% → speech-to-speech into the character's voice → remux → parity 100%. 720x1280, 6 s. Damon saw the clip.",
+    "2026-09-18 board queue": "drain.py on a two-order queue, live: A1 talking beat (GPT Image 2.5 frame from the presenter reference → omni.talk, parity 100%/100%, 5 s) and B1 silent cutaway (frame → omni.motion, sound stripped, 4 s). 3 min 20 s wall clock, ~$1.60. Silent motion on this door is now PROVEN on a product cutaway — the inspector still judges the label."
+   },
+   "_unverified": [],
+   "silent_suffix": "Nobody speaks; no dialogue, no voice-over. Single continuous take, no cuts."
+  }
+ },
+ "recipes": {
+  "controlled_omni": {
+   "1": "Omni (fal image-to-video or Google gemini-omni-1.1-flash) with the line written into the prompt in quotes; the approved still as image",
+   "2": "lineparity: transcribe, ≥85% or FLAG",
+   "3": "ElevenLabs speech-to-speech (eleven_multilingual_sts_v2) from the clip's audio into the character's voice_id",
+   "4": "ffmpeg: video stream copied, new audio muxed",
+   "5": "lineparity again — the swapped clip must still say the line",
+   "why": "Damon 2026-09-18: 'we should be able to control this' — the sync from Omni, the voice from us"
+  }
+ },
+ "_history": {
+  "doors.motion.previous_2026_09_18_higgsfield_fallback": {
+   "hand": "editor",
+   "primary": "higgsfield",
+   "model": "seedance-2.5",
+   "why": "2026-09-18 14:50, Damon: BytePlus cannot take a US card ('Online payment is not supported in your country/region' — sales contact only), so the direct door is WIRED BUT BLOCKED ON BILLING. Until it opens, Seedance runs where the credits already are: Higgsfield through the MCP (Ultra plan, proven on this exact beat). same cost as direct at 720p, the editors' door; fal is double — fal alternate is B-ROLL ONLY: its Seedance 2.5 refuses any photoreal person (live 2026-09-18).",
+   "alternates": [
+    "fal",
+    "direct:byteplus"
+   ],
+   "blocked_direct": {
+    "hand": "machine",
+    "primary": "direct:byteplus",
+    "model": "seedance-2.5",
+    "why": "2026-09-18, Damon: BytePlus direct is the cheapest Seedance door with nobody at a keyboard ($0.23/s at 720p; Higgsfield API $0.32–0.46/s, fal $0.47/s and refuses people). Explicit first_frame/last_frame roles, 1080p when a hero clip earns it. Supersedes the 09-17 'editors' door' ruling — the API made the editor unnecessary, BytePlus makes it cheap.",
+    "alternates": [
+     "higgsfield (MCP, Ultra credits — a session at the keyboard)",
+     "fal (b-roll only — refuses photoreal people)",
+     "higgsfield-api (same model, dearer)"
+    ]
+   }
+  },
+  "doors.talking.previous_2026_09_18_higgsfield_fallback": {
+   "hand": "editor",
+   "primary": "higgsfield",
+   "model": "seedance-2.5",
+   "why": "2026-09-18 14:50, Damon: BytePlus cannot take a US card ('Online payment is not supported in your country/region' — sales contact only), so the direct door is WIRED BUT BLOCKED ON BILLING. Until it opens, Seedance runs where the credits already are: Higgsfield through the MCP (Ultra plan, proven on this exact beat). Two doors proven live 2026-09-18 on the same still + line: Higgsfield Seedance 2.5 omni_reference (39 credits ≈ $1.30–1.70, 6 s, 720p 9:16) and fal OmniHuman 1.5 ($0.16/s ≈ $0.77, clip = audio length, editor crops to 9:16). fal's Seedance 2.5 refuses photoreal people; OmniHuman does not. Direct BytePlus remains the one-command upgrade for Seedance. Third door live 2026-09-18: Google Omni Flash 1.1 on fal with the audio attached — 6 s 720p 9:16 in 44 s, $0.60. Damon's ear picks among the three clips. LINE PARITY (2026-09-18): every talking clip is transcribed and compared to its line — Omni Flash on fal lip-synced to invented words (10%) and is out; Higgsfield Seedance 2.5 and fal OmniHuman said the line word for word. CONTROLLED OMNI (2026-09-18): Omni has no audio input, but with the line in the prompt it speaks it 100%; ElevenLabs speech-to-speech then swaps the voice to the character's with the lip-sync intact (proven on fal and on Google direct).",
+   "alternates": [
+    "fal (OmniHuman 1.5 — said the line 100%, $0.16/s)",
+    "controlled Omni (fal $0.10/s or Google direct): line in the prompt → parity → ElevenLabs speech-to-speech → remux",
+    "direct:byteplus"
+   ],
+   "upgrade": "direct:byteplus",
+   "blocked_direct": {
+    "hand": "machine",
+    "primary": "direct:byteplus",
+    "model": "seedance-2.5",
+    "why": "2026-09-18, Damon: same ruling as motion — the still is the face, the ElevenLabs line rides as reference_audio, one call from run.py. Every clip still passes LINE PARITY in `record` (≥85%) before it ships; the first live beat proves the role pairing (see direct.byteplus._unverified).",
+    "alternates": [
+     "higgsfield (MCP omni_reference — proven 18 Sep, said the line 100%)",
+     "fal OmniHuman 1.5 ($0.16/s, said the line 100%, editor crops to 9:16)",
+     "controlled Omni (line in the prompt → parity → ElevenLabs speech-to-speech → remux)"
+    ]
+   }
+  }
+ },
+ "_providers": "Houses a run can be FORCED onto with --provider (fal | higgsfield-mcp | higgsfield-ui). With no flag the machine hand runs every station direct (see doors) and no house is used. Kept because Damon may still want a piece made in a house on purpose; not the default since 2026-09-18."
+}

@@ -1,0 +1,1294 @@
+{
+ "_readme": [
+  "THE MODEL INPUT CONTRACT — what each settled door actually accepts, in the maker's own field names, with the order the maker recommends the prompt be assembled in, and which of OUR scene/frame fields fills each field.",
+  "Written 2026-09-18 from the research notes; every row carries the doc URL it was read from. This file exists so that a scene is never assembled by guessing: run.py builds every item's fields from here, preflight.py's contract gate refuses an item that is missing one, and machine/render_model_inputs.py renders it into MODEL-INPUTS.md so a prompt can READ the contract instead of restating it.",
+  "The doors are settled (providers.json `doors`, providers/MODEL-HOUSE.md) and are not re-opened here. A station names its door; a model slug is never repeated here — `model_from` points at the place in providers.json that holds it, so there is exactly one copy of every slug in the machine.",
+  "No brand, product, person or format word appears in this file."
+ ],
+ "version": 1,
+ "read": "2026-09-18",
+ "contract_of_kind": {
+  "cast": "still-generate",
+  "still": "still-generate",
+  "edit": "still-edit",
+  "restyle": "still-edit",
+  "motion": "motion",
+  "talking": "talking",
+  "voice": "voice"
+ },
+ "piece_fields": {
+  "aspect": {
+   "what": "declared ONCE per piece, never per scene — every still, every clip and every crop carries the same value",
+   "house_default": "9:16"
+  },
+  "resolution": {
+   "what": "declared ONCE per piece — the still size and the clip resolution are resolved from it per station",
+   "house_default": "720p"
+  }
+ },
+ "aspect_to_size": {
+  "9:16": "1024x1536",
+  "16:9": "1536x1024",
+  "1:1": "1024x1024",
+  "4:5": "1024x1280",
+  "3:4": "1024x1365"
+ },
+ "stations": {
+  "still-generate": {
+   "station": "still",
+   "door": "direct:openai",
+   "model_from": "direct.openai.model",
+   "makes": "the FIRST FRAME of a scene — a generation, because no source image exists yet. It carries its references (cast sheet, packshot, style frame) in the order the maker preserves detail in.",
+   "endpoints": {
+    "with_references": "direct.openai.images_edit",
+    "no_references": "direct.openai.images_generate"
+   },
+   "endpoint_rule": "a first frame always carries at least the cast sheet, so it posts to images/edits with the references as repeated image[] parts; with no reference at all it posts to images/generations",
+   "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+   "fields": [
+    {
+     "name": "model",
+     "required": true,
+     "type": "string",
+     "values": "the slug in providers.json direct.openai.model",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/models/gpt-image-2",
+     "item": null
+    },
+    {
+     "name": "prompt",
+     "required": true,
+     "type": "string",
+     "values": "the whole first-frame description, assembled in the order below",
+     "house_default": null,
+     "fills": "the frame's subject · composition · action · location · style · camera · lighting",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": "params.prompt"
+    },
+    {
+     "name": "image[]",
+     "required": "when references exist",
+     "type": "file, repeated",
+     "values": "the references, in order — FIRST item is the one whose detail is preserved",
+     "house_default": null,
+     "fills": "the frame's Refs: cast sheet first, packshot second, style frame last",
+     "doc": "https://developers.openai.com/cookbook/examples/generate_images_with_high_input_fidelity",
+     "item": "medias.image_references"
+    },
+    {
+     "name": "size",
+     "required": false,
+     "type": "string",
+     "values": "1024x1024 · 1536x1024 · 1024x1536 · custom WxH (multiple of 16, ratio 1:3–3:1, max edge 3840)",
+     "house_default": "resolved from the piece's aspect through aspect_to_size",
+     "fills": "the piece's Aspect",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": "params.size"
+    },
+    {
+     "name": "quality",
+     "required": false,
+     "type": "string",
+     "values": "low · medium · high · xhigh · max · auto",
+     "house_default": "direct.openai.params.quality",
+     "fills": "the piece's Resolution",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": "params.quality"
+    },
+    {
+     "name": "moderation",
+     "required": false,
+     "type": "string",
+     "values": "auto · low",
+     "house_default": "direct.openai.params.moderation",
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": null
+    },
+    {
+     "name": "output_format",
+     "required": false,
+     "type": "string",
+     "values": "png · jpeg · webp",
+     "house_default": "direct.openai.params.output_format",
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": null
+    },
+    {
+     "name": "background",
+     "required": false,
+     "type": "string",
+     "values": "transparent · opaque · auto (transparent needs png/webp)",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": null
+    },
+    {
+     "name": "output_compression",
+     "required": false,
+     "type": "int",
+     "values": "0–100, jpeg/webp only",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": null
+    },
+    {
+     "name": "n",
+     "required": false,
+     "type": "int",
+     "values": "generations only",
+     "house_default": 1,
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": null
+    }
+   ],
+   "assembly": {
+    "order": [
+     "subject",
+     "composition",
+     "action",
+     "location",
+     "style",
+     "camera",
+     "lighting"
+    ],
+    "rule": "the maker's own order for a photographic still — concrete over abstract, and the more specific the words, the more of the frame is decided rather than invented. This is the order a FIRST FRAME is written in, in the brief and in the prompt.",
+    "separator": " ",
+    "doc": "https://ai.google.dev/gemini-api/docs/image-generation"
+   },
+   "limits": {
+    "references": "cast sheet first (finest detail preserved), packshot second, style frame last",
+    "one_person_per_call": "keep one described person per call — an edit that does not name who drifts wardrobe onto everyone",
+    "text_in_frame": "generate the plate clean; words go on as a layer afterwards (frames-by-edit.md)",
+    "input_fidelity": "REJECTED on 2.5 — invalid_input_fidelity_model, live 2026-09-18 (providers.json direct.openai.proven). It belongs to the 2.x models; do not send it on the settled slug."
+   },
+   "fills_from_frame": {
+    "subject": "who is in it — by the cast name the brief already fixed, never a re-description of the face",
+    "composition": "how it is framed and how much of the frame each thing occupies",
+    "action": "what the person or the object is doing at this instant",
+    "location": "the world block this scene plays in, by its name",
+    "style": "the piece's one grade sentence",
+    "camera": "the result — how high, how close, how much depth — never a named device",
+    "lighting": "where the light comes from and how flat it is",
+    "refs": "image[] — in the order listed"
+   }
+  },
+  "still-edit": {
+   "station": "edit",
+   "door": "direct:google",
+   "model_from": "direct.google.image_model",
+   "makes": "the scene's LAST FRAME — an EDIT of its first frame, whose prompt names ONLY the delta. An edit instruction must never describe anything the source image already shows. This is the everyday edit door (Damon 2026-09-18: cheaper, and good).",
+   "endpoints": {
+    "generate_content": "direct.google.generate_content"
+   },
+   "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+   "fields": [
+    {
+     "name": "model",
+     "required": true,
+     "type": "string",
+     "values": "the slug in providers.json direct.google.image_model",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+     "item": null
+    },
+    {
+     "name": "contents[0].parts[].inline_data",
+     "required": true,
+     "type": "object, repeated",
+     "values": "image refs, in order — the previous frame first, the cast sheet second; up to 6 object refs / 5 character refs on Pro",
+     "house_default": null,
+     "fills": "the previous frame, then the character's cast sheet",
+     "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+     "item": "medias.image_references"
+    },
+    {
+     "name": "contents[0].parts[].text",
+     "required": true,
+     "type": "string",
+     "values": "the instruction — the delta only, stated as a verb",
+     "house_default": null,
+     "fills": "the frame's Do / Change line",
+     "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+     "item": "params.prompt"
+    },
+    {
+     "name": "generationConfig.imageConfig.aspectRatio",
+     "required": false,
+     "type": "string",
+     "values": "1:1 · 3:2 · 2:3 · 3:4 · 4:3 · 4:5 · 5:4 · 9:16 · 16:9 · 21:9",
+     "house_default": "the piece's Aspect",
+     "fills": "the piece's Aspect",
+     "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+     "item": "params.aspect_ratio"
+    },
+    {
+     "name": "generationConfig.imageConfig.imageSize",
+     "required": false,
+     "type": "string",
+     "values": "1K · 2K · 4K",
+     "house_default": "direct.google.image_config.imageSize",
+     "fills": "the piece's Resolution",
+     "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+     "item": "params.image_size"
+    },
+    {
+     "name": "safetySettings[].category",
+     "required": false,
+     "type": "enum, one row per category",
+     "values": "HARASSMENT · HATE_SPEECH · SEXUALLY_EXPLICIT · DANGEROUS_CONTENT · CIVIC_INTEGRITY",
+     "house_default": "direct.google.safety_categories",
+     "fills": "—",
+     "doc": "https://ai.google.dev/gemini-api/docs/safety-settings",
+     "item": null
+    },
+    {
+     "name": "safetySettings[].threshold",
+     "required": false,
+     "type": "enum",
+     "values": "BLOCK_NONE · BLOCK_ONLY_HIGH · BLOCK_MEDIUM_AND_ABOVE · BLOCK_LOW_AND_ABOVE",
+     "house_default": "direct.google.safety",
+     "fills": "—",
+     "doc": "https://ai.google.dev/gemini-api/docs/safety-settings",
+     "item": null
+    }
+   ],
+   "assembly": {
+    "order": [
+     "delta"
+    ],
+    "rule": "the whole prompt is the change, stated as a verb — add, remove, move, turn, change the grade. Nothing already visible in the source frame is mentioned. Measured: full re-description ran 4,262 characters and blended two identities; delta-only ran 204–386 and held the scene (frames-by-edit.md).",
+    "separator": " ",
+    "doc": "https://ai.google.dev/gemini-api/docs/image-generation",
+    "keep_line": "Keep the person, wardrobe, setting, colour, white balance and light exactly as in the reference. Change nothing else.",
+    "keep_line_why": "the delta says what changes; this one line says what may not. Without it an edit door re-decides the exposure, the wardrobe and the room, and the first/last pair reads as two different shots (live 2026-09-18)."
+   },
+   "limits": {
+    "character_refs": 5,
+    "object_refs": 6,
+    "watermark": "every image carries a non-removable SynthID mark",
+    "delta_only": "a frame whose prompt describes the room, the wardrobe or the face is re-generating, not editing — the defect this station exists to prevent",
+    "references": "ALWAYS TWO references, in this order: the previous frame FIRST, the character's cast sheet SECOND. Measured live 2026-09-18 — with the frame alone as the only reference the face drifted."
+   },
+   "fills_from_frame": {
+    "delta": "contents[0].parts[].text — the only thing said",
+    "camera": "named only when the camera itself moves on this frame",
+    "refs": "inline_data — the previous frame first, then the packshot where a product reappears"
+   },
+   "after": "a mechanical colour match, every time, before the still is verified: resize the edit to the first frame's exact size, then match it per channel to the first frame by histogram (machine/colour_match.py, pure PIL). An edit door returns its own exposure and white balance, and a first/last pair that disagrees on either reads as two shots.",
+   "status": "alternate — not the ruled door since 2026-09-18 (all image work on direct:openai)"
+  },
+  "still-edit-fidelity": {
+   "station": "still",
+   "door": "direct:openai",
+   "model_from": "direct.openai.model",
+   "makes": "THE FACE-RESCALE EDIT — the same delta edit at the stills door, for a last frame whose camera moves in on the face or takes a new angle on it. Measured live 2026-09-18: the edit door held the face but under-delivered the camera move; the fidelity door delivered both.",
+   "endpoints": {
+    "with_references": "direct.openai.images_edit"
+   },
+   "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+   "fields": [
+    {
+     "name": "model",
+     "required": true,
+     "type": "string",
+     "values": "the slug in providers.json direct.openai.model",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/models/gpt-image-2",
+     "item": null
+    },
+    {
+     "name": "prompt",
+     "required": true,
+     "type": "string",
+     "values": "the instruction only — the delta, never the scene around it",
+     "house_default": null,
+     "fills": "the frame's Do / Change line",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": "params.prompt"
+    },
+    {
+     "name": "image[]",
+     "required": true,
+     "type": "file, repeated",
+     "values": "the previous frame FIRST, the character's cast sheet SECOND",
+     "house_default": null,
+     "fills": "the previous frame, then the cast sheet",
+     "doc": "https://developers.openai.com/cookbook/examples/generate_images_with_high_input_fidelity",
+     "item": "medias.image_references"
+    },
+    {
+     "name": "mask",
+     "required": false,
+     "type": "file",
+     "values": "same size and format as the image, alpha channel, under 50MB",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": null
+    },
+    {
+     "name": "size",
+     "required": false,
+     "type": "string",
+     "values": "as still-generate",
+     "house_default": "resolved from the piece's aspect through aspect_to_size",
+     "fills": "the piece's Aspect",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": "params.size"
+    },
+    {
+     "name": "quality",
+     "required": false,
+     "type": "string",
+     "values": "low · medium · high · xhigh · max · auto",
+     "house_default": "direct.openai.params.quality",
+     "fills": "the piece's Resolution",
+     "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+     "item": "params.quality"
+    },
+    {
+     "name": "input_fidelity",
+     "required": false,
+     "type": "string",
+     "values": "high — preserves faces, logos and labels",
+     "house_default": "high",
+     "fills": "—",
+     "doc": "https://developers.openai.com/cookbook/examples/generate_images_with_high_input_fidelity",
+     "note": "sent high on this route — it is what holds a face through a camera move (live 2026-09-18). The stills client drops it and retries when a model rejects it (providers.json direct.openai.proven), so sending it is safe.",
+     "item": null
+    }
+   ],
+   "assembly": {
+    "order": [
+     "delta"
+    ],
+    "rule": "identical to still-edit — focused changes referencing existing content, never the scene around them",
+    "separator": " ",
+    "doc": "https://developers.openai.com/api/docs/guides/image-generation",
+    "keep_line": "Keep the person, wardrobe, setting, colour, white balance and light exactly as in the reference. Change nothing else.",
+    "keep_line_why": "the delta says what changes; this one line says what may not. Without it an edit door re-decides the exposure, the wardrobe and the room, and the first/last pair reads as two different shots (live 2026-09-18)."
+   },
+   "limits": {
+    "references": "ALWAYS TWO references, in this order: the previous frame FIRST, the character's cast sheet SECOND. Measured live 2026-09-18 — with the frame alone as the only reference the face drifted.",
+    "delta_only": "as still-edit"
+   },
+   "fills_from_frame": {
+    "delta": "prompt",
+    "refs": "image[] — the previous frame first"
+   },
+   "after": "a mechanical colour match, every time, before the still is verified: resize the edit to the first frame's exact size, then match it per channel to the first frame by histogram (machine/colour_match.py, pure PIL). An edit door returns its own exposure and white balance, and a first/last pair that disagrees on either reads as two shots."
+  },
+  "motion": {
+   "station": "motion",
+   "door": "higgsfield",
+   "model_from": "providers.higgsfield-mcp.stations.motion",
+   "makes": "ONE clip per scene — the whole scene, from its FIRST FRAME to its LAST FRAME, with what happens between them written as timed beats on the prompt's own timeline. Two stills per scene, never one per beat; never one clip per line.",
+   "mode": "omni_reference",
+   "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+   "fields": [
+    {
+     "name": "model",
+     "required": true,
+     "type": "string",
+     "values": "the slug in providers.json providers.higgsfield-mcp.stations.motion",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": null
+    },
+    {
+     "name": "mode",
+     "required": true,
+     "type": "string",
+     "values": "t2v · omni_reference · video_edit · video_extension",
+     "house_default": "omni_reference",
+     "fills": "the settled door's one mode — the first frame, the last frame and (on a to-camera scene) the voice slice travel on one call",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": "params.mode"
+    },
+    {
+     "name": "prompt",
+     "required": true,
+     "type": "string",
+     "values": "the assembled paragraph — asset line, one-sentence summary, the timeline of beats, the consistency notes",
+     "house_default": null,
+     "fills": "the scene's first frame, its beats and its last frame, in that order",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/2607689",
+     "item": "params.prompt"
+    },
+    {
+     "name": "start_image",
+     "required": true,
+     "type": "media uuid",
+     "values": "an uploaded media id — a URL is rejected upstream (422 uuid_parsing)",
+     "house_default": null,
+     "fills": "the scene's FIRST FRAME",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": "start_frame"
+    },
+    {
+     "name": "end_image",
+     "required": true,
+     "type": "media uuid",
+     "values": "the scene's last frame — a real input on the settled door (role end_image) and on BytePlus direct (role last_frame)",
+     "house_default": null,
+     "fills": "the scene's LAST FRAME",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "when_absent": "only on a door with no end-frame field: the last frame is the timeline's final beat, and the sheet says which happened",
+     "item": "end_frame",
+     "note": "media roles read from the connector's own model listing, 2026-09-18"
+    },
+    {
+     "name": "duration",
+     "required": false,
+     "type": "int (seconds)",
+     "values": "4–30",
+     "house_default": "the scene's own length, read from vo/timing.json — never a number a format sets",
+     "fills": "the scene's slice of the one voice track",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "params.duration"
+    },
+    {
+     "name": "aspect_ratio",
+     "required": false,
+     "type": "string",
+     "values": "21:9 · 16:9 · 4:3 · 1:1 · 3:4 · 9:16 · adaptive",
+     "house_default": "the piece's Aspect",
+     "fills": "the piece's Aspect",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "params.aspect_ratio"
+    },
+    {
+     "name": "resolution",
+     "required": false,
+     "type": "string",
+     "values": "480p · 720p (no 1080p native on this door)",
+     "house_default": "the piece's Resolution",
+     "fills": "the piece's Resolution",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": "params.resolution"
+    },
+    {
+     "name": "generate_audio",
+     "required": false,
+     "type": "bool",
+     "values": "true · false",
+     "house_default": false,
+     "fills": "silent motion carries no sound of its own — the one voice track is laid under it at the edit",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "params.generate_audio"
+    }
+   ],
+   "assembly": {
+    "order": [
+     "assets",
+     "summary",
+     "timeline",
+     "consistency"
+    ],
+    "rule": "the maker's own four blocks, in this order, assembled from the shared `clip_prompt` shape at the top of this file — the exact shape of the call that worked live 2026-09-18 evening. (1) the asset line: what @Image1, @Image2 and @Audio1 are; (2) ONE clean summary sentence from labelled slots; (3) the timeline of beats, one verb each, spans off the one voice track, the first anchored on @Image1 and the last settling on @Image2; (4) what holds — the take, the setting, the light, the wardrobe, the negatives.",
+    "blocks": {
+     "assets": "@Image1 is the first frame: <the first frame in one line>. @Image2 is the last frame: <the delta as a description>.",
+     "summary": "one sentence — who, where, what they do, the style, the camera",
+     "timeline": "0-2.54s: … · 3.18-4.55s: … — one verb per beat, the spans read off the one voice track, the first beat naming the frame at @Image1 and the last settling on the framing of @Image2; a silent beat may carry the words playing over it",
+     "consistency": "One continuous take, no cuts, <the camera sentence>. Same <setting>, same <light>, same wardrobe throughout. No subtitles. No background music."
+    },
+    "separator": "\n\n",
+    "doc": "https://docs.byteplus.com/en/docs/ModelArk/2607689",
+    "shape": "clip_prompt"
+   },
+   "limits": {
+    "max_beats": 15,
+    "max_beats_why": "the maker's own warning: a storyboard is better suited to 15 panels or fewer; past that the order drifts and frames go still",
+    "duration_seconds": [
+     4,
+     30
+    ],
+    "duration_note": "clips within 20 seconds generally produce better results; a scene longer than the ceiling splits at a beat boundary, never mid-paragraph",
+    "one_verb_per_beat": true,
+    "one_verb_why": "two short actions are stable, three or more drift — a beat that names two actions is two beats",
+    "no_high_frequency_action": "timestamps do not control repeated fast motion",
+    "refs": {
+     "images": 30,
+     "videos": 10,
+     "audio": 10,
+     "best": "1–5 subjects; stability decreases from 6"
+    },
+    "ceilings_from": "providers.json models[...].ceilings — text and labels garble, hands near a product merge, a product label must be reference-locked",
+    "frames_per_scene": 2,
+    "frames_per_scene_why": "first and last only — the beats between them are written into the timeline, never generated as stills",
+    "min_beats": 1,
+    "clip_media_roles": [
+     "start_image",
+     "end_image"
+    ],
+    "clip_media_roles_why": "EXACTLY these roles on the clip, and nothing else. The first frame carries the identity, the wardrobe, the room and the light — a cast sheet or a style frame attached beside it is a second opinion about the same face, and the dry run that found this bug had sent both instead of the first frame (2026-09-18).",
+    "duration_from": "ceil(the scene's slice of the voice track), floored at the door's minimum. The ceiling is NOT clamped — a paragraph past it is refused by name so the scene is split at a beat boundary, never quietly shortened."
+   },
+   "fills_from_frame": {
+    "first_frame": "start_image (the still made for it) and @Image1 in the asset line",
+    "last_frame": "end_image (the still made as an edit of the first) and its own asset line; on a door with no end-frame field, the timeline's final beat plus a consistency note",
+    "camera": "named in the beat only when it moves; otherwise once, in the summary",
+    "over": "the words playing over that beat — {dialogue} where the door performs it, otherwise carried by the voice track at the edit",
+    "beat_emotion": "the attitude word in the beat — never a pacing instruction",
+    "hold": "the consistency block",
+    "beats": "the timeline — one line per beat, its span from vo/timing.json, one verb, the camera only where it moves"
+   },
+   "doors": [
+    {
+     "id": "higgsfield:connector",
+     "takes_end_image": true,
+     "field": "end_image",
+     "endpoint": "the Higgsfield connector — seedance_2_5, mode omni_reference",
+     "media_roles": [
+      "start_image",
+      "end_image",
+      "image_references",
+      "video_references",
+      "audio_references"
+     ],
+     "note": "THE SETTLED DOOR. Its media roles were read off models_explore on 2026-09-18: the last frame IS a real input here, attached as end_image beside the first. start_image must be a media uuid — a URL is rejected upstream.",
+     "doc": "https://higgsfield.ai/seedance/2.5"
+    },
+    {
+     "id": "higgsfield:api",
+     "takes_end_image": true,
+     "field": "end_image_url",
+     "endpoint": "image-to-video (first + last frame) / reference-to-video (image_urls + audio_urls)",
+     "media_roles": [
+      "image_url",
+      "end_image_url",
+      "image_urls",
+      "audio_urls"
+     ],
+     "note": "the same house through its own API key pair — separate wallet",
+     "doc": "https://higgsfield.ai/seedance/2.5"
+    },
+    {
+     "id": "byteplus:direct",
+     "takes_end_image": true,
+     "field": "content[].role = last_frame",
+     "endpoint": "POST /contents/generations/tasks",
+     "media_roles": [
+      "first_frame",
+      "last_frame",
+      "reference_image",
+      "reference_video",
+      "reference_audio"
+     ],
+     "note": "the alternate. Explicit first_frame / last_frame roles; on this door the first/last-frame roles and omni_reference are mutually exclusive, so a talking beat there lands its last frame in the timeline's final beat instead.",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757"
+    }
+   ],
+   "preferred_door": "higgsfield:connector",
+   "end_frame_rule": "a scene has exactly two generated stills — the FIRST FRAME and the LAST FRAME — and both are attached: start_image and end_image. Only a door with no end-frame field falls back to describing the last frame as the timeline's final beat, and the submit sheet says so."
+  },
+  "talking": {
+   "station": "talking",
+   "door": "higgsfield",
+   "model_from": "providers.higgsfield-mcp.stations.talking",
+   "makes": "ONE clip per to-camera scene — the scene's whole paragraph, performed, from its first frame to its last, with the scene's slice of the one voice track attached as the audio it dubs.",
+   "mode": "omni_reference",
+   "doc": "https://higgsfield.ai/seedance/2.5",
+   "proven": "2026-09-18 live — start_image + audio_references, mode omni_reference, generate_audio true, 720p 9:16; the attached line is what the clip says",
+   "fields": [
+    {
+     "name": "model",
+     "required": true,
+     "type": "string",
+     "values": "the slug in providers.json providers.higgsfield-mcp.stations.talking",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": null
+    },
+    {
+     "name": "mode",
+     "required": true,
+     "type": "string",
+     "values": "t2v · omni_reference · video_edit · video_extension",
+     "house_default": "omni_reference",
+     "fills": "a to-camera scene",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": "params.mode"
+    },
+    {
+     "name": "prompt",
+     "required": true,
+     "type": "string",
+     "values": "the same four assembled blocks as motion, with the spoken paragraph carried by the attached audio rather than written twice",
+     "house_default": null,
+     "fills": "the scene's first frame, its beats and its last frame, in that order",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/2607689",
+     "item": "params.prompt"
+    },
+    {
+     "name": "start_image",
+     "required": true,
+     "type": "media uuid",
+     "values": "an uploaded media id — a URL is rejected upstream",
+     "house_default": null,
+     "fills": "the scene's FIRST FRAME",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": "start_frame"
+    },
+    {
+     "name": "audio_references",
+     "required": true,
+     "type": "media uuid, repeated",
+     "values": "up to 10 clips, under 15MB each, 2–30s each",
+     "house_default": null,
+     "fills": "the scene's slice of the one voice track — vo/<scene>.mp3",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "medias.audio_references"
+    },
+    {
+     "name": "end_image",
+     "required": true,
+     "type": "media uuid",
+     "values": "the scene's last frame — a real input on the settled door (role end_image) and on BytePlus direct (role last_frame)",
+     "house_default": null,
+     "fills": "the scene's LAST FRAME",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "when_absent": "only on a door with no end-frame field: the last frame is the timeline's final beat, and the sheet says which happened",
+     "item": "end_frame",
+     "note": "media roles read from the connector's own model listing, 2026-09-18"
+    },
+    {
+     "name": "omni_reference",
+     "required": false,
+     "type": "media uuid, repeated",
+     "values": "the identity references this scene holds to",
+     "house_default": null,
+     "fills": "the cast sheet for whoever speaks",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "note": "first/last-frame roles and omni_reference are mutually exclusive upstream — a talking scene uses start_image + omni_reference and lands its last frame in the prompt",
+     "item": "medias.omni_reference"
+    },
+    {
+     "name": "duration",
+     "required": false,
+     "type": "int (seconds)",
+     "values": "4–30",
+     "house_default": "the scene's own length, read from vo/timing.json",
+     "fills": "the scene's slice of the one voice track",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "params.duration"
+    },
+    {
+     "name": "aspect_ratio",
+     "required": false,
+     "type": "string",
+     "values": "as motion",
+     "house_default": "the piece's Aspect",
+     "fills": "the piece's Aspect",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "params.aspect_ratio"
+    },
+    {
+     "name": "resolution",
+     "required": false,
+     "type": "string",
+     "values": "480p · 720p",
+     "house_default": "the piece's Resolution",
+     "fills": "the piece's Resolution",
+     "doc": "https://higgsfield.ai/seedance/2.5",
+     "item": "params.resolution"
+    },
+    {
+     "name": "generate_audio",
+     "required": false,
+     "type": "bool",
+     "values": "true · false",
+     "house_default": true,
+     "fills": "true on this door — the attached line is what comes back spoken",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757",
+     "item": "params.generate_audio"
+    }
+   ],
+   "assembly": {
+    "order": [
+     "assets",
+     "summary",
+     "timeline",
+     "consistency"
+    ],
+    "rule": "the maker's own four blocks, in this order, assembled from the shared `clip_prompt` shape at the top of this file — the exact shape of the call that worked live 2026-09-18 evening. (1) the asset line: what @Image1, @Image2 and @Audio1 are; (2) ONE clean summary sentence from labelled slots; (3) the timeline of beats, one verb each, spans off the one voice track, the first anchored on @Image1 and the last settling on @Image2; (4) what holds — the take, the setting, the light, the wardrobe, the negatives.",
+    "blocks": {
+     "assets": "@Image1 is the first frame: <the first frame in one line>. @Image2 is the last frame: <the delta as a description>. @Audio1 is <who>'s voice; they speak the words in @Audio1 exactly, nothing else is said.",
+     "summary": "one sentence — who, where, what they do, the style, the camera",
+     "timeline": "0-2.54s: … · 3.18-4.55s: … — one verb per beat, the spans read off the one voice track, the first beat naming the frame at @Image1 and the last settling on the framing of @Image2; no beat restates the words, because they arrive as attached audio",
+     "consistency": "One continuous take, no cuts, <the camera sentence>. Same <setting>, same <light>, same wardrobe throughout. Natural lip movement matching the voice. No subtitles. No background music."
+    },
+    "separator": "\n\n",
+    "doc": "https://docs.byteplus.com/en/docs/ModelArk/2607689",
+    "shape": "clip_prompt"
+   },
+   "limits": {
+    "max_beats": 15,
+    "duration_seconds": [
+     4,
+     30
+    ],
+    "audio_clip_seconds": [
+     2,
+     30
+    ],
+    "audio_clip_mb": 15,
+    "one_verb_per_beat": true,
+    "line_parity": "every talking clip is transcribed and compared to its paragraph before it ships — lip-sync to the wrong words is a FLAG",
+    "ceilings_from": "providers.json models[...].ceilings",
+    "frames_per_scene": 2,
+    "frames_per_scene_why": "first and last only — the beats between them are written into the timeline, never generated as stills",
+    "min_beats": 1,
+    "clip_media_roles": [
+     "start_image",
+     "end_image",
+     "audio_references"
+    ],
+    "clip_media_roles_why": "EXACTLY these roles on the clip, and nothing else. The first frame carries the identity, the wardrobe, the room and the light — a cast sheet or a style frame attached beside it is a second opinion about the same face, and the dry run that found this bug had sent both instead of the first frame (2026-09-18).",
+    "duration_from": "ceil(the scene's slice of the voice track), floored at the door's minimum. The ceiling is NOT clamped — a paragraph past it is refused by name so the scene is split at a beat boundary, never quietly shortened."
+   },
+   "fills_from_frame": {
+    "first_frame": "start_image (the still made for it) and @Image1 in the asset line",
+    "voice_paragraph": "audio_references — the scene's slice, never the whole track",
+    "last_frame": "end_image (the still made as an edit of the first) and its own asset line; on a door with no end-frame field, the timeline's final beat plus a consistency note",
+    "beat_emotion": "the attitude word in the beat",
+    "to_camera": "the mode — omni_reference and the audio attached",
+    "beats": "the timeline — one line per beat, its span from vo/timing.json, one verb, the camera only where it moves"
+   },
+   "doors": [
+    {
+     "id": "higgsfield:connector",
+     "takes_end_image": true,
+     "field": "end_image",
+     "endpoint": "the Higgsfield connector — seedance_2_5, mode omni_reference",
+     "media_roles": [
+      "start_image",
+      "end_image",
+      "image_references",
+      "video_references",
+      "audio_references"
+     ],
+     "note": "THE SETTLED DOOR. Its media roles were read off models_explore on 2026-09-18: the last frame IS a real input here, attached as end_image beside the first. start_image must be a media uuid — a URL is rejected upstream.",
+     "doc": "https://higgsfield.ai/seedance/2.5"
+    },
+    {
+     "id": "higgsfield:api",
+     "takes_end_image": true,
+     "field": "end_image_url",
+     "endpoint": "image-to-video (first + last frame) / reference-to-video (image_urls + audio_urls)",
+     "media_roles": [
+      "image_url",
+      "end_image_url",
+      "image_urls",
+      "audio_urls"
+     ],
+     "note": "the same house through its own API key pair — separate wallet",
+     "doc": "https://higgsfield.ai/seedance/2.5"
+    },
+    {
+     "id": "byteplus:direct",
+     "takes_end_image": true,
+     "field": "content[].role = last_frame",
+     "endpoint": "POST /contents/generations/tasks",
+     "media_roles": [
+      "first_frame",
+      "last_frame",
+      "reference_image",
+      "reference_video",
+      "reference_audio"
+     ],
+     "note": "the alternate. Explicit first_frame / last_frame roles; on this door the first/last-frame roles and omni_reference are mutually exclusive, so a talking beat there lands its last frame in the timeline's final beat instead.",
+     "doc": "https://docs.byteplus.com/en/docs/ModelArk/1520757"
+    }
+   ],
+   "preferred_door": "higgsfield:connector",
+   "end_frame_rule": "a scene has exactly two generated stills — the FIRST FRAME and the LAST FRAME — and both are attached: start_image and end_image. Only a door with no end-frame field falls back to describing the last frame as the timeline's final beat, and the submit sheet says so."
+  },
+  "voice": {
+   "station": "voice",
+   "door": "direct:elevenlabs",
+   "model_from": null,
+   "makes": "ONE continuous track for the whole piece — every scene's paragraph spoken in order, stitched request to request so the read never restarts, then sliced per scene for the talking door",
+   "endpoints": {
+    "with_timestamps": "https://api.elevenlabs.io/v1/text-to-speech/{voice_id}/with-timestamps",
+    "speech_to_speech": "direct.elevenlabs.speech_to_speech"
+   },
+   "doc": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps",
+   "fields": [
+    {
+     "name": "text",
+     "required": true,
+     "type": "string",
+     "values": "one chunk — one scene's paragraph",
+     "house_default": null,
+     "fills": "the scene's Voice paragraph, byte-identical to the script",
+     "doc": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps"
+    },
+    {
+     "name": "model_id",
+     "required": false,
+     "type": "string",
+     "values": "eleven_multilingual_v2 · eleven_v3",
+     "house_default": "eleven_multilingual_v2",
+     "fills": "—",
+     "doc": "https://elevenlabs.io/docs/eleven-api/guides/how-to/text-to-speech/request-stitching",
+     "note": "request stitching needs eleven_multilingual_v2 — it is not on v3, so the continuous track is always made on v2"
+    },
+    {
+     "name": "previous_request_ids",
+     "required": false,
+     "type": "list of strings, max 3",
+     "values": "the request ids of the up-to-3 most recent chunks, read from each response's `request-id` header",
+     "house_default": "carried automatically, chunk to chunk",
+     "fills": "the scene order — this is what makes one read instead of many",
+     "doc": "https://elevenlabs.io/docs/eleven-api/guides/how-to/text-to-speech/request-stitching",
+     "note": "conditions on the audio actually generated, not just the neighbouring words; it overrides previous_text when both are sent; ids expire after 2 hours"
+    },
+    {
+     "name": "previous_text / next_text",
+     "required": false,
+     "type": "string",
+     "values": "the adjacent text",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps",
+     "note": "ignored when previous_request_ids is sent — the machine sends the ids"
+    },
+    {
+     "name": "voice_settings",
+     "required": false,
+     "type": "object",
+     "values": "stability · similarity_boost · style · use_speaker_boost · speed",
+     "house_default": "whatever the character's voice.json carries",
+     "fills": "the character's own voice record",
+     "doc": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps"
+    },
+    {
+     "name": "seed / language_code / apply_text_normalization",
+     "required": false,
+     "type": "mixed",
+     "values": "—",
+     "house_default": null,
+     "fills": "—",
+     "doc": "https://elevenlabs.io/docs/api-reference/text-to-speech/convert-with-timestamps"
+    }
+   ],
+   "returns": {
+    "audio_base64": "the chunk's audio",
+    "alignment": "{characters, character_start_times_seconds, character_end_times_seconds} against the raw text",
+    "normalized_alignment": "the same shape against the normalised text",
+    "request-id": "an HTTP response header — carried into the next chunk's previous_request_ids"
+   },
+   "assembly": {
+    "order": [
+     "scene paragraphs, in brief order"
+    ],
+    "rule": "one chunk per scene paragraph — never per sentence. Shooting line by line is what made the read choppy; the paragraph is the unit, and the stitch carries the read across scene boundaries.",
+    "separator": "\n",
+    "doc": "https://elevenlabs.io/docs/eleven-api/guides/how-to/text-to-speech/request-stitching"
+   },
+   "limits": {
+    "previous_request_ids": 3,
+    "request_id_age_hours": 2,
+    "stitching_model": "eleven_multilingual_v2 only",
+    "chunking": "the API does not chunk — the machine picks the boundaries, and the boundary is the scene"
+   },
+   "fills_from_frame": {
+    "voice_paragraph": "text — one chunk per scene",
+    "scene_order": "previous_request_ids — the stitch",
+    "scene_slice": "vo/<scene>.mp3, cut from the one track at the scene's own start and end"
+   }
+  }
+ },
+ "door_of_registry": {
+  "_readme": "providers.json's own door name for a station -> the door row in this file. The registry decides WHICH door a run uses; this file says what that door takes. A door the registry names and this map does not know falls back to the station's preferred_door, and the submit sheet says which was used.",
+  "higgsfield": "higgsfield:connector",
+  "higgsfield-api": "higgsfield:api",
+  "higgsfield-mcp": "higgsfield:connector",
+  "higgsfield-ui": "higgsfield:connector",
+  "direct:byteplus": "byteplus:direct",
+  "byteplus": "byteplus:direct"
+ },
+ "edit_routing": {
+  "_readme": "Which door an edit goes to. Damon, 2026-09-18: 'we'll just do gpt for all image work both initial reference gen and edits' — EVERY edit goes to the fidelity door (direct:openai images/edits, input_fidelity high, two references). The camera word on a LAST FRAME block (same · push-in · new angle) is still declared, for the director and the record, but it no longer changes the door.",
+  "all_edits": {
+   "contract": "still-edit-fidelity",
+   "door": "direct:openai",
+   "kind": "edit",
+   "why": "one image door for generation and edits; measured 2026-09-18 on one scene: the fidelity edit held the face and landed the push-in with two references + colour match"
+  },
+  "alternate": {
+   "contract": "still-edit",
+   "door": "direct:google",
+   "when": "only if the registry's edit door is flipped back to direct:google",
+   "why": "cheaper per call; held the face with the cast sheet as a second reference but under-delivered the camera move"
+  }
+ },
+ "aspect_words": {
+  "_readme": "the framing sentence appended to every FIRST FRAME prompt — the piece's Aspect said in words, because a size parameter alone does not tell the door how to compose the frame",
+  "9:16": "Vertical 9:16 framing.",
+  "16:9": "Horizontal 16:9 framing.",
+  "1:1": "Square 1:1 framing.",
+  "4:5": "Vertical 4:5 framing.",
+  "3:4": "Vertical 3:4 framing."
+ },
+ "clip_prompt": {
+  "_readme": [
+   "THE FOUR BLOCKS, in the exact shape of the call that worked live on 2026-09-18 evening — Seedance 2.5 on the settled door, first frame + last frame + the scene's voice slice, 9 s, line check 100%.",
+   "Every block is built from LABELLED fields. A slot that resolves to nothing is a refusal by name, never a fragment: nothing submits red, so a prompt that cannot be built is not written at all.",
+   "Both clip stations (motion and talking) use this one shape; the only differences are the audio line, the words in the timeline and the lip line, each of which names the condition it appears under."
+  ],
+  "blocks": [
+   "assets",
+   "summary",
+   "timeline",
+   "consistency"
+  ],
+  "separator": "\n\n",
+  "assets": {
+   "first": "@Image1 is the first frame: {first}.",
+   "last": "@Image2 is the last frame: {last}.",
+   "audio": "@Audio1 is {who}'s voice; they speak the words in @Audio1 exactly, their lips moving with every word, nothing else is said.",
+   "audio_when": "a to-camera scene only — the slice is attached as audio_references",
+   "first_from": [
+    "first_frame.subject",
+    "first_frame.composition",
+    "first_frame.action"
+   ],
+   "last_from": [
+    "last_frame.delta"
+   ],
+   "join": ", ",
+   "separator": " "
+  },
+  "summary": {
+   "template": "{who} at {setting} {does}, {style}, {camera}.",
+   "rule": "ONE clean sentence, assembled from labelled slots and never by gluing raw fields end to end. A missing slot is a refusal.",
+   "slots": {
+    "who": {
+     "from": [
+      "scene.who"
+     ],
+     "what": "who is in it, as the brief describes them"
+    },
+    "setting": {
+     "from": [
+      "scene.setting"
+     ],
+     "what": "the one world block the scene plays in"
+    },
+    "does": {
+     "from": [
+      "scene.happens",
+      "first_frame.action"
+     ],
+     "what": "what they do — the scene's own outcome/section line, never a paraphrase of the paragraph"
+    },
+    "style": {
+     "from": [
+      "piece.style",
+      "first_frame.style"
+     ],
+     "what": "the style words, declared once for the piece by the format profile"
+    },
+    "camera": {
+     "from": [
+      "camera_phrases"
+     ],
+     "what": "the camera in one phrase, built from the LAST FRAME's Camera word and the FIRST FRAME's Composition"
+    }
+   }
+  },
+  "timeline": {
+   "line": "{start}-{end}s: {do}",
+   "words": ", the words playing: \"{over}\"",
+   "words_when": "a silent scene only — a to-camera scene carries its words as attached audio, and writing them twice is how a clip ends up saying something else",
+   "first_beat": ", the frame at @Image1",
+   "last_beat": ", settling on the framing of @Image2",
+   "performance": " [{beat}]",
+   "rule": "one verb a beat, the spans read off the one voice track, the first beat anchored on @Image1 and the last landing on @Image2."
+  },
+  "consistency": {
+   "take": "One continuous take, no cuts, {camera_sentence}.",
+   "hold": "Same {setting}, same {lighting}, same wardrobe throughout.",
+   "lip": "The speaker is talking for the whole clip: their lips, jaw and face move naturally with the voice throughout.",
+   "lip_when": "a to-camera scene only",
+   "negatives": [
+    "No subtitles.",
+    "No background music."
+   ],
+   "separator": " ",
+   "silent": "Nobody speaks.",
+   "silent_when": "a B-roll scene only — the voice plays OVER it at the edit, so the clip itself carries no speech and no mouth moves in it"
+  },
+  "camera_phrases": {
+   "same": "a locked frame",
+   "push-in": "one slow push-in from {first_framing} to {target}",
+   "new angle": "one move to a new angle, {target}",
+   "pull-out": "one slow pull-out from {first_framing} to {target}"
+  },
+  "camera_sentences": {
+   "same": "the camera does not move",
+   "push-in": "the only camera movement is the slow push in",
+   "new angle": "the only camera movement is the one move onto the new angle",
+   "pull-out": "the only camera movement is the slow pull out"
+  },
+  "camera_target": "the words after 'to' on the LAST FRAME's Camera line — `push-in to close`. A move that names no framing to land on is a refusal, never a guess.",
+  "first_framing": "the FIRST FRAME's Composition up to its first comma — the framing the move starts from.",
+  "camera_words": [
+   "same",
+   "push-in to <framing>",
+   "pull-out to <framing>",
+   "new angle to <framing>"
+  ],
+  "camera_words_why": "EXACTLY these four, and a move always names the framing it lands on, in the same words the FIRST FRAME's Composition uses. 'new angle' alone is a move with nowhere to go, and the gate refuses it by name rather than guessing.",
+  "beat_grammar": {
+   "_readme": [
+    "A beat is ONE visible action, one verb, present tense, something a camera can see. How a line is delivered is not an action: it belongs in the bracket at the end of the beat, never in Do.",
+    "Two actions joined by 'and', 'then' or a comma are two beats. A pause is a beat whose action is `holds`, with the pause in Over."
+   ],
+   "delivery_verbs": [
+    "says",
+    "say",
+    "speaks",
+    "speak",
+    "tells",
+    "states",
+    "delivers",
+    "quotes",
+    "narrates",
+    "repeats",
+    "stops",
+    "stop",
+    "slows",
+    "speeds",
+    "settles",
+    "pauses",
+    "pause",
+    "emphasises",
+    "emphasizes",
+    "continues",
+    "begins",
+    "starts",
+    "finishes"
+   ],
+   "delivery_verbs_why": "the verb a beat opens on is what the camera sees happen. These name how the line is performed, not what moves — they belong in the bracket.",
+   "pause_verb": "holds",
+   "pause_why": "a pause IS a beat: `Do: holds`, with the silence named in Over. It is the one beat whose action is stillness, and it is never a delivery note.",
+   "insert_markers": [
+    "(insert",
+    "cut over the running voice",
+    "cutaway",
+    "b-roll over"
+   ],
+   "insert_why": "B-ROLL IS A SCENE, NOT AN INSERT (2026-09-19). Where the argument shows something, the brief writes a scene of its own — `to_camera: false`, its own setting, frames, beats and the paragraph that plays over it. An insert wedged inside another scene's beat is a second picture inside one clip, and one clip cannot cut."
+  },
+  "to_camera_hold": {
+   "rule": "On a to-camera scene a beat whose action is the pause verb does not read as 'holds' — a held face with audio attached came back with the mouth barely moving (live 2026-09-19, scene 1). It reads as: talks to the lens, the mouth moving with every word{, plus the bracket}.",
+   "text": "talks to the lens, the mouth moving with every word"
+  }
+ },
+ "brief_schema": {
+  "_readme": [
+   "THE BRIEF IS THE PROMPT (Damon, 2026-09-19: \"this brief is for the AI system to interpret, not for me as the human to read — format these briefs in a way that AI is able to directly build what it needs to build\").",
+   "So the truth of a brief is the LAST fenced json block in it, in this shape. The Markdown above the block is the readable view for a person, rendered from these same fields; nothing downstream parses it.",
+   "Every key below is present on every object — a string stays a string, a list stays a list, and a key with nothing to say carries an empty string rather than being dropped. A dropped key is a gap the gate cannot tell from an omission."
+  ],
+  "required": [
+   "lane",
+   "piece",
+   "cast",
+   "world",
+   "product_lock",
+   "scenes"
+  ],
+  "piece": [
+   "title",
+   "aspect_ratio",
+   "resolution",
+   "format",
+   "brand",
+   "avatar",
+   "sub",
+   "awareness",
+   "sophistication",
+   "framework"
+  ],
+  "cast_item": [
+   "id",
+   "name",
+   "identity_block",
+   "voice"
+  ],
+  "cast_voice": [
+   "cast_voice_id"
+  ],
+  "world_item": [
+   "id",
+   "description"
+  ],
+  "scene": [
+   "id",
+   "section",
+   "technique",
+   "delivery",
+   "emotion",
+   "outcome",
+   "setting_id",
+   "who",
+   "to_camera",
+   "voice",
+   "first_frame",
+   "beats",
+   "last_frame"
+  ],
+  "delivery": [
+   "humor",
+   "style",
+   "register",
+   "pacing"
+  ],
+  "first_frame": [
+   "subject",
+   "composition",
+   "action",
+   "location",
+   "style",
+   "camera",
+   "lighting",
+   "refs"
+  ],
+  "beat": [
+   "id",
+   "do",
+   "camera",
+   "over",
+   "bracket"
+  ],
+  "last_frame": [
+   "camera",
+   "change"
+  ],
+  "may_be_empty": [
+   "cast_voice_id",
+   "source",
+   "on_screen",
+   "hold",
+   "over",
+   "camera",
+   "bracket",
+   "style",
+   "change"
+  ],
+  "may_be_empty_why": "a key that is PRESENT and says nothing — a character who never speaks has no voice id, a beat where the camera does not move has no camera word, a scene with no caption has no on-screen text. Every other key carries something or the brief is not finished.",
+  "optional": {
+   "piece": [
+    "style"
+   ],
+   "brief": [
+    "openings"
+   ],
+   "scene": [
+    "source",
+    "on_screen",
+    "hold",
+    "held",
+    "happens",
+    "voice_settings"
+   ],
+   "why": "Present where the brief has something to say and absent where it does not — never required, and never a refusal. `openings` carries the hook set, which is a test rather than a scene; `style` is the one grade sentence, taken from the first scene's frame when the piece does not state it; `held` is the one fact that would release a scene the brand's own files cannot fill; `happens` is what the scene DOES in one verb phrase, which is the one slot of the clip's summary sentence a frame field reads badly for. `voice_settings` is the spoken pass's per-scene voice-model settings (stability · style · speed, inside the register recipe's range in components/marketing-doctrine/spoken.json), laid over the cast voice's own record for that chunk; absent, the cast record alone speaks."
+  },
+  "lists": [
+   "cast",
+   "world",
+   "product_lock",
+   "scenes",
+   "beats",
+   "refs"
+  ],
+  "booleans": [
+   "to_camera"
+  ],
+  "rules": [
+   "every scene has at least one beat and a voice paragraph — a to-camera scene's paragraph is spoken, a B-roll scene's is the voice playing over it",
+   "a scene with to_camera false is B-roll: the clip carries no audio, and its paragraph is laid under it at the edit",
+   "setting_id names a world block that exists in world[]",
+   "the last frame's camera is one of the four phrases, and a move names the framing it lands on",
+   "one verb per beat, present tense, visible — never a delivery note",
+   "a scene carrying `held` is a scene nothing can make yet: it keeps its place and its section, it names the one fact that would release it, and the machine builds nothing for it rather than generating a frame nobody can describe",
+   "the piece's aspect_ratio and resolution are values the doors take — a ratio and one of the clip door's own words, never a pixel pair",
+   "a scene's `voice` is SPOKEN copy, read aloud by the voice model exactly as written, ONE THOUGHT PER BREATH (Damon, 2026-09-19): no em-dash or en-dash, no semicolon, no parenthesis or bracket. An ellipsis (...) is the mid-thought breath and is KEPT — never a chop into short statements; a full stop ends a thought; an exclamation or question lifts it. The dash/semicolon/parenthesis are read as long silences or the wrong shape and the gate refuses them by name"
+  ],
+  "voice_forbidden": {
+   "_why": "Damon, 2026-09-19: 'humans don't use em dashes when speaking'. These marks are writing, not speech. The voice model reads a dash as a long silence and a parenthesis as an aside nobody hears. The spoken script (stage 4g) writes the paragraph without them; this list is what the gate checks, and voice.py's for_reading() keeps a safety net for older briefs.",
+   "marks": [
+    {
+     "mark": "—",
+     "name": "em-dash"
+    },
+    {
+     "mark": "–",
+     "name": "en-dash"
+    },
+    {
+     "mark": " - ",
+     "name": "spaced hyphen used as a dash"
+    },
+    {
+     "mark": ";",
+     "name": "semicolon"
+    },
+    {
+     "mark": "(",
+     "name": "opening parenthesis"
+    },
+    {
+     "mark": ")",
+     "name": "closing parenthesis"
+    },
+    {
+     "mark": "[",
+     "name": "opening bracket"
+    },
+    {
+     "mark": "]",
+     "name": "closing bracket"
+    }
+   ],
+   "map_from": "components/marketing-doctrine/spoken.json → punctuation_map (the same marks, with what each does on the voice model)"
+  },
+  "voice_settings_ranges": {
+   "stability": [
+    0.0,
+    1.0
+   ],
+   "similarity_boost": [
+    0.0,
+    1.0
+   ],
+   "style": [
+    0.0,
+    1.0
+   ],
+   "speed": [
+    0.7,
+    1.2
+   ],
+   "doc": "https://elevenlabs.io/docs/eleven-creative/playground/text-to-speech",
+   "_why": "the voice-settings guide's own limits — speed 0.7 to 1.2, the rest 0 to 1. A value outside them is a typo the gate names rather than a call that comes back refused"
+  },
+  "voice_kept": {
+   "ellipsis": "'...' and '…' are KEPT: the mid-thought breath (Damon's ruling 2026-09-19, spoken.json the_thought). voice.py reads them as a short weighted pause, never replaces them."
+  }
+ }
+}
