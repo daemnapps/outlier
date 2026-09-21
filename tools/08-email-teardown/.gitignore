@@ -1,0 +1,8 @@
+# Runs carry pulled frames and bitmaps — media never enters git (workspace rule 3).
+runs/*/frames/
+runs/*/assets/
+__pycache__/
+*.pyc
+
+# Rendered designs are media — they mirror to Drive, never git.
+shots/

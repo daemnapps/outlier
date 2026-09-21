@@ -1,0 +1,66 @@
+<section class="bg-[var(--brand-secondary)] py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      <h2 class="w-full text-center font-bold text-[28px] md:text-[32px] lg:text-[40px] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)] leading-[1.2]">
+        {{ beforeafter_1_heading }}
+      </h2>
+
+      <div class="beforeafter-1-swiper w-full"
+           data-swiper-root
+           data-slides="1.1"
+           data-slides-md="2"
+           data-slides-lg="4"
+           data-gap="16"
+           data-gap-md="16"
+           data-gap-lg="20"
+           data-loop="false"
+           data-watch-overflow="true"
+           data-swiper-variant="sw-landing1">
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {% for slide in beforeafter_1_slides %}
+            <div class="swiper-slide">
+              <article class="flex h-full w-full flex-col items-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+                <div class="relative aspect-[338/336] w-full overflow-hidden">
+                  <img
+                    src="{{ slide.image | campaign_asset }}"
+                    alt="{{ slide.image_alt }}"
+                    class="h-full w-full object-cover object-center"
+                    loading="lazy"
+                    width="570"
+                    height="567">
+                </div>
+                {% if slide.caption %}
+                <p class="text-center font-semibold text-[20px] lg:text-[24px] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)] leading-[1.4]">
+                  {{ slide.caption }}
+                </p>
+                {% endif %}
+              </article>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div data-swiper-controls class="beforeafter-1-controls mt-6 flex items-center justify-center gap-3 md:gap-4">
+            <button type="button"
+                    class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-white shadow-sm"
+                    data-swiper-prev>
+              <span class="sr-only">Previous</span>
+              <img src="{{ 'images/_shared/swiper-arrow-left.svg' | campaign_asset }}" alt="" class="h-4 w-4 object-contain">
+            </button>
+
+            <div class="swiper-pagination"></div>
+
+            <button type="button"
+                    class="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-white shadow-sm"
+                    data-swiper-next>
+              <span class="sr-only">Next</span>
+              <img src="{{ 'images/_shared/swiper-arrow-right.svg' | campaign_asset }}" alt="" class="h-4 w-4 object-contain">
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

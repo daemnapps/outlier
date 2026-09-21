@@ -1,0 +1,163 @@
+<section class="bg-white overflow-hidden py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12">
+
+      {% comment %} Header {% endcomment %}
+      <div class="flex flex-col items-center text-center gap-3 md:gap-4 max-w-[800px]">
+        <p class="text-[14px] md:text-[16px] lg:text-[20px] font-bold uppercase tracking-[0.1em] text-[var(--brand-primary)]">
+          {{ faq_2_overline }}
+        </p>
+        <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] text-[var(--text-primary)]">
+          {{ faq_2_heading }}
+        </h2>
+      </div>
+
+      {% comment %} Accordion {% endcomment %}
+      <div class="w-full flex flex-col gap-3 md:gap-4 lg:gap-5" data-accordion data-allow-multiple="false">
+
+        {% comment %} Item 1 — open by default {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="true">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q1 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-0 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-100 mt-2" data-accordion-panel>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)]">
+              {{ faq_2_a1 }}
+            </p>
+          </div>
+        </div>
+
+        {% comment %} Item 2 {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q2 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-100 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)] mt-2">
+              {{ faq_2_a2 }}
+            </p>
+          </div>
+        </div>
+
+        {% comment %} Item 3 {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q3 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-100 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)] mt-2">
+              {{ faq_2_a3 }}
+            </p>
+          </div>
+        </div>
+
+        {% comment %} Item 4 {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q4 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-100 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)] mt-2">
+              {{ faq_2_a4 }}
+            </p>
+          </div>
+        </div>
+
+        {% comment %} Item 5 {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q5 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-100 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)] mt-2">
+              {{ faq_2_a5 }}
+            </p>
+          </div>
+        </div>
+
+        {% comment %} Item 6 {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q6 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-100 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)] mt-2">
+              {{ faq_2_a6 }}
+            </p>
+          </div>
+        </div>
+
+        {% comment %} Item 7 {% endcomment %}
+        <div class="border border-[rgba(0,0,0,0.16)] rounded-[12px] px-4 md:px-[16px] lg:px-[20px] py-3 md:py-[16px] lg:py-[20px]" data-accordion-item data-open="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left" data-accordion-toggle>
+            <span class="text-[16px] md:text-[18px] lg:text-[20px] font-bold leading-[1.4] text-[var(--text-primary)]">
+              {{ faq_2_q7 }}
+            </span>
+            <div class="w-[20px] h-[20px] md:w-[24px] md:h-[24px] lg:w-[30px] lg:h-[30px] rounded-full border-[1.5px] border-[var(--brand-primary)] flex items-center justify-center relative shrink-0">
+              <span class="absolute h-[1.5px] w-[10px] md:w-[12px] lg:w-[15px] bg-[var(--brand-primary)]"></span>
+              <span class="absolute w-[1.5px] h-[10px] md:h-[12px] lg:h-[15px] bg-[var(--brand-primary)] opacity-100 transition-opacity duration-300" data-faq-vbar></span>
+            </div>
+          </button>
+          <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+            <p class="text-[14px] md:text-[16px] lg:text-[18px] leading-[1.6] text-[var(--text-secondary)] mt-2">
+              {{ faq_2_a7 }}
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      {% comment %} CTA {% endcomment %}
+      <div class="w-[345px] md:w-[440px] flex flex-col items-center">
+        <div class="w-full flex flex-col items-center gap-[12px]">
+          <a href="{{ next_url }}"
+             class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
+            <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+          </a>
+          <div class="flex items-center gap-[8px]">
+            <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0 object-contain" aria-hidden="true">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5]">{{ guarantee_text | default: "30-Day Money Back Guarantee" }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{%- comment -%} legal-1 — the page machine's own block: a plain legal strip. A heading, up to eight cited studies, and the statement the brand must carry. Nothing decorative; it exists because a pre-sell that cites studies has to show them. {%- endcomment -%}
+<section class="w-full bg-[var(--brand-primary-dark)] text-[var(--text-inverse)] py-10 px-4">
+  <div class="max-w-5xl mx-auto text-sm leading-relaxed opacity-90">
+    {% if legal_1_heading %}<p class="text-overline mb-4">{{ legal_1_heading }}</p>{% endif %}
+    <ol class="list-decimal pl-5 space-y-2 mb-6 break-words">
+      {% if legal_1_item_1 %}<li>{{ legal_1_item_1 }}</li>{% endif %}
+      {% if legal_1_item_2 %}<li>{{ legal_1_item_2 }}</li>{% endif %}
+      {% if legal_1_item_3 %}<li>{{ legal_1_item_3 }}</li>{% endif %}
+      {% if legal_1_item_4 %}<li>{{ legal_1_item_4 }}</li>{% endif %}
+      {% if legal_1_item_5 %}<li>{{ legal_1_item_5 }}</li>{% endif %}
+      {% if legal_1_item_6 %}<li>{{ legal_1_item_6 }}</li>{% endif %}
+      {% if legal_1_item_7 %}<li>{{ legal_1_item_7 }}</li>{% endif %}
+      {% if legal_1_item_8 %}<li>{{ legal_1_item_8 }}</li>{% endif %}
+    </ol>
+    {% if legal_1_statement %}<p class="font-semibold">{{ legal_1_statement }}</p>{% endif %}
+    {% if legal_1_copyright %}<p class="mt-6 opacity-70">{{ legal_1_copyright }}</p>{% endif %}
+  </div>
+</section>

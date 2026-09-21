@@ -1,0 +1,92 @@
+<style>
+  @keyframes icons1-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .icons1-track {
+    animation: icons1-scroll 20s linear infinite;
+    will-change: transform;
+  }
+  .icons1-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<section class="w-full bg-white overflow-hidden">
+
+  {% comment %} Mobile: infinite scroll (hidden md+) {% endcomment %}
+  <div class="md:hidden py-[32px]">
+    <div class="icons1-track flex gap-[24px] w-max">
+
+      {% comment %} Set 1 {% endcomment %}
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-setup.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_1 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-waterproof.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_2 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-audio.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_3 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-pest.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_4 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-capacity.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_5 }}</span>
+      </div>
+
+      {% comment %} Set 2 — duplicate for seamless loop {% endcomment %}
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-setup.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_1 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-waterproof.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_2 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-audio.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_3 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-pest.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_4 }}</span>
+      </div>
+      <div class="shrink-0 flex flex-col gap-[16px] items-center w-[140px]">
+        <img src="{{ 'images/icons-1/icon-capacity.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+        <span class="text-[16px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_5 }}</span>
+      </div>
+
+    </div>
+  </div>
+
+  {% comment %} Desktop: static layout (hidden below md) {% endcomment %}
+  <div class="hidden md:flex max-w-[1440px] mx-auto px-[26px] lg:px-[60px] xl:px-[120px] py-[40px] justify-between">
+    <div class="flex flex-col gap-[16px] items-center w-[160px]">
+      <img src="{{ 'images/icons-1/icon-setup.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+      <span class="text-[18px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_1 }}</span>
+    </div>
+    <div class="flex flex-col gap-[16px] items-center w-[160px]">
+      <img src="{{ 'images/icons-1/icon-waterproof.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+      <span class="text-[18px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_2 }}</span>
+    </div>
+    <div class="flex flex-col gap-[16px] items-center w-[160px]">
+      <img src="{{ 'images/icons-1/icon-audio.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+      <span class="text-[18px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_3 }}</span>
+    </div>
+    <div class="flex flex-col gap-[16px] items-center w-[160px]">
+      <img src="{{ 'images/icons-1/icon-pest.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+      <span class="text-[18px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_4 }}</span>
+    </div>
+    <div class="flex flex-col gap-[16px] items-center w-[160px]">
+      <img src="{{ 'images/icons-1/icon-capacity.svg' | campaign_asset }}" alt="" class="w-[50px] h-[50px]">
+      <span class="text-[18px] font-semibold text-[var(--text-primary)] text-center leading-[1.4] tracking-[-0.09px]">{{ icons_1_feature_5 }}</span>
+    </div>
+  </div>
+
+</section>

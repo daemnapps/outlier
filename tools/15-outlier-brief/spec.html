@@ -1,0 +1,102 @@
+<meta charset="utf-8">
+<title>The Outlier Brief</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{--ground:#F3F2F4;--card:#FFFFFF;--ink:#17161B;--mut:#5E5C68;--line:#D9D7DE;--hair:#E9E7EC;
+--accent:#5B2E8C;--accent-bg:#ECE3F6;--you:#0E6B5C;--you-bg:#DDEFEA}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#111015;--card:#19181E;--ink:#E8E6EE;--mut:#9C99A8;
+--line:#2C2A33;--hair:#221F28;--accent:#C3A2EA;--accent-bg:#261B35;--you:#7DD3C0;--you-bg:#12291F}}
+:root[data-theme="dark"]{--ground:#111015;--card:#19181E;--ink:#E8E6EE;--mut:#9C99A8;--line:#2C2A33;--hair:#221F28;
+--accent:#C3A2EA;--accent-bg:#261B35;--you:#7DD3C0;--you-bg:#12291F}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:16px/1.62 Figtree,system-ui,-apple-system,sans-serif;margin:0}
+.wrap{max-width:940px;margin:0 auto;padding-inline:18px;padding-block:44px 90px}
+.eyebrow{font:500 12px/1 "JetBrains Mono",ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;letter-spacing:-.015em;text-wrap:balance;font-weight:650}
+h1{font-size:clamp(36px,6.4vw,56px);line-height:1.02;margin:10px 0 14px}
+h2{font-size:28px;margin:52px 0 10px;padding-top:16px;border-top:2px solid var(--ink)}
+h3{font-size:20px;margin:28px 0 6px}
+p,li{max-width:70ch}
+.lede{font-size:19px;color:var(--mut);max-width:62ch;margin:0}
+blockquote{margin:14px 0;padding:10px 16px;border-left:3px solid var(--line);color:var(--mut)}
+code{font:13px "JetBrains Mono",ui-monospace,monospace;background:var(--hair);padding:1px 5px;border-radius:3px}
+.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:6px;margin:12px 0 18px}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--hair)}
+th{font:500 11px "JetBrains Mono",ui-monospace,monospace;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);white-space:nowrap}
+tr:last-child td{border-bottom:0} td:first-child{font-weight:600}
+hr{border:0;border-top:1px solid var(--line);margin:40px 0 0}
+.flow{list-style:none;margin:30px 0 6px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;counter-reset:s}
+.flow li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px 14px;max-width:none;display:grid;gap:4px}
+.flow li::before{content:counter(s);font:500 12px "JetBrains Mono",monospace;color:var(--mut)}
+.flow li.you{background:var(--you-bg);border-color:transparent} .flow li.you b{color:var(--you)}
+.flow b{font-family:Fraunces,Georgia,serif;font-size:17px} .flow span{color:var(--mut);font-size:13.5px;line-height:1.4}
+.key{font-size:13.5px;color:var(--mut);margin:0} .key b{color:var(--you)}
+a{color:var(--accent)} :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+footer{margin-top:60px;border-top:1px solid var(--line);padding-top:16px;font:12.5px/1.8 "JetBrains Mono",monospace;color:var(--mut)}
+</style>
+<div class="wrap">
+<div class="eyebrow">Tool spec · for Damon to mark up · 20 Sep 2026</div>
+<h1>The Outlier Brief</h1>
+<p class="lede">The second door, made its own tool: it starts from your idea instead of a swipe, rounds it out with everything we know, turns it into one approved brief, and sends it into any format and any chain.</p>
+
+<ol class="flow" aria-label="The flow">
+  <li class="you"><b>Your idea</b><span>rough, in your words</span></li>
+  <li><b>Round it out</b><span>position · customer words · research · offers · doctrine — and your questions</span></li>
+  <li><b>Awareness first</b><span>where the reader is when they meet it</span></li>
+  <li class="you"><b>The concept brief</b><span>format-free · you approve it</span></li>
+  <li class="you"><b>Pick formats</b><span>format × style × medium</span></li>
+  <li><b>Into the chains</b><span>video · image · email · page</span></li>
+</ol>
+<p class="key"><b>Green</b> is you. Everything else is the system.</p>
+<h3>1. Two doors into the same machine</h3>
+<div class='tw'><table><thead><tr><th></th><th>The first door — the swipe</th><th><strong>the Outlier Brief</strong></th></tr></thead><tbody><tr><td>Starts from</td><td>somebody else&#x27;s ad that already works</td><td><strong>your idea</strong></td></tr><tr><td>The thinking</td><td>read it, strip it to a template, inject ours</td><td>round the idea out with everything we know, then write the brief the idea implies</td></tr><tr><td>What it&#x27;s for</td><td>proven structures, fast, at volume</td><td>the ads nobody else can make — the outliers</td></tr><tr><td>Ends in</td><td>the same chains, the same briefs, the same QC</td><td>the same chains, the same briefs, the same QC</td></tr></tbody></table></div>
+<p>The Outlier Brief is the second door, made into a workflow. Today&#x27;s second door (<code>components/video-teardown/machine/compose.py</code>, 2026-09-18) takes four picks — avatar, awareness level, format, framework — and writes an ad from them. It has <strong>no slot for the idea</strong> and it only goes into video. This flow adds both.</p>
+<hr>
+<h3>2. The flow, step by step</h3>
+<h4>Step 1 — The idea (you)</h4>
+<p>You write or say it rough. A line, a paragraph, a scene you&#x27;re seeing, a feeling, a reference. Plus anything you want pinned:</p>
+<ul><li>brand · product or offer</li><li>who it&#x27;s for (avatar, sub-avatar) — or &quot;you tell me&quot;</li><li>the awareness stage(s) to aim at — or &quot;run it across all five&quot;</li></ul>
+<p>Nothing else is asked of you here. The idea is the input; the machine does not improve it before it has understood it.</p>
+<h4>Step 2 — Round it out (the system)</h4>
+<p>The flow pulls everything we have that touches the idea — the same information every chain reads, from the same places:</p>
+<ul><li>the brand&#x27;s <strong>position</strong> (<code>brands/&lt;brand&gt;/position.md</code> — line, mechanism, market stage)</li><li>the avatar and sub-avatar cards, and the <strong>customer&#x27;s own words</strong> (the language layer)</li><li>the <strong>research gatherer</strong> — the rooms the avatar talks in, what they&#x27;re saying now</li><li>offers (the bank), objections, proof and stories on file</li><li>the <strong>marketing doctrine</strong> — mass desire, awareness, sophistication, the techniques, the frameworks (<code>components/marketing-doctrine</code>)</li></ul>
+<p>Where the idea needs something the files don&#x27;t have, it <strong>asks you</strong>, as a short list of questions. It does not fill the gap itself.</p>
+<h4>Step 3 — The foundation: awareness first</h4>
+<p>Every outlier ad is built on one awareness stage, stated up front: where the reader is when they meet it, what has to be true for the ad to land there, and what it must not assume. An idea can be run across several stages at once — the same idea, written for the unaware and for the product-aware, are different ads.</p>
+<h4>Step 4 — The concept brief (format-free)</h4>
+<p>Your idea, fleshed out into one brief that does not yet know its format:</p>
+<ul><li><strong>the big idea</strong> — in your words first, then sharpened</li><li><strong>the argument</strong> — the desire it enters, the mechanism, the belief it moves</li><li><strong>the awareness entry</strong> and the sophistication stage it&#x27;s written for</li><li><strong>the proof</strong> we actually have for it, and what&#x27;s missing</li><li><strong>hook directions</strong> — the openings the idea allows</li><li><strong>the world</strong> — the scenes, the people, the setting it lives in</li><li><strong>the frameworks it fits</strong> (PAS, story, mechanism-led…) and why</li><li><strong>what it must never claim</strong></li></ul>
+<p><strong>You approve or edit the concept brief before anything is produced.</strong> This is the one gate the flow cannot skip — it is the point of the flow.</p>
+<h4>Step 5 — Pick the formats</h4>
+<p>From <strong>one format catalogue across every medium</strong>, you pick one or several. Each row in the catalogue says four things:</p>
+<div class='tw'><table><thead><tr><th>Field</th><th>Example</th></tr></thead><tbody><tr><td><strong>Format</strong> — the ad&#x27;s structure and who carries it</td><td>storytelling ad · holistic healer authority · expert consult · testimonial montage · meme · demonstration</td></tr><tr><td><strong>Style</strong> — the look</td><td>claymation · native Facebook image · UGC phone footage · studio · illustrated</td></tr><tr><td><strong>Medium</strong></td><td>video · static image · carousel · email · pre-sell page</td></tr><tr><td><strong>How it&#x27;s made</strong> — which chain, which route</td><td>video (creator / AI) · image (designer / AI) · email · page</td></tr></tbody></table></div>
+<p>Format and style are separate on purpose: a storytelling ad can be shot on a phone or made in claymation. You pick the pair.</p>
+<p>Today the catalogue is scattered: 7 video formats in <code>ai-video-production/formats/bank.json</code>, 8 frameworks in <code>components/marketing-doctrine/ad-frameworks.json</code>, image templates in <code>image-production/templates/</code>, 16 surfaces in <code>components/copywriter/bank/format-bank.json</code>. <strong>Storytelling, holistic healer authority, claymation and native Facebook image are not catalogued anywhere yet.</strong> The catalogue becomes one file with all of them.</p>
+<h4>Step 6 — Into the chains</h4>
+<p>The approved brief enters each chosen format&#x27;s chain at its WRITING step — past the steps that read a swipe, because there is no swipe:</p>
+<div class='tw'><table><thead><tr><th>Medium</th><th>Enters</th><th>Status today</th></tr></thead><tbody><tr><td><strong>Video</strong></td><td>the video teardown at stage 3, the way <code>compose.py</code> already enters it — the concept brief becomes the construct</td><td><strong>exists</strong> for framework picks; needs the brief as its input</td></tr><tr><td><strong>Static image</strong></td><td>the image chain&#x27;s writing, with the chosen template&#x27;s slots as the zone table (no swipe to read one from)</td><td><strong>to build</strong> — the image chain only knows swipes today</td></tr><tr><td><strong>Email</strong></td><td>email production&#x27;s writer, with the brief as the argument</td><td><strong>to build</strong> — close: email already takes an argument from the calendar</td></tr><tr><td><strong>Page</strong></td><td>the pages machine, with the framework&#x27;s sections as the page&#x27;s order</td><td><strong>to build</strong></td></tr></tbody></table></div>
+<p>Each chain produces its normal deliverable — a creator brief, an AI scene list, a static brief, an email, a page — every piece tagged with the concept it came from, so one idea&#x27;s pieces sit together.</p>
+<h4>Step 7 — Every idea, every format (the grid)</h4>
+<p>One approved concept × the formats you picked × the awareness stages you picked = a set of briefs in one run. <code>compose.py grid</code> already does this for framework picks in video; the flow extends it to the concept brief and every medium.</p>
+<hr>
+<h3>3. It is its own tool, not part of the video teardown</h3>
+<p>A teardown takes an existing ad apart. The Outlier Brief takes nothing apart — it starts from an idea. So it lives on its own (<code>outlier-brief/</code> for now), and the second door&#x27;s code that sits inside the video teardown today (<code>compose.py</code>, <code>ad-frameworks.json</code> reads) moves here as it is built out. The teardown keeps what is a teardown; this tool feeds every chain, video only being the first.</p>
+<p><strong>The outlier brief — a brief any tool can use.</strong> No such thing exists today: every chain has its own brief shape. The concept brief in step 4 is the first draft of one — a single brief that video, image, email and pages can all take in. Getting it right is the long-term work; the first version only has to carry one idea into video well.</p>
+<h3>4. What exists, what&#x27;s new</h3>
+<p><strong>Reused as-is:</strong> the research gatherer, the language layer, the marketing doctrine, the position slot, the offer bank, the video chain from stage 3 on, <code>compose.py</code>&#x27;s plan/run/grid machinery, every chain&#x27;s QC.</p>
+<p><strong>New:</strong></p>
+<ol><li><strong>Idea intake</strong> — where you drop the idea (a Control Room box, a page, or a message).</li><li><strong>The round-out step</strong> — gathers the context and writes your questions.</li><li><strong>The concept brief step</strong> — one prompt, Opus, with your approval gate after it.</li><li><strong>The format catalogue</strong> — one file across media, format × style × medium × route, with the four new formats added.</li><li><strong>Hand-offs</strong> from the concept brief into video, then image, email, page.</li></ol>
+<hr>
+<h3>5. What is proven and what isn&#x27;t</h3>
+<p>Honest status, so nothing is assumed:</p>
+<ul><li><strong>Proven:</strong> writing an ad from chosen parts and running it through the video chain (<code>compose.py</code>, since 2026-09-18).</li><li><strong>Not proven:</strong> that a concept brief written from an idea carries through the video chain as well as a framework does — first test.</li><li><strong>Not proven:</strong> the image chain writing from a template instead of a swipe.</li><li><strong>Not proven:</strong> that the video production side can make every style — a claymation ad needs a production route that has not been tried.</li></ul>
+<p>Each is proven the same way: one real idea of yours, run to a finished brief, read by you, before the next piece is built.</p>
+<hr>
+<h3>6. Build order</h3>
+<ol><li><strong>The concept brief</strong> — idea intake, round-out, the brief, your approval. Proven on one of your ideas, read on its own.</li><li><strong>Into video</strong> — the approved brief enters the video chain through <code>compose.py</code>. Proven: one idea → one video brief.</li><li><strong>The format catalogue</strong> — one file, the four new formats added, video&#x27;s seven and the image templates brought in.</li><li><strong>Into static image</strong> — the template-slot entry.</li><li><strong>Into email, then pages.</strong></li><li><strong>The grid</strong> — one idea across formats and awareness stages in one run.</li><li><strong>The trigger</strong> — a Control Room recipe or an idea box, so you drop an idea and get briefs back.</li></ol>
+<hr>
+<h3>7. Settled by Damon, 2026-09-20</h3>
+<ol><li><strong>Where the idea comes in:</strong> Damon, speaking into his phone, to a Claude Code session that has the whole system — <em>&quot;you&#x27;re actually my agent… you have all my systems and my processes.&quot;</em> No box, no page: the session is the intake.</li><li><strong>Who approves the concept brief:</strong> Damon, for now. It is a tool in the repo so anyone can run it later.</li><li><strong>How it&#x27;s proven:</strong> first run the system end to end and make sure it is clean; then set up the environment so it runs without his computer on.</li></ol>
+<footer>Source: outlier-brief/SPEC.md — this page is rebuilt from it by page.py. Nothing new is built yet.</footer>
+</div>

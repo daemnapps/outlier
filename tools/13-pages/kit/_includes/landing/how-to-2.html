@@ -1,0 +1,87 @@
+<section class="bg-[var(--brand-secondary)] py-[40px] md:py-[48px] lg:py-[60px] px-[15px] md:px-[26px] xl:px-[160px]">
+  <div class="max-w-[1440px] mx-auto">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      {% comment %} Heading {% endcomment %}
+      <div class="flex flex-col items-center text-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+        <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold text-[var(--text-primary)] leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px]">
+          {{ how_to_2_heading }}
+        </h2>
+        <p class="text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px]">
+          {{ how_to_2_subheading }}
+        </p>
+      </div>
+
+      {% comment %} Cards {% endcomment %}
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[12px] md:gap-[16px] lg:gap-[20px] w-full">
+
+        {% comment %} Step 1 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[12px] lg:rounded-[16px] pt-[8px] px-[8px] pb-[12px] md:pt-[10px] md:px-[10px] md:pb-[16px] lg:pt-[12px] lg:px-[12px] lg:pb-[20px] flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px] items-start">
+          <img src="{{ how_to_2_step_1_image | default: how_to_2_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+               alt="{{ how_to_2_step_1_text }}"
+               class="w-full aspect-square md:aspect-[252/354] object-cover rounded-[8px] md:rounded-[12px] lg:rounded-[16px]">
+          <div class="bg-white border-2 border-[var(--brand-primary)] rounded-full w-[40px] h-[40px] flex items-center justify-center shrink-0">
+            <span class="text-[18px] font-bold text-[var(--brand-primary)] tracking-[-0.09px] leading-[1.4]">{{ how_to_2_step_1_number }}</span>
+          </div>
+          <p class="text-[16px] md:text-[18px] font-semibold text-[var(--text-primary)] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">
+            {{ how_to_2_step_1_text }}
+          </p>
+        </div>
+
+        {% comment %} Step 2 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[12px] lg:rounded-[16px] pt-[8px] px-[8px] pb-[12px] md:pt-[10px] md:px-[10px] md:pb-[16px] lg:pt-[12px] lg:px-[12px] lg:pb-[20px] flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px] items-start">
+          <img src="{{ how_to_2_step_2_image | default: how_to_2_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+               alt="{{ how_to_2_step_2_text }}"
+               class="w-full aspect-square md:aspect-[252/354] object-cover rounded-[8px] md:rounded-[12px] lg:rounded-[16px]">
+          <div class="bg-white border-2 border-[var(--brand-primary)] rounded-full w-[40px] h-[40px] flex items-center justify-center shrink-0">
+            <span class="text-[18px] font-bold text-[var(--brand-primary)] tracking-[-0.09px] leading-[1.4]">{{ how_to_2_step_2_number }}</span>
+          </div>
+          <p class="text-[16px] md:text-[18px] font-semibold text-[var(--text-primary)] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">
+            {{ how_to_2_step_2_text }}
+          </p>
+        </div>
+
+        {% comment %} Step 3 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[12px] lg:rounded-[16px] pt-[8px] px-[8px] pb-[12px] md:pt-[10px] md:px-[10px] md:pb-[16px] lg:pt-[12px] lg:px-[12px] lg:pb-[20px] flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px] items-start">
+          <img src="{{ how_to_2_step_3_image | default: how_to_2_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+               alt="{{ how_to_2_step_3_text }}"
+               class="w-full aspect-square md:aspect-[252/354] object-cover rounded-[8px] md:rounded-[12px] lg:rounded-[16px]">
+          <div class="bg-white border-2 border-[var(--brand-primary)] rounded-full w-[40px] h-[40px] flex items-center justify-center shrink-0">
+            <span class="text-[18px] font-bold text-[var(--brand-primary)] tracking-[-0.09px] leading-[1.4]">{{ how_to_2_step_3_number }}</span>
+          </div>
+          <p class="text-[16px] md:text-[18px] font-semibold text-[var(--text-primary)] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">
+            {{ how_to_2_step_3_text }}
+          </p>
+        </div>
+
+        {% comment %} Step 4 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[12px] lg:rounded-[16px] pt-[8px] px-[8px] pb-[12px] md:pt-[10px] md:px-[10px] md:pb-[16px] lg:pt-[12px] lg:px-[12px] lg:pb-[20px] flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px] items-start">
+          <img src="{{ how_to_2_step_4_image | default: how_to_2_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+               alt="{{ how_to_2_step_4_text }}"
+               class="w-full aspect-square md:aspect-[252/354] object-cover rounded-[8px] md:rounded-[12px] lg:rounded-[16px]">
+          <div class="bg-white border-2 border-[var(--brand-primary)] rounded-full w-[40px] h-[40px] flex items-center justify-center shrink-0">
+            <span class="text-[18px] font-bold text-[var(--brand-primary)] tracking-[-0.09px] leading-[1.4]">{{ how_to_2_step_4_number }}</span>
+          </div>
+          <p class="text-[16px] md:text-[18px] font-semibold text-[var(--text-primary)] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">
+            {{ how_to_2_step_4_text }}
+          </p>
+        </div>
+
+      </div>
+
+      {% comment %} CTA {% endcomment %}
+      <div class="flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px] w-full max-w-[440px]">
+        <a href="{{ next_url }}"
+          class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text }}</span>
+            <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0">
+        </a>
+        <div class="flex items-center gap-[8px]">
+            <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5] whitespace-nowrap">{{ guarantee_text }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

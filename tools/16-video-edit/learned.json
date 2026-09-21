@@ -1,0 +1,11 @@
+{
+ "_what": "What Damon has taught the cut. The cut prompt reads `rules` as {learned}, and they outrank its own rules. A rule is here because he SAID it as a rule, or because the same change was seen twice (prompts/stage-9-learn). `observations` are single changes — kept, not yet binding.",
+ "rules": [
+  {"id": "headline-on-frame-one", "rule": "When there is a hook headline, it is on screen from the very first frame. It never fades or slides in.", "scope": "every edit", "his_words": "Whenever you have the hook-headline combo going on, that headline should begin at the beginning as well. Don't have it fade in; it should be at the start.", "at": "2026-09-20"},
+  {"id": "talking-a-roll-keeps-its-lips", "rule": "Never rebuild or re-voice talking A-roll in the edit. It is already good; the edit only puts B-roll on top of it, with its own sound kept so the lips match.", "scope": "every edit", "his_words": "you didn't even regenerate the A-roll. It was already good. It was just more about putting B-roll on top of it.", "at": "2026-09-20"}
+ ],
+ "observations": [
+  {"id": "scroll-stopper-is-the-opening-clause", "saw": "On the pigment hook he wanted the scroll stopper to run the length of the opening hook line — about four seconds — then cut to the rest of the A-roll, with a second B-roll over 'is why the sunscreen hasn't worked'. The model's first cut ran the stopper over the whole sentence and dropped the second clip.", "points_to": "The scroll stopper covers the opening clause of the hook, not the whole sentence, and leaves room for the next B-roll.", "scope": "this format", "seen": 1, "at": "2026-09-20"},
+  {"id": "headline-and-the-face", "saw": "He flagged that the headline has no safe zone against where her face sits in the frame. To be talked through later.", "points_to": "Text placement should know where the face is.", "scope": "open question", "seen": 1, "at": "2026-09-20"}
+ ]
+}

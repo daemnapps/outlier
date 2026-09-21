@@ -1,0 +1,68 @@
+<section class="bg-white overflow-hidden py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[240px]">
+    <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 items-center">
+
+      {% comment %} Heading {% endcomment %}
+      <h2 class="text-[32px] md:text-[36px] lg:text-[44px] font-bold leading-[1.2] tracking-tight text-[var(--text-primary)] text-center">
+        {{ features_11_heading }}
+      </h2>
+
+      {% comment %} Two-column: image + content {% endcomment %}
+      <div class="flex flex-col md:flex-row gap-8 md:gap-10 lg:gap-12 items-center w-full">
+
+        {% comment %} Product image {% endcomment %}
+        <div class="w-full aspect-square md:w-[400px] md:h-[400px] lg:w-[465px] lg:h-[501px] md:aspect-auto shrink-0">
+          <img
+            src="{{ features_11_product_image | campaign_asset }}"
+            alt="{{ features_11_product_image_alt }}"
+            class="w-full h-full object-cover"
+          >
+        </div>
+
+        {% comment %} Content {% endcomment %}
+        <div class="flex flex-col gap-5 md:gap-[26px] lg:gap-8 w-full md:flex-1">
+          <div class="flex flex-col gap-4">
+            <h3 class="text-[22px] font-bold leading-[1.2] tracking-tight text-[var(--text-primary)]">
+              {{ features_11_subheading }}
+            </h3>
+            <p class="text-[16px] leading-[1.5] tracking-tight text-[var(--text-primary)]">
+              {{ features_11_body_text }}
+            </p>
+          </div>
+
+          {% comment %} Bullet list {% endcomment %}
+          <ul class="list-disc pl-6 flex flex-col gap-2 text-[16px] leading-[1.5] tracking-tight text-[var(--text-primary)]">
+            <li>
+              <strong>{{ features_11_bullet_1_label }}</strong>
+              {{ features_11_bullet_1_text }}
+            </li>
+            <li>
+              <strong>{{ features_11_bullet_2_label }}</strong>
+              {{ features_11_bullet_2_text }}
+            </li>
+            <li>
+              <strong>{{ features_11_bullet_3_label }}</strong>
+              {{ features_11_bullet_3_text }}
+            </li>
+            <li>
+              <strong>{{ features_11_bullet_4_label }}</strong>
+              {{ features_11_bullet_4_text }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {% comment %} Certification logos strip {% endcomment %}
+      <div
+        class="w-full shrink-0"
+        style="aspect-ratio: 865.705 / 100;
+               background-color: var(--brand-primary);
+               -webkit-mask-image: url({{ 'images/features-11/cert-logos-mask.svg' | campaign_asset }});
+               -webkit-mask-size: 100% 100%;
+               mask-image: url({{ 'images/features-11/cert-logos-mask.svg' | campaign_asset }});
+               mask-size: 100% 100%;"
+      ></div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+{
+ "_what": "The dials. A run's controls.json overrides any of these; nothing else changes how an edit behaves.",
+ "canvas": {"width": 1080, "height": 1920, "fps": 30},
+ "pace": {"value": "tight", "options": {"tight": {"max_pause": 0.25}, "normal": {"max_pause": 0.4}, "breathing": {"max_pause": 0.7}}, "what": "the longest silence left in the voice track"},
+ "caption_look": {"value": "bold-highlight", "what": "a row id from looks/bank.json, or 'match-swipe' to copy the teardown's caption read"},
+ "captions": {"value": "on", "options": ["on", "off"]},
+ "sound": {"voice_db": 0, "music_db": -18, "sfx_db": -8, "sfx_lead_frames": 2, "what": "music sits 18 dB under the voice; a sound effect lands two frames before its picture"},
+ "transition": {"value": "cut", "what": "a row id from looks/transitions.json; a hard cut is the default"},
+ "stills": {"value": "drift", "what": "a still picture never sits frozen: slow push or drift, direction alternating"},
+ "safe_zone": {"top_pct": 12, "bottom_pct": 25, "side_pct": 6, "what": "where the app's own buttons cover the frame; captions and overlays stay out"},
+ "outputs": {"value": ["9x16"], "options": ["9x16", "4x5", "1x1"]},
+ "quality": "delivery"
+}

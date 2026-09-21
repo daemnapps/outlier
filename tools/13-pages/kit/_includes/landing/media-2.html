@@ -1,0 +1,44 @@
+<style>
+  @keyframes media2-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .media2-track {
+    animation: media2-scroll 20s linear infinite;
+    will-change: transform;
+  }
+  .media2-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<section class="bg-[var(--text-primary)] py-[12px] md:py-[16px] lg:py-[20px] overflow-hidden">
+  <div class="max-w-[1440px] mx-auto px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="hidden md:flex w-full items-center justify-between gap-[20px] md:gap-[40px] lg:gap-[24px]">
+      <img src="{{ media_2_logo_1 | campaign_asset }}" alt="{{ media_2_logo_1_alt }}" class="w-[95px] md:h-[40px] lg:w-[124px] lg:h-[20px] object-contain shrink-0">
+      <img src="{{ media_2_logo_2 | campaign_asset }}" alt="{{ media_2_logo_2_alt }}" class="w-[94px] md:h-[40px] lg:w-[130px] lg:h-[26px] object-contain shrink-0">
+      <img src="{{ media_2_logo_3 | campaign_asset }}" alt="{{ media_2_logo_3_alt }}" class="w-[75px] md:h-[40px] lg:w-[47px] lg:h-[20px] object-contain shrink-0">
+      <img src="{{ media_2_logo_4 | campaign_asset }}" alt="{{ media_2_logo_4_alt }}" class="w-[95px] md:h-[40px] lg:w-[93px] lg:h-[26px] object-contain shrink-0">
+      <img src="{{ media_2_logo_5 | campaign_asset }}" alt="{{ media_2_logo_5_alt }}" class="w-[95px] md:h-[40px] lg:w-[95px] lg:h-[20px] object-contain shrink-0">
+      <img src="{{ media_2_logo_6 | campaign_asset }}" alt="{{ media_2_logo_6_alt }}" class="w-[95px] md:h-[40px] lg:w-[119px] lg:h-[21px] object-contain shrink-0">
+    </div>
+
+    <div class="md:hidden w-full overflow-hidden">
+      <div class="media2-track flex items-center gap-[20px] w-max">
+        <img src="{{ media_2_logo_1 | campaign_asset }}" alt="{{ media_2_logo_1_alt }}" class="w-[76px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_2 | campaign_asset }}" alt="{{ media_2_logo_2_alt }}" class="w-[75px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_3 | campaign_asset }}" alt="{{ media_2_logo_3_alt }}" class="w-[75px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_4 | campaign_asset }}" alt="{{ media_2_logo_4_alt }}" class="w-[75px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_5 | campaign_asset }}" alt="{{ media_2_logo_5_alt }}" class="w-[76px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_6 | campaign_asset }}" alt="{{ media_2_logo_6_alt }}" class="w-[76px] h-[32px] object-contain shrink-0">
+
+        <img src="{{ media_2_logo_1 | campaign_asset }}" alt="" aria-hidden="true" class="w-[76px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_2 | campaign_asset }}" alt="" aria-hidden="true" class="w-[75px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_3 | campaign_asset }}" alt="" aria-hidden="true" class="w-[75px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_4 | campaign_asset }}" alt="" aria-hidden="true" class="w-[75px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_5 | campaign_asset }}" alt="" aria-hidden="true" class="w-[76px] h-[32px] object-contain shrink-0">
+        <img src="{{ media_2_logo_6 | campaign_asset }}" alt="" aria-hidden="true" class="w-[76px] h-[32px] object-contain shrink-0">
+      </div>
+    </div>
+  </div>
+</section>

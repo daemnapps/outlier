@@ -1,0 +1,53 @@
+<section class="w-full overflow-hidden bg-white">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="w-full flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <div class="w-full max-w-[800px] flex flex-col items-center text-center gap-[12px] md:gap-[16px] lg:gap-[20px] text-[var(--text-primary)]">
+        <div class="flex items-center justify-center gap-[12px] md:gap-[16px] whitespace-nowrap">
+          <p class="text-[26px] md:text-[32px] lg:text-[40px] leading-none tracking-[2px] text-[var(--brand-accent)]">★★★★★</p>
+          <p class="text-[18px] md:text-[22px] lg:text-[28px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.11px] lg:tracking-[-0.14px] font-bold">
+            {{ ugc_3_rating_text }}
+          </p>
+        </div>
+        <h2 class="text-[32px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] font-bold">
+          {{ ugc_3_heading }}
+        </h2>
+        <p class="text-[18px] md:text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px]">
+          {{ ugc_3_subheading }}
+        </p>
+        <a href="{{ ugc_3_reviews_url }}" class="text-[18px] md:text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px] underline text-[var(--text-primary)]">
+          {{ ugc_3_reviews_link_text }}
+        </a>
+      </div>
+
+      <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-[16px] md:gap-[24px] lg:gap-[32px]">
+        <div class="relative rounded-[12px] md:rounded-[14px] lg:rounded-[16px] overflow-hidden aspect-[164.5/298.3] md:aspect-[174/315.5] lg:aspect-[1/1.775]" data-video-inline data-video-src="{{ ugc_3_review_1_video_url }}">
+          <img src="{{ ugc_3_review_1_image | campaign_asset }}" alt="{{ ugc_3_review_1_alt }}" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/ugc-3/ugc-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[43px] h-[43px] md:w-[45px] md:h-[45px] lg:w-[64px] lg:h-[64px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[12px] md:rounded-[14px] lg:rounded-[16px] overflow-hidden aspect-[164.5/298.3] md:aspect-[174/315.5] lg:aspect-[1/1.775]" data-video-inline data-video-src="{{ ugc_3_review_2_video_url }}">
+          <img src="{{ ugc_3_review_2_image | campaign_asset }}" alt="{{ ugc_3_review_2_alt }}" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/ugc-3/ugc-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[43px] h-[43px] md:w-[45px] md:h-[45px] lg:w-[64px] lg:h-[64px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[12px] md:rounded-[14px] lg:rounded-[16px] overflow-hidden aspect-[164.5/298.3] md:aspect-[174/315.5] lg:aspect-[1/1.775]" data-video-inline data-video-src="{{ ugc_3_review_3_video_url }}">
+          <img src="{{ ugc_3_review_3_image | campaign_asset }}" alt="{{ ugc_3_review_3_alt }}" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/ugc-3/ugc-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[43px] h-[43px] md:w-[45px] md:h-[45px] lg:w-[64px] lg:h-[64px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[12px] md:rounded-[14px] lg:rounded-[16px] overflow-hidden aspect-[164.5/298.3] md:aspect-[174/315.5] lg:aspect-[1/1.775]" data-video-inline data-video-src="{{ ugc_3_review_4_video_url }}">
+          <img src="{{ ugc_3_review_4_image | campaign_asset }}" alt="{{ ugc_3_review_4_alt }}" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/ugc-3/ugc-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[43px] h-[43px] md:w-[45px] md:h-[45px] lg:w-[64px] lg:h-[64px]">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

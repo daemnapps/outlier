@@ -1,0 +1,71 @@
+<section class="bg-white py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 items-center">
+
+      {% comment %} Header {% endcomment %}
+      <div class="flex flex-col gap-4 items-center text-center">
+        <h2 class="font-bold text-[24px] md:text-[32px] text-[color:var(--text-primary)] tracking-[-0.12px] md:tracking-[-0.16px] leading-[1.2]">{{ icons_3_heading }}</h2>
+        <p class="font-semibold text-[16px] md:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] md:tracking-[-0.09px] leading-[1.4] max-w-[269px] md:max-w-full lg:max-w-[800px]">{{ icons_3_subheading }}</p>
+      </div>
+
+      {% comment %} Icons: 4-col grid on mobile/tablet, flex row with dividers on desktop {% endcomment %}
+      <div class="grid grid-cols-4 gap-x-[10px] gap-y-[10px] md:gap-x-[20px] md:gap-y-[20px] lg:flex lg:flex-row lg:gap-[20px] lg:items-center w-full">
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-chicken.png' | campaign_asset }}" alt="Chicken" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_1 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-fish.png' | campaign_asset }}" alt="Fish" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_2 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-vegetables.png' | campaign_asset }}" alt="Vegetables" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_3 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-eggs.png' | campaign_asset }}" alt="Eggs" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_4 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-meat.png' | campaign_asset }}" alt="Meat" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_5 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-beef.png' | campaign_asset }}" alt="Beef" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_6 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-lamb.png' | campaign_asset }}" alt="Lamb" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_7 }}</span>
+        </div>
+
+        <div class="hidden lg:block w-px h-[99px] self-center bg-[color:var(--border-default)] shrink-0"></div>
+
+        <div class="flex flex-col gap-4 items-center lg:flex-1">
+          <img src="{{ 'images/icons-3/icon-pork.png' | campaign_asset }}" alt="Pork" class="w-[58px] h-[58px] object-contain">
+          <span class="font-semibold text-[14px] lg:text-[16px] text-[color:var(--text-primary)] text-center tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.4]">{{ icons_3_item_8 }}</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,254 @@
+<section class="bg-[var(--brand-secondary)] py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      {% comment %} Heading {% endcomment %}
+      <h2 class="font-bold text-[32px] md:text-[36px] lg:text-[44px] tracking-[-0.16px] md:tracking-[-0.18px] lg:tracking-[-0.22px] text-[var(--text-primary)] leading-[1.2] text-center max-w-[312px] md:max-w-none">
+        {{ testimonials_3_section_heading }}
+      </h2>
+
+      {% comment %} ─── Mobile: static 3×2 grid (hidden on md+) ─── {% endcomment %}
+      <div class="md:hidden grid grid-cols-3 gap-[12px] w-full">
+
+        <div class="relative rounded-[8px] overflow-hidden h-[168px]" data-video-inline data-video-src="{{ testimonials_3_video_1_url }}">
+          <img src="{{ testimonials_3_video_1_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[26px] h-[26px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[8px] overflow-hidden h-[168px]" data-video-inline data-video-src="{{ testimonials_3_video_2_url }}">
+          <img src="{{ testimonials_3_video_2_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[26px] h-[26px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[8px] overflow-hidden h-[168px]" data-video-inline data-video-src="{{ testimonials_3_video_3_url }}">
+          <img src="{{ testimonials_3_video_3_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[26px] h-[26px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[8px] overflow-hidden h-[168px]" data-video-inline data-video-src="{{ testimonials_3_video_4_url }}">
+          <img src="{{ testimonials_3_video_4_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[26px] h-[26px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[8px] overflow-hidden h-[168px]" data-video-inline data-video-src="{{ testimonials_3_video_5_url }}">
+          <img src="{{ testimonials_3_video_5_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[26px] h-[26px]">
+          </button>
+        </div>
+
+        <div class="relative rounded-[8px] overflow-hidden h-[168px]" data-video-inline data-video-src="{{ testimonials_3_video_6_url }}">
+          <img src="{{ testimonials_3_video_6_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+          <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+            <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[26px] h-[26px]">
+          </button>
+        </div>
+
+      </div>
+
+      {% comment %} ─── Tablet/Desktop: Swiper showing 4 of 6 slides (hidden on mobile) ─── {% endcomment %}
+      <div class="hidden md:block w-full" data-swiper-root data-slides-md="4" data-slides-lg="4" data-gap-md="32" data-gap-lg="32" data-swiper-variant="sw-landing1">
+        <div class="swiper" data-swiper>
+
+          <div class="swiper-wrapper">
+
+            {% comment %} Slide 1 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[16px] overflow-hidden h-[264px] lg:h-[434px]" data-video-inline data-video-src="{{ testimonials_3_video_1_url }}">
+                <img src="{{ testimonials_3_video_1_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[39px] h-[39px] lg:w-[64px] lg:h-[64px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 2 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[16px] overflow-hidden h-[264px] lg:h-[434px]" data-video-inline data-video-src="{{ testimonials_3_video_2_url }}">
+                <img src="{{ testimonials_3_video_2_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[39px] h-[39px] lg:w-[64px] lg:h-[64px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 3 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[16px] overflow-hidden h-[264px] lg:h-[434px]" data-video-inline data-video-src="{{ testimonials_3_video_3_url }}">
+                <img src="{{ testimonials_3_video_3_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[39px] h-[39px] lg:w-[64px] lg:h-[64px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 4 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[16px] overflow-hidden h-[264px] lg:h-[434px]" data-video-inline data-video-src="{{ testimonials_3_video_4_url }}">
+                <img src="{{ testimonials_3_video_4_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[39px] h-[39px] lg:w-[64px] lg:h-[64px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 5 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[16px] overflow-hidden h-[264px] lg:h-[434px]" data-video-inline data-video-src="{{ testimonials_3_video_5_url }}">
+                <img src="{{ testimonials_3_video_5_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[39px] h-[39px] lg:w-[64px] lg:h-[64px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 6 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[16px] overflow-hidden h-[264px] lg:h-[434px]" data-video-inline data-video-src="{{ testimonials_3_video_6_url }}">
+                <img src="{{ testimonials_3_video_6_thumbnail | campaign_asset }}" alt="Customer testimonial video" class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/testimonials-3/testimonials-3-play.svg' | campaign_asset }}" alt="Play video" class="w-[39px] h-[39px] lg:w-[64px] lg:h-[64px]">
+                </button>
+              </div>
+            </div>
+
+          </div>{% comment %} /.swiper-wrapper {% endcomment %}
+
+          {% comment %} Slider nav — arrows + pagination dots {% endcomment %}
+          <div class="flex items-center justify-center gap-[16px] mt-[40px]">
+            <button type="button"
+                    class="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center shadow-sm shrink-0 border-0 cursor-pointer"
+                    data-swiper-prev>
+              <span class="sr-only">Previous</span>
+              <img src="{{ 'images/_shared/swiper-arrow-left.svg' | campaign_asset }}" alt="" class="w-[16px] h-[16px] object-contain">
+            </button>
+
+            <div class="bg-white h-[40px] rounded-full px-[16px] flex items-center">
+              <div class="swiper-pagination testimonials-3-pagination"></div>
+            </div>
+
+            <button type="button"
+                    class="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center shadow-sm shrink-0 border-0 cursor-pointer"
+                    data-swiper-next>
+              <span class="sr-only">Next</span>
+              <img src="{{ 'images/_shared/swiper-arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[16px] object-contain">
+            </button>
+          </div>
+
+        </div>{% comment %} /.swiper {% endcomment %}
+      </div>
+
+      {% comment %} Review cards — 2-col on md+, stacked on mobile {% endcomment %}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-[20px] w-full">
+
+        {% comment %} Card 1 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[16px] p-[20px] flex flex-col justify-between gap-[40px] md:gap-[60px]">
+          <div class="flex flex-col gap-[16px]">
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_1_title }}</p>
+              <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+            </div>
+            <p class="font-normal text-[16px] md:text-[18px] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_3_review_1_text }}</p>
+          </div>
+          <div class="flex items-center gap-[16px]">
+            <div class="bg-[var(--brand-primary)] rounded-full w-[50px] h-[50px] md:w-[58px] md:h-[58px] flex items-center justify-center shrink-0">
+              <span class="font-medium text-[24px] md:text-[30px] text-white uppercase leading-none">{{ testimonials_3_review_1_initial }}</span>
+            </div>
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_1_name }}</p>
+              <div class="flex items-center gap-[8px]">
+                <img src="{{ 'images/testimonials-3/testimonials-3-verify.png' | campaign_asset }}" alt="" class="w-[12px] h-[13px] shrink-0">
+                <p class="font-medium text-[14px] tracking-[-0.07px] text-[var(--brand-band)] leading-[1.5]">Verified Customer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Card 2 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[16px] p-[20px] flex flex-col justify-between gap-[40px] md:gap-[60px]">
+          <div class="flex flex-col gap-[16px]">
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_2_title }}</p>
+              <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+            </div>
+            <p class="font-normal text-[16px] md:text-[18px] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_3_review_2_text }}</p>
+          </div>
+          <div class="flex items-center gap-[16px]">
+            <div class="bg-[var(--brand-primary)] rounded-full w-[50px] h-[50px] md:w-[58px] md:h-[58px] flex items-center justify-center shrink-0">
+              <span class="font-medium text-[24px] md:text-[30px] text-white uppercase leading-none">{{ testimonials_3_review_2_initial }}</span>
+            </div>
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_2_name }}</p>
+              <div class="flex items-center gap-[8px]">
+                <img src="{{ 'images/testimonials-3/testimonials-3-verify.png' | campaign_asset }}" alt="" class="w-[12px] h-[13px] shrink-0">
+                <p class="font-medium text-[14px] tracking-[-0.07px] text-[var(--brand-band)] leading-[1.5]">Verified Customer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Card 3 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[16px] p-[20px] flex flex-col justify-between gap-[40px] md:gap-[60px]">
+          <div class="flex flex-col gap-[16px]">
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_3_title }}</p>
+              <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+            </div>
+            <p class="font-normal text-[16px] md:text-[18px] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_3_review_3_text }}</p>
+          </div>
+          <div class="flex items-center gap-[16px]">
+            <div class="bg-[var(--brand-primary)] rounded-full w-[50px] h-[50px] md:w-[58px] md:h-[58px] flex items-center justify-center shrink-0">
+              <span class="font-medium text-[24px] md:text-[30px] text-white uppercase leading-none">{{ testimonials_3_review_3_initial }}</span>
+            </div>
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_3_name }}</p>
+              <div class="flex items-center gap-[8px]">
+                <img src="{{ 'images/testimonials-3/testimonials-3-verify.png' | campaign_asset }}" alt="" class="w-[12px] h-[13px] shrink-0">
+                <p class="font-medium text-[14px] tracking-[-0.07px] text-[var(--brand-band)] leading-[1.5]">Verified Customer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Card 4 {% endcomment %}
+        <div class="bg-white rounded-[8px] md:rounded-[16px] p-[20px] flex flex-col justify-between gap-[40px] md:gap-[60px]">
+          <div class="flex flex-col gap-[16px]">
+            <div class="flex flex-col gap-[4px]">
+              <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_3_review_4_title }}</p>
+              <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+            </div>
+            <p class="font-normal text-[16px] md:text-[18px] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_3_review_4_text }}</p>
+          </div>
+          <div class="flex items-center gap-[16px]">
+            <div class="bg-[var(--brand-primary)] rounded-full w-[50px] h-[50px] md:w-[58px] md:h-[58px] flex items-center justify-center shrink-0">
+              <span class="font-medium text-[24px] md:text-[30px] text-white uppercase leading-none">{{ testimonials_3_review_4_initial }}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {% comment %} CTA {% endcomment %}
+      <div class="flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px] w-full max-w-[440px]">
+        <a href="{{ next_url }}"
+          class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text }}</span>
+            <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0">
+        </a>
+        <div class="flex items-center gap-[8px]">
+            <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5] whitespace-nowrap">{{ guarantee_text }}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

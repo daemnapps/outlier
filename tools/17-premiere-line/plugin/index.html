@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+<style>
+  body{font-family:-apple-system,'Adobe Clean',sans-serif;background:#1e1e1e;color:#e8e8e8;margin:0;padding:14px;font-size:12px}
+  h1{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8a8a8a;margin:0 0 12px;font-weight:600}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:middle;background:#666}
+  .dot.on{background:#00d4a0;box-shadow:0 0 8px #00d4a0}
+  .dot.err{background:#ff5c5c}
+  #status{font-size:13px;margin-bottom:4px}
+  #detail{color:#7a7a7a;font-size:11px;margin-bottom:12px}
+  #log{background:#141414;border:1px solid #2e2e2e;border-radius:5px;padding:8px;height:150px;overflow-y:auto;
+       font-family:ui-monospace,Menlo,monospace;font-size:10.5px;line-height:1.55;color:#9a9a9a;white-space:pre-wrap}
+  .ok{color:#00d4a0} .bad{color:#ff5c5c} .dim{color:#5f5f5f}
+  .row{display:flex;gap:6px;margin-top:10px}
+  button{flex:1;background:#2f2f2f;border:1px solid #444;color:#ddd;border-radius:4px;padding:6px;font-size:11px;cursor:pointer}
+  button:hover{background:#3a3a3a}
+</style></head>
+<body>
+  <h1>daemn bridge</h1>
+  <div id="status"><span class="dot" id="dot"></span><span id="stext">starting…</span></div>
+  <div id="detail">—</div>
+  <div id="log"></div>
+  <div class="row">
+    <button id="reconnect">Reconnect</button>
+    <button id="clear">Clear</button>
+  </div>
+  <script src="ops.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

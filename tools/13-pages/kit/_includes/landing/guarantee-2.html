@@ -1,0 +1,31 @@
+<section class="bg-white py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12">
+
+      {% comment %} Heading {% endcomment %}
+      <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)] text-center w-full max-w-[800px]">
+        {{ guarantee_2_heading }}
+      </h2>
+
+      {% comment %} Badge image {% endcomment %}
+      <div class="w-full md:w-[408px] shrink-0" style="aspect-ratio: 408/328;">
+        <img
+          src="{{ 'images/guarantee-2/guarantee-2-badge.png' | campaign_asset }}"
+          alt="{{ guarantee_2_badge_alt }}"
+          class="w-full h-full object-contain"
+        >
+      </div>
+
+      {% comment %} Guarantee copy {% endcomment %}
+      <div class="flex flex-col gap-6 lg:gap-8 w-full max-w-[700px] text-[18px] md:text-[20px] font-medium leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+        <p>{{ guarantee_2_para_1 }}</p>
+        <p>{{ guarantee_2_para_2 }}</p>
+        <p>{{ guarantee_2_para_3 }}</p>
+        <p>{{ guarantee_2_para_4 }}</p>
+        <p>{{ guarantee_2_para_5 }}</p>
+        <p>{{ guarantee_2_para_6 }}</p>
+      </div>
+
+    </div>
+  </div>
+</section>

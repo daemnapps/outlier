@@ -1,0 +1,82 @@
+<section class="w-full overflow-hidden bg-[var(--brand-secondary)]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <div class="w-full flex flex-col items-center text-center gap-[12px] md:gap-[16px] lg:gap-[20px] text-[var(--text-primary)]">
+        <h2 class="text-[32px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] font-bold">
+          {{ results_5_heading }}
+        </h2>
+        <p class="text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px]">
+          {{ results_5_subheading }}
+        </p>
+      </div>
+
+      <div class="w-full flex flex-col lg:flex-row items-center lg:items-start gap-[32px] md:gap-[40px] lg:gap-[48px]">
+        <div class="w-full md:w-[400px] md:max-w-[400px] lg:max-w-none lg:flex-1 aspect-square rounded-[12px] md:rounded-[14px] lg:rounded-[16px] overflow-hidden">
+          <img src="{{ results_5_feature_image | campaign_asset }}" alt="{{ results_5_feature_image_alt }}" class="w-full h-full object-cover">
+        </div>
+
+        <div class="w-full lg:w-[580px] flex flex-col gap-[8px]">
+          <div class="bg-white border border-[var(--border-default)] rounded-[8px] px-[16px] py-[16px] md:py-[18px] lg:py-[20px]">
+            <div class="flex items-center gap-[12px]">
+              <img src="{{ 'images/results-5/results-5-check.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] md:w-[28px] md:h-[28px] lg:w-[30px] lg:h-[30px] object-contain" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px] font-bold text-[var(--text-primary)]">
+                {{ results_5_bullet_1 }}
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-[var(--border-default)] rounded-[8px] px-[16px] py-[16px] md:py-[18px] lg:py-[20px]">
+            <div class="flex items-center gap-[12px]">
+              <img src="{{ 'images/results-5/results-5-check.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] md:w-[28px] md:h-[28px] lg:w-[30px] lg:h-[30px] object-contain" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px] font-bold text-[var(--text-primary)]">
+                {{ results_5_bullet_2 }}
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-[var(--border-default)] rounded-[8px] px-[16px] py-[16px] md:py-[18px] lg:py-[20px]">
+            <div class="flex items-center gap-[12px]">
+              <img src="{{ 'images/results-5/results-5-check.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] md:w-[28px] md:h-[28px] lg:w-[30px] lg:h-[30px] object-contain" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px] font-bold text-[var(--text-primary)]">
+                {{ results_5_bullet_3 }}
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-[var(--border-default)] rounded-[8px] px-[16px] py-[16px] md:py-[18px] lg:py-[20px]">
+            <div class="flex items-center gap-[12px]">
+              <img src="{{ 'images/results-5/results-5-check.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] md:w-[28px] md:h-[28px] lg:w-[30px] lg:h-[30px] object-contain" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px] font-bold text-[var(--text-primary)]">
+                {{ results_5_bullet_4 }}
+              </p>
+            </div>
+          </div>
+
+          <div class="bg-white border border-[var(--border-default)] rounded-[8px] px-[16px] py-[16px] md:py-[18px] lg:py-[20px]">
+            <div class="flex items-center gap-[12px]">
+              <img src="{{ 'images/results-5/results-5-check.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] md:w-[28px] md:h-[28px] lg:w-[30px] lg:h-[30px] object-contain" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px] font-bold text-[var(--text-primary)]">
+                {{ results_5_bullet_5 }}
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-[24px] md:mt-[32px] lg:mt-[24px] w-full flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px]">
+            <a href="{{ next_url }}" class="w-[345px] md:w-[440px] rounded-[6px] bg-[var(--brand-primary)] px-[24px] py-[20px] flex items-center justify-center gap-[20px]">
+              <span class="text-[20px] leading-[1.5] tracking-[-0.1px] font-bold text-white text-center">
+                {{ cta_text }}
+              </span>
+              <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+            </a>
+            <div class="flex items-center gap-[8px]">
+              <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain" aria-hidden="true">
+              <p class="text-[16px] leading-[1.5] tracking-[-0.08px] font-semibold text-[var(--text-primary)] whitespace-nowrap">
+                {{ guarantee_text }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,96 @@
+<section class="w-full overflow-hidden bg-white">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="w-full flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <div class="w-full max-w-[800px] flex flex-col items-center text-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+        <h2 class="text-[32px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] font-bold text-[var(--text-primary)]">
+          {{ benefits_1_heading }}
+        </h2>
+        <p class="text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px] text-[var(--text-secondary)]">
+          {{ benefits_1_subheading }}
+        </p>
+      </div>
+
+      <div class="w-full flex flex-col md:flex-row items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+        <div class="w-full md:flex-1 aspect-square rounded-[16px] overflow-hidden">
+          <img src="{{ benefits_1_feature_image | campaign_asset }}" alt="{{ benefits_1_feature_image_alt }}" class="w-full h-full object-cover">
+        </div>
+
+        <div class="w-full md:flex-1 flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]" data-accordion data-allow-multiple="false">
+          <div class="border-b border-[rgba(0,0,0,0.16)] pb-[12px] md:pb-[16px] lg:pb-[20px]" data-accordion-item data-open="true">
+            <button type="button" class="w-full flex items-center justify-between gap-[12px] text-left" data-accordion-toggle>
+              <span class="flex items-center gap-[12px] md:gap-[16px] min-w-0">
+                <img src="{{ 'images/benefits-1/benefits-1-icon-cleaning.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px] object-contain shrink-0" aria-hidden="true">
+                <span class="text-[20px] lg:text-[24px] leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px] font-bold text-[var(--text-primary)]">{{ benefits_1_item_1_title }}</span>
+              </span>
+              <img src="{{ 'images/benefits-1/benefits-1-accordion-toggle.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] md:w-[24px] md:h-[24px] lg:w-[32px] lg:h-[32px] object-contain shrink-0 transition-transform duration-300 rotate-180" data-accordion-icon aria-hidden="true">
+            </button>
+            <div class="overflow-hidden transition-all duration-300 opacity-100 mt-[8px]" data-accordion-panel>
+              <p class="text-[16px] md:text-[16px] lg:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.08px] lg:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ benefits_1_item_1_body }}
+              </p>
+            </div>
+          </div>
+
+          <div class="border-b border-[rgba(0,0,0,0.16)] pb-[12px] md:pb-[16px] lg:pb-[20px]" data-accordion-item data-open="false">
+            <button type="button" class="w-full flex items-center justify-between gap-[12px] text-left" data-accordion-toggle>
+              <span class="flex items-center gap-[12px] md:gap-[16px] min-w-0">
+                <img src="{{ 'images/benefits-1/benefits-1-icon-capture.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px] object-contain shrink-0" aria-hidden="true">
+                <span class="text-[20px] lg:text-[24px] leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px] font-bold text-[var(--text-primary)]">{{ benefits_1_item_2_title }}</span>
+              </span>
+              <img src="{{ 'images/benefits-1/benefits-1-accordion-toggle.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] md:w-[24px] md:h-[24px] lg:w-[32px] lg:h-[32px] object-contain shrink-0 transition-transform duration-300" data-accordion-icon aria-hidden="true">
+            </button>
+            <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+              <p class="text-[16px] md:text-[16px] lg:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.08px] lg:tracking-[-0.09px] text-[var(--text-secondary)] mt-[8px]">
+                {{ benefits_1_item_2_body }}
+              </p>
+            </div>
+          </div>
+
+          <div class="border-b border-[rgba(0,0,0,0.16)] pb-[12px] md:pb-[16px] lg:pb-[20px]" data-accordion-item data-open="false">
+            <button type="button" class="w-full flex items-center justify-between gap-[12px] text-left" data-accordion-toggle>
+              <span class="flex items-center gap-[12px] md:gap-[16px] min-w-0">
+                <img src="{{ 'images/benefits-1/benefits-1-icon-gift.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px] object-contain shrink-0" aria-hidden="true">
+                <span class="text-[20px] lg:text-[24px] leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px] font-bold text-[var(--text-primary)]">{{ benefits_1_item_3_title }}</span>
+              </span>
+              <img src="{{ 'images/benefits-1/benefits-1-accordion-toggle.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] md:w-[24px] md:h-[24px] lg:w-[32px] lg:h-[32px] object-contain shrink-0 transition-transform duration-300" data-accordion-icon aria-hidden="true">
+            </button>
+            <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+              <p class="text-[16px] md:text-[16px] lg:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.08px] lg:tracking-[-0.09px] text-[var(--text-secondary)] mt-[8px]">
+                {{ benefits_1_item_3_body }}
+              </p>
+            </div>
+          </div>
+
+          <div class="border-b border-[rgba(0,0,0,0.16)] pb-[12px] md:pb-[16px] lg:pb-[20px]" data-accordion-item data-open="false">
+            <button type="button" class="w-full flex items-center justify-between gap-[12px] text-left" data-accordion-toggle>
+              <span class="flex items-center gap-[12px] md:gap-[16px] min-w-0">
+                <img src="{{ 'images/benefits-1/benefits-1-icon-timeless.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] md:w-[40px] md:h-[40px] lg:w-[48px] lg:h-[48px] object-contain shrink-0" aria-hidden="true">
+                <span class="text-[20px] lg:text-[24px] leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px] font-bold text-[var(--text-primary)]">{{ benefits_1_item_4_title }}</span>
+              </span>
+              <img src="{{ 'images/benefits-1/benefits-1-accordion-toggle.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] md:w-[24px] md:h-[24px] lg:w-[32px] lg:h-[32px] object-contain shrink-0 transition-transform duration-300" data-accordion-icon aria-hidden="true">
+            </button>
+            <div class="overflow-hidden transition-all duration-300 opacity-0" data-accordion-panel hidden>
+              <p class="text-[16px] md:text-[16px] lg:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.08px] lg:tracking-[-0.09px] text-[var(--text-secondary)] mt-[8px]">
+                {{ benefits_1_item_4_body }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-[345px] md:w-[440px]">
+        <div class="w-full flex flex-col items-center gap-[12px]">
+          <a href="{{ next_url }}"
+             class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
+            <img src="{{ cta_button_arrow | default: 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+          </a>
+          <div class="flex items-center gap-[8px]">
+            <img src="{{ guarantee_icon | default: 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0 object-contain" aria-hidden="true">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5]">{{ guarantee_text | default: "30-Day Money Back Guarantee" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

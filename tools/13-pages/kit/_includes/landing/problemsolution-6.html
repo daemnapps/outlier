@@ -1,0 +1,212 @@
+{% comment %} Problem block — white {% endcomment %}
+<section class="bg-white">
+  <div class="mx-auto max-w-[1440px] px-[15px] py-[40px] md:px-[26px] md:py-[48px] lg:py-[60px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      <h2 class="w-full max-w-[600px] text-center text-[28px] font-bold leading-[1.2] tracking-[-0.14px] text-[var(--text-primary)] md:text-[32px] md:tracking-[-0.16px] lg:text-[40px] lg:tracking-[-0.2px]">
+        {{ problemsolution_6_problem_heading }}
+      </h2>
+
+      <div class="flex w-full max-w-full flex-col items-stretch gap-[32px] md:mx-auto md:max-w-[600px] lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:gap-[60px]">
+        <div class="relative w-full shrink-0 overflow-hidden rounded-[12px] md:rounded-[14px] lg:mx-0 lg:aspect-square lg:max-h-none lg:max-w-[620px] lg:flex-1">
+          <img
+            src="{{ problemsolution_6_problem_hero_image | campaign_asset }}"
+            alt="{{ problemsolution_6_problem_hero_alt }}"
+            class="aspect-square w-full object-cover"
+            width="620"
+            height="620"
+            loading="lazy">
+        </div>
+
+        <div class="flex w-full min-w-0 flex-1 flex-col gap-[20px] md:gap-[26px] lg:gap-[32px]">
+          <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3">
+            <div class="flex items-center gap-[6px] md:gap-2.5 lg:gap-3">
+              <span class="flex h-[26px] w-[26px] shrink-0 items-center justify-center -scale-y-100 lg:h-8 lg:w-8" aria-hidden="true">
+                <img src="{{ problemsolution_6_problem_icon | campaign_asset }}" alt="" class="size-full object-contain">
+              </span>
+              <p class="text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-[var(--text-primary)] lg:text-[24px] lg:tracking-[-0.12px]">
+                {{ problemsolution_6_problem_1_title }}
+              </p>
+            </div>
+            <p class="text-[16px] font-normal leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+              {{ problemsolution_6_problem_1_body }}
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3">
+            <div class="flex items-center gap-[6px] md:gap-2.5 lg:gap-3">
+              <span class="flex h-[26px] w-[26px] shrink-0 items-center justify-center -scale-y-100 lg:h-8 lg:w-8" aria-hidden="true">
+                <img src="{{ problemsolution_6_problem_icon | campaign_asset }}" alt="" class="size-full object-contain">
+              </span>
+              <p class="text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-[var(--text-primary)] lg:text-[24px] lg:tracking-[-0.12px]">
+                {{ problemsolution_6_problem_2_title }}
+              </p>
+            </div>
+            <p class="text-[16px] font-normal leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+              {{ problemsolution_6_problem_2_body }}
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3">
+            <div class="flex items-center gap-[6px] md:gap-2.5 lg:gap-3">
+              <span class="flex h-[26px] w-[26px] shrink-0 items-center justify-center -scale-y-100 lg:h-8 lg:w-8" aria-hidden="true">
+                <img src="{{ problemsolution_6_problem_icon | campaign_asset }}" alt="" class="size-full object-contain">
+              </span>
+              <p class="text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-[var(--text-primary)] lg:text-[24px] lg:tracking-[-0.12px]">
+                {{ problemsolution_6_problem_3_title }}
+              </p>
+            </div>
+            <p class="text-[16px] font-normal leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+              {{ problemsolution_6_problem_3_body }}
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3">
+            <div class="flex items-center gap-[6px] md:gap-2.5 lg:gap-3">
+              <span class="flex h-[26px] w-[26px] shrink-0 items-center justify-center -scale-y-100 lg:h-8 lg:w-8" aria-hidden="true">
+                <img src="{{ problemsolution_6_problem_icon | campaign_asset }}" alt="" class="size-full object-contain">
+              </span>
+              <p class="text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-[var(--text-primary)] lg:text-[24px] lg:tracking-[-0.12px]">
+                {{ problemsolution_6_problem_4_title }}
+              </p>
+            </div>
+            <p class="text-[16px] font-normal leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+              {{ problemsolution_6_problem_4_body }}
+            </p>
+          </div>
+
+          {% comment %} 5th issue: tablet + mobile only (Figma desktop omits) {% endcomment %}
+          <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3">{% comment %} page machine: the fifth item showed on phones only; a failure list is not shorter on a desktop {% endcomment %}
+            <div class="flex items-center gap-[6px] md:gap-2.5 lg:gap-3">
+              <span class="flex h-[26px] w-[26px] shrink-0 items-center justify-center -scale-y-100 lg:h-8 lg:w-8" aria-hidden="true">
+                <img src="{{ problemsolution_6_problem_icon | campaign_asset }}" alt="" class="size-full object-contain">
+              </span>
+              <p class="text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-[var(--text-primary)] lg:text-[24px] lg:tracking-[-0.12px]">
+                {{ problemsolution_6_problem_5_title }}
+              </p>
+            </div>
+            <p class="text-[16px] font-normal leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+              {{ problemsolution_6_problem_5_body }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p class="w-full max-w-[710px] text-center text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-[var(--brand-primary)] md:max-w-[600px] lg:text-[24px] lg:tracking-[-0.12px]">
+        {{ problemsolution_6_problem_callout }}
+      </p>
+    </div>
+  </div>
+</section>
+
+{% comment %} Solution + social proof — brand tint {% endcomment %}
+<section class="bg-[var(--brand-secondary)]">
+  <div class="mx-auto max-w-[1440px] px-[15px] py-[40px] md:px-[26px] md:py-[48px] lg:py-[60px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      <div class="flex w-full flex-col items-center gap-[20px] md:gap-[26px] lg:flex-row lg:items-center lg:gap-[60px]">
+        <div class="flex w-full max-w-[600px] flex-col items-center gap-[12px] text-center text-[var(--text-primary)] md:gap-4 lg:max-w-none lg:flex-1 lg:items-start lg:gap-5 lg:text-left">
+          <h3 class="w-full max-w-[400px] text-[28px] font-bold leading-[1.2] tracking-[-0.14px] md:text-[32px] md:tracking-[-0.16px] lg:text-[40px] lg:tracking-[-0.2px]">
+            {{ problemsolution_6_solution_heading }}
+          </h3>
+          <div class="w-full text-[18px] font-normal leading-[1.5] tracking-[-0.09px] lg:text-[18px]">
+            <p class="hidden lg:block">
+              <span class="block">{{ problemsolution_6_solution_intro_line_1 }}</span>
+              <span class="block">{{ problemsolution_6_solution_intro_line_2 }}</span>
+              <span class="block">{{ problemsolution_6_solution_intro_line_3 }}</span>
+              <span class="block">{{ problemsolution_6_solution_intro_line_4 }}</span>
+            </p>
+            <p class="lg:hidden">{{ problemsolution_6_solution_intro_mobile }}</p>
+          </div>
+
+          <div class="mt-1 flex w-full flex-col gap-3 md:mt-0 md:gap-4 lg:mt-0 lg:gap-5">
+            <div class="rounded-[8px] bg-white px-2 py-2 md:px-2.5 md:py-2.5 lg:px-3 lg:py-3">
+              <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+                <p class="shrink-0 text-[32px] font-bold leading-[1.2] tracking-[-0.16px] text-[var(--brand-primary)] md:text-[36px] md:tracking-[-0.18px] lg:text-[44px] lg:tracking-[-0.22px]">
+                  {{ problemsolution_6_stat_1_value }}
+                </p>
+                <p class="min-w-0 flex-1 text-left text-[16px] font-semibold leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+                  {{ problemsolution_6_stat_1_label }}
+                </p>
+              </div>
+            </div>
+            <div class="rounded-[8px] bg-white px-2 py-2 md:px-2.5 md:py-2.5 lg:px-3 lg:py-3">
+              <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+                <p class="shrink-0 text-[32px] font-bold leading-[1.2] tracking-[-0.16px] text-[var(--brand-primary)] md:text-[36px] md:tracking-[-0.18px] lg:text-[44px] lg:tracking-[-0.22px]">
+                  {{ problemsolution_6_stat_2_value }}
+                </p>
+                <p class="min-w-0 flex-1 text-left text-[16px] font-semibold leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+                  {{ problemsolution_6_stat_2_label }}
+                </p>
+              </div>
+            </div>
+            <div class="rounded-[8px] bg-white px-2 py-2 md:px-2.5 md:py-2.5 lg:px-3 lg:py-3">
+              <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+                <p class="shrink-0 text-[32px] font-bold leading-[1.2] tracking-[-0.16px] text-[var(--brand-primary)] md:text-[36px] md:tracking-[-0.18px] lg:text-[44px] lg:tracking-[-0.22px]">
+                  {{ problemsolution_6_stat_3_value }}
+                </p>
+                <p class="min-w-0 flex-1 text-left text-[16px] font-semibold leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+                  {{ problemsolution_6_stat_3_label }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative w-full max-w-[620px] shrink-0 overflow-hidden rounded-[12px] border-2 border-[var(--text-primary)] md:rounded-[14px] lg:mx-0 lg:aspect-square lg:max-w-[620px] lg:flex-1 lg:rounded-[16px]">
+          <img
+            src="{{ problemsolution_6_solution_hero_image | campaign_asset }}"
+            alt="{{ problemsolution_6_solution_hero_alt }}"
+            class="aspect-square w-full object-cover"
+            width="620"
+            height="620"
+            loading="lazy">
+        </div>
+      </div>
+
+      <h3 class="max-w-[736px] text-center text-[24px] font-bold leading-[1.5] tracking-[-0.12px] text-[var(--text-primary)] md:text-[26px] md:tracking-[-0.13px] lg:text-[28px] lg:tracking-[-0.14px]">
+        {{ problemsolution_6_social_heading }}
+      </h3>
+
+      <div class="flex w-full gap-3 md:gap-4 lg:gap-5">
+        <div class="relative aspect-square min-h-0 min-w-0 flex-1 overflow-hidden rounded-[8px]">
+          <img src="{{ problemsolution_6_gallery_1_image | campaign_asset }}" alt="{{ problemsolution_6_gallery_1_alt }}" class="absolute inset-0 size-full object-cover" width="174" height="174" loading="lazy">
+        </div>
+        <div class="relative aspect-square min-h-0 min-w-0 flex-1 overflow-hidden rounded-[8px]">
+          <img src="{{ problemsolution_6_gallery_2_image | campaign_asset }}" alt="{{ problemsolution_6_gallery_2_alt }}" class="absolute inset-0 size-full object-cover" width="174" height="174" loading="lazy">
+        </div>
+        <div class="relative aspect-square min-h-0 min-w-0 flex-1 overflow-hidden rounded-[8px]">
+          <img src="{{ problemsolution_6_gallery_3_image | campaign_asset }}" alt="{{ problemsolution_6_gallery_3_alt }}" class="absolute inset-0 size-full object-cover" width="174" height="174" loading="lazy">
+        </div>
+        <div class="relative aspect-square min-h-0 min-w-0 flex-1 overflow-hidden rounded-[8px]">
+          <img src="{{ problemsolution_6_gallery_4_image | campaign_asset }}" alt="{{ problemsolution_6_gallery_4_alt }}" class="absolute inset-0 size-full object-cover" width="174" height="174" loading="lazy">
+        </div>
+        <div class="relative aspect-square min-h-0 min-w-0 flex-1 overflow-hidden rounded-[8px]">
+          <img src="{{ problemsolution_6_gallery_5_image | campaign_asset }}" alt="{{ problemsolution_6_gallery_5_alt }}" class="absolute inset-0 size-full object-cover" width="174" height="174" loading="lazy">
+        </div>
+      </div>
+
+      <div class="flex w-full max-w-[345px] flex-col items-center gap-2 md:max-w-[440px] md:gap-2.5 lg:gap-3">
+        <a
+          href="{{ next_url }}"
+          class="flex w-full items-center justify-center gap-5 rounded-[6px] bg-[var(--brand-primary)] px-6 py-5">
+          <span class="text-center text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-white">
+            {{ cta_text }}
+          </span>
+          <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+        </a>
+        <div class="flex items-center justify-center gap-2">
+          <img
+            src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}"
+            alt=""
+            class="h-[19px] w-5 shrink-0 object-contain"
+            aria-hidden="true">
+          <p class="text-center text-[16px] font-semibold leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">
+            {{ guarantee_text }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

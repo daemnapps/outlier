@@ -1,0 +1,57 @@
+<section class="bg-white py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="bg-[var(--surface-alt)] rounded-2xl md:rounded-[32px] overflow-hidden flex flex-col md:flex-row">
+
+      {% comment %} Content column {% endcomment %}
+      <div class="px-5 py-8 md:p-12 lg:px-[60px] lg:py-[80px] flex flex-col gap-5 md:gap-4 lg:gap-8 md:w-[453px] lg:w-[692px] md:shrink-0">
+
+        <h2 class="font-bold text-[32px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] text-[var(--text-primary)]">
+          {{ features_2_heading }} <span class="text-[var(--brand-primary)]">{{ features_2_heading_accent }}</span>
+        </h2>
+
+        <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+          <img src="{{ features_2_feature_1_icon | campaign_asset }}" alt="" class="w-12 h-12 shrink-0 object-contain">
+          <div class="flex flex-col gap-2">
+            <p class="font-bold text-[20px] leading-[1.4] tracking-[-0.1px] text-[var(--text-primary)]">{{ features_2_feature_1_title }}</p>
+            <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">{{ features_2_feature_1_desc }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+          <img src="{{ features_2_feature_2_icon | campaign_asset }}" alt="" class="w-12 h-12 shrink-0 object-contain">
+          <div class="flex flex-col gap-2">
+            <p class="font-bold text-[20px] leading-[1.4] tracking-[-0.1px] text-[var(--text-primary)]">{{ features_2_feature_2_title }}</p>
+            <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">{{ features_2_feature_2_desc }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+          <img src="{{ features_2_feature_3_icon | campaign_asset }}" alt="" class="w-12 h-12 shrink-0 object-contain">
+          <div class="flex flex-col gap-2">
+            <p class="font-bold text-[20px] leading-[1.4] tracking-[-0.1px] text-[var(--text-primary)]">{{ features_2_feature_3_title }}</p>
+            <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">{{ features_2_feature_3_desc }}</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3 md:gap-4 lg:gap-5">
+          <img src="{{ features_2_feature_4_icon | campaign_asset }}" alt="" class="w-12 h-12 shrink-0 object-contain">
+          <div class="flex flex-col gap-2">
+            <p class="font-bold text-[20px] leading-[1.4] tracking-[-0.1px] text-[var(--text-primary)]">{{ features_2_feature_4_title }}</p>
+            <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">{{ features_2_feature_4_desc }}</p>
+          </div>
+        </div>
+
+      </div>
+
+      {% comment %} Image column {% endcomment %}
+      <div class="relative h-[351px] md:h-auto md:flex-1">
+        <img src="{{ features_2_product_image | campaign_asset }}" alt="{{ features_2_product_image_alt }}" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+        {% comment %} Desktop/tablet: left-to-right gradient blends photo into card bg {% endcomment %}
+        <div class="hidden md:block absolute inset-y-0 left-0 w-[57%] bg-gradient-to-r from-[var(--surface-alt)] to-transparent"></div>
+        {% comment %} Mobile: top-to-bottom gradient blends photo into content above {% endcomment %}
+        <div class="md:hidden absolute top-0 left-0 right-0 h-[155px] bg-gradient-to-b from-[var(--surface-alt)] to-transparent"></div>
+      </div>
+
+    </div>
+  </div>
+</section>

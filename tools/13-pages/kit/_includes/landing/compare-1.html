@@ -1,0 +1,120 @@
+<section class="bg-[var(--brand-secondary)] overflow-hidden w-full">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="flex flex-col gap-[32px] md:gap-[40px] lg:gap-[48px] items-center">
+
+      {% comment %} Main row: desktop = image left + content right; tablet/mobile = content stacked {% endcomment %}
+      <div class="flex flex-col lg:flex-row lg:gap-[60px] lg:items-center w-full">
+
+        {% comment %} Product image: desktop left column only {% endcomment %}
+        <div class="hidden lg:flex shrink-0 w-[420px] self-stretch items-center">
+          <img src="{{ compare_1_compare_product_image | campaign_asset }}"
+               alt="{{ compare_1_compare_product_image_alt }}"
+               class="w-full h-auto object-contain">
+        </div>
+
+        {% comment %} Content column {% endcomment %}
+        <div class="flex flex-col gap-[32px] md:gap-[40px] lg:gap-[48px] lg:flex-1 w-full">
+
+          {% comment %} Heading + body {% endcomment %}
+          <div class="flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px] text-center lg:text-left">
+            <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] text-[var(--text-primary)] tracking-[-0.2px]">{{ compare_1_heading }}</h2>
+            <p class="text-[18px] md:text-[20px] text-[var(--text-secondary)] leading-[1.5]">{{ compare_1_body_text }}</p>
+          </div>
+
+          {% comment %} Comparison cards {% endcomment %}
+          <div class="flex flex-col md:flex-row md:items-end gap-[20px] md:gap-[26px] lg:gap-[32px] w-full">
+
+            {% comment %} Gray card: Unhappy column {% endcomment %}
+            <div class="bg-[var(--border-default)] flex-1 flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px] px-[12px] md:px-[16px] lg:px-[20px] py-[24px] md:py-[32px] lg:py-[40px] rounded-2xl">
+              <div class="flex flex-col gap-[8px] items-center">
+                <img src="{{ 'images/compare-1/icon-sad.svg' | campaign_asset }}" alt="" class="w-[48px] h-[48px] shrink-0">
+                <span class="text-[18px] md:text-[20px] font-bold text-[var(--text-primary)] leading-[1.4] tracking-[-0.1px] text-center">{{ compare_1_col1_title }}</span>
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+                <div class="flex items-center gap-[12px]">
+                  <img src="{{ 'images/compare-1/icon-x.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                  <span class="text-[18px] md:text-[20px] text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_1_item1 }}</span>
+                </div>
+                <div class="flex items-center gap-[12px]">
+                  <img src="{{ 'images/compare-1/icon-x.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                  <span class="text-[18px] md:text-[20px] text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_1_item2 }}</span>
+                </div>
+                <div class="flex items-center gap-[12px]">
+                  <img src="{{ 'images/compare-1/icon-x.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                  <span class="text-[18px] md:text-[20px] text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_1_item3 }}</span>
+                </div>
+                <div class="flex items-center gap-[12px]">
+                  <img src="{{ 'images/compare-1/icon-x.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                  <span class="text-[18px] md:text-[20px] text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_1_item4 }}</span>
+                </div>
+                <div class="flex items-center gap-[12px]">
+                  <img src="{{ 'images/compare-1/icon-x.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                  <span class="text-[18px] md:text-[20px] text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_1_item5 }}</span>
+                </div>
+              </div>
+            </div>
+
+            {% comment %} Blue card column: tablet/mobile = product image overlaps top; desktop = standalone card {% endcomment %}
+            <div class="flex-1 flex flex-col">
+
+              {% comment %} Product image overlap: tablet/mobile only {% endcomment %}
+              <div class="lg:hidden -mb-[138px]">
+                <img src="{{ compare_1_compare_product_image | campaign_asset }}"
+                     alt="{{ compare_1_compare_product_image_alt }}"
+                     class="w-full h-[288px] object-contain md:ml-3">
+              </div>
+
+              {% comment %} Blue card: Gut Guardian column {% endcomment %}
+              <div class="relative z-10 bg-[var(--brand-primary)] flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px] px-[12px] md:px-[16px] lg:px-[20px] py-[24px] md:py-[32px] lg:py-[40px] rounded-2xl w-full">
+                <div class="flex flex-col gap-[8px] items-center">
+                  <img src="{{ 'images/compare-1/icon-smile.svg' | campaign_asset }}" alt="" class="w-[48px] h-[48px] shrink-0">
+                  <span class="text-[18px] md:text-[20px] font-bold text-white leading-[1.4] tracking-[-0.1px] text-center">{{ compare_1_col2_title }}</span>
+                </div>
+                <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+                  <div class="flex items-center gap-[12px]">
+                    <img src="{{ 'images/compare-1/icon-check.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                    <span class="text-[18px] md:text-[20px] text-white leading-[1.5] tracking-[-0.1px]">{{ compare_1_item1 }}</span>
+                  </div>
+                  <div class="flex items-center gap-[12px]">
+                    <img src="{{ 'images/compare-1/icon-check.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                    <span class="text-[18px] md:text-[20px] text-white leading-[1.5] tracking-[-0.1px]">{{ compare_1_item2 }}</span>
+                  </div>
+                  <div class="flex items-center gap-[12px]">
+                    <img src="{{ 'images/compare-1/icon-check.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                    <span class="text-[18px] md:text-[20px] text-white leading-[1.5] tracking-[-0.1px]">{{ compare_1_item3 }}</span>
+                  </div>
+                  <div class="flex items-center gap-[12px]">
+                    <img src="{{ 'images/compare-1/icon-check.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                    <span class="text-[18px] md:text-[20px] text-white leading-[1.5] tracking-[-0.1px]">{{ compare_1_item4 }}</span>
+                  </div>
+                  <div class="flex items-center gap-[12px]">
+                    <img src="{{ 'images/compare-1/icon-check.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] shrink-0">
+                    <span class="text-[18px] md:text-[20px] text-white leading-[1.5] tracking-[-0.1px]">{{ compare_1_item5 }}</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {% comment %} CTA {% endcomment %}
+      <div class="w-full md:w-[440px] flex justify-center">
+        <div class="w-full flex flex-col items-center gap-[12px]">
+          <a href="{{ next_url }}"
+             class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
+            <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+          </a>
+          <div class="flex items-center gap-[8px]">
+            <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0 object-contain" aria-hidden="true">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5]">{{ guarantee_text | default: "30-Day Money Back Guarantee" }}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

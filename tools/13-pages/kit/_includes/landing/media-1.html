@@ -1,0 +1,45 @@
+<style>
+  @keyframes media1-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .media1-track {
+    animation: media1-scroll 24s linear infinite;
+    will-change: transform;
+  }
+  .media1-track:hover {
+    animation-play-state: paused;
+  }
+</style>
+
+<section class="bg-white py-[24px] md:py-[32px] lg:py-[40px] overflow-hidden">
+  <div class="max-w-[1440px] mx-auto px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="flex flex-col items-center gap-[20px] md:gap-[26px] lg:gap-[32px]">
+      <h2 class="w-full text-center font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">{{ media_1_heading }}</h2>
+
+      <div class="hidden md:flex w-full items-center justify-between">
+        <img src="{{ media_1_logo_1 | campaign_asset }}" alt="{{ media_1_logo_1_alt }}" class="w-[80px] md:w-[80px] lg:w-[120px] h-[20px] md:h-[20px] lg:h-[30px] object-contain shrink-0">
+        <img src="{{ media_1_logo_2 | campaign_asset }}" alt="{{ media_1_logo_2_alt }}" class="w-[150px] md:w-[150px] lg:w-[130px] h-[20px] md:h-[20px] lg:h-[17px] object-contain shrink-0">
+        <img src="{{ media_1_logo_3 | campaign_asset }}" alt="{{ media_1_logo_3_alt }}" class="w-[86px] md:w-[86px] lg:w-[120px] h-[20px] md:h-[20px] lg:h-[28px] object-contain shrink-0">
+        <img src="{{ media_1_logo_4 | campaign_asset }}" alt="{{ media_1_logo_4_alt }}" class="w-[80px] md:w-[80px] lg:w-[120px] h-[20px] md:h-[20px] lg:h-[30px] object-contain shrink-0">
+        <img src="{{ media_1_logo_5 | campaign_asset }}" alt="{{ media_1_logo_5_alt }}" class="w-[81px] md:w-[81px] lg:w-[120px] h-[20px] md:h-[20px] lg:h-[30px] object-contain shrink-0">
+      </div>
+
+      <div class="md:hidden w-full overflow-hidden">
+        <div class="media1-track flex items-center gap-[36px] w-max">
+          <img src="{{ media_1_logo_1 | campaign_asset }}" alt="{{ media_1_logo_1_alt }}" class="w-[80px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_2 | campaign_asset }}" alt="{{ media_1_logo_2_alt }}" class="w-[150px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_3 | campaign_asset }}" alt="{{ media_1_logo_3_alt }}" class="w-[86px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_4 | campaign_asset }}" alt="{{ media_1_logo_4_alt }}" class="w-[80px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_5 | campaign_asset }}" alt="{{ media_1_logo_5_alt }}" class="w-[81px] h-[20px] object-contain shrink-0">
+
+          <img src="{{ media_1_logo_1 | campaign_asset }}" alt="" aria-hidden="true" class="w-[80px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_2 | campaign_asset }}" alt="" aria-hidden="true" class="w-[150px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_3 | campaign_asset }}" alt="" aria-hidden="true" class="w-[86px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_4 | campaign_asset }}" alt="" aria-hidden="true" class="w-[80px] h-[20px] object-contain shrink-0">
+          <img src="{{ media_1_logo_5 | campaign_asset }}" alt="" aria-hidden="true" class="w-[81px] h-[20px] object-contain shrink-0">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

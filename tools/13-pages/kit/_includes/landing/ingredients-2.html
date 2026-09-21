@@ -1,0 +1,83 @@
+<section class="bg-white py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 items-center">
+
+      {% comment %} Header {% endcomment %}
+      <div class="flex flex-col gap-3 items-center text-center w-full lg:max-w-[800px]">
+        <p class="font-bold text-[18px] md:text-[20px] text-[color:var(--brand-primary)] tracking-[-0.09px] md:tracking-[-0.1px] leading-[1.4]">{{ ingredients_2_eyebrow }}</p>
+        <h2 class="font-bold text-[28px] md:text-[32px] lg:text-[40px] text-[color:var(--text-primary)] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] leading-[1.2]">{{ ingredients_2_heading }}</h2>
+      </div>
+
+      {% comment %} Two-col on desktop: product image | ingredient list {% endcomment %}
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch w-full">
+
+        {% comment %} Product image — hidden on mobile, shown lg {% endcomment %}
+        <div class="hidden lg:flex items-center justify-center shrink-0 lg:w-[410px]">
+          <img src="{{ ingredients_2_product_image | campaign_asset }}" alt="{{ ingredients_2_product_image_alt }}" class="w-full h-auto object-contain self-start">
+        </div>
+
+        {% comment %} Ingredient rows {% endcomment %}
+        <div class="flex flex-col gap-3 md:gap-4 lg:flex-1 w-full">
+
+          <div class="flex items-center gap-3 md:gap-5 lg:gap-8">
+            <img src="{{ 'images/ingredients-2/icn-1.png' | campaign_asset }}" alt="" class="w-[90px] h-[74px] md:w-[110px] md:h-[90px] lg:w-[120px] lg:h-[98px] object-contain shrink-0">
+            <div class="flex flex-col gap-2 lg:gap-3 flex-1">
+              <span class="font-bold text-[20px] lg:text-[24px] text-[color:var(--text-primary)] tracking-[-0.1px] lg:tracking-[-0.12px] leading-[1.5]">{{ ingredients_2_item_1_name }}</span>
+              <span class="font-normal text-[16px] md:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] md:tracking-[-0.09px] leading-[1.5]">{{ ingredients_2_item_1_body }}</span>
+            </div>
+          </div>
+          <hr class="border-0 border-t border-[color:var(--border-default)] w-full m-0">
+
+          <div class="flex items-center gap-3 md:gap-5 lg:gap-8">
+            <img src="{{ 'images/ingredients-2/icn-2.png' | campaign_asset }}" alt="" class="w-[90px] h-[74px] md:w-[110px] md:h-[90px] lg:w-[120px] lg:h-[91px] object-contain shrink-0">
+            <div class="flex flex-col gap-2 lg:gap-3 flex-1">
+              <span class="font-bold text-[20px] lg:text-[24px] text-[color:var(--text-primary)] tracking-[-0.1px] lg:tracking-[-0.12px] leading-[1.5]">{{ ingredients_2_item_2_name }}</span>
+              <span class="font-normal text-[16px] md:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] md:tracking-[-0.09px] leading-[1.5]">{{ ingredients_2_item_2_body }}</span>
+            </div>
+          </div>
+          <hr class="border-0 border-t border-[color:var(--border-default)] w-full m-0">
+
+          <div class="flex items-center gap-3 md:gap-5 lg:gap-8">
+            <img src="{{ 'images/ingredients-2/icn-3.png' | campaign_asset }}" alt="" class="w-[90px] h-[74px] md:w-[110px] md:h-[90px] lg:w-[120px] lg:h-[93px] object-contain shrink-0">
+            <div class="flex flex-col gap-2 lg:gap-3 flex-1">
+              <span class="font-bold text-[20px] lg:text-[24px] text-[color:var(--text-primary)] tracking-[-0.1px] lg:tracking-[-0.12px] leading-[1.5]">{{ ingredients_2_item_3_name }}</span>
+              <span class="font-normal text-[16px] md:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] md:tracking-[-0.09px] leading-[1.5]">{{ ingredients_2_item_3_body }}</span>
+            </div>
+          </div>
+          <hr class="border-0 border-t border-[color:var(--border-default)] w-full m-0">
+
+          <div class="flex items-center gap-3 md:gap-5 lg:gap-8">
+            <img src="{{ 'images/ingredients-2/icn-4.png' | campaign_asset }}" alt="" class="w-[90px] h-[74px] md:w-[110px] md:h-[90px] lg:w-[120px] lg:h-[90px] object-contain shrink-0">
+            <div class="flex flex-col gap-2 lg:gap-3 flex-1">
+              <span class="font-bold text-[20px] lg:text-[24px] text-[color:var(--text-primary)] tracking-[-0.1px] lg:tracking-[-0.12px] leading-[1.5]">{{ ingredients_2_item_4_name }}</span>
+              <span class="font-normal text-[16px] md:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] md:tracking-[-0.09px] leading-[1.5]">{{ ingredients_2_item_4_body }}</span>
+            </div>
+          </div>
+          <hr class="border-0 border-t border-[color:var(--border-default)] w-full m-0">
+
+          <div class="flex items-center gap-3 md:gap-5 lg:gap-8">
+            <img src="{{ 'images/ingredients-2/icn-5.png' | campaign_asset }}" alt="" class="w-[90px] h-[74px] md:w-[110px] md:h-[90px] lg:w-[120px] lg:h-[90px] object-contain shrink-0">
+            <div class="flex flex-col gap-2 lg:gap-3 flex-1">
+              <span class="font-bold text-[20px] lg:text-[24px] text-[color:var(--text-primary)] tracking-[-0.1px] lg:tracking-[-0.12px] leading-[1.5]">{{ ingredients_2_item_5_name }}</span>
+              <span class="font-normal text-[16px] md:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] md:tracking-[-0.09px] leading-[1.5]">{{ ingredients_2_item_5_body }}</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {% comment %} CTA {% endcomment %}
+      <div class="flex flex-col gap-3 items-center w-full max-w-[440px]">
+        <a href="{{ next_url }}" class="w-full bg-[color:var(--brand-primary)] rounded-[6px] py-5 px-6 flex items-center justify-center gap-5 no-underline">
+          <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text }}</span>
+          <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[12px] h-[16px] object-contain shrink-0">
+        </a>
+        <div class="flex items-center gap-2">
+          <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain shrink-0">
+          <span class="font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] whitespace-nowrap">{{ guarantee_text }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

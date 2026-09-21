@@ -1,0 +1,233 @@
+<section class="bg-[var(--brand-secondary,var(--surface-alt))] py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      {% comment %} Heading {% endcomment %}
+      <h2 class="font-bold text-[32px] md:text-[36px] lg:text-[44px] text-[var(--text-primary)] text-center tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] leading-[1.2] max-w-[800px]">
+        {{ results_1_headline }}
+      </h2>
+
+      {% comment %} ── MOBILE TIMELINE (hidden md+) ── {% endcomment %}
+      <div class="md:hidden flex flex-col w-full">
+
+        {% comment %} Week 1 {% endcomment %}
+        <div class="flex gap-[16px] items-start">
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-[16px] pb-[40px]">
+            <p class="font-bold text-[28px] text-[var(--text-primary)] tracking-[-0.14px] leading-[1.4] whitespace-nowrap">{{ results_1_label_1 }}</p>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px] flex flex-col gap-[8px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_1_title }}</p>
+              <p class="font-normal text-[18px] text-[var(--text-primary)] tracking-[-0.09px] leading-[1.5]">{{ results_1_card_1_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Week 2-3 {% endcomment %}
+        <div class="flex gap-[16px] items-start">
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-[16px] pb-[40px]">
+            <p class="font-bold text-[28px] text-[var(--text-primary)] tracking-[-0.14px] leading-[1.4] whitespace-nowrap">{{ results_1_label_2 }}</p>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px] flex flex-col gap-[8px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_2_title }}</p>
+              <p class="font-normal text-[18px] text-[var(--text-primary)] tracking-[-0.09px] leading-[1.5]">{{ results_1_card_2_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Month 1 {% endcomment %}
+        <div class="flex gap-[16px] items-start">
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-[16px] pb-[40px]">
+            <p class="font-bold text-[28px] text-[var(--text-primary)] tracking-[-0.14px] leading-[1.4] whitespace-nowrap">{{ results_1_label_3 }}</p>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px] flex flex-col gap-[8px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_3_title }}</p>
+              <p class="font-normal text-[18px] text-[var(--text-primary)] tracking-[-0.09px] leading-[1.5]">{{ results_1_card_3_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Month 3 {% endcomment %}
+        <div class="flex gap-[16px] items-start">
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-[16px] pb-[40px]">
+            <p class="font-bold text-[28px] text-[var(--text-primary)] tracking-[-0.14px] leading-[1.4] whitespace-nowrap">{{ results_1_label_4 }}</p>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px] flex flex-col gap-[8px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_4_title }}</p>
+              <p class="font-normal text-[18px] text-[var(--text-primary)] tracking-[-0.09px] leading-[1.5]">{{ results_1_card_4_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Month 6 {% endcomment %}
+        <div class="flex gap-[16px] items-start">
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col gap-[16px] pb-[40px]">
+            <p class="font-bold text-[28px] text-[var(--text-primary)] tracking-[-0.14px] leading-[1.4] whitespace-nowrap">{{ results_1_label_5 }}</p>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px] flex flex-col gap-[8px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_5_title }}</p>
+              <p class="font-normal text-[18px] text-[var(--text-primary)] tracking-[-0.09px] leading-[1.5]">{{ results_1_card_5_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Month 12 — no line after icon {% endcomment %}
+        <div class="flex gap-[16px] items-start">
+          <div class="flex flex-col items-center shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[40px] h-[40px] shrink-0">
+          </div>
+          <div class="flex-1 flex flex-col gap-[16px]">
+            <p class="font-bold text-[28px] text-[var(--text-primary)] tracking-[-0.14px] leading-[1.4] whitespace-nowrap">{{ results_1_label_6 }}</p>
+            <div class="bg-[var(--brand-primary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px]">
+              <p class="font-bold text-[18px] text-white text-center tracking-[-0.09px] leading-[1.4]">{{ results_1_card_6_header }}</p>
+            </div>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[16px] flex flex-col gap-[8px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_6_title }}</p>
+              <p class="font-normal text-[18px] text-[var(--text-primary)] tracking-[-0.09px] leading-[1.5]">{{ results_1_card_6_body }}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      {% comment %} ── END MOBILE TIMELINE ── {% endcomment %}
+
+      {% comment %} ── DESKTOP / TABLET TIMELINE (hidden on mobile, shown md+) ── {% endcomment %}
+      <div class="hidden md:flex flex-col w-full">
+
+        {% comment %} Row 1: Week 1 — label left (right-aligned), card right {% endcomment %}
+        <div class="flex gap-[24px] lg:gap-[60px] items-start">
+          <div class="flex-1 h-[217px] flex items-start justify-end">
+            <p class="font-bold text-[24px] md:text-[26px] lg:text-[28px] text-[var(--text-primary)] tracking-[-0.14px] lg:tracking-[-0.16px] leading-[1.4] whitespace-nowrap">{{ results_1_label_1 }}</p>
+          </div>
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[42px] h-[42px] lg:w-[50px] lg:h-[50px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col pb-[60px]">
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex flex-col gap-[16px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_1_title }}</p>
+              <p class="font-normal text-[18px] md:text-[20px] text-[var(--text-primary)] tracking-[-0.09px] lg:tracking-[-0.1px] leading-[1.5]">{{ results_1_card_1_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Row 2: Week 2-3 — card left, label right (left-aligned) {% endcomment %}
+        <div class="flex gap-[24px] lg:gap-[60px] items-start">
+          <div class="flex-1 flex flex-col pb-[60px]">
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex flex-col gap-[16px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_2_title }}</p>
+              <p class="font-normal text-[18px] md:text-[20px] text-[var(--text-primary)] tracking-[-0.09px] lg:tracking-[-0.1px] leading-[1.5]">{{ results_1_card_2_body }}</p>
+            </div>
+          </div>
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[42px] h-[42px] lg:w-[50px] lg:h-[50px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 h-[217px] flex items-start">
+            <p class="font-bold text-[24px] md:text-[26px] lg:text-[28px] text-[var(--text-primary)] tracking-[-0.14px] lg:tracking-[-0.16px] leading-[1.4] whitespace-nowrap">{{ results_1_label_2 }}</p>
+          </div>
+        </div>
+
+        {% comment %} Row 3: Month 1 — label left (right-aligned), card right {% endcomment %}
+        <div class="flex gap-[24px] lg:gap-[60px] items-start">
+          <div class="flex-1 h-[217px] flex items-start justify-end">
+            <p class="font-bold text-[24px] md:text-[26px] lg:text-[28px] text-[var(--text-primary)] tracking-[-0.14px] lg:tracking-[-0.16px] leading-[1.4] whitespace-nowrap">{{ results_1_label_3 }}</p>
+          </div>
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[42px] h-[42px] lg:w-[50px] lg:h-[50px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col pb-[60px]">
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex flex-col gap-[16px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_3_title }}</p>
+              <p class="font-normal text-[18px] md:text-[20px] text-[var(--text-primary)] tracking-[-0.09px] lg:tracking-[-0.1px] leading-[1.5]">{{ results_1_card_3_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Row 4: Month 3 — card left, label right (left-aligned) {% endcomment %}
+        <div class="flex gap-[24px] lg:gap-[60px] items-start">
+          <div class="flex-1 flex flex-col pb-[60px]">
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex flex-col gap-[16px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_4_title }}</p>
+              <p class="font-normal text-[18px] md:text-[20px] text-[var(--text-primary)] tracking-[-0.09px] lg:tracking-[-0.1px] leading-[1.5]">{{ results_1_card_4_body }}</p>
+            </div>
+          </div>
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[42px] h-[42px] lg:w-[50px] lg:h-[50px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 h-[217px] flex items-start">
+            <p class="font-bold text-[24px] md:text-[26px] lg:text-[28px] text-[var(--text-primary)] tracking-[-0.14px] lg:tracking-[-0.16px] leading-[1.4] whitespace-nowrap">{{ results_1_label_4 }}</p>
+          </div>
+        </div>
+
+        {% comment %} Row 5: Month 6 — label left (right-aligned), card right {% endcomment %}
+        <div class="flex gap-[24px] lg:gap-[60px] items-start">
+          <div class="flex-1 h-[217px] flex items-start justify-end">
+            <p class="font-bold text-[24px] md:text-[26px] lg:text-[28px] text-[var(--text-primary)] tracking-[-0.14px] lg:tracking-[-0.16px] leading-[1.4] whitespace-nowrap">{{ results_1_label_5 }}</p>
+          </div>
+          <div class="flex flex-col items-center self-stretch shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[42px] h-[42px] lg:w-[50px] lg:h-[50px] shrink-0">
+            <div class="w-[2px] bg-[var(--brand-primary)] flex-1 min-h-[1px]"></div>
+          </div>
+          <div class="flex-1 flex flex-col pb-[60px]">
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex flex-col gap-[16px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_5_title }}</p>
+              <p class="font-normal text-[18px] md:text-[20px] text-[var(--text-primary)] tracking-[-0.09px] lg:tracking-[-0.1px] leading-[1.5]">{{ results_1_card_5_body }}</p>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Row 6: Month 12 — 2-card group left, label right — no line after icon {% endcomment %}
+        <div class="flex gap-[24px] lg:gap-[60px] items-start">
+          <div class="flex-1 flex flex-col gap-[16px]">
+            <div class="bg-[var(--brand-primary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex items-center justify-center">
+              <p class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.4] max-w-[400px]">{{ results_1_card_6_header }}</p>
+            </div>
+            <div class="bg-[var(--brand-secondary)] border border-[var(--brand-primary)] rounded-[16px] p-[20px] flex flex-col gap-[16px]">
+              <p class="font-bold text-[20px] text-[var(--text-primary)] tracking-[-0.1px] leading-[1.4]">{{ results_1_card_6_title }}</p>
+              <p class="font-normal text-[18px] md:text-[20px] text-[var(--text-primary)] tracking-[-0.09px] lg:tracking-[-0.1px] leading-[1.5]">{{ results_1_card_6_body }}</p>
+            </div>
+          </div>
+          <div class="flex flex-col items-center shrink-0">
+            <img src="{{ 'images/results-1/results-1-timeline-icon.svg' | campaign_asset }}" alt="" class="w-[42px] h-[42px] lg:w-[50px] lg:h-[50px] shrink-0">
+          </div>
+          <div class="flex-1 h-[217px] flex items-start">
+            <p class="font-bold text-[24px] md:text-[26px] lg:text-[28px] text-[var(--text-primary)] tracking-[-0.14px] lg:tracking-[-0.16px] leading-[1.4] whitespace-nowrap">{{ results_1_label_6 }}</p>
+          </div>
+        </div>
+
+      </div>
+      {% comment %} ── END DESKTOP / TABLET TIMELINE ── {% endcomment %}
+
+      {% comment %} CTA {% endcomment %}
+      <div class="flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px] w-full max-w-[440px]">
+        <a href="{{ next_url }}"
+          class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text }}</span>
+            <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0">
+        </a>
+        <div class="flex items-center gap-[8px]">
+            <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5] whitespace-nowrap">30 Day Money Back Guarantee</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

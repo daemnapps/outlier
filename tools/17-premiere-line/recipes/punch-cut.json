@@ -1,0 +1,27 @@
+{
+  "name": "punch-cut",
+  "kind": "move",
+  "description": "Hard jump to a tighter framing at the cut \u2014 no ramp. Used on the beat where the claim lands.",
+  "defaults": {
+    "track": "V1",
+    "index": 0,
+    "scale": 118,
+    "at": 0
+  },
+  "steps": [
+    {
+      "op": "effect.keys",
+      "track": "{{track}}",
+      "index": "{{index}}",
+      "effect": "Motion",
+      "param": "Scale",
+      "keys": [
+        {
+          "t": "{{at}}",
+          "v": "{{scale}}",
+          "interp": "hold"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+<section class="w-full overflow-hidden bg-white">
+  <div class="w-full bg-[var(--brand-primary)] px-[15px] md:px-[26px] py-[24px] md:py-[32px] lg:py-[40px]">
+    <h2 class="text-center text-white font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[28px] md:text-[32px] lg:text-[40px]">
+      {{ benefits_5_heading }}
+    </h2>
+  </div>
+
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[240px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="w-full flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <div class="w-full flex flex-col md:flex-row items-start md:items-center gap-[20px] md:gap-[26px] lg:gap-[32px]">
+        <div class="w-full md:w-[375px] lg:w-[455px] aspect-[455/340] rounded-[16px] overflow-hidden">
+          <img src="{{ benefits_5_card_1_image | campaign_asset }}" alt="{{ benefits_5_card_1_image_alt }}" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full md:flex-1 flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="w-full flex items-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+            <div class="w-[50px] h-[50px] rounded-full bg-[var(--brand-primary)] border border-[var(--brand-primary)] flex items-center justify-center shrink-0">
+              <span class="text-white text-[26px] leading-[56px] tracking-[0.6px] font-semibold">{{ benefits_5_card_1_number }}</span>
+            </div>
+            <h3 class="text-[24px] md:text-[26px] lg:text-[28px] leading-[1.2] tracking-[-0.12px] md:tracking-[-0.13px] lg:tracking-[-0.14px] font-bold text-[var(--text-primary)]">
+              {{ benefits_5_card_1_title }}
+            </h3>
+          </div>
+          <p class="text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+            {{ benefits_5_card_1_body }}
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col md:flex-row-reverse items-start md:items-center gap-[20px] md:gap-[26px] lg:gap-[32px]">
+        <div class="w-full md:w-[375px] lg:w-[455px] aspect-[455/340] rounded-[16px] overflow-hidden">
+          <img src="{{ benefits_5_card_2_image | campaign_asset }}" alt="{{ benefits_5_card_2_image_alt }}" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full md:flex-1 flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="w-full flex items-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+            <div class="w-[50px] h-[50px] rounded-full bg-[var(--brand-primary)] border border-[var(--brand-primary)] flex items-center justify-center shrink-0">
+              <span class="text-white text-[26px] leading-[56px] tracking-[0.6px] font-semibold">{{ benefits_5_card_2_number }}</span>
+            </div>
+            <h3 class="text-[24px] md:text-[26px] lg:text-[28px] leading-[1.2] tracking-[-0.12px] md:tracking-[-0.13px] lg:tracking-[-0.14px] font-bold text-[var(--text-primary)]">
+              {{ benefits_5_card_2_title }}
+            </h3>
+          </div>
+          <p class="text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+            {{ benefits_5_card_2_body }}
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col md:flex-row items-start md:items-center gap-[20px] md:gap-[26px] lg:gap-[32px]">
+        <div class="w-full md:w-[375px] lg:w-[455px] aspect-[455/340] rounded-[16px] overflow-hidden">
+          <img src="{{ benefits_5_card_3_image | campaign_asset }}" alt="{{ benefits_5_card_3_image_alt }}" class="w-full h-full object-cover">
+        </div>
+        <div class="w-full md:flex-1 flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="w-full flex items-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+            <div class="w-[50px] h-[50px] rounded-full bg-[var(--brand-primary)] border border-[var(--brand-primary)] flex items-center justify-center shrink-0">
+              <span class="text-white text-[26px] leading-[56px] tracking-[0.6px] font-semibold">{{ benefits_5_card_3_number }}</span>
+            </div>
+            <h3 class="text-[24px] md:text-[26px] lg:text-[28px] leading-[1.2] tracking-[-0.12px] md:tracking-[-0.13px] lg:tracking-[-0.14px] font-bold text-[var(--text-primary)]">
+              {{ benefits_5_card_3_title }}
+            </h3>
+          </div>
+          <p class="text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+            {{ benefits_5_card_3_body }}
+          </p>
+        </div>
+      </div>
+
+      <div class="w-[345px] md:w-[440px]">
+        <div class="w-full flex flex-col items-center gap-[12px]">
+          <a href="{{ next_url }}"
+             class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
+            <img src="{{ cta_button_arrow | default: 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+          </a>
+          <div class="flex items-center gap-[8px]">
+            <img src="{{ guarantee_icon | default: 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0 object-contain" aria-hidden="true">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5]">{{ guarantee_text | default: "30-Day Money Back Guarantee" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

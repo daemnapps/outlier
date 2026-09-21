@@ -1,0 +1,85 @@
+<section class="bg-[var(--surface-alt)] py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12">
+
+      {% comment %} Header {% endcomment %}
+      <div class="flex flex-col items-center gap-3 md:gap-4 lg:gap-5 text-center">
+        <p class="text-[18px] md:text-[20px] font-bold leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--brand-primary)]">
+          {{ beforeafter_2_overline }}
+        </p>
+        <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)]">
+          {{ beforeafter_2_heading }}
+        </h2>
+      </div>
+
+      <div class="beforeafter-2-swiper w-full"
+           data-swiper-root
+           data-slides="1.1"
+           data-slides-md="2"
+           data-slides-lg="3"
+           data-gap="12"
+           data-gap-md="16"
+           data-gap-lg="20"
+           data-loop="true"
+           data-loop-md="false"
+           data-loop-lg="false"
+           data-watch-overflow="true"
+           data-swiper-variant="sw-landing1">
+        <div class="swiper" data-swiper>
+          <div class="swiper-wrapper">
+            {% for slide in beforeafter_2_slides %}
+            <div class="swiper-slide">
+              <article class="flex flex-col">
+                <div class="aspect-[338/336] w-full overflow-hidden rounded-t-[8px] md:rounded-t-[12px] lg:rounded-t-[16px]">
+                  <img src="{{ slide.image | campaign_asset }}" alt="{{ slide.image_alt }}" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-b-[8px] md:rounded-b-[12px] lg:rounded-b-[16px] px-2 md:px-[10px] lg:px-3 py-3 md:py-4 lg:py-5 flex flex-col gap-2 md:gap-[10px] lg:gap-3 items-center text-center">
+                  <div class="flex flex-col gap-1 items-center w-full">
+                    {% if slide.rating %}
+                    <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">{{ slide.rating }}</p>
+                    {% endif %}
+                    {% if slide.title %}
+                    <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+                      {{ slide.title }}
+                    </p>
+                    {% endif %}
+                  </div>
+                  {% if slide.body %}
+                  <p class="text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                    {{ slide.body }}
+                  </p>
+                  {% endif %}
+                  {% if slide.author %}
+                  <p class="font-semibold text-[14px] lg:text-[16px] leading-[1.4] tracking-[-0.07px] lg:tracking-[-0.08px] text-[var(--text-primary)]">
+                    {{ slide.author }}
+                  </p>
+                  {% endif %}
+                </div>
+              </article>
+            </div>
+            {% endfor %}
+          </div>
+
+          <div data-swiper-controls class="beforeafter-2-controls flex items-center justify-center gap-4 mt-6">
+            <button type="button"
+                    class="flex-shrink-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm cursor-pointer border-0"
+                    data-swiper-prev>
+              <span class="sr-only">Previous</span>
+              <img src="{{ 'images/_shared/swiper-arrow-left.svg' | campaign_asset }}" alt="" class="w-4 h-4 object-contain">
+            </button>
+
+            <div class="swiper-pagination"></div>
+
+            <button type="button"
+                    class="flex-shrink-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm cursor-pointer border-0"
+                    data-swiper-next>
+              <span class="sr-only">Next</span>
+              <img src="{{ 'images/_shared/swiper-arrow-right.svg' | campaign_asset }}" alt="" class="w-4 h-4 object-contain">
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

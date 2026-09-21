@@ -1,0 +1,61 @@
+<section class="w-full overflow-hidden bg-white">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <h2 class="text-center text-[32px] leading-[1.2] tracking-[-0.16px] font-bold text-[var(--text-primary)] max-w-[800px]">
+        {{ results_3_heading }}
+      </h2>
+
+      <div class="w-full flex flex-col md:flex-row items-center md:items-center gap-[20px] md:gap-0 lg:gap-0">
+        <div class="w-full md:flex-1 flex flex-col items-center justify-center gap-[10px] text-center">
+          <p class="text-[44px] leading-[1.4] tracking-[-0.22px] font-bold text-[var(--brand-primary)]">
+            {{ results_3_stat_1_value }}
+          </p>
+          <p class="text-[18px] md:text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px] font-medium text-[var(--text-primary)] max-w-[320px] capitalize">
+            {{ results_3_stat_1_text }}
+          </p>
+        </div>
+
+        <div class="hidden md:flex items-center justify-center px-[20px] lg:px-[30px]">
+          <img src="{{ 'images/results-3/resluts-3-divider.svg' | campaign_asset }}" alt="" class="w-[126px] lg:w-[132px] h-[2px] rotate-90 object-contain" aria-hidden="true">
+        </div>
+
+        <div class="w-full md:flex-1 flex flex-col items-center justify-center gap-[10px] text-center">
+          <p class="text-[44px] leading-[1.4] tracking-[-0.22px] font-bold text-[var(--brand-primary)]">
+            {{ results_3_stat_2_value }}
+          </p>
+          <p class="text-[18px] md:text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px] font-medium text-[var(--text-primary)] max-w-[320px] capitalize">
+            {{ results_3_stat_2_text }}
+          </p>
+        </div>
+
+        <div class="hidden md:flex items-center justify-center px-[20px] lg:px-[30px]">
+          <img src="{{ 'images/results-3/resluts-3-divider.svg' | campaign_asset }}" alt="" class="w-[126px] lg:w-[132px] h-[2px] rotate-90 object-contain" aria-hidden="true">
+        </div>
+
+        <div class="w-full md:flex-1 flex flex-col items-center justify-center gap-[10px] text-center">
+          <p class="text-[44px] leading-[1.4] tracking-[-0.22px] font-bold text-[var(--brand-primary)]">
+            {{ results_3_stat_3_value }}
+          </p>
+          <p class="text-[18px] md:text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] lg:tracking-[-0.1px] font-medium text-[var(--text-primary)] max-w-[320px]">
+            {{ results_3_stat_3_text }}
+          </p>
+        </div>
+      </div>
+
+      <div class="w-[345px] md:w-[440px] flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px]">
+        <a href="{{ next_url }}" class="w-full rounded-[6px] bg-[var(--brand-primary)] px-[24px] py-[20px] flex items-center justify-center gap-[20px]">
+          <span class="text-[20px] leading-[1.5] tracking-[-0.1px] font-bold text-white text-center">
+            {{ cta_text }}
+          </span>
+          <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[12px] h-[16px] object-contain" aria-hidden="true">
+        </a>
+        <div class="flex items-center gap-[8px]">
+          <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain" aria-hidden="true">
+          <p class="text-[16px] leading-[1.5] tracking-[-0.08px] font-semibold text-[var(--text-primary)] whitespace-nowrap">
+            {{ guarantee_text }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

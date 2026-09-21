@@ -1,0 +1,107 @@
+<section class="bg-white py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[240px]">
+    <div class="flex flex-col gap-8 md:gap-10 lg:gap-12 items-center">
+
+      <h2 class="font-bold text-[32px] md:text-[44px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.22px] text-[var(--text-primary)] text-center">
+        {{ features_7_heading }}
+      </h2>
+
+      {% comment %} Product image + specs {% endcomment %}
+      <div class="flex flex-col md:flex-row gap-5 md:gap-8 lg:gap-10 items-center w-full">
+
+        {% comment %} Product image {% endcomment %}
+        <div class="w-full md:w-[42%] md:shrink-0 lg:w-auto lg:flex-1">
+          <img src="{{ features_7_product_image | campaign_asset }}"
+               alt="{{ features_7_product_image_alt }}"
+               class="w-full object-contain">
+        </div>
+
+        {% comment %} Specs: Hardware / Software / Dimensions {% endcomment %}
+        <div class="flex flex-col gap-6 text-[var(--text-primary)] w-full md:flex-1">
+
+          {% comment %} Hardware {% endcomment %}
+          <div class="flex flex-col gap-4">
+            <h3 class="font-bold text-[22px] leading-[1.2] tracking-[-0.11px]">{{ features_7_hardware_title }}</h3>
+            <ul class="flex flex-col gap-1 font-normal text-[16px] leading-[1.5] tracking-[-0.08px] list-disc ps-6">
+              <li>{{ features_7_hw_1 }}</li>
+              <li>{{ features_7_hw_2 }}</li>
+              <li>{{ features_7_hw_3 }}</li>
+              <li>{{ features_7_hw_4 }}</li>
+              <li>{{ features_7_hw_5 }}</li>
+              <li>{{ features_7_hw_6 }}</li>
+              <li>{{ features_7_hw_7 }}</li>
+            </ul>
+          </div>
+
+          {% comment %} Software {% endcomment %}
+          <div class="flex flex-col gap-4">
+            <h3 class="font-bold text-[22px] leading-[1.2] tracking-[-0.11px]">{{ features_7_software_title }}</h3>
+            <ul class="flex flex-col gap-1 font-normal text-[16px] leading-[1.5] tracking-[-0.08px] list-disc ps-6">
+              <li>{{ features_7_sw_1 }}</li>
+              <li>{{ features_7_sw_2 }}</li>
+            </ul>
+          </div>
+
+          {% comment %} Dimensions {% endcomment %}
+          <div class="flex flex-col gap-4">
+            <h3 class="font-bold text-[22px] leading-[1.2] tracking-[-0.11px]">{{ features_7_dimensions_title }}</h3>
+            <ul class="flex flex-col gap-1 font-normal text-[16px] leading-[1.5] tracking-[-0.08px] list-disc ps-6">
+              <li>{{ features_7_dim_1 }}</li>
+              <li>{{ features_7_dim_2 }}</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      {% comment %} Bonus gift card {% endcomment %}
+      <div class="bg-[var(--brand-secondary)] rounded-[16px] px-[16px] py-[24px] md:px-[36px] lg:py-[32px] flex flex-col gap-8 items-center w-full">
+
+        <h3 class="font-bold text-[22px] md:text-[26px] lg:text-[32px] leading-[1.2] tracking-[-0.11px] md:tracking-[-0.13px] lg:tracking-[-0.16px] text-[var(--text-primary)] text-center">
+          {{ features_7_bonus_heading }}
+        </h3>
+
+        {% comment %} Two bonus items: stacked on mobile/tablet, side-by-side on desktop {% endcomment %}
+        <div class="flex flex-col lg:flex-row gap-5 lg:gap-10 items-start w-full">
+
+          {% comment %} Bonus item 1: Fat Burning Signature Kit {% endcomment %}
+          <div class="flex flex-col md:flex-row gap-6 items-center md:items-start w-full lg:flex-1">
+            <div class="relative shrink-0 w-[120px]">
+              <img src="{{ features_7_bonus_1_image | campaign_asset }}"
+                   alt="{{ features_7_bonus_1_image_alt }}"
+                   class="w-[100px] h-[100px] object-contain mx-auto mt-[19px]">
+              <span class="absolute top-0 left-[19px] bg-[#6baaff] rounded-[8px] px-3 py-1 text-[12px] font-bold text-[var(--text-primary)] whitespace-nowrap">FREE <s>$75</s></span>
+            </div>
+            <div class="flex flex-col gap-3 flex-1 text-[var(--text-primary)]">
+              <h4 class="font-bold text-[18px] leading-[1.2] tracking-[-0.09px]">{{ features_7_bonus_1_title }}</h4>
+              <div class="flex flex-col gap-1 font-normal text-[14px] leading-[1.5] tracking-[-0.07px]">
+                <p><strong>2x</strong> Feet Attachments for stability and reformer-style moves</p>
+                <p><strong>1x</strong> Waist Trainer for core support</p>
+                <p><strong>1x</strong> Measuring Tape to track progress</p>
+                <p><strong>3x</strong> Pairs Grip Socks for grip and safety</p>
+                <p><strong>5x</strong> Resistance Loop Bands for adjustable resistance</p>
+                <p><strong>1x</strong> Welcome Gift to mark your new beginning</p>
+              </div>
+            </div>
+          </div>
+
+          {% comment %} Bonus item 2: 90-Day Transformation Program {% endcomment %}
+          <div class="flex flex-col md:flex-row gap-6 items-center md:items-start w-full lg:flex-1">
+            <div class="relative shrink-0 w-[120px]">
+              <img src="{{ features_7_bonus_2_image | campaign_asset }}"
+                   alt="{{ features_7_bonus_2_image_alt }}"
+                   class="w-[100px] h-[100px] object-contain mx-auto mt-[19px]">
+              <span class="absolute top-0 left-[19px] bg-[#6baaff] rounded-[8px] px-3 py-1 text-[12px] font-bold text-[var(--text-primary)] whitespace-nowrap">FREE <s>$75</s></span>
+            </div>
+            <div class="flex flex-col gap-3 flex-1 text-[var(--text-primary)]">
+              <h4 class="font-bold text-[18px] leading-[1.2] tracking-[-0.09px]">{{ features_7_bonus_2_title }}</h4>
+              <p class="font-normal text-[14px] leading-[1.5] tracking-[-0.07px]">{{ features_7_bonus_2_desc }}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

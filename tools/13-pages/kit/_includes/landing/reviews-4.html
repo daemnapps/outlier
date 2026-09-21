@@ -1,0 +1,321 @@
+<section class="bg-white py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="flex flex-col gap-8 md:gap-10 lg:gap-[48px] items-center">
+
+      {% comment %} Heading {% endcomment %}
+      <h2 class="font-bold text-[32px] md:text-[36px] lg:text-[44px] text-[color:var(--text-primary)] text-center tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] leading-[1.2] max-w-[540px]">{{ reviews_4_heading }}</h2>
+
+      {% comment %} ===================================================
+           Stats: mobile only
+           Order: attr table (centered) → score → thumbnails
+      =================================================== {% endcomment %}
+      <div class="md:hidden flex flex-col gap-5 items-center w-full">
+
+        {% comment %} Attribute table (fixed 350px, centered) {% endcomment %}
+        <div class="flex flex-col gap-[2px] w-[350px]">
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_1_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_1_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_2_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_2_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_3_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_3_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_4_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_4_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_5_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_5_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+        </div>
+
+        {% comment %} Score + thumbnails {% endcomment %}
+        <div class="flex flex-col gap-5 items-center pt-3">
+          <div class="flex flex-col items-center gap-0">
+            <p class="font-bold text-[60px] tracking-[-0.3px] leading-[1.2] text-[color:var(--text-primary)] text-center whitespace-nowrap">{{ reviews_4_rating_score }}</p>
+            <p class="text-[28px] text-[var(--brand-accent)] tracking-[2px] leading-[1.5]">★★★★★</p>
+            <p class="font-normal text-[18px] text-[color:var(--text-primary)] tracking-[-0.09px] leading-[1.5] text-center">{{ reviews_4_review_count_label }}</p>
+          </div>
+          {% comment %} Thumbnails 4×2 @ 80px {% endcomment %}
+          <div class="grid grid-cols-4 gap-[10px]">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          </div>
+        </div>
+
+      </div>{% comment %} /mobile stats {% endcomment %}
+
+      {% comment %} ===================================================
+           Stats: tablet only
+           Order: [score | attrs] row → thumbnails full-width
+      =================================================== {% endcomment %}
+      <div class="hidden md:flex lg:hidden flex-col gap-[26px] w-full">
+
+        <div class="flex gap-[26px] items-center justify-center">
+
+          {% comment %} Score block {% endcomment %}
+          <div class="flex flex-col gap-1 items-center shrink-0 w-[200px]">
+            <p class="font-bold text-[72px] tracking-[-0.36px] leading-[1.2] text-[color:var(--text-primary)] text-center whitespace-nowrap">{{ reviews_4_rating_score }}</p>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-score.svg' | campaign_asset }}" alt="★★★★★" class="w-[130px] h-[26px]">
+            <p class="font-normal text-[18px] text-[color:var(--text-primary)] tracking-[-0.09px] leading-[1.5] text-center">Based on reviews from<br>{{ reviews_4_review_count }} customers</p>
+          </div>
+
+          {% comment %} Attribute table {% endcomment %}
+          <div class="flex flex-col gap-[2px] w-[350px]">
+            <div class="flex gap-5 items-center px-4 py-2">
+              <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_1_label }}</span>
+              <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+              <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_1_score }}</span>
+            </div>
+            <div class="border-t border-[color:var(--border-default)] w-full"></div>
+            <div class="flex gap-5 items-center px-4 py-2">
+              <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_2_label }}</span>
+              <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+              <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_2_score }}</span>
+            </div>
+            <div class="border-t border-[color:var(--border-default)] w-full"></div>
+            <div class="flex gap-5 items-center px-4 py-2">
+              <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_3_label }}</span>
+              <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+              <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_3_score }}</span>
+            </div>
+            <div class="border-t border-[color:var(--border-default)] w-full"></div>
+            <div class="flex gap-5 items-center px-4 py-2">
+              <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_4_label }}</span>
+              <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+              <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_4_score }}</span>
+            </div>
+            <div class="border-t border-[color:var(--border-default)] w-full"></div>
+            <div class="flex gap-5 items-center px-4 py-2">
+              <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_5_label }}</span>
+              <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+              <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_5_score }}</span>
+            </div>
+            <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          </div>
+
+        </div>
+
+        {% comment %} Thumbnails: full-width 4×2 grid {% endcomment %}
+        <div class="grid grid-cols-4 gap-[22px] w-full">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full aspect-square object-cover">
+        </div>
+
+      </div>{% comment %} /tablet stats {% endcomment %}
+
+      {% comment %} ===================================================
+           Stats: desktop only
+           Order: attrs (350px) | score (200px) | thumbs (4×2 @ 80px)
+           justify-between across full width
+      =================================================== {% endcomment %}
+      <div class="hidden lg:flex justify-between items-center w-full">
+
+        {% comment %} Attribute table {% endcomment %}
+        <div class="flex flex-col gap-[2px] w-[350px]">
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_1_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_1_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_2_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_2_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_3_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_3_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_4_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_4_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+          <div class="flex gap-5 items-center px-4 py-2">
+            <span class="flex-1 font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5]">{{ reviews_4_attr_5_label }}</span>
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="5 stars" class="w-[85px] h-[17px] shrink-0">
+            <span class="font-bold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] w-[40px] text-center">{{ reviews_4_attr_5_score }}</span>
+          </div>
+          <div class="border-t border-[color:var(--border-default)] w-full"></div>
+        </div>
+
+        {% comment %} Score block {% endcomment %}
+        <div class="flex flex-col gap-1 items-center w-[200px]">
+          <p class="font-bold text-[80px] tracking-[-0.4px] leading-[1.2] text-[color:var(--text-primary)] text-center whitespace-nowrap">{{ reviews_4_rating_score }}</p>
+          <img src="{{ 'images/reviews-4/reviews-4-stars-score.svg' | campaign_asset }}" alt="★★★★★" class="w-[130px] h-[26px]">
+          <p class="font-normal text-[18px] text-[color:var(--text-primary)] tracking-[-0.09px] leading-[1.5] text-center">Based on reviews from<br>{{ reviews_4_review_count }} customers</p>
+        </div>
+
+        {% comment %} Thumbnails 4×2 @ 80px {% endcomment %}
+        <div class="grid grid-cols-4 gap-[10px]">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+          <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-[80px] h-[80px] object-cover">
+        </div>
+
+      </div>{% comment %} /desktop stats {% endcomment %}
+
+      {% comment %} ===================================================
+           Reviews: 1-col mobile, 3-col md+
+           No card borders — photo (rounded, overflow-hidden) + text on white bg
+      =================================================== {% endcomment %}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
+
+        {% comment %} Review 1 {% endcomment %}
+        <div class="flex flex-col overflow-hidden rounded-[16px]">
+          <div class="h-[400px] md:h-auto md:aspect-[168/216] overflow-hidden rounded-[12px] md:rounded-[14px] lg:rounded-[16px] shrink-0">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+          </div>
+          <div class="py-5 flex flex-col gap-1">
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="★★★★★" class="w-[85px] h-[17px]">
+            <div class="flex flex-col gap-2 mt-1">
+              <p class="font-bold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-[1.5]">{{ reviews_4_review_1_title }}</p>
+              <div class="flex flex-col gap-[14px]">
+                <p class="font-normal text-[16px] lg:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.5]">{{ reviews_4_review_1_body }}</p>
+                <p class="font-extrabold text-[16px] text-[color:var(--text-primary)] leading-[28px]">{{ reviews_4_review_1_author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Review 2 {% endcomment %}
+        <div class="flex flex-col overflow-hidden rounded-[16px]">
+          <div class="h-[400px] md:h-auto md:aspect-[168/216] overflow-hidden rounded-[12px] md:rounded-[14px] lg:rounded-[16px] shrink-0">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+          </div>
+          <div class="py-5 flex flex-col gap-1">
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="★★★★★" class="w-[85px] h-[17px]">
+            <div class="flex flex-col gap-2 mt-1">
+              <p class="font-bold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-[1.5]">{{ reviews_4_review_2_title }}</p>
+              <div class="flex flex-col gap-[14px]">
+                <p class="font-normal text-[16px] lg:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.5]">{{ reviews_4_review_2_body }}</p>
+                <p class="font-extrabold text-[16px] text-[color:var(--text-primary)] leading-[28px]">{{ reviews_4_review_2_author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Review 3 {% endcomment %}
+        <div class="flex flex-col overflow-hidden rounded-[16px]">
+          <div class="h-[400px] md:h-auto md:aspect-[168/216] overflow-hidden rounded-[12px] md:rounded-[14px] lg:rounded-[16px] shrink-0">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+          </div>
+          <div class="py-5 flex flex-col gap-1">
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="★★★★★" class="w-[85px] h-[17px]">
+            <div class="flex flex-col gap-2 mt-1">
+              <p class="font-bold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-[1.5]">{{ reviews_4_review_3_title }}</p>
+              <div class="flex flex-col gap-[14px]">
+                <p class="font-normal text-[16px] lg:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.5]">{{ reviews_4_review_3_body }}</p>
+                <p class="font-extrabold text-[16px] text-[color:var(--text-primary)] leading-[28px]">{{ reviews_4_review_3_author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Review 4 {% endcomment %}
+        <div class="flex flex-col overflow-hidden rounded-[16px]">
+          <div class="h-[400px] md:h-auto md:aspect-[168/216] overflow-hidden rounded-[12px] md:rounded-[14px] lg:rounded-[16px] shrink-0">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+          </div>
+          <div class="py-5 flex flex-col gap-1">
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="★★★★★" class="w-[85px] h-[17px]">
+            <div class="flex flex-col gap-2 mt-1">
+              <p class="font-bold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-[1.5]">{{ reviews_4_review_4_title }}</p>
+              <div class="flex flex-col gap-[14px]">
+                <p class="font-normal text-[16px] lg:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.5]">{{ reviews_4_review_4_body }}</p>
+                <p class="font-extrabold text-[16px] text-[color:var(--text-primary)] leading-[28px]">{{ reviews_4_review_4_author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Review 5 {% endcomment %}
+        <div class="flex flex-col overflow-hidden rounded-[16px]">
+          <div class="h-[400px] md:h-auto md:aspect-[168/216] overflow-hidden rounded-[12px] md:rounded-[14px] lg:rounded-[16px] shrink-0">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+          </div>
+          <div class="py-5 flex flex-col gap-1">
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="★★★★★" class="w-[85px] h-[17px]">
+            <div class="flex flex-col gap-2 mt-1">
+              <p class="font-bold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-[1.5]">{{ reviews_4_review_5_title }}</p>
+              <div class="flex flex-col gap-[14px]">
+                <p class="font-normal text-[16px] lg:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.5]">{{ reviews_4_review_5_body }}</p>
+                <p class="font-extrabold text-[16px] text-[color:var(--text-primary)] leading-[28px]">{{ reviews_4_review_5_author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {% comment %} Review 6 {% endcomment %}
+        <div class="flex flex-col overflow-hidden rounded-[16px]">
+          <div class="h-[400px] md:h-auto md:aspect-[168/216] overflow-hidden rounded-[12px] md:rounded-[14px] lg:rounded-[16px] shrink-0">
+            <img src="{{ reviews_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+          </div>
+          <div class="py-5 flex flex-col gap-1">
+            <img src="{{ 'images/reviews-4/reviews-4-stars-attr.svg' | campaign_asset }}" alt="★★★★★" class="w-[85px] h-[17px]">
+            <div class="flex flex-col gap-2 mt-1">
+              <p class="font-bold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-[1.5]">{{ reviews_4_review_6_title }}</p>
+              <div class="flex flex-col gap-[14px]">
+                <p class="font-normal text-[16px] lg:text-[18px] text-[color:var(--text-primary)] tracking-[-0.08px] lg:tracking-[-0.09px] leading-[1.5]">{{ reviews_4_review_6_body }}</p>
+                <p class="font-extrabold text-[16px] text-[color:var(--text-primary)] leading-[28px]">{{ reviews_4_review_6_author }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>{% comment %} /reviews grid {% endcomment %}
+
+      {% comment %} CTA {% endcomment %}
+      <div class="flex flex-col gap-2 md:gap-3 items-center w-full max-w-[440px]">
+        <a href="{{ next_url }}" class="w-full bg-[color:var(--brand-primary)] rounded-[6px] py-5 px-6 flex items-center justify-center gap-5 no-underline">
+          <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text }}</span>
+          <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[12px] h-[16px] object-contain shrink-0">
+        </a>
+        <div class="flex items-center gap-2">
+          <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain">
+          <span class="font-semibold text-[16px] text-[color:var(--text-primary)] tracking-[-0.08px] leading-[1.5] whitespace-nowrap">{{ guarantee_text }}</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

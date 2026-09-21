@@ -1,0 +1,152 @@
+<section class="bg-white overflow-hidden w-full">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[240px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="flex flex-col gap-[32px] md:gap-[40px] lg:gap-[48px] items-center">
+
+      {% comment %} Heading {% endcomment %}
+      <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold text-[var(--text-primary)] leading-[1.2] tracking-[-0.2px] text-center">{{ compare_4_heading }}</h2>
+
+      {% comment %} Comparison table {% endcomment %}
+      <div class="flex flex-col w-full">
+
+        {% comment %} Header row {% endcomment %}
+        <div class="flex items-stretch w-full">
+          {% comment %} Feature label spacer {% endcomment %}
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 bg-white"></div>
+
+          {% comment %} NEXT col header {% endcomment %}
+          <div class="flex-1 flex flex-col gap-[4px] items-center justify-center h-[90px] md:h-[112px] bg-[var(--brand-secondary)] px-[4px]">
+            <span class="text-[24px] font-extrabold text-[var(--brand-primary)] tracking-[-0.12px] leading-[1.4]">{{ compare_4_brand_name }}</span>
+            <img src="{{ 'images/compare-4/stars-next.svg' | campaign_asset }}" alt="5 stars" class="w-[74px] h-[14px] md:w-[119px] md:h-[23px]">
+          </div>
+
+          {% comment %} Competitors col header {% endcomment %}
+          <div class="flex-1 flex flex-col gap-[4px] items-center justify-center h-[90px] md:h-[112px] bg-white px-[4px]">
+            <span class="text-[12px] md:text-[20px] font-medium text-[var(--text-primary)] tracking-[-0.1px] leading-[1.5] text-center">{{ compare_4_competitor_label }}</span>
+            <img src="{{ 'images/compare-4/stars-competitors.svg' | campaign_asset }}" alt="2 stars" class="w-[74px] h-[14px] md:w-[119px] md:h-[23px]">
+          </div>
+        </div>
+
+        {% comment %} Row 1: NEXT ✓ / Competitors ✗ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_1 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-x-red.svg' | campaign_asset }}" alt="" class="w-[32px] h-[32px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 2: NEXT ✓ / Competitors partial ✓ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_2 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-gray.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 3: NEXT ✓ / Competitors partial ✓ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_3 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-gray.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 4: NEXT ✓ / Competitors ✗ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_4 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-x-red.svg' | campaign_asset }}" alt="" class="w-[32px] h-[32px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 5: NEXT ✓ / Competitors ✗ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_5 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-x-red.svg' | campaign_asset }}" alt="" class="w-[32px] h-[32px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 6: NEXT ✓ / Competitors ✗ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_6 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-x-red.svg' | campaign_asset }}" alt="" class="w-[32px] h-[32px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 7: NEXT ✓ / Competitors partial ✓ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_7 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-gray.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+        </div>
+
+        {% comment %} Row 8: NEXT ✓ / Competitors partial ✓ {% endcomment %}
+        <div class="flex items-stretch w-full">
+          <div class="w-[170px] md:w-[440px] lg:w-[480px] shrink-0 flex items-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)] px-[8px] md:px-[20px]">
+            <span class="text-[16px] md:text-[18px] md:text-[20px] font-medium text-[var(--text-primary)] leading-[1.5] tracking-[-0.1px]">{{ compare_4_feature_8 }}</span>
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-[var(--brand-secondary)] border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-blue.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+          <div class="flex-1 flex items-center justify-center h-[60px] bg-white border-t border-[rgba(0,0,0,0.08)]">
+            <img src="{{ 'images/compare-4/icon-check-gray.svg' | campaign_asset }}" alt="" class="w-[26px] h-[24px] shrink-0">
+          </div>
+        </div>
+
+      </div>
+
+      {% comment %} Guarantee banner {% endcomment %}
+      <div class="bg-[var(--brand-primary)] rounded-[16px] w-full flex flex-col md:flex-row items-center gap-[20px] md:gap-[32px] lg:gap-[40px] p-[20px] md:px-[32px] md:py-[24px] lg:px-[40px] lg:py-[32px]">
+
+        {% comment %} 90-day badge card {% endcomment %}
+        <img src="{{ 'images/compare-4/badge-90day-card.png' | campaign_asset }}" alt="90 Day Money Back Guarantee"
+             class="shrink-0 w-[120px] md:w-[140px] lg:w-[160px] h-auto">
+
+        {% comment %} Guarantee text {% endcomment %}
+        <div class="flex flex-col gap-[8px] md:gap-[8px] flex-1 text-white text-center md:text-left">
+          <h3 class="text-[24px] md:text-[26px] lg:text-[28px] font-bold leading-[1.2] tracking-[-0.16px]">{{ compare_4_guarantee_title }}</h3>
+          <p class="text-[16px] md:text-[16px] lg:text-[18px] font-medium leading-[1.5] tracking-[-0.09px]">{{ compare_4_guarantee_body }}</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

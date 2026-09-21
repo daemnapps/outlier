@@ -1,0 +1,8 @@
+{
+ "_readme": "Transitions between clips. A hard cut is the house default — the edit doctrine says cut on the line, audio leading. Anything else is asked for by name.",
+ "transitions": [
+  {"id": "cut", "name": "Hard cut", "what": "No transition. The next line starts over the tail of the last shot.", "seconds": 0, "status": "draft"},
+  {"id": "flash", "name": "Flash", "what": "Two frames of white between worlds — for a before/after or a show's replay.", "seconds": 0.12, "status": "draft"},
+  {"id": "punch-in", "name": "Punch in", "what": "Same shot, jumps 12% closer on the key word. Not a transition between clips — a move inside one.", "seconds": 0, "status": "draft"}
+ ]
+}

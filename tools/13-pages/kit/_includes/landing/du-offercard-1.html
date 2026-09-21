@@ -1,0 +1,128 @@
+{% comment %} =============================================================
+  du-offercard-1 — the price card on a pre-sell.
+
+  Next's bottomcta blocks show a product and a button but never a price, so
+  a pre-sell either stays silent about cost or sends people to the offer
+  page to find out. Norse puts the whole thing on the page: tiers, per-unit
+  maths, what is included, what the guarantee is.
+
+  This shows the same, and still hands off — there is no cart here. Naming
+  the price before the click is the point: it filters, and it means the
+  offer page is a confirmation rather than a surprise.
+
+  Frontmatter:
+    du_offercard_1_overline, du_offercard_1_heading, du_offercard_1_body
+    du_offercard_1_image, du_offercard_1_image_alt
+    du_offercard_1_tiers  (list: label, price, per_unit, note, badge, best)
+    du_offercard_1_includes (list of strings)
+    du_offercard_1_guarantee
+    cta_text · next_url
+============================================================= {% endcomment %}
+<section class="du-oc">
+  <div class="du-oc__inner">
+
+    {% if du_offercard_1_overline and du_offercard_1_overline != "" %}
+    <p class="du-oc__overline">{{ du_offercard_1_overline }}</p>
+    {% endif %}
+    <h2 class="du-oc__heading">{{ du_offercard_1_heading }}</h2>
+    {% if du_offercard_1_body and du_offercard_1_body != "" %}
+    <p class="du-oc__body">{{ du_offercard_1_body }}</p>
+    {% endif %}
+
+    <div class="du-oc__card">
+      {% if du_offercard_1_image and du_offercard_1_image != "" %}
+      <div class="du-oc__media">
+        <img src="{{ du_offercard_1_image | campaign_asset }}" alt="{{ du_offercard_1_image_alt }}" loading="lazy">
+      </div>
+      {% endif %}
+
+      <div class="du-oc__detail">
+        <ul class="du-oc__tiers">
+          {%- for tier in du_offercard_1_tiers %}
+          <li class="du-oc__tier{% if tier.best %} is-best{% endif %}">
+            <div class="du-oc__tier-head">
+              <span class="du-oc__tier-label">{{ tier.label }}</span>
+              {% if tier.badge %}<span class="du-oc__tier-badge">{{ tier.badge }}</span>{% endif %}
+            </div>
+            <div class="du-oc__tier-price">
+              <span class="du-oc__price">{{ tier.price }}</span>
+              {% if tier.per_unit %}<span class="du-oc__per">{{ tier.per_unit }}</span>{% endif %}
+            </div>
+            {% if tier.note %}<p class="du-oc__tier-note">{{ tier.note }}</p>{% endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+
+        {% if du_offercard_1_includes %}
+        <ul class="du-oc__includes">
+          {%- for item in du_offercard_1_includes %}<li>{{ item }}</li>{%- endfor %}
+        </ul>
+        {% endif %}
+
+        <a href="{{ next_url | campaign_link }}" class="du-oc__cta">{{ cta_text | default: "See the offer" }}</a>
+        {% if du_offercard_1_guarantee and du_offercard_1_guarantee != "" %}
+        <p class="du-oc__guarantee">{{ du_offercard_1_guarantee }}</p>
+        {% endif %}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.du-oc{background:var(--surface-bg);padding:50px 0 56px}
+.du-oc__inner{max-width:60rem;margin:0 auto;padding:0 20px}
+.du-oc__overline{
+  margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--brand-accent)
+}
+.du-oc__heading{
+  margin:0 0 10px;font-family:"GT Super Display",Georgia,serif;font-weight:400;
+  font-size:30px;line-height:1.12;color:var(--text-primary)
+}
+.du-oc__body{margin:0 0 26px;font-size:17px;line-height:1.6;color:var(--text-secondary);max-width:54ch}
+.du-oc__card{
+  border:1px solid var(--border-default);border-radius:5px;background:#fff;
+  padding:20px;display:grid;gap:24px
+}
+.du-oc__media img{width:100%;border-radius:4px;display:block}
+.du-oc__tiers{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:10px}
+.du-oc__tier{
+  border:1px solid var(--border-default);border-radius:4px;padding:13px 15px
+}
+.du-oc__tier.is-best{border-color:var(--brand-primary);border-width:2px;padding:12px 14px;background:var(--surface-alt)}
+.du-oc__tier-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.du-oc__tier-label{font-weight:700;font-size:15.5px;color:var(--text-primary)}
+.du-oc__tier-badge{
+  background:linear-gradient(90deg,#E8AC21 30%,#FCDC6D 77%);color:var(--brand-primary);
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  padding:3px 8px 2px;border-radius:3px;white-space:nowrap
+}
+.du-oc__tier-price{display:flex;align-items:baseline;gap:8px;margin-top:4px}
+.du-oc__price{font-size:26px;font-weight:700;line-height:1;color:var(--text-primary);font-variant-numeric:tabular-nums}
+.du-oc__per{font-size:14px;color:var(--text-secondary)}
+.du-oc__tier-note{margin:5px 0 0;font-size:13.5px;line-height:1.45;color:var(--text-secondary)}
+.du-oc__includes{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:7px}
+.du-oc__includes li{position:relative;padding-left:24px;font-size:15px;line-height:1.45;color:var(--text-primary)}
+.du-oc__includes li::before{
+  content:"";position:absolute;left:2px;top:.32em;width:13px;height:13px;
+  border-radius:50%;border:1.5px solid var(--brand-primary)
+}
+.du-oc__includes li::after{
+  content:"";position:absolute;left:5.6px;top:.56em;width:5px;height:2.5px;
+  border-left:1.5px solid var(--brand-primary);border-bottom:1.5px solid var(--brand-primary);
+  transform:rotate(-45deg)
+}
+.du-oc__cta{
+  display:block;width:100%;text-align:center;padding:17px 22px;
+  background:var(--brand-cta);color:var(--brand-cta-ink);text-transform:uppercase;letter-spacing:1.2px;
+  border:1px solid #000;text-decoration:none;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em
+}
+.du-oc__cta:hover{background:var(--brand-cta-hover)}
+.du-oc__guarantee{margin:11px 0 0;font-size:13px;text-align:center;color:var(--text-secondary)}
+@media (min-width:860px){
+  .du-oc__heading{font-size:38px}
+  .du-oc__card{grid-template-columns:minmax(0,42%) minmax(0,1fr);align-items:center;padding:26px}
+}
+</style>

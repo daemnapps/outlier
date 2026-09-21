@@ -1,0 +1,41 @@
+<section class="bg-white py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+  <div class="bg-[var(--brand-secondary)] rounded-[8px] md:rounded-[12px] lg:rounded-[16px] p-[24px] md:p-[32px] lg:p-[40px]">
+    <div class="flex flex-col md:flex-row md:items-start lg:items-center gap-[20px] md:gap-[26px] lg:gap-[32px]">
+
+      {% comment %} Photo {% endcomment %}
+      <div class="w-full h-[297px] md:w-[268px] md:h-[268px] md:shrink-0 rounded-[8px] md:rounded-[12px] lg:rounded-[16px] overflow-hidden">
+        <img src="{{ testimonials_4_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+             alt="{{ testimonials_4_review_author }}"
+             class="w-full h-full object-cover">
+      </div>
+
+      {% comment %} Content {% endcomment %}
+      <div class="flex-1 flex flex-col gap-[20px] md:gap-[26px] lg:gap-[32px]">
+
+        {% comment %} Text {% endcomment %}
+        <div class="flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <p class="text-[20px] lg:text-[24px] font-bold text-[var(--text-primary)] leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px]">
+            {{ testimonials_4_review_title }}
+          </p>
+          <p class="text-[16px] md:text-[18px] font-normal text-[var(--text-primary)] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px]">
+            {{ testimonials_4_review_body }}
+          </p>
+        </div>
+
+        {% comment %} Footer {% endcomment %}
+        <div class="flex items-center justify-between">
+          <p class="text-[16px] md:text-[18px] font-bold text-[var(--text-primary)] leading-[1.4] tracking-[-0.08px] md:tracking-[-0.09px]">
+            {{ testimonials_4_review_author }}
+          </p>
+          <div class="flex items-center gap-[4px]">
+            <img src="{{ 'images/testimonials-4/testimonials-4-verified.svg' | campaign_asset }}" alt="" class="w-[16px] h-[16px] shrink-0">
+            <span class="text-[14px] lg:text-[16px] font-semibold text-[var(--brand-primary)] tracking-[-0.07px] lg:tracking-[-0.08px] whitespace-nowrap">Verified Review</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+<nav class="bg-white">
+  <div class="max-w-[1440px] mx-auto px-[15px] py-[8px] md:px-[26px] md:py-[10px] lg:py-[12px] flex items-center justify-between w-full">
+
+    {% comment %} Logo {% endcomment %}
+    <img
+      src="{{ nav_logo_image | campaign_asset }}"
+      alt="{{ nav_logo_alt }}"
+      class="w-[120px] md:w-[150px] h-auto object-contain shrink-0"
+    >
+
+    {% comment %} Offer text: hidden on mobile {% endcomment %}
+    <p class="hidden md:block font-extrabold text-[20px] text-[color:var(--text-primary)] tracking-[-0.1px] leading-none whitespace-nowrap">{{ nav_2_offer_text }}</p>
+
+    {% comment %} CTA button {% endcomment %}
+    <a href="{{ next_url }}" class="bg-[color:var(--brand-primary)] rounded px-[16px] py-[10px] md:py-[14px] w-[160px] flex items-center justify-center gap-[11px] no-underline shrink-0">
+      <span class="font-bold text-[14px] lg:text-[16px] text-white tracking-[-0.07px] lg:tracking-[-0.08px] leading-[1.5] whitespace-nowrap">{{ nav_2_cta_text }}</span>
+      <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[10px] h-[10px] shrink-0">
+    </a>
+
+  </div>
+</nav>

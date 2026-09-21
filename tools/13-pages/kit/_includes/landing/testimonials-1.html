@@ -1,0 +1,173 @@
+<section class="bg-[var(--brand-secondary)] py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      {% comment %} Header badge + heading {% endcomment %}
+      <div class="flex flex-col items-center gap-[12px] md:gap-[16px] lg:gap-[20px] text-center">
+        <div class="bg-white rounded-full px-[27px] py-[7px] flex items-center gap-[8px] shadow-sm">
+          <div class="w-[24px] md:w-[27px] h-[24px] md:h-[27px]">
+            <img src="{{ 'images/testimonials-1/testimonials-1-trophy.svg' | campaign_asset }}" alt="Award icon" class="w-full h-full object-contain">
+          </div>
+          <p class="text-[16px] md:text-[20px] font-bold tracking-[-0.08px] md:tracking-[-0.1px] text-[var(--text-primary)]">{{ testimonials_1_badge_label }}</p>
+          <p class="text-[16px] md:text-[20px] font-medium tracking-[-0.08px] md:tracking-[-0.1px] text-[var(--text-primary)]">{{ testimonials_1_badge_year }}</p>
+        </div>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-[4px] md:gap-[12px]">
+          <p class="font-bold text-[32px] md:text-[36px] lg:text-[44px] tracking-[-0.16px] md:tracking-[-0.18px] lg:tracking-[-0.22px] text-[var(--text-primary)] leading-[1.2]">{{ testimonials_1_heading_prefix }}</p>
+          <div class="bg-[var(--brand-primary)] rounded-[4px] md:rounded-[8px] px-[9px] py-[2px]">
+            <p class="font-bold text-[32px] md:text-[36px] lg:text-[44px] tracking-[-0.16px] md:tracking-[-0.18px] lg:tracking-[-0.22px] text-white leading-[1.2]">{{ testimonials_1_heading_stat }}</p>
+          </div>
+          <p class="font-bold text-[32px] md:text-[36px] lg:text-[44px] tracking-[-0.16px] md:tracking-[-0.18px] lg:tracking-[-0.22px] text-[var(--text-primary)] leading-[1.2]">{{ testimonials_1_heading_suffix }}</p>
+        </div>
+      </div>
+
+      {% comment %} Swiper — pagination and nav must be INSIDE .swiper {% endcomment %}
+      <div class="testimonials-1-swiper w-full"
+           data-swiper-root
+           data-slides="1.1"
+           data-slides-md="3"
+           data-gap="16"
+           data-gap-md="24"
+           data-loop="true"
+           data-loop-md="false"
+           data-watch-overflow="true"
+           data-swiper-variant="sw-landing1">
+        <div class="swiper" data-swiper>
+
+          <div class="swiper-wrapper">
+
+            {% comment %} Slide 1 {% endcomment %}
+            <div class="swiper-slide">
+              <article>
+                <div class="h-[270px] rounded-t-[16px] overflow-hidden">
+                  <img src="{{ testimonials_1_review_1_image | campaign_asset }}" alt="{{ testimonials_1_review_1_image_alt }}" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-b-[16px] p-[20px] flex-1 flex flex-col">
+                  <div class="flex flex-col justify-between gap-[16px] h-full">
+                    <div class="flex flex-col gap-[16px]">
+                      <div class="flex flex-col gap-[4px]">
+                        <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+                        <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_1_title }}</p>
+                      </div>
+                      <p class="text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_1_review_1_text }}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_1_name }}</p>
+                      <div class="flex items-center gap-[2px] rounded-full border border-[var(--brand-primary)] bg-[var(--brand-secondary)] px-[8px] py-[6px]">
+                        <div class="w-[16px] h-[16px]"><img src="{{ 'images/testimonials-1/testimonials-1-check.svg' | campaign_asset }}" alt="" class="w-full h-full object-contain"></div>
+                        <p class="text-[12px] tracking-[0.72px] text-[var(--brand-primary)] leading-[20px]">Verified Buyer</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            {% comment %} Slide 2 {% endcomment %}
+            <div class="swiper-slide">
+              <article>
+                <div class="h-[270px] rounded-t-[16px] overflow-hidden">
+                  <img src="{{ testimonials_1_review_2_image | campaign_asset }}" alt="{{ testimonials_1_review_2_image_alt }}" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-b-[16px] p-[20px] flex-1 flex flex-col">
+                  <div class="flex flex-col justify-between gap-[16px] h-full">
+                    <div class="flex flex-col gap-[16px]">
+                      <div class="flex flex-col gap-[4px]">
+                        <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+                        <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_2_title }}</p>
+                      </div>
+                      <p class="text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_1_review_2_text }}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_2_name }}</p>
+                      <div class="flex items-center gap-[2px] rounded-full border border-[var(--brand-primary)] bg-[var(--brand-secondary)] px-[8px] py-[6px]">
+                        <div class="w-[16px] h-[16px]"><img src="{{ 'images/testimonials-1/testimonials-1-check.svg' | campaign_asset }}" alt="" class="w-full h-full object-contain"></div>
+                        <p class="text-[12px] tracking-[0.72px] text-[var(--brand-primary)] leading-[20px]">Verified Buyer</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            {% comment %} Slide 3 {% endcomment %}
+            <div class="swiper-slide">
+              <article>
+                <div class="h-[270px] rounded-t-[16px] overflow-hidden">
+                  <img src="{{ testimonials_1_review_3_image | campaign_asset }}" alt="{{ testimonials_1_review_3_image_alt }}" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-b-[16px] p-[20px] flex-1 flex flex-col">
+                  <div class="flex flex-col justify-between gap-[16px] h-full">
+                    <div class="flex flex-col gap-[16px]">
+                      <div class="flex flex-col gap-[4px]">
+                        <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+                        <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_3_title }}</p>
+                      </div>
+                      <p class="text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_1_review_3_text }}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_3_name }}</p>
+                      <div class="flex items-center gap-[2px] rounded-full border border-[var(--brand-primary)] bg-[var(--brand-secondary)] px-[8px] py-[6px]">
+                        <div class="w-[16px] h-[16px]"><img src="{{ 'images/testimonials-1/testimonials-1-check.svg' | campaign_asset }}" alt="" class="w-full h-full object-contain"></div>
+                        <p class="text-[12px] tracking-[0.72px] text-[var(--brand-primary)] leading-[20px]">Verified Buyer</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            {% comment %} Slide 4 {% endcomment %}
+            <div class="swiper-slide">
+              <article>
+                <div class="h-[270px] rounded-t-[16px] overflow-hidden">
+                  <img src="{{ testimonials_1_review_4_image | campaign_asset }}" alt="{{ testimonials_1_review_4_image_alt }}" class="w-full h-full object-cover">
+                </div>
+                <div class="bg-white rounded-b-[16px] p-[20px] flex-1 flex flex-col">
+                  <div class="flex flex-col justify-between gap-[16px] h-full">
+                    <div class="flex flex-col gap-[16px]">
+                      <div class="flex flex-col gap-[4px]">
+                        <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+                        <p class="font-bold text-[20px] tracking-[-0.1px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_4_title }}</p>
+                      </div>
+                      <p class="text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.5]">{{ testimonials_1_review_4_text }}</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                      <p class="font-semibold text-[18px] tracking-[-0.09px] text-[var(--text-primary)] leading-[1.4]">{{ testimonials_1_review_4_name }}</p>
+                      <div class="flex items-center gap-[2px] rounded-full border border-[var(--brand-primary)] bg-[var(--brand-secondary)] px-[8px] py-[6px]">
+                        <div class="w-[16px] h-[16px]"><img src="{{ 'images/testimonials-1/testimonials-1-check.svg' | campaign_asset }}" alt="" class="w-full h-full object-contain"></div>
+                        <p class="text-[12px] tracking-[0.72px] text-[var(--brand-primary)] leading-[20px]">Verified Buyer</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+          </div>{% comment %} /.swiper-wrapper {% endcomment %}
+
+          {% comment %} Controls — visible on mobile only {% endcomment %}
+          <div class="testimonials-1-controls flex items-center justify-center gap-4 mt-6" data-swiper-controls>
+            <button type="button"
+                    class="flex-shrink-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm cursor-pointer border-0"
+                    data-swiper-prev>
+              <span class="sr-only">Previous</span>
+              <img src="{{ 'images/_shared/swiper-arrow-left.svg' | campaign_asset }}" alt="" class="w-4 h-4 object-contain">
+            </button>
+
+            {% comment %} .swiper-pagination inside .swiper — Swiper injects and manages bullets here {% endcomment %}
+            <div class="swiper-pagination testimonials-1-pagination"></div>
+
+            <button type="button"
+                    class="flex-shrink-0 w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm cursor-pointer border-0"
+                    data-swiper-next>
+              <span class="sr-only">Next</span>
+              <img src="{{ 'images/_shared/swiper-arrow-right.svg' | campaign_asset }}" alt="" class="w-4 h-4 object-contain">
+            </button>
+          </div>
+
+        </div>{% comment %} /.swiper {% endcomment %}
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,244 @@
+{% comment %} =====================================================================
+     Section 1 — Problem (white background)
+     ===================================================================== {% endcomment %}
+<section class="bg-white py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12">
+
+      {% comment %} Heading block {% endcomment %}
+      <div class="flex flex-col items-center gap-3 md:gap-4 lg:gap-5 text-center max-w-[700px] w-full">
+        <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)]">
+          {{ problemsolution_5_problem_heading }}
+        </h2>
+        <p class="text-[18px] md:text-[20px] font-medium leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+          {{ problemsolution_5_problem_subheading }}
+        </p>
+      </div>
+
+      {% comment %} Problem card {% endcomment %}
+      <div class="bg-white border border-[var(--border-default)] rounded-[16px] p-6 md:p-8 lg:p-10 w-full">
+        <div class="flex flex-col lg:flex-row gap-6 md:gap-[26px] lg:gap-8">
+
+          {% comment %} Portrait photo: landscape on mobile/tablet, portrait self-stretch on desktop {% endcomment %}
+          <div class="w-full lg:w-auto overflow-hidden rounded-[12px] md:rounded-[16px] lg:rounded-[24px] aspect-video lg:aspect-[474/664] lg:self-stretch lg:shrink-0">
+            <img
+              src="{{ problemsolution_5_problem_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+              alt="{{ problemsolution_5_problem_image_alt }}"
+              class="w-full h-full object-cover"
+            >
+          </div>
+
+          {% comment %} 4 problem items {% endcomment %}
+          <div class="flex flex-col gap-4 md:gap-4 lg:gap-5 flex-1">
+
+            {% comment %} Item 1 {% endcomment %}
+            <div class="flex items-center gap-5 md:gap-[26px] lg:gap-8">
+              <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_1_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_1_body }}
+                </p>
+              </div>
+              <div class="shrink-0 w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[130px] lg:h-[130px] rounded-full border border-[#8C2A1E] overflow-hidden">
+                <img src="{{ problemsolution_5_solution_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+              </div>
+            </div>
+
+            <img src="{{ 'images/problemsolution-5/icon-line-red.svg' | campaign_asset }}" alt="" class="w-full h-px" aria-hidden="true">
+
+            {% comment %} Item 2 {% endcomment %}
+            <div class="flex items-center gap-5 md:gap-[26px] lg:gap-8">
+              <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_2_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_2_body }}
+                </p>
+              </div>
+              <div class="shrink-0 w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[130px] lg:h-[130px] rounded-full border border-[#8C2A1E] overflow-hidden">
+                <img src="{{ problemsolution_5_solution_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+              </div>
+            </div>
+
+            <img src="{{ 'images/problemsolution-5/icon-line-red.svg' | campaign_asset }}" alt="" class="w-full h-px" aria-hidden="true">
+
+            {% comment %} Item 3 {% endcomment %}
+            <div class="flex items-center gap-5 md:gap-[26px] lg:gap-8">
+              <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_3_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_3_body }}
+                </p>
+              </div>
+              <div class="shrink-0 w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[130px] lg:h-[130px] rounded-full border border-[#8C2A1E] overflow-hidden">
+                <img src="{{ problemsolution_5_solution_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+              </div>
+            </div>
+
+            <img src="{{ 'images/problemsolution-5/icon-line-red.svg' | campaign_asset }}" alt="" class="w-full h-px" aria-hidden="true">
+
+            {% comment %} Item 4 {% endcomment %}
+            <div class="flex items-center gap-5 md:gap-[26px] lg:gap-8">
+              <div class="flex flex-col gap-[8px] md:gap-[10px] lg:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_4_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_problem_4_body }}
+                </p>
+              </div>
+              <div class="shrink-0 w-[60px] h-[60px] md:w-[120px] md:h-[120px] lg:w-[130px] lg:h-[130px] rounded-full border border-[#8C2A1E] overflow-hidden">
+                <img src="{{ problemsolution_5_solution_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-full h-full object-cover">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {% comment %} Bridge text {% endcomment %}
+      <div class="flex flex-col items-center gap-4 md:gap-[26px] lg:gap-8 text-center max-w-[920px] text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">
+        <p class="font-bold text-[var(--brand-primary)]">
+          {{ problemsolution_5_bridge_text_1 }}
+        </p>
+        <p class="font-medium text-[var(--text-primary)]">
+          {{ problemsolution_5_bridge_text_2 }}
+        </p>
+        <p class="font-medium text-[var(--text-primary)]">
+          {{ problemsolution_5_bridge_text_3 }}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+{% comment %} =====================================================================
+     Section 2 — Solution (brand-tint background)
+     ===================================================================== {% endcomment %}
+<section class="bg-[var(--surface-alt)] py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12">
+
+      {% comment %} Heading block {% endcomment %}
+      <div class="flex flex-col items-center gap-3 md:gap-4 lg:gap-5 text-center max-w-[968px] w-full">
+        <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)]">
+          {{ problemsolution_5_solution_heading }}
+        </h2>
+        <p class="text-[18px] md:text-[20px] font-medium leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)]">
+          {{ problemsolution_5_solution_subheading }}
+        </p>
+      </div>
+
+      {% comment %} Solution card
+           Left column (benefits + tint footer) is width-constrained at all breakpoints so the
+           absolutely-positioned img-group composite is visible alongside content.
+           Mobile: left col 62%, image top-0 naturally sized (mobile composite).
+           Tablet: left col 65%, image top-0 bottom-0 fills card height (desktop composite).
+           Desktop: same as tablet. {% endcomment %}
+      <div class="relative overflow-hidden rounded-[16px] border border-[var(--border-default)] bg-white w-full">
+
+        {% comment %} Left column: full width on mobile, constrained at md/lg to give image visual room {% endcomment %}
+        <div class="md:w-[65%] lg:w-[65%]">
+
+          {% comment %} Benefits {% endcomment %}
+          <div class="px-5 md:px-6 lg:px-8 pt-5 md:pt-[30px] lg:pt-10 pb-5 md:pb-[26px] lg:pb-10 flex flex-col gap-5 md:gap-[26px] lg:gap-8">
+
+            {% comment %} Benefit 1 {% endcomment %}
+            <div class="flex items-start gap-2">
+              <img src="{{ 'images/problemsolution-5/icon-benefit.svg' | campaign_asset }}" alt="" class="w-8 h-8 md:w-10 md:h-10 shrink-0" aria-hidden="true">
+              <div class="flex flex-col gap-2 md:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_benefit_1_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_benefit_1_body }}
+                </p>
+              </div>
+            </div>
+
+            <img src="{{ 'images/problemsolution-5/icon-line-gray.svg' | campaign_asset }}" alt="" class="w-full h-px" aria-hidden="true">
+
+            {% comment %} Benefit 2 {% endcomment %}
+            <div class="flex items-start gap-2">
+              <img src="{{ 'images/problemsolution-5/icon-benefit.svg' | campaign_asset }}" alt="" class="w-8 h-8 md:w-10 md:h-10 shrink-0" aria-hidden="true">
+              <div class="flex flex-col gap-2 md:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_benefit_2_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_benefit_2_body }}
+                </p>
+              </div>
+            </div>
+
+            <img src="{{ 'images/problemsolution-5/icon-line-gray.svg' | campaign_asset }}" alt="" class="w-full h-px" aria-hidden="true">
+
+            {% comment %} Benefit 3 {% endcomment %}
+            <div class="flex items-start gap-2">
+              <img src="{{ 'images/problemsolution-5/icon-benefit.svg' | campaign_asset }}" alt="" class="w-8 h-8 md:w-10 md:h-10 shrink-0" aria-hidden="true">
+              <div class="flex flex-col gap-2 md:gap-3 flex-1">
+                <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_benefit_3_title }}
+                </p>
+                <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+                  {{ problemsolution_5_benefit_3_body }}
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          {% comment %} Tint footer — sits below benefits, left column only on desktop {% endcomment %}
+          <div class="bg-[var(--surface-alt)] px-5 md:px-[34px] lg:px-[80px] py-8 md:py-10 lg:py-[40px]">
+            <div class="flex flex-col gap-2 md:gap-[10px] lg:gap-3">
+              <p class="text-[20px] lg:text-[24px] font-bold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--brand-primary)]">
+                {{ problemsolution_5_tested_heading }}
+              </p>
+              <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)] lg:max-w-[616px]">
+                {{ problemsolution_5_tested_body }}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        {% comment %} img-group:s2-img — hidden on mobile, absolutely positioned tablet/desktop.
+             Tablet (top-0 bottom-0, 52%): desktop composite fills card height.
+             Desktop (top-0 bottom-0, 41%): same. {% endcomment %}
+        <div class="hidden md:block absolute right-0 top-0 bottom-0 md:w-[52%] lg:w-[41%] overflow-hidden pointer-events-none">
+          <img
+            src="{{ 'images/_shared/icon-transparent.svg' | campaign_asset }}"
+            alt=""
+            class="absolute inset-0 w-full h-full object-contain object-right-bottom"
+            aria-hidden="true"
+          >
+        </div>
+
+      </div>
+
+      {% comment %} CTA {% endcomment %}
+      <div class="w-full md:max-w-[440px] flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px]">
+        <a href="{{ next_url }}" class="w-full rounded-[6px] bg-[var(--brand-primary)] px-[24px] py-[20px] flex items-center justify-center gap-[20px]">
+          <span class="text-[20px] leading-[1.5] tracking-[-0.1px] font-bold text-white text-center">
+            {{ cta_text }}
+          </span>
+          <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+        </a>
+        <div class="flex items-center gap-[8px]">
+          <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain" aria-hidden="true">
+          <p class="text-[16px] leading-[1.5] tracking-[-0.08px] font-semibold text-[var(--text-primary)] whitespace-nowrap">
+            {{ guarantee_text }}
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

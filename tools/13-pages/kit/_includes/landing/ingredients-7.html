@@ -1,0 +1,100 @@
+<style>
+  [data-expandable-panel] {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+</style>
+
+<section class="bg-white py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="max-w-[960px] mx-auto flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]" data-expandable>
+      <div class="w-full text-center flex flex-col gap-[12px] md:gap-[16px] lg:gap-[20px]">
+        <h2 class="font-bold text-[28px] md:text-[32px] lg:text-[40px] leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)]">
+          {{ ingredients_7_heading }}
+        </h2>
+        <p class="font-normal text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">
+          {{ ingredients_7_subheading }}
+        </p>
+      </div>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-[12px] md:gap-[16px] lg:gap-[20px]">
+        <div class="bg-white border border-[var(--border-default)] rounded-[16px] px-[12px] py-[24px] md:px-[16px] md:py-[32px] lg:px-[20px] lg:py-[40px] flex items-start gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="flex-1 flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+            <h3 class="font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.5] tracking-[-0.1px] md:tracking-[-0.12px] text-[var(--text-primary)]">{{ ingredients_7_item_1_title }}</h3>
+            <p class="font-normal text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.08px] text-[var(--text-primary)]">{{ ingredients_7_item_1_body }}</p>
+          </div>
+          <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0 rounded-full overflow-hidden">
+            <img src="{{ ingredients_7_item_1_image | campaign_asset }}" alt="{{ ingredients_7_item_1_title }}" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="bg-white border border-[var(--border-default)] rounded-[16px] px-[12px] py-[24px] md:px-[16px] md:py-[32px] lg:px-[20px] lg:py-[40px] flex items-start gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="flex-1 flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+            <h3 class="font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.5] tracking-[-0.1px] md:tracking-[-0.12px] text-[var(--text-primary)]">{{ ingredients_7_item_2_title }}</h3>
+            <p class="font-normal text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.08px] text-[var(--text-primary)]">{{ ingredients_7_item_2_body }}</p>
+          </div>
+          <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0 rounded-full overflow-hidden">
+            <img src="{{ ingredients_7_item_2_image | campaign_asset }}" alt="{{ ingredients_7_item_2_title }}" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="bg-white border border-[var(--border-default)] rounded-[16px] px-[12px] py-[24px] md:px-[16px] md:py-[32px] lg:px-[20px] lg:py-[40px] flex items-start gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="flex-1 flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+            <h3 class="font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.5] tracking-[-0.1px] md:tracking-[-0.12px] text-[var(--text-primary)]">{{ ingredients_7_item_3_title }}</h3>
+            <p class="font-normal text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.08px] text-[var(--text-primary)]">{{ ingredients_7_item_3_body }}</p>
+          </div>
+          <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0 rounded-full overflow-hidden">
+            <img src="{{ ingredients_7_item_3_image | campaign_asset }}" alt="{{ ingredients_7_item_3_title }}" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="bg-white border border-[var(--border-default)] rounded-[16px] px-[12px] py-[24px] md:px-[16px] md:py-[32px] lg:px-[20px] lg:py-[40px] flex items-start gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <div class="flex-1 flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+            <h3 class="font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.5] tracking-[-0.1px] md:tracking-[-0.12px] text-[var(--text-primary)]">{{ ingredients_7_item_4_title }}</h3>
+            <p class="font-normal text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.08px] text-[var(--text-primary)]">{{ ingredients_7_item_4_body }}</p>
+          </div>
+          <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0 rounded-full overflow-hidden">
+            <img src="{{ ingredients_7_item_4_image | campaign_asset }}" alt="{{ ingredients_7_item_4_title }}" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <div class="w-full md:col-span-2" data-expandable-panel>
+          <div class="pt-[12px] grid grid-cols-1 md:grid-cols-2 gap-[12px] md:gap-[16px] lg:gap-[20px]">
+            <div class="bg-white border border-[var(--border-default)] rounded-[16px] px-[12px] py-[24px] md:px-[16px] md:py-[32px] lg:px-[20px] lg:py-[40px] flex items-start gap-[12px] md:gap-[16px] lg:gap-[20px]">
+              <div class="flex-1 flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+                <h3 class="font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.5] tracking-[-0.1px] md:tracking-[-0.12px] text-[var(--text-primary)]">{{ ingredients_7_item_5_title }}</h3>
+                <p class="font-normal text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.08px] text-[var(--text-primary)]">{{ ingredients_7_item_5_body }}</p>
+              </div>
+              <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0 rounded-full overflow-hidden">
+                <img src="{{ ingredients_7_item_5_image | campaign_asset }}" alt="{{ ingredients_7_item_5_title }}" class="w-full h-full object-cover">
+              </div>
+            </div>
+
+            <div class="bg-white border border-[var(--border-default)] rounded-[16px] px-[12px] py-[24px] md:px-[16px] md:py-[32px] lg:px-[20px] lg:py-[40px] flex items-start gap-[12px] md:gap-[16px] lg:gap-[20px]">
+              <div class="flex-1 flex flex-col gap-[8px] md:gap-[10px] lg:gap-[12px]">
+                <h3 class="font-bold text-[20px] md:text-[20px] lg:text-[24px] leading-[1.5] tracking-[-0.1px] md:tracking-[-0.12px] text-[var(--text-primary)]">{{ ingredients_7_item_6_title }}</h3>
+                <p class="font-normal text-[14px] md:text-[14px] lg:text-[16px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.08px] text-[var(--text-primary)]">{{ ingredients_7_item_6_body }}</p>
+              </div>
+              <div class="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0 rounded-full overflow-hidden">
+                <img src="{{ ingredients_7_item_6_image | campaign_asset }}" alt="{{ ingredients_7_item_6_title }}" class="w-full h-full object-cover">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button
+        data-expandable-toggle
+        class="font-normal text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] underline text-center bg-transparent border-0 p-0 cursor-pointer"
+      >
+        <span
+          data-expandable-label
+          data-label-open="{{ ingredients_7_ingredients_link_text }}"
+          data-label-close="{{ ingredients_7_ingredients_link_text_close }}"
+        >{{ ingredients_7_ingredients_link_text }}</span>
+      </button>
+    </div>
+  </div>
+</section>
+

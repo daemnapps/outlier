@@ -1,0 +1,59 @@
+<section class="bg-[var(--brand-secondary)]">
+  <div class="mx-auto max-w-[1440px] px-[15px] py-[40px] md:px-[26px] md:py-[48px] lg:py-[60px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:flex-row lg:items-center lg:gap-[48px]">
+
+      {% comment %} Hero: full-bleed vs section padding on mobile/tablet; rounded + object-cover; desktop square {% endcomment %}
+      <div class="w-[calc(100%+30px)] max-w-none shrink-0 -mx-[15px] md:w-[calc(100%+52px)] md:-mx-[26px] lg:mx-0 lg:min-w-0 lg:w-full lg:flex-1">
+        <div class="relative h-[239px] w-full overflow-hidden rounded-[16px] md:h-[380px] md:rounded-[20px] lg:aspect-[560/560] lg:h-auto lg:rounded-[24px]">
+          <img
+            src="{{ problemsolution_4_hero_image | campaign_asset }}"
+            alt="{{ problemsolution_4_hero_image_alt }}"
+            class="pointer-events-none absolute inset-0 size-full max-w-none object-cover object-center"
+            width="368"
+            height="272"
+            loading="lazy">
+        </div>
+      </div>
+
+      {% comment %} Copy + CTA {% endcomment %}
+      <div class="flex w-full shrink-0 flex-col items-center gap-[20px] md:gap-[26px] lg:min-w-0 lg:flex-1 lg:items-start lg:gap-[32px]">
+        <div class="flex w-full flex-col gap-[12px] text-center md:gap-[16px] lg:gap-[20px] lg:text-left">
+          <h2 class="font-bold text-[28px] leading-[1.2] tracking-[-0.14px] text-[var(--text-primary)] md:text-[36px] md:tracking-[-0.18px] lg:text-[40px] lg:tracking-[-0.2px]">
+            {{ problemsolution_4_heading }}
+          </h2>
+          <p class="font-normal text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+            {{ problemsolution_4_body_1 }}
+          </p>
+          <p class="font-normal text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+            {{ problemsolution_4_body_2 }}
+          </p>
+          <p class="font-normal text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)] md:text-[18px] md:tracking-[-0.09px]">
+            {{ problemsolution_4_body_3 }}
+          </p>
+        </div>
+
+        <div class="flex w-full max-w-[345px] flex-col items-center gap-[8px] md:max-w-[440px] md:gap-[10px] lg:gap-[12px]">
+          <a
+            href="{{ next_url }}"
+            class="flex w-full items-center justify-center gap-[20px] rounded-[6px] bg-[var(--brand-primary)] px-[24px] py-[20px]">
+            <span class="text-center text-[20px] font-bold leading-[1.5] tracking-[-0.1px] text-white">
+              {{ cta_text }}
+            </span>
+            <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+          </a>
+          <div class="flex items-center justify-center gap-[8px]">
+            <img
+              src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}"
+              alt=""
+              class="h-[19px] w-[20px] shrink-0 object-contain"
+              aria-hidden="true">
+            <p class="text-center text-[16px] font-semibold leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">
+              {{ guarantee_text }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

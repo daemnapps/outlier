@@ -1,0 +1,108 @@
+<section class="w-full overflow-hidden bg-white">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px] py-[40px] md:py-[48px] lg:py-[60px]">
+    <div class="w-full flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <div class="w-full max-w-[640px] flex flex-col items-center text-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+        <p class="text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px] font-bold text-[var(--brand-primary)]">
+          {{ benefits_3_eyebrow }}
+        </p>
+        <h2 class="text-[32px] md:text-[36px] lg:text-[44px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] font-bold text-[var(--text-primary)]">
+          {{ benefits_3_heading }}
+        </h2>
+      </div>
+
+      <div class="w-full flex flex-col gap-[32px] md:gap-[40px] lg:gap-[48px]">
+        <div class="w-full flex flex-col lg:flex-row items-start lg:items-center gap-[12px] md:gap-[16px] lg:gap-[60px]">
+          <div class="w-full lg:w-[48%] flex flex-col gap-[20px] order-2 lg:order-1">
+            <h3 class="text-[24px] md:text-[26px] lg:text-[28px] leading-[1.2] tracking-[-0.12px] md:tracking-[-0.14px] lg:tracking-[-0.16px] font-bold text-[var(--text-primary)]">
+              {{ benefits_3_row_1_title }}
+            </h3>
+            <p class="text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+              <strong>{{ benefits_3_row_1_body_lead }}</strong>
+              {{ benefits_3_row_1_body }}
+            </p>
+            <div class="w-full border border-[var(--brand-primary)] px-[12px] md:px-[16px] py-[12px] md:py-[14px]">
+              <div class="flex items-start gap-[10px] md:gap-[20px]">
+                <div class="w-[103px] shrink-0">
+                  <p class="text-[16px] leading-[1.5] tracking-[-0.08px] italic text-[var(--text-primary)]">{{ benefits_3_row_1_stat_label }}</p>
+                  <p class="text-[44px] leading-[1.2] tracking-[-0.22px] font-bold text-[var(--brand-primary)]">{{ benefits_3_row_1_stat_value }}</p>
+                </div>
+                <p class="text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">
+                  <strong>{{ benefits_3_row_1_stat_lead }}</strong>{{ benefits_3_row_1_stat_body }}
+                </p>
+              </div>
+            </div>
+            <div class="w-full bg-[var(--brand-secondary)] px-[16px] pt-[16px] pb-[20px]">
+              {% if benefits_3_row_1_review and benefits_3_row_1_review != "" %}<div class="flex items-center gap-[2px] mb-[16px]">
+                <img src="{{ 'images/benefits-3/benefits-3-star-full.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-full.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-partial.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-empty.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-empty.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+              </div>{% endif %}
+              <p class="text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">
+                {{ benefits_3_row_1_review }}
+                <strong> {{ benefits_3_row_1_review_author }}</strong>
+              </p>
+            </div>
+          </div>
+          <div class="w-full lg:flex-1 order-1 lg:order-2 rounded-[12px] md:rounded-[16px] overflow-hidden">
+            <img src="{{ benefits_3_row_1_image | campaign_asset }}" alt="{{ benefits_3_row_1_image_alt }}" class="w-full h-auto object-cover">
+          </div>
+        </div>
+
+        <div class="w-full flex flex-col lg:flex-row items-start lg:items-center gap-[12px] md:gap-[16px] lg:gap-[60px]">
+          <div class="w-full lg:flex-1 rounded-[12px] md:rounded-[16px] overflow-hidden lg:order-1">
+            <img src="{{ benefits_3_row_2_image | campaign_asset }}" alt="{{ benefits_3_row_2_image_alt }}" class="w-full h-auto object-cover">
+          </div>
+          <div class="w-full lg:w-[48%] flex flex-col gap-[20px] lg:order-2">
+            <h3 class="text-[24px] md:text-[26px] lg:text-[28px] leading-[1.2] tracking-[-0.12px] md:tracking-[-0.14px] lg:tracking-[-0.16px] font-bold text-[var(--text-primary)]">
+              {{ benefits_3_row_2_title }}
+            </h3>
+            <p class="text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-primary)]">
+              <strong>{{ benefits_3_row_2_body_lead }}</strong>
+              {{ benefits_3_row_2_body }}
+            </p>
+            <div class="w-full border border-[var(--brand-primary)] px-[12px] md:px-[16px] py-[12px] md:py-[14px]">
+              <div class="flex items-start gap-[10px] md:gap-[20px]">
+                <div class="w-[103px] shrink-0">
+                  <p class="text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">{{ benefits_3_row_2_stat_label }}</p>
+                  <p class="text-[44px] leading-[1.2] tracking-[-0.22px] font-bold text-[var(--brand-primary)]">{{ benefits_3_row_2_stat_value }}</p>
+                </div>
+                <p class="text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">
+                  <strong>{{ benefits_3_row_2_stat_lead }}</strong>{{ benefits_3_row_2_stat_body }}
+                </p>
+              </div>
+            </div>
+            <div class="w-full bg-[var(--brand-secondary)] px-[16px] pt-[16px] pb-[20px]">
+              {% if benefits_3_row_2_review and benefits_3_row_2_review != "" %}<div class="flex items-center gap-[2px] mb-[16px]">
+                <img src="{{ 'images/benefits-3/benefits-3-star-full.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-full.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-partial.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-empty.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+                <img src="{{ 'images/benefits-3/benefits-3-star-empty.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px]" aria-hidden="true">
+              </div>{% endif %}
+              <p class="text-[16px] leading-[1.5] tracking-[-0.08px] text-[var(--text-primary)]">
+                {{ benefits_3_row_2_review }}
+                <strong> {{ benefits_3_row_2_review_author }}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-[345px] md:w-[440px]">
+        <div class="w-full flex flex-col items-center gap-[12px]">
+          <a href="{{ next_url }}"
+             class="w-full bg-[var(--brand-primary)] rounded-[6px] py-[20px] px-[24px] flex items-center justify-center gap-[20px] no-underline">
+            <span class="font-bold text-[20px] text-white text-center tracking-[-0.1px] leading-[1.5] whitespace-nowrap">{{ cta_text | default: "Order Now" }}</span>
+            <img src="{{ cta_button_arrow | default: 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+          </a>
+          <div class="flex items-center gap-[8px]">
+            <img src="{{ guarantee_icon | default: 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] shrink-0 object-contain" aria-hidden="true">
+            <p class="font-semibold text-[16px] text-[var(--text-primary)] text-center tracking-[-0.08px] leading-[1.5]">{{ guarantee_text | default: "30-Day Money Back Guarantee" }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

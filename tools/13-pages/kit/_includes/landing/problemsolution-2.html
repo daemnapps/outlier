@@ -1,0 +1,261 @@
+<section class="bg-[var(--surface-alt)] py-10 md:py-12 lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-8 md:gap-10 lg:gap-12">
+
+      {% comment %} Zone 1: Main heading {% endcomment %}
+      <h2 class="max-w-[800px] text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)] text-center">
+        {{ problemsolution_2_heading }}
+      </h2>
+
+      {% comment %} Zone 2: Problem row {% endcomment %}
+      <div class="flex flex-col md:flex-row items-start gap-5 md:gap-12 lg:gap-[60px] w-full">
+
+        {% comment %} Problem photo {% endcomment %}
+        <div class="w-full md:w-[320px] lg:w-[560px] shrink-0 overflow-hidden rounded-[16px] md:rounded-[20px] lg:rounded-[24px] aspect-[345/240] md:aspect-[560/582]">
+          <img
+            src="{{ problemsolution_2_problem_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+            alt="{{ problemsolution_2_problem_image_alt }}"
+            class="w-full h-full object-cover"
+          >
+        </div>
+
+        {% comment %} Pain cards column {% endcomment %}
+        <div class="flex flex-col gap-6 md:gap-8 flex-1">
+          <p class="text-[20px] lg:text-[24px] font-bold leading-[1.4] tracking-[-0.1px] lg:tracking-[-0.12px] text-[#8C2A1E] uppercase">
+            {{ problemsolution_2_problem_label }}
+          </p>
+          <div class="flex flex-col gap-3 md:gap-4 lg:gap-5">
+
+            <div class="bg-white border border-[#8C2A1E] rounded-[8px] p-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-x.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0 -scale-y-100" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-semibold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ problemsolution_2_pain_1 }}
+              </p>
+            </div>
+
+            <div class="bg-white border border-[#8C2A1E] rounded-[8px] p-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-x.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0 -scale-y-100" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-semibold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ problemsolution_2_pain_2 }}
+              </p>
+            </div>
+
+            <div class="bg-white border border-[#8C2A1E] rounded-[8px] p-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-x.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0 -scale-y-100" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-semibold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ problemsolution_2_pain_3 }}
+              </p>
+            </div>
+
+            <div class="bg-white border border-[#8C2A1E] rounded-[8px] p-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-x.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0 -scale-y-100" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-semibold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ problemsolution_2_pain_4 }}
+              </p>
+            </div>
+
+            <div class="bg-white border border-[#8C2A1E] rounded-[8px] p-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-x.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0 -scale-y-100" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-semibold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ problemsolution_2_pain_5 }}
+              </p>
+            </div>
+
+            <div class="bg-white border border-[#8C2A1E] rounded-[8px] p-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-x.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0 -scale-y-100" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-semibold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                {{ problemsolution_2_pain_6 }}
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      {% comment %} Zone 3: Bridge text {% endcomment %}
+      <p class="max-w-[800px] text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">
+        {{ problemsolution_2_bridge_text }}
+      </p>
+
+      {% comment %} Zone 4: Divider {% endcomment %}
+      <div class="flex items-center gap-8 justify-center w-full">
+        <img src="{{ 'images/problemsolution-2/icon-divider-line.svg' | campaign_asset }}" alt="" class="hidden md:block w-[160px] h-px shrink-0" aria-hidden="true">
+        <p class="text-[20px] lg:text-[24px] font-semibold leading-[1.5] tracking-[-0.1px] lg:tracking-[-0.12px] text-[var(--text-primary)] whitespace-nowrap">
+          {{ problemsolution_2_divider_label }}
+        </p>
+        <img src="{{ 'images/problemsolution-2/icon-divider-line.svg' | campaign_asset }}" alt="" class="hidden md:block w-[160px] h-px shrink-0" aria-hidden="true">
+      </div>
+
+      {% comment %} Zone 5: Relief icons grid — 2 cols mobile / 3 cols tablet / 6 cols desktop {% endcomment %}
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 w-full">
+
+        <div class="flex flex-col items-center gap-3">
+          <img src="{{ 'images/problemsolution-2/relief-ic-1.svg' | campaign_asset }}" alt="" class="w-[100px] h-[100px] object-contain">
+          <p class="text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">{{ problemsolution_2_relief_1 }}</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img src="{{ 'images/problemsolution-2/relief-ic-2.svg' | campaign_asset }}" alt="" class="w-[100px] h-[100px] object-contain">
+          <p class="text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">{{ problemsolution_2_relief_2 }}</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img src="{{ 'images/problemsolution-2/relief-ic-3.svg' | campaign_asset }}" alt="" class="w-[100px] h-[100px] object-contain">
+          <p class="text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">{{ problemsolution_2_relief_3 }}</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img src="{{ 'images/problemsolution-2/relief-ic-4.svg' | campaign_asset }}" alt="" class="w-[100px] h-[100px] object-contain">
+          <p class="text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">{{ problemsolution_2_relief_4 }}</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img src="{{ 'images/problemsolution-2/relief-ic-5.svg' | campaign_asset }}" alt="" class="w-[100px] h-[100px] object-contain">
+          <p class="text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">{{ problemsolution_2_relief_5 }}</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <img src="{{ 'images/problemsolution-2/relief-ic-6.svg' | campaign_asset }}" alt="" class="w-[100px] h-[100px] object-contain">
+          <p class="text-[18px] md:text-[20px] font-bold leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px] text-[var(--text-primary)] text-center">{{ problemsolution_2_relief_6 }}</p>
+        </div>
+
+      </div>
+
+      {% comment %} Zone 6: Solution row {% endcomment %}
+      <div class="flex flex-col md:flex-row items-start gap-5 md:gap-12 lg:gap-[60px] w-full">
+
+        {% comment %} Left column: product photo + testimonial card (testimonial hidden on mobile) {% endcomment %}
+        <div class="w-full md:w-[320px] lg:w-[560px] shrink-0 flex flex-col gap-5">
+
+          <div class="w-full overflow-hidden rounded-[16px] md:rounded-[20px] lg:rounded-[24px] aspect-square">
+            <img
+              src="{{ problemsolution_2_solution_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}"
+              alt="{{ problemsolution_2_solution_image_alt }}"
+              class="w-full h-full object-cover"
+            >
+          </div>
+
+          {% comment %} Testimonial card: desktop / tablet only {% endcomment %}
+          <div class="hidden md:flex bg-white border border-[var(--brand-primary)] rounded-[8px] p-3">
+            <div class="flex flex-col gap-3 flex-1">
+              <div class="flex flex-col gap-1">
+                <p class="text-[16px] md:text-[18px] font-bold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+                  {{ problemsolution_2_review_title }}
+                </p>
+                <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+                <p class="text-[14px] lg:text-[16px] font-normal leading-[1.5] tracking-[-0.07px] lg:tracking-[-0.08px] text-[var(--text-secondary)]">
+                  {{ problemsolution_2_review_body }}
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <img src="{{ problemsolution_2_bridge_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-10 h-10 rounded-full shrink-0 object-cover">
+                <p class="text-[14px] font-bold leading-[1.4] tracking-[-0.07px] text-[var(--text-primary)]">
+                  {{ problemsolution_2_review_author }}
+                </p>
+                <div class="flex items-center gap-1 ml-1">
+                  <img src="{{ 'images/problemsolution-2/icon-verified.svg' | campaign_asset }}" alt="" class="w-3 h-3 shrink-0" aria-hidden="true">
+                  <p class="text-[14px] font-semibold leading-[1.4] tracking-[-0.07px] text-[var(--brand-primary)]">Verified Buyer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {% comment %} Right column: solution content + bullets + CTA {% endcomment %}
+        <div class="flex flex-col gap-6 md:gap-8 flex-1">
+
+          <div class="flex flex-col gap-4 md:gap-5">
+            <h2 class="text-[28px] md:text-[32px] lg:text-[40px] font-bold leading-[1.2] tracking-[-0.14px] md:tracking-[-0.16px] lg:tracking-[-0.2px] text-[var(--text-primary)]">
+              {{ problemsolution_2_solution_heading }}
+            </h2>
+            <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+              {{ problemsolution_2_solution_body_1 }}
+            </p>
+            <p class="text-[16px] md:text-[18px] font-normal leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)]">
+              {{ problemsolution_2_solution_body_2 }}
+            </p>
+          </div>
+
+          {% comment %} Bullet items {% endcomment %}
+          <div class="flex flex-col gap-3">
+
+            <div class="border-b border-[var(--border-default)] pb-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-check.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-bold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)] flex-1">
+                {{ problemsolution_2_bullet_1 }}
+              </p>
+            </div>
+
+            <div class="border-b border-[var(--border-default)] pb-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-check.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-bold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)] flex-1">
+                {{ problemsolution_2_bullet_2 }}
+              </p>
+            </div>
+
+            <div class="border-b border-[var(--border-default)] pb-3 flex items-center gap-3">
+              <img src="{{ 'images/problemsolution-2/icon-check.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-bold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)] flex-1">
+                {{ problemsolution_2_bullet_3 }}
+              </p>
+            </div>
+
+            <div class="flex items-center gap-3 pb-3">
+              <img src="{{ 'images/problemsolution-2/icon-check.svg' | campaign_asset }}" alt="" class="w-10 h-10 shrink-0" aria-hidden="true">
+              <p class="text-[16px] md:text-[18px] font-bold leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px] text-[var(--text-secondary)] flex-1">
+                {{ problemsolution_2_bullet_4 }}
+              </p>
+            </div>
+
+          </div>
+
+          {% comment %} CTA {% endcomment %}
+          <div class="w-full md:max-w-[440px] flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px]">
+            <a href="{{ next_url }}" class="w-full rounded-[6px] bg-[var(--brand-primary)] px-[24px] py-[20px] flex items-center justify-center gap-[20px]">
+              <span class="text-[20px] leading-[1.5] tracking-[-0.1px] font-bold text-white text-center">
+                {{ cta_text }}
+              </span>
+              <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[12px] shrink-0" aria-hidden="true">
+            </a>
+            <div class="flex items-center gap-[8px]">
+              <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain" aria-hidden="true">
+              <p class="text-[16px] leading-[1.5] tracking-[-0.08px] font-semibold text-[var(--text-primary)] whitespace-nowrap">
+                {{ guarantee_text }}
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      {% comment %} Testimonial card: mobile only, appears below CTA {% endcomment %}
+      <div class="md:hidden bg-white border border-[var(--brand-primary)] rounded-[8px] p-3 w-full">
+        <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-1">
+            <p class="text-[16px] font-bold leading-[1.5] tracking-[-0.08px] text-[var(--text-secondary)]">
+              {{ problemsolution_2_review_title }}
+            </p>
+            <p class="text-[20px] tracking-[2px] text-[var(--brand-accent)] leading-[1.5]">★★★★★</p>
+            <p class="text-[14px] font-normal leading-[1.5] tracking-[-0.07px] text-[var(--text-secondary)]">
+              {{ problemsolution_2_review_body }}
+            </p>
+          </div>
+          <div class="flex items-center gap-2">
+            <img src="{{ problemsolution_2_review_image | default: 'images/_shared/1x1_1.svg' | campaign_asset }}" alt="" class="w-10 h-10 rounded-full shrink-0 object-cover">
+            <p class="text-[14px] font-bold leading-[1.4] tracking-[-0.07px] text-[var(--text-primary)]">
+              {{ problemsolution_2_review_author }}
+            </p>
+            <div class="flex items-center gap-1 ml-1">
+              <img src="{{ 'images/problemsolution-2/icon-verified.svg' | campaign_asset }}" alt="" class="w-3 h-3 shrink-0" aria-hidden="true">
+              <p class="text-[14px] font-semibold leading-[1.4] tracking-[-0.07px] text-[var(--brand-primary)]">Verified Buyer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

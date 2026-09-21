@@ -1,0 +1,14 @@
+{
+ "_what": "The steps of the video edit, in order. run.py and the page both read this list — nothing else decides what runs.",
+ "steps": [
+  {"id": "gather",   "n": 1, "who": "machine", "what": "Collect what was approved upstream: A-roll clips, B-roll clips, the one voice track with its word timings, music, sound effects. Anything not approved is refused by name."},
+  {"id": "cut",      "n": 2, "who": "model:opus", "prompt": "prompts/stage-2-cut", "what": "Write the cut sheet: which clip covers which words, where B-roll covers A-roll, trims, sound levels. Reads the brief, the teardown's roll labels and everything Damon has changed before.", "fallback": "auto — clips in scene order laid on the voice timings"},
+  {"id": "gate",     "n": 3, "who": "machine", "what": "Check the cut sheet before anything renders: every file exists, no hole in the picture, trims inside the source, captions inside the frame and the runtime, every look and transition on its list. Red names the field."},
+  {"id": "timeline", "n": 4, "who": "damon", "stop": true, "what": "STOP 1 — the timeline page: every layer as bars on one clock, dead space already out. Approve, or say what to change in plain words."},
+  {"id": "captions", "n": 5, "who": "damon", "stop": true, "what": "STOP 2 — captions on, in the chosen look, shown as real frames from the edit. Approve, switch the look, or fix a word."},
+  {"id": "export",   "n": 6, "who": "machine", "what": "Write the HyperFrames page from the cut sheet, run its own checks, render the final file."},
+  {"id": "checks",   "n": 7, "who": "machine", "what": "The quality lane on the finished file: length matches the sheet, picture never black, voice level and music level in range, captions in time with the words."},
+  {"id": "file",     "n": 8, "who": "machine", "what": "File the record to runs/video-edit/<brand>/<label>/ and the video to the same path on the Drive, named by the naming convention."},
+  {"id": "learn",    "n": 9, "who": "model:sonnet", "prompt": "prompts/stage-9-learn", "what": "Every change Damon made at a stop, with the why, becomes a rule the next cut reads."}
+ ]
+}

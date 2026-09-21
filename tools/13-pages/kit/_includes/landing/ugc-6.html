@@ -1,0 +1,134 @@
+<section class="bg-[var(--surface-alt)] py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[60px] xl:px-[120px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+
+      {% comment %} Header {% endcomment %}
+      <div class="flex flex-col items-center gap-[12px] md:gap-[16px] lg:gap-[20px] w-full">
+
+        {% comment %} Stars + rating {% endcomment %}
+        <div class="flex items-center gap-[8px] md:gap-[16px]">
+          <span class="text-[18px] md:text-[26px] lg:text-[32px] text-[var(--brand-accent)] tracking-[2px] leading-none">★★★★★</span>
+          <p class="font-medium text-[14px] lg:text-[16px] lg:text-[20px] tracking-[-0.07px] md:tracking-[-0.08px] lg:tracking-[-0.1px] text-[var(--text-primary)] leading-[1.5]">
+            {{ ugc_6_rating_label }}
+          </p>
+        </div>
+
+        {% comment %} Heading {% endcomment %}
+        <h2 class="font-bold text-[32px] md:text-[36px] lg:text-[44px] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.22px] text-[var(--text-primary)] leading-[1.2] text-center">
+          {{ ugc_6_section_heading }}
+        </h2>
+
+        {% comment %} Stat boxes {% endcomment %}
+        <div class="flex flex-col md:flex-row gap-[12px] md:gap-[16px] lg:gap-[20px] w-full lg:max-w-[980px]">
+
+          <div class="md:flex-1 flex items-center gap-[16px] md:gap-[24px] h-[64px] md:h-[72px] lg:h-[80px] px-[14px] md:px-[16px] lg:px-[24px] bg-white border border-[var(--brand-primary)] rounded-[4px] md:rounded-[6px] lg:rounded-[8px]">
+            <span class="font-bold text-[28px] md:text-[34px] lg:text-[40px] tracking-[-0.14px] md:tracking-[-0.17px] lg:tracking-[-0.2px] text-[var(--brand-primary)] leading-[1.2] shrink-0">
+              {{ ugc_6_stat_1_number }}
+            </span>
+            <p class="font-semibold text-[14px] lg:text-[16px] tracking-[-0.07px] lg:tracking-[-0.08px] text-[var(--text-primary)] leading-[1.5]">
+              {{ ugc_6_stat_1_label }}
+            </p>
+          </div>
+
+          <div class="md:flex-1 flex items-center gap-[8px] md:gap-[16px] lg:gap-[24px] h-[64px] md:h-[72px] lg:h-[80px] px-[14px] md:px-[16px] lg:px-[24px] bg-white border border-[var(--brand-primary)] rounded-[4px] md:rounded-[6px] lg:rounded-[8px]">
+            <span class="font-bold text-[32px] md:text-[36px] lg:text-[40px] tracking-[-0.16px] md:tracking-[-0.19px] lg:tracking-[-0.2px] text-[var(--brand-primary)] leading-[1.2] shrink-0">
+              {{ ugc_6_stat_2_number }}
+            </span>
+            <p class="font-semibold text-[14px] lg:text-[16px] tracking-[-0.07px] lg:tracking-[-0.08px] text-[var(--text-primary)] leading-[1.5]">
+              {{ ugc_6_stat_2_label }}
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      {% comment %} Swiper — nav inside, mobile only {% endcomment %}
+      <div class="ugc-6-swiper w-full" data-swiper-root
+           data-slides="1.1"
+           data-slides-md="4"
+           data-slides-lg="4"
+           data-gap="16"
+           data-gap-md="24"
+           data-gap-lg="32"
+           data-loop="true"
+           data-loop-md="false"
+           data-swiper-variant="sw-landing1">
+        <div class="swiper" data-swiper>
+
+          <div class="swiper-wrapper">
+
+            {% comment %} Slide 1 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[14px] md:rounded-[16px] overflow-hidden h-[535px] md:h-[316px] lg:h-[500px]" data-video-inline data-video-src="{{ ugc_6_slide_1_video_url }}">
+                <img src="{{ ugc_6_slide_1_photo | campaign_asset }}"
+                     alt="{{ ugc_6_slide_1_alt }}"
+                     class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/ugc-6/ugc-6-play-1.svg' | campaign_asset }}" alt="Play video" class="w-[56px] h-[56px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 2 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[14px] md:rounded-[16px] overflow-hidden h-[535px] md:h-[316px] lg:h-[500px]" data-video-inline data-video-src="{{ ugc_6_slide_2_video_url }}">
+                <img src="{{ ugc_6_slide_2_photo | campaign_asset }}"
+                     alt="{{ ugc_6_slide_2_alt }}"
+                     class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/ugc-6/ugc-6-play-2.svg' | campaign_asset }}" alt="Play video" class="w-[56px] h-[56px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 3 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[14px] md:rounded-[16px] overflow-hidden h-[535px] md:h-[316px] lg:h-[500px]" data-video-inline data-video-src="{{ ugc_6_slide_3_video_url }}">
+                <img src="{{ ugc_6_slide_3_photo | campaign_asset }}"
+                     alt="{{ ugc_6_slide_3_alt }}"
+                     class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/ugc-6/ugc-6-play-3.svg' | campaign_asset }}" alt="Play video" class="w-[56px] h-[56px]">
+                </button>
+              </div>
+            </div>
+
+            {% comment %} Slide 4 {% endcomment %}
+            <div class="swiper-slide">
+              <div class="relative rounded-[14px] md:rounded-[16px] overflow-hidden h-[535px] md:h-[316px] lg:h-[500px]" data-video-inline data-video-src="{{ ugc_6_slide_4_video_url }}">
+                <img src="{{ ugc_6_slide_4_photo | campaign_asset }}"
+                     alt="{{ ugc_6_slide_4_alt }}"
+                     class="w-full h-full object-cover">
+                <button class="absolute inset-0 flex items-center justify-center w-full bg-transparent border-0 cursor-pointer p-0">
+                  <img src="{{ 'images/ugc-6/ugc-6-play-4.svg' | campaign_asset }}" alt="Play video" class="w-[56px] h-[56px]">
+                </button>
+              </div>
+            </div>
+
+          </div>{% comment %} /.swiper-wrapper {% endcomment %}
+
+          {% comment %} Nav — mobile only, inside .swiper (hidden on md+ via data-swiper-controls) {% endcomment %}
+          <div class="md:hidden flex items-center justify-center gap-[16px] mt-[36px]" data-swiper-controls>
+            <button type="button"
+                    class="w-[40px] h-[40px] rounded-full bg-white flex items-center justify-center shadow-sm border-0 cursor-pointer shrink-0"
+                    data-swiper-prev>
+              <span class="sr-only">Previous</span>
+              <img src="{{ 'images/_shared/swiper-arrow-left.svg' | campaign_asset }}" alt="" class="w-[16px] h-[16px]">
+            </button>
+
+            <div class="swiper-pagination ugc-6-pagination"></div>
+
+            <button type="button"
+                    class="w-[40px] h-[40px] rounded-full bg-white flex items-center justify-center shadow-sm border-0 cursor-pointer shrink-0"
+                    data-swiper-next>
+              <span class="sr-only">Next</span>
+              <img src="{{ 'images/_shared/swiper-arrow-right.svg' | campaign_asset }}" alt="" class="w-[16px] h-[16px]">
+            </button>
+          </div>
+
+        </div>{% comment %} /.swiper {% endcomment %}
+      </div>{% comment %} /.ugc-6-swiper {% endcomment %}
+
+    </div>
+  </div>
+</section>

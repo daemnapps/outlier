@@ -1,0 +1,172 @@
+<section class="bg-[var(--brand-secondary)] py-[40px] md:py-[48px] lg:py-[60px]">
+  <div class="max-w-[1440px] mx-auto px-[15px] md:px-[26px] lg:px-[80px] xl:px-[160px]">
+    <div class="flex flex-col items-center gap-[32px] md:gap-[40px] lg:gap-[48px]">
+      <div class="w-full max-w-[800px] flex flex-col items-center gap-[20px] md:gap-[26px] lg:gap-[32px] text-center text-[var(--text-primary)]">
+        <div class="flex flex-col items-center gap-[12px] md:gap-[16px] lg:gap-[20px]">
+          <h2 class="font-bold text-[32px] md:text-[36px] lg:text-[40px] leading-[1.2] tracking-[-0.16px] md:tracking-[-0.19px] md:whitespace-nowrap lg:tracking-[-0.2px]">
+            <span class="text-[var(--brand-primary)]">{{ reviews_1_heading_highlight }}</span>
+            <span> {{ reviews_1_heading_text }}</span>
+          </h2>
+          <p class="font-normal text-[18px] md:text-[20px] leading-[1.5] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_subheading }}</p>
+        </div>
+
+        <div class="flex items-center justify-center gap-[8px] md:gap-[12px]">
+          <p class="font-bold text-[14px] md:text-[18px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.09px]">{{ reviews_1_rating_label }}</p>
+
+          <div class="hidden md:flex items-center gap-[2px] h-[24px]">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary-alt.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary.svg' | campaign_asset }}" alt="" class="w-[24px] h-[24px] object-contain">
+          </div>
+          <div class="flex md:hidden items-center gap-[2px] h-[20px]">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary-alt.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary-alt.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] object-contain">
+            <img src="{{ 'images/reviews-1/reviews-1-stars-summary-alt.svg' | campaign_asset }}" alt="" class="w-[20px] h-[20px] object-contain">
+          </div>
+
+          <p class="font-normal text-[14px] md:text-[18px] leading-[1.5] tracking-[-0.07px] md:tracking-[-0.09px]">
+            <span class="font-bold">{{ reviews_1_review_score }}</span> out of
+            <span class="font-bold">{{ reviews_1_review_count }}</span> reviews
+          </p>
+        </div>
+      </div>
+
+      <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-[12px] md:gap-[16px] lg:gap-[20px]">
+        <article class="bg-white rounded-[8px] md:rounded-[12px] pt-[12px] pb-[16px] pl-[10px] pr-[12px] md:pt-[20px] md:pb-[24px] md:pl-[20px] md:pr-[32px]">
+          <div class="flex items-start gap-[12px] md:gap-[20px]">
+            <img src="{{ reviews_1_card_1_image | campaign_asset }}" alt="{{ reviews_1_card_1_name_date }}" class="w-[88px] h-[118px] rounded-[4px] object-cover shrink-0">
+            <div class="flex-1 min-w-0 flex flex-col gap-[6px] md:gap-[8px]">
+              <div class="flex items-center gap-[2px]">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[12px] text-[var(--text-primary)]">
+                <p class="font-normal text-[12px] md:text-[14px] leading-[1.5] tracking-[-0.06px] md:tracking-[-0.07px]">{{ reviews_1_card_1_name_date }}</p>
+                <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_card_1_title }}</p>
+                <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">{{ reviews_1_card_1_body }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[8px] md:rounded-[12px] pt-[12px] pb-[16px] pl-[10px] pr-[12px] md:pt-[20px] md:pb-[24px] md:pl-[20px] md:pr-[32px]">
+          <div class="flex items-start gap-[12px] md:gap-[20px]">
+            <img src="{{ reviews_1_card_2_image | campaign_asset }}" alt="{{ reviews_1_card_2_name_date }}" class="w-[88px] h-[118px] rounded-[4px] object-cover shrink-0">
+            <div class="flex-1 min-w-0 flex flex-col gap-[6px] md:gap-[8px]">
+              <div class="flex items-center gap-[2px]">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[12px] text-[var(--text-primary)]">
+                <p class="font-normal text-[12px] md:text-[14px] leading-[1.5] tracking-[-0.06px] md:tracking-[-0.07px]">{{ reviews_1_card_2_name_date }}</p>
+                <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_card_2_title }}</p>
+                <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">{{ reviews_1_card_2_body }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[8px] md:rounded-[12px] pt-[12px] pb-[16px] pl-[10px] pr-[12px] md:pt-[20px] md:pb-[24px] md:pl-[20px] md:pr-[32px]">
+          <div class="flex items-start gap-[12px] md:gap-[20px]">
+            <img src="{{ reviews_1_card_3_image | campaign_asset }}" alt="{{ reviews_1_card_3_name_date }}" class="w-[88px] h-[118px] rounded-[4px] object-cover shrink-0">
+            <div class="flex-1 min-w-0 flex flex-col gap-[6px] md:gap-[8px]">
+              <div class="flex items-center gap-[2px]">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[12px] text-[var(--text-primary)]">
+                <p class="font-normal text-[12px] md:text-[14px] leading-[1.5] tracking-[-0.06px] md:tracking-[-0.07px]">{{ reviews_1_card_3_name_date }}</p>
+                <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_card_3_title }}</p>
+                <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">{{ reviews_1_card_3_body }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[8px] md:rounded-[12px] pt-[12px] pb-[16px] pl-[10px] pr-[12px] md:pt-[20px] md:pb-[24px] md:pl-[20px] md:pr-[32px]">
+          <div class="flex items-start gap-[12px] md:gap-[20px]">
+            <img src="{{ reviews_1_card_4_image | campaign_asset }}" alt="{{ reviews_1_card_4_name_date }}" class="w-[88px] h-[118px] rounded-[4px] object-cover shrink-0">
+            <div class="flex-1 min-w-0 flex flex-col gap-[6px] md:gap-[8px]">
+              <div class="flex items-center gap-[2px]">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[12px] text-[var(--text-primary)]">
+                <p class="font-normal text-[12px] md:text-[14px] leading-[1.5] tracking-[-0.06px] md:tracking-[-0.07px]">{{ reviews_1_card_4_name_date }}</p>
+                <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_card_4_title }}</p>
+                <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">{{ reviews_1_card_4_body }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[8px] md:rounded-[12px] pt-[12px] pb-[16px] pl-[10px] pr-[12px] md:pt-[20px] md:pb-[24px] md:pl-[20px] md:pr-[32px]">
+          <div class="flex items-start gap-[12px] md:gap-[20px]">
+            <img src="{{ reviews_1_card_5_image | campaign_asset }}" alt="{{ reviews_1_card_5_name_date }}" class="w-[88px] h-[118px] rounded-[4px] object-cover shrink-0">
+            <div class="flex-1 min-w-0 flex flex-col gap-[6px] md:gap-[8px]">
+              <div class="flex items-center gap-[2px]">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[12px] text-[var(--text-primary)]">
+                <p class="font-normal text-[12px] md:text-[14px] leading-[1.5] tracking-[-0.06px] md:tracking-[-0.07px]">{{ reviews_1_card_5_name_date }}</p>
+                <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_card_5_title }}</p>
+                <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">{{ reviews_1_card_5_body }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-[8px] md:rounded-[12px] pt-[12px] pb-[16px] pl-[10px] pr-[12px] md:pt-[20px] md:pb-[24px] md:pl-[20px] md:pr-[32px]">
+          <div class="flex items-start gap-[12px] md:gap-[20px]">
+            <img src="{{ reviews_1_card_6_image | campaign_asset }}" alt="{{ reviews_1_card_6_name_date }}" class="w-[88px] h-[118px] rounded-[4px] object-cover shrink-0">
+            <div class="flex-1 min-w-0 flex flex-col gap-[6px] md:gap-[8px]">
+              <div class="flex items-center gap-[2px]">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+                <img src="{{ 'images/reviews-1/reviews-1-stars-card.svg' | campaign_asset }}" alt="" class="w-[22px] h-[22px] object-contain">
+              </div>
+              <div class="flex flex-col gap-[8px] md:gap-[12px] text-[var(--text-primary)]">
+                <p class="font-normal text-[12px] md:text-[14px] leading-[1.5] tracking-[-0.06px] md:tracking-[-0.07px]">{{ reviews_1_card_6_name_date }}</p>
+                <p class="font-bold text-[18px] md:text-[20px] leading-[1.4] tracking-[-0.09px] md:tracking-[-0.1px]">{{ reviews_1_card_6_title }}</p>
+                <p class="font-normal text-[16px] md:text-[18px] leading-[1.5] tracking-[-0.08px] md:tracking-[-0.09px]">{{ reviews_1_card_6_body }}</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="w-full max-w-[345px] md:max-w-[440px] flex flex-col items-center gap-[8px] md:gap-[10px] lg:gap-[12px]">
+        <a href="{{ next_url }}" class="w-full bg-[var(--brand-primary)] rounded-[6px] px-[24px] py-[20px] flex items-center justify-center gap-[20px]">
+          <span class="font-bold text-[20px] leading-[1.5] tracking-[-0.1px] text-white text-center">{{ cta_text }}</span>
+          <img src="{{ 'images/_shared/arrow-right.svg' | campaign_asset }}" alt="" class="w-[12px] h-[16px] object-contain">
+        </a>
+        <div class="flex items-center justify-center gap-[8px] text-[var(--text-primary)]">
+          <img src="{{ 'images/_shared/cta-guarantee-icon.png' | campaign_asset }}" alt="" class="w-[20px] h-[19px] object-contain">
+          <p class="font-semibold text-[16px] leading-[1.5] tracking-[-0.08px] text-center">{{ guarantee_text }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
