@@ -14,7 +14,7 @@
 /* page-specific only: the room fills the viewport behind the copy, and one
    card opens when an object is clicked. Colour, type, radii, spacing and the
    grain all come from /studio.css. */
-.stage{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
+.stage{position:relative;min-height:min(100svh,780px);display:grid;grid-template-rows:auto 1fr auto}
 #scene{inset:0}
 .mid{position:relative;z-index:2;max-width:min(560px,48vw);display:grid;align-content:center;gap:var(--s4);
   padding-block:clamp(var(--s6),7vh,var(--s8));padding-inline:var(--gutter);margin:0 auto;width:100%;
@@ -30,6 +30,18 @@
   font:500 18px/1 var(--mono);cursor:pointer}
 .card-obj .x:hover{color:var(--ink)}
 .hint{margin-left:auto}
+/* the objects, doing the work of the page below the room */
+.duo{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--s7);align-items:center}
+.duo.flip{grid-template-columns:1.15fr .85fr}
+.duo.flip figure{order:-1}
+.duo figure{margin:0}
+.duo img{width:100%;max-width:400px;margin-inline:auto}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--s5);margin-top:var(--s6)}
+.trio figure{margin:0 0 var(--s3);background:var(--paper);border:1px solid var(--line);border-radius:var(--r3)}
+.trio img{width:100%;aspect-ratio:1;object-fit:contain}
+.close{display:grid;gap:var(--s4);justify-items:center;text-align:center;padding-block:var(--s8)}
+.close img{width:min(300px,64vw)}
+@media (max-width:860px){ .duo,.duo.flip{grid-template-columns:1fr;gap:var(--s4)} .duo.flip figure{order:0} }
 @media (max-width:980px){ .mid > .col{max-width:none} }
 @media (max-width:760px){ #scene{opacity:.5} .hint{display:none} }
 </style>
@@ -55,14 +67,94 @@
     </div>
   </div></div>
 
-  <footer class="bot">
-    <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">The toolkit, open source</a>
-    <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a>
-    <a href="mailto:ddixon@gradientmediallc.com">Get in touch</a>
-    <span class="hint label" id="hint">Drag to look around · click a thing on the desk</span>
-  </footer>
+  <p class="label" style="padding-inline:var(--gutter);max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2"
+     id="hint">Drag to look around · click a thing on the desk</p>
 
   <div id="scene" class="room" aria-hidden="true"></div>
+</div>
+
+<div class="wrap">
+
+  <hr class="prism">
+
+  <section class="sec">
+    <p class="eyebrow">What the machine actually does</p>
+    <h2>Three moves, over and over.</h2>
+    <p class="lede">Nothing here is clever. It is the same three moves run at a
+      volume a person cannot match by hand.</p>
+    <div class="trio">
+      <div>
+        <figure><img src="media/objects/lens.webp" alt="A convex glass lens in a chrome bezel, bending the light behind it into a spectrum" loading="lazy"></figure>
+        <p class="label hue" style="--hue:var(--cyan)">01 · Read it</p>
+        <h3>Tear the thing down</h3>
+        <p>A post that already worked goes in. What comes out is its structure —
+          the hook, the beats, the argument — separated from the brand that made it.</p>
+      </div>
+      <div>
+        <figure><img src="media/objects/ribbon.webp" alt="A twisted chrome ribbon, one continuous band turning back on itself" loading="lazy"></figure>
+        <p class="label hue" style="--hue:var(--magenta)">02 · Turn it</p>
+        <h3>Put our brand in it</h3>
+        <p>The same surface, turned. The structure holds; the problem, the product
+          and the words become ours. Nothing is invented that the market did not say.</p>
+      </div>
+      <div>
+        <figure><img src="media/objects/cube.webp" alt="A glass beam-splitter cube with a spectrum inside it" loading="lazy"></figure>
+        <p class="label hue" style="--hue:var(--amber)">03 · Split it</p>
+        <h3>One brief, many assets</h3>
+        <p>A brief fans out — hooks, variations, formats, a whole batch — each one
+          a real test rather than four unrelated pictures.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="duo">
+      <figure><img src="media/objects/cards.webp" alt="A stack of bone cards with chrome edges" loading="lazy"></figure>
+      <div>
+        <p class="eyebrow">The output</p>
+        <h2>It ends in a brief someone can shoot.</h2>
+        <p class="lede">Not a strategy deck. A document a clipper or a creator
+          opens, matches against the post it came from, and makes.</p>
+        <p>Every brief shows what it was built from, carries its own Google Doc
+          and a Drive folder with the deliverables, and names the offer, the
+          product and where the traffic goes.</p>
+        <div class="btns" style="margin-top:var(--s4)">
+          <a class="btn" href="/briefs/">See the briefs</a>
+          <a class="btn ghost" href="/objects.html">The object library</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="duo flip">
+      <div>
+        <p class="eyebrow">Why it keeps working</p>
+        <h2>The loop is the product.</h2>
+        <p class="lede">When a brief lands, the machine makes more like it. When
+          one is wrong, one prompt gets fixed and every brief after it is better.</p>
+        <p>That is the whole reason the prompts are readable files rather than a
+          black box — the thing you improve is the instruction, not the output.</p>
+        <div class="btns" style="margin-top:var(--s4)">
+          <a class="btn ghost" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Read the prompts</a>
+        </div>
+      </div>
+      <figure><img src="media/objects/torus.webp" alt="A brushed chrome torus with no beginning and no end" loading="lazy"></figure>
+    </div>
+  </section>
+
+  <hr>
+
+  <div class="close">
+    <img src="media/objects/prizm.webp" alt="A faceted glass prism splitting light into a spectrum" loading="lazy">
+    <p class="eyebrow" style="justify-content:center">Prizm</p>
+    <h2>One beam in. Everything out.</h2>
+    <p class="lede" style="max-width:44ch">If you make the ads, start with the
+      onboarding. It is two accounts and one prompt a day.</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn" href="/onboarding.html">Start here</a>
+    </div>
+  </div>
 </div>
 
 <div class="card-obj" id="card" hidden>
@@ -224,4 +316,10 @@ try{
   else $('#hint').textContent = '';
 }catch(e){ $('#hint').textContent = ''; }
 </script>
+<footer class="bot">
+  <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">The toolkit, open source</a>
+  <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a>
+  <a href="mailto:ddixon@gradientmediallc.com">Get in touch</a>
+  <span class="right">DÆMN STUDIO® · MIT</span>
+</footer>
 </html>
