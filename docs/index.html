@@ -177,6 +177,9 @@ const CALM = matchMedia('(prefers-reduced-motion:reduce)').matches;
 const ROT_Y = -Math.PI / 2;          // the head mesh arrives facing +x; turn the face to camera
 
 // The four things on the desk. Each one opens a card and goes somewhere real.
+// The prism is deliberately NOT here: image-to-3D cannot read transparent
+// glass and returned a folded white card. It carries the brand as a still,
+// on this page's closing block and across the object library.
 const DESK = [
   {id:'laptop', file:'desk-laptop.glb', pos:[1.15,-1.15,.5], rot:.35, size:.62,
    k:'The tools', title:'The toolkit', hue:'var(--violet)', href:'https://github.com/daemnapps/outlier', go:'Open the repo',
