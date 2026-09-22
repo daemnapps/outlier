@@ -226,6 +226,18 @@ details > :not(summary){margin-top:var(--s3)}
 .railin a:hover{color:var(--ink)}
 .railin a.on{color:var(--ink);border-bottom-color:var(--indigo)}
 .rail ~ * section,section{scroll-margin-top:60px}
+.kit-meta{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);font-family:var(--mono);font-size:11px;
+  letter-spacing:.04em;color:var(--ink-3);padding-bottom:var(--s3);border-bottom:1px solid var(--line);margin-bottom:var(--s4)}
+.bank{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s1) var(--s5);
+  margin:0 0 var(--s4);padding:0;list-style:none;max-width:none}
+.bank li{padding:var(--s2) 0;border-bottom:1px solid var(--line);font-weight:500;margin:0}
+/* the kit's own headings and copy need their rhythm back: the system sets no
+   margins on h2/h3/p so that every page can choose, and a generated page
+   cannot. */
+.tabs ~ section h2{margin-bottom:var(--s2)}
+.tabs ~ section h3{margin-top:var(--s6);margin-bottom:var(--s2)}
+.tabs ~ section p{margin-bottom:var(--s3)}
+.tabs ~ section ul{margin-bottom:var(--s4)}
 
 /* ── footer ─────────────────────────────────────────────────────────── */
 footer.bot{width:100%;max-width:1180px;margin:var(--s7) auto 0;padding-inline:var(--gutter);
