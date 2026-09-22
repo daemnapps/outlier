@@ -1,5 +1,61 @@
 # The video teardown machine
 
+**Two lines, and the one thing they share.**
+
+```
+python3 machine/line.py teardown <video> --brand <brand>     swipe in, spec out
+python3 machine/line.py creator  --label <run> --brand <b>   a person films it
+python3 machine/line.py ai       --label <run> --brand <b>   nobody is on set
+```
+
+Reading a swiped video is one job. What you do with it is two.
+
+Tearing a source down — what is on screen, who it is for, the reusable machine
+underneath — does not care who performs the result. Everything after that does,
+and the two jobs have almost nothing in common: one ends with a person holding
+a phone in their own bathroom, the other with nobody on set at all.
+
+```
+                    ┌─ TEARDOWN ─┐   route-free, shared
+                    │  0 1 1b 2  │
+                    └─────┬──────┘
+              ┌───────────┴───────────┐
+      ┌───────▼────────┐     ┌────────▼────────┐
+      │ CREATOR        │     │ AI              │
+      │ inject → loop  │     │ inject → loop   │
+      │ → brief        │     │ → scenes        │
+      │ → frames       │     │ → storyboard    │
+      │ → one-sheet    │     │ → generate      │
+      │ → Google Doc   │     │ → Premiere      │
+      └────────────────┘     └─────────────────┘
+```
+
+**The front half stays shared on purpose.** Two teardowns of the same source
+would drift, and then the two lines would be arguing about what the video
+actually was.
+
+**What differs downstream**, and why each one matters:
+
+| | Creator | AI |
+|---|---|---|
+| Stage 6 (frames) | runs — a person filming needs to see the shot | skipped |
+| Stage 7b (one-sheet) | runs — it is the page she reads | skipped; the storyboard is what this line reads |
+| Brief shape | a shot list with reference frames | scenes typed A / B / C |
+| Production instruction | what to film, with what they own | CUT owned footage, GENERATE, or COMPOSITE |
+| Camera equipment | theirs, and fine — they are filming | never named; it ends up in the shot |
+| Props | what they can buy | named products shown with their labels |
+
+Ruled 2026-09-11, after a run where "the same workflows are activating for
+both". Until then it was one chain with a `--route` flag, and the flag was a
+noun the stages repeated back rather than a fork they obeyed: a brief written
+for a generator went out saying "film this", and the stage that writes the page
+a creator reads ran on a line with no creator.
+
+`line.py` is a door, not a new machine. Each line calls the same stages with
+the right range and route, so nothing another brand's runs depend on moved.
+
+---
+
 A swiped video goes in. A shot-ready creator brief comes out — script, hooks,
 wardrobe, and a picture on every scene.
 

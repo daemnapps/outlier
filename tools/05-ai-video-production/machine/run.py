@@ -1269,6 +1269,40 @@ def cmd_record(a, download=None, parity_transport=None) -> int:
 
 # ----------------------------------------------------------------- pack
 
+def asks_section(plan: dict, results: dict, lines: dict, claims: dict) -> list[str]:
+    """The six asks, mechanically, from what the plan already holds — the shape
+    in ASKS-SPEC.md. A line the plan cannot decide gets the default, never a
+    blank: a blank is a decision nobody made."""
+    scenes = plan.get("scenes", [])
+    hooks = [h for h in (plan.get("hooks") or plan.get("openings") or []) if h]
+    primary = hooks[0] if hooks else None
+    spare = [h for h in hooks[1:]] if hooks else []
+    uncovered = [lid for lid in lines if not claims.get(lid)]
+    flagged = [iid for iid, r in results.items() if r.get("checks")]
+    L = []
+    if spare:
+        L.append(f"- **SCROLL STOPPERS** — {len(spare)}, one per hook not used as the opener: "
+                 + "; ".join(str(h)[:80] for h in spare))
+    else:
+        L.append("- **SCROLL STOPPERS** — 3 (default): three alternative first three seconds, "
+                 "same scene-1 setting, each from a different hook in the brief")
+    L.append("- **HEADLINES** — 5 (default): opener-card lines under eight words, taken from the "
+             "hooks, THE LOOP and the offer as written")
+    L.append("- **VARIATIONS** — 2 (default): one alternate take of the opening scene and one of "
+             "the offer scene, same line, different framing")
+    if uncovered or flagged:
+        L.append("- **EXTRA SCENES** — " + ", ".join(
+            [f"insert for uncovered line {u}" for u in uncovered] +
+            [f"cover for flagged clip {f}" for f in flagged]))
+    else:
+        L.append("- **EXTRA SCENES** — none — every line is carried and nothing is flagged")
+    L.append(f"- **FORMATS** — 9:16 only, nothing at 4:5 or 1:1; a 15-second cutdown map over "
+             f"{len(scenes) or '?'} scene(s), and a 4:5 safe-crop check: every face, product and word "
+             f"inside the middle 70% of the frame")
+    L.append("- **STYLES** — none — no style variation was asked for in the plan")
+    return L
+
+
 def build_editor_pack(run: Path, ad_name: str | None) -> str:
     run_json = read_json(run / "run.json", {}) or {}
     lines = read_json(run / "lines.json", {}) or {}
@@ -1303,6 +1337,7 @@ def build_editor_pack(run: Path, ad_name: str | None) -> str:
     L += ["", "## POST", ""]
     post_notes = [s.get("post") for s in plan.get("scenes", []) if s.get("post")]
     L += [f"- {p}" for p in post_notes] if post_notes else ["none recorded"]
+    L += ["", "## THE ASKS", ""] + asks_section(plan, results, lines, claims)
     L += ["", "## THE RECEIPT", ""]
     t = preflight.totals(ledger_rows)
     L.append(f"- billed: {t['billed_credits']} cr · ${t['billed_usd']:.3f}")

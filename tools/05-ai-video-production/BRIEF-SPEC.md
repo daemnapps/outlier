@@ -111,6 +111,15 @@ the cast from `brands/<brand>/elements/index.json`, and emits the plan in the
 shape the boards actually read. It is the only file that knows all three
 dialects, so a fourth machine never has to.
 
+
+## The asks — what the editor makes beyond the base cut (2026-09-22)
+
+The handoff (`prompts/stage-6-handoff/`, v5) ends with **`## THE ASKS`**: six
+lines — scroll stoppers, headlines, variations, extra scenes, formats, styles —
+each specified or refused with a reason. That section is what the editor or
+designer produces after the base cut, in Higgsfield, from the same cast and
+product references. The list, its defaults and its rules: `ASKS-SPEC.md`.
+
 ## Still open
 
 - **The cinema board cannot render a zero-A-roll ad.** Today that is correct

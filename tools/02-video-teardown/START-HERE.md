@@ -9,30 +9,27 @@ Nothing gets installed. Nothing runs on your computer.
 
 ## What you need
 
-1. **Claude** — the chat at claude.ai, or Claude Cowork if you have it.
-2. **Higgsfield Supercomputer** — this is where the video actually gets
-   watched and where your scenes get made. It has a Gemini model on it, so
-   you can hand it the video directly.
-3. **Google Drive** — where your brand folder and your finished briefs live.
-4. **Your brand folder** — the empty template is in `your-brand-folder/`
-   here. Fill it in once; open its README and it walks you through it.
+1. **Higgsfield Supercomputer** with this repo cloned into it — where the
+   video gets watched, the chain runs, and your scenes get made. Claude Code
+   with the repo cloned works the same way.
+2. **Your brand folder** — `brands/_TEMPLATE/`, copied to `brands/<your
+   brand>/` and filled in once. Say "walk me through it" and it does.
 
 ## Start here
 
-**Read `HOW-TO-RUN-IT.md`.** It is the whole process in seven numbered steps,
-written for someone who has never done this before. Everything else in this
-folder is the material those steps tell you to paste.
+**Read `HOW-TO-RUN-IT.md`.** Clone once, fill the brand folder once, then
+"tear down this video for <brand>". Everything else in this folder is what
+the chain runs.
 
 ## What is in this folder
 
-- `HOW-TO-RUN-IT.md` — the seven steps. Start here.
+- `HOW-TO-RUN-IT.md` — the one way to run it. Start here.
 - `WHICH-MODELS.md` — the exact models and settings to use. Do not leave it
   on Auto; this names what actually works and what to do when a shot looks
   wrong.
-- `your-brand-folder/` — the empty brand folder to copy into your Drive.
-- `the-chain/` — the actual instructions you paste into Claude, one file per
-  step, numbered in the order you use them. You do not need to read these
-  first; the runbook tells you when each one goes in.
+- `the-chain/` — the prompts the chain runs, one file per step, numbered in
+  the order they run. Read them to see how a brief is made; edit them to
+  change how every brief after is made.
 - `reference--the-automated-version.md` — ignore this one unless you have a
   developer. It describes a version that runs the whole thing unattended.
 

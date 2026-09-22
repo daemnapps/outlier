@@ -64,6 +64,6 @@ pasting the variables itself:
 | 1 · Cast | `stage-1-cast/stage1-character-sheet-v2-damon.md` | before any still — clone from the source frame where the person is on film |
 | 3 · Scene prompts | `stage-3-scenes/stage3-scene-prompts-v4-damon.md` | the stills; carries the product lock, the post list, the result budget, the section/emotion/outcome and the lines covered |
 | 5 · QC | `stage-5-qc/stage5-qc-v2-damon.md` | every still, mode `glance`; `deep` on product-hero frames; problems classed fixable / ceiling |
-| 6 · Handoff | `stage-6-handoff/stage6-handoff-v3-damon.md` | the editor pack, with line coverage, the post list, the loop, the scene arc, the receipt and the name |
+| 6 · Handoff | `stage-6-handoff/stage6-handoff-v5-damon.md` | the editor pack, with line coverage, the post list, the loop, the asks, the scene arc, the receipt and the name |
 
 The v1 files are in each stage's `archive/`.

@@ -153,7 +153,7 @@ passed is not a gate that was skipped; it is a batch that did not run.
 | 9 | **Coverage gate.** Every line in `lines.json` is carried by exactly one clip. An uncovered line is an undeliverable pack. | `python3 machine/preflight.py coverage --run <run-dir>` (run.py pack) **(machine)** |
 | 10 | **Receipt.** Jobs, credits, dollars, of which re-rolls, ambiguous jobs separate, model slugs as recorded — from `ledger.json`, never from memory. | rendered into the handoff's THE RECEIPT (run.py pack) **(machine)** |
 | 11 | **Naming gate.** Nothing leaves a run unnamed. | `python3 machine/deliver.py <run>` (run.py pack) **(machine)** |
-| 12 | **Editor pack.** Into `deliverable/`. Carries LINE COVERAGE, POST, THE RECEIPT and THE NAME. | `prompts/stage-6-handoff/stage6-handoff-v3-damon.md` with `{ledger}` and `{lines}` pasted (run.py pack) **(machine)** |
+| 12 | **Editor pack.** Into `deliverable/`. Carries LINE COVERAGE, POST, THE LOOP, THE ASKS, THE RECEIPT and THE NAME. | `prompts/stage-6-handoff/stage6-handoff-v5-damon.md` with `{ledger}` and `{lines}` pasted (run.py pack) **(machine)** |
 
 Two rules that run underneath every gate:
 

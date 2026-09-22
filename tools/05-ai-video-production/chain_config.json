@@ -205,7 +205,7 @@
    "stage": "stage6",
    "name": "Handoff",
    "runner": "claude-text",
-   "prompt": "stage6-handoff-v3-damon.md",
+   "prompt": "stage6-handoff-v5-damon.md",
    "why": "the pack the editor receives, and what it guarantees",
    "vars": {
     "production_document": "@stage2",

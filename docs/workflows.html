@@ -279,8 +279,9 @@
 <nav>
   <a class="mark" href="/">DÆMN STUDIO®</a>
   <span class="sp"></span>
-  <a class="link" href="/">Studio</a>
   <a class="link" href="/workflows.html" aria-current="page">The tools</a>
+  <a class="link" href="/swipe-library.html">Swipe library</a>
+  <a class="link" href="/onboarding.html">Onboarding</a>
   <a class="link" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
 </nav>
 
@@ -295,10 +296,10 @@
         this way.</p>
       <p class="lede">Point it at whatever you want. Nobody has to brief you.</p>
       <div class="btns">
-        <a class="btn" href="downloads/brand-folder-kit.zip" download>Start here — the brand folder</a>
+        <a class="btn" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Start here — the repo</a>
         <a class="btn ghost" href="#how">How it works</a>
       </div>
-      <div class="note">Works in Claude chat or Cowork · nothing to install · MIT licensed</div>
+      <div class="note">Runs in Higgsfield Supercomputer or Claude Code · MIT licensed</div>
     </div>
     <div class="herostage">
       <figure class="hfig">
@@ -511,41 +512,33 @@
     </div>
 
     <div class="btns" style="margin-top:34px">
-      <a class="btn" href="downloads/brand-folder-kit.zip" download>Step one — the brand folder</a>
-      <a class="btn ghost" href="downloads/video-teardown-kit.zip" download>Then the teardown kit</a>
+      <a class="btn" href="#system">Step one — clone the repo</a>
     </div>
   </section>
 
-  <section id="downloads">
-    <p class="eyebrow">02 — the four tools</p>
-    <h2>Start with<br>the folder</h2>
-    <p class="lede">Fill in the folder first. Everything after it reads that folder, so
-      nothing you build later makes you re-explain your brand.</p>
+  <section id="system">
+    <p class="eyebrow">02 — the system, one way</p>
+    <h2>Clone it,<br>then talk to it</h2>
+    <p class="lede">There is one way to use this: the repo, cloned into <b>Higgsfield Supercomputer</b>
+      (or Claude Code), and you telling it what you want. No kits to download, no files to copy
+      into a Drive — the repo is the system, and it updates itself when you say "pull for updates".</p>
     <div class="cards">
-      <div class="card"><div class="num">01 — start here</div><h3>Your brand folder</h3>
-        <p><b>Do this one first, for each brand you work on.</b> Put it in your Google Drive and fill it in once.</p>
-        <ul><li>Who you're selling to — the person, not the age bracket</li>
-            <li>Their actual sentences, and words you'd never say</li>
-            <li>What your product looks like to a camera</li>
-            <li>Offers, objections, and what's allowed on screen</li></ul>
-        <div class="foot"><a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Download</a></div></div>
-      <div class="card"><div class="num">02 — then this</div><h3>Video teardown</h3>
-        <p>Any video in, your brief out. Written for someone who has never done this.</p>
-        <ul><li>What to upload, and where</li><li>What to paste into Claude, in order</li>
-            <li>The finished brief, ready for whoever makes your videos</li>
-            <li>The exact models and settings to use</li></ul>
-        <div class="foot"><a class="btn ghost" href="downloads/video-teardown-kit.zip" download>Download</a></div></div>
-      <div class="card"><div class="num">03 — ready to use</div><h3>Organic swipe pack</h3>
-        <p>48 formats already taken apart, from 377 posts that really worked — some past a hundred million views.</p>
-        <ul><li>What each format is, and why it works</li><li>Every beat, with its timestamp</li>
-            <li>Prompts to make each one, ready to paste</li></ul>
-        <div class="foot"><a class="btn ghost" href="downloads/swipe-to-scene-kit.zip" download>Download</a></div></div>
-      <div class="card"><div class="num">04 — ready to use</div><h3>Paid ad swipe pack</h3>
-        <p>2,626 live competitor ads across 223 pitches, boiled down to the ten shapes that keep working.</p>
-        <ul><li>Ten angle shapes, as fill-in-the-blank templates</li>
-            <li>What the spending pattern tells you to copy</li>
-            <li>A prompt to make a video version of each</li></ul>
-        <div class="foot"><a class="btn ghost" href="downloads/paid-ad-swipe-pack.zip" download>Download</a></div></div>
+      <div class="card"><div class="num">01 — once</div><h3>Clone the repo</h3>
+        <p>In Supercomputer, paste the link and say <i>clone this</i>. Connect Google Drive and GitHub first (Connectors → Explore).</p>
+        <ul><li>github.com/daemnapps/outlier</li><li>Every prompt, every tool, readable</li></ul>
+        <div class="foot"><a class="btn ghost" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">The repo</a></div></div>
+      <div class="card"><div class="num">02 — once per brand</div><h3>Fill in the brand folder</h3>
+        <p>Copy <code>brands/_TEMPLATE/</code> to <code>brands/&lt;your brand&gt;/</code> and fill it in. Every tool reads it, so you explain your brand once.</p>
+        <ul><li>Who you're selling to, in their words</li><li>What the product looks like to a camera</li><li>Offers, objections, what's allowed on screen</li></ul>
+        <div class="foot"><a class="btn ghost" href="https://github.com/daemnapps/outlier/tree/main/brands/_TEMPLATE" target="_blank" rel="noopener">The template</a></div></div>
+      <div class="card"><div class="num">03 — every video</div><h3>Say what you want</h3>
+        <p><i>"Tear down this video for &lt;brand&gt;."</i> It watches it, strips it to structure, puts your brand in, and writes the brief with a prompt for every frame.</p>
+        <ul><li>tools/02-video-teardown</li><li>tools/05-ai-video-production for the scenes</li></ul>
+        <div class="foot"><a class="btn ghost" href="https://github.com/daemnapps/outlier/tree/main/tools/02-video-teardown" target="_blank" rel="noopener">The teardown</a></div></div>
+      <div class="card"><div class="num">04 — the library</div><h3>Start from what worked</h3>
+        <p>48 organic formats and the paid angle shapes, already taken apart. <i>"Show me the formats"</i> — pick one, put your brand in.</p>
+        <ul><li>tools/03-organic-swipe-pack</li><li>tools/04-paid-ad-swipe-pack</li></ul>
+        <div class="foot"><a class="btn ghost" href="/swipe-library.html">Swipe library</a></div></div>
     </div>
   </section>
 
@@ -568,8 +561,8 @@
           <tr><td>voice, if you need it</td><td><code>seed_audio</code></td></tr>
         </table>
         <p>Settings matter as much as names — portrait 1536×2048, prompt-enhance <b>off</b>,
-          a fixed seed per character, 9:16 in 4-second beats. Every kit ships a
-          <b>WHICH-MODELS</b> sheet with all of it.</p>
+          a fixed seed per character, 9:16 in 4-second beats. The <b>WHICH-MODELS</b> sheet
+          in the repo has all of it.</p>
         <div class="btns">
           <a class="btn" href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Get Supercomputer →</a>
         </div>
@@ -583,31 +576,31 @@
     <div class="two">
       <div>
         <h2>Is this<br>for you?</h2>
-        <p class="lede">If you can save a file to Google Drive and paste text into a chat
-          box, you can run this. No experience needed.</p>
+        <p class="lede">If you can paste a link into a chat box and say what you want, you can run
+          this. No experience needed.</p>
         <p class="lede">Pick a brand you make ads for, fill in its folder once, then go as
           hard as you want. Every video you turn around is one they didn't have to brief,
           storyboard or shoot.</p>
       </div>
       <ul class="rules">
         <li><b>The loop</b>Find a video that did well. Feed it in. Get back a script and a shot list. Make the shots, cut it, send it. Then do it again.</li>
-        <li><b>What you need</b>Claude (the free chat is fine), Higgsfield Supercomputer, and a Google Drive.</li>
+        <li><b>What you need</b>Higgsfield Supercomputer with the repo cloned into it — or Claude Code, the same way.</li>
         <li><b>Where people go wrong</b>Skipping the brand folder. If it doesn't know what the product looks like, it says so instead of guessing — that's it working, not breaking.</li>
         <li><b>The one rule</b>Copy the shape, not the content. A hair product and a frying-pan oil can use the exact same video structure.</li>
         <li><b>How fast</b>The brand folder is one afternoon per brand. After that, about twenty minutes per ad plus generating time.</li>
-        <li><b>What it costs you</b>Nothing. All four downloads are free.</li>
+        <li><b>What it costs you</b>Nothing for the tools. The models bill you directly, at their prices.</li>
       </ul>
     </div>
   </section>
 
   <section id="repo">
-    <p class="eyebrow">05 — for anyone who wants the whole machine</p>
+    <p class="eyebrow">05 — if you use Claude Code instead</p>
     <div class="two">
       <div>
         <h2>Run it the<br>way we run it</h2>
-        <p class="lede">The four kits are the hand-operated version — paste a file, get a
-          result. If you use <b>Claude Code</b>, you can point it at the whole repo instead
-          and have it drive the chain for you, the same way we do here.</p>
+        <p class="lede">Same repo, same prompts, same brand folder. <b>Claude Code</b> drives
+          the whole chain from your own machine instead of inside Supercomputer — that is
+          the only difference.</p>
         <p class="lede">Everything is in there: the prompts, the format library, the angle
           shapes, the brand-folder template, and this site.</p>
       </div>
@@ -620,7 +613,6 @@
         </div>
         <div class="btns" style="margin-top:18px">
           <a class="btn" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Open the repo →</a>
-          <a class="btn ghost" href="downloads/brand-folder-kit.zip" download>Or just the folder</a>
         </div>
         <div class="note">MIT licensed. Fork it, strip it, run it on your own brands.</div>
       </div>
@@ -629,7 +621,7 @@
 
   <footer>
     <span>DÆMN STUDIO® — daemn.co</span>
-    <span><a href="/">Studio</a> · <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">GitHub</a></span>
+    <span><a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">GitHub</a></span>
     <span>MIT licensed · nothing phones home</span>
   </footer>
   <div class="disclosure"><b>Affiliate disclosure.</b> Links to Claude, Higgsfield and other
