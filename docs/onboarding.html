@@ -7,72 +7,73 @@
 <title>Onboarding — DÆMN STUDIO®</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="studio.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/studio.css?v=prizm2">
 <style>
 .hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;padding-top:120px}
 @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:110px}}
-.player{border:1px solid var(--line);border-radius:14px;overflow:hidden;
-  background:color-mix(in srgb,var(--halo) 72%,transparent)}
-.player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:#000}
+.player{border:1px solid var(--line);border-radius:var(--r3);overflow:hidden;
+  background:var(--card)}
+.player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:var(--ink)}
 .chapters{list-style:none;margin:0;padding:10px 18px 14px;columns:2;column-gap:24px;
-  font-family:var(--mono);font-size:11px;line-height:2;color:var(--ink2)}
+  font-family:var(--mono);font-size:11px;line-height:2;color:var(--ink-2)}
 @media(max-width:600px){.chapters{columns:1}}
-.chapters .t{display:inline-block;width:46px;color:var(--ink3)}
+.chapters .t{display:inline-block;width:46px;color:var(--ink-3)}
 .need{list-style:none;padding:0;margin:24px 0 0;border-top:1px solid var(--line)}
-.need li{border-bottom:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:34px 1fr;gap:14px;font-size:14.5px;color:var(--ink2)}
-.need li .n{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink3);padding-top:5px}
+.need li{border-bottom:1px solid var(--line);padding:16px 0;display:grid;grid-template-columns:34px 1fr;gap:14px;font-size:14.5px;color:var(--ink-2)}
+.need li .n{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--indigo);padding-top:5px;font-variant-numeric:tabular-nums}
 .need li b{display:block;margin-bottom:3px}
 .steps{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);
-  border-radius:14px;overflow:hidden;margin-top:30px}
-.step{background:color-mix(in srgb,var(--halo) 72%,transparent);padding:22px 24px;
+  border-radius:var(--r3);overflow:hidden;margin-top:30px}
+.step{background:var(--card);padding:22px 24px;
   display:grid;grid-template-columns:54px 1fr;gap:20px;align-items:start}
-.step .n{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--ink3);padding-top:4px}
+.step .n{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--indigo);padding-top:4px;font-variant-numeric:tabular-nums}
 .step h3{margin:0 0 6px}
 .step p{font-size:13.5px;margin:0;max-width:64ch}
 .step p+p{margin-top:6px}
 .step .you{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-top:8px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:56px}
 @media(max-width:860px){.two{grid-template-columns:1fr;gap:28px}}
-.panel{border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px;
-  background:color-mix(in srgb,var(--halo) 66%,transparent);margin-top:26px}
+.panel{border:1px solid var(--line);border-radius:var(--r3);padding:26px 26px 22px;
+  background:var(--paper);margin-top:26px}
 .panel h3{margin-bottom:4px}
-.panel .when{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:16px}
+.panel .when{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
 .brandin{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 16px}
-.brandin label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
-.brandin input{background:var(--halo);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);
-  font-size:13px;padding:9px 12px;border-radius:8px;width:200px}
+.brandin label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.brandin input{background:var(--card);border:1px solid var(--line);color:var(--ink);font-family:var(--mono);
+  font-size:13px;padding:9px 12px;border-radius:var(--r2);width:200px}
 pre.prompt{font-family:var(--mono);font-size:12px;line-height:1.7;white-space:pre-wrap;word-break:break-word;
-  background:var(--halo);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin:0 0 14px;
-  max-height:420px;overflow:auto;color:var(--ink2)}
-pre.prompt mark{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var(--ink);padding:0 3px;border-radius:3px}
-.copy{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;background:var(--ink);
-  color:var(--halo);border:1px solid var(--ink);border-radius:999px;padding:12px 22px;cursor:pointer}
-.copy:hover{background:transparent;color:var(--ink)}
-.copy.done{background:transparent;color:var(--ink)}
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r2);padding:18px 20px;margin:0 0 14px;
+  max-height:420px;overflow:auto;color:var(--ink-2)}
+pre.prompt mark{background:color-mix(in srgb,var(--violet) 18%,transparent);color:var(--ink);padding:0 3px;border-radius:var(--r1)}
+.copy{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--indigo);
+  color:#fff;border:1px solid var(--indigo);border-radius:var(--r4);padding:12px 22px;cursor:pointer}
+.copy:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.copy.done{background:transparent;color:var(--green);border-color:var(--green)}
 .rules{list-style:none;padding:0;margin:0}
-.rules li{border-top:1px solid var(--line);padding:18px 0;color:var(--ink2);font-size:14.5px}
+.rules li{border-top:1px solid var(--line);padding:18px 0;color:var(--ink-2);font-size:14.5px}
 .rules li b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink3);margin-bottom:6px;font-weight:400}
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;font-weight:400}
 .qtab{border-collapse:collapse;width:100%;margin-top:26px;font-size:13.5px}
 .qtab th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink3);font-weight:400;padding:0 14px 12px 0;border-bottom:1px solid var(--line)}
-.qtab td{padding:12px 14px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+  color:var(--ink-3);font-weight:400;padding:0 14px 12px 0;border-bottom:1px solid var(--line)}
+.qtab td{padding:12px 14px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-2)}
 .qtab td:first-child{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
 .asks{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:30px}
-.ask{background:color-mix(in srgb,var(--halo) 72%,transparent);padding:22px 22px 20px}
-.ask .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:8px}
+  border:1px solid var(--line);border-radius:var(--r3);overflow:hidden;margin-top:30px}
+.ask{background:var(--card);padding:22px 22px 20px}
+.ask .k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--hue,var(--indigo));margin-bottom:8px}
 .ask p{font-size:13.5px;margin:0}
-.ask .d{font-family:var(--mono);font-size:10.5px;color:var(--ink3);margin-top:10px}
+.ask .d{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin-top:10px}
 </style>
 
-<nav>
+<nav class="bar">
   <a class="mark" href="/">DÆMN STUDIO®</a>
-  <span class="sp"></span>
-  <a class="link" href="/" aria-current="page">Onboarding</a>
-  <a class="link" href="/briefs/">Briefs</a>
-  <a class="link" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
+  <span class="links">
+    <a href="/onboarding.html" aria-current="page">Onboarding</a>
+    <a href="/briefs/">Briefs</a>
+    <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
+  </span>
 </nav>
 
 <div class="wrap">
@@ -306,7 +307,7 @@ Rules, always:
     </div>
   </section>
 
-  <footer>
+  <footer class="bot">
     <span>DÆMN STUDIO® · the tools are free · MIT</span>
     <span><a href="/briefs/">Briefs</a> · <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a> · <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a></span>
   </footer>

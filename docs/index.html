@@ -2,97 +2,69 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#070b12">
+<meta name="theme-color" content="#EFE9E1">
 <meta name="description" content="DÆMN STUDIO — a production studio for generative advertising. The onboarding for the people who make the ads, and the briefs they work from.">
 <title>DÆMN STUDIO®</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/studio.css?v=prizm2">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
 <style>
-/* One world, painted here — nothing inherited. The room the studio is run from:
-   his head at the centre, the four things on the desk around it. */
-:root{
-  --ground:#070b12; --panel:#0d141f; --panel-2:#111b29; --line:#1d2a3a;
-  --text:#e2e9f0; --mute:#73859a; --dim:#44546a;
-  --warm:#ffb347; --warm-2:#ff6b4a;
-  --display:'Syne',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
-}
-*{box-sizing:border-box;margin:0}
-html,body{height:100%}
-body{background:var(--ground);color:var(--text);font-family:var(--display);min-height:100%;overflow-x:hidden}
-a{color:inherit}
+/* page-specific only: the room fills the viewport behind the copy, and one
+   card opens when an object is clicked. Colour, type, radii, spacing and the
+   grain all come from /studio.css. */
 .stage{position:relative;min-height:100svh;display:grid;grid-template-rows:auto 1fr auto}
-#scene{position:absolute;inset:0;z-index:0}
-#scene canvas{display:block;width:100%;height:100%;touch-action:pan-y}
-.top,.mid,.bot{position:relative;z-index:2;padding-inline:clamp(18px,4vw,42px)}
-.top{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;padding-top:calc(22px + env(safe-area-inset-top,0px))}
-.mark{font-weight:800;letter-spacing:.06em;font-size:15px;text-decoration:none}
-.top nav{display:flex;gap:16px;margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
-.top nav a{color:var(--mute);text-decoration:none}
-.top nav a:hover,.top nav a:focus-visible{color:var(--text)}
-.mid{display:grid;align-content:center;gap:18px;padding-block:clamp(28px,7vh,72px);max-width:min(520px,46vw);pointer-events:none}
-.mid > *{pointer-events:auto}
-.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--warm)}
-h1{font-size:clamp(38px,7vw,68px);font-weight:800;line-height:.95;letter-spacing:-.01em;text-wrap:balance}
-.lede{color:var(--mute);font-size:clamp(15px,1.6vw,17px);max-width:44ch}
-.doors{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-.btn{display:inline-block;text-decoration:none;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  padding:12px 18px;border-radius:999px;background:var(--text);color:#070b12;font-weight:600}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
-.btn:focus-visible{outline:2px solid var(--warm);outline-offset:3px}
-.bot{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--dim);padding-bottom:calc(20px + env(safe-area-inset-bottom,0px))}
-.bot a{color:var(--mute);text-decoration:none}
-.bot a:hover{color:var(--text)}
-.hint{margin-left:auto;color:var(--dim)}
-/* the card a desk object opens */
-.card{position:fixed;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,34px);z-index:5;width:min(330px,calc(100vw - 28px));
-  background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px 18px;
-  box-shadow:0 20px 60px rgba(0,0,0,.55)}
-.card[hidden]{display:none!important}
-.card .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--warm);margin-bottom:8px}
-.card h2{font-size:21px;font-weight:700;margin-bottom:6px}
-.card p{color:var(--mute);font-size:14px;margin-bottom:12px}
-.card .go{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  text-decoration:none;border-bottom:1px solid var(--warm);padding-bottom:2px}
-.card .x{position:absolute;top:10px;right:12px;background:none;border:0;color:var(--dim);font:600 18px/1 var(--mono);cursor:pointer}
-.card .x:hover{color:var(--text)}
-@media (max-width:980px){ .mid{max-width:none} }
-@media (max-width:860px){ #scene{opacity:.42} .hint{display:none} }
+#scene{inset:0}
+.mid{position:relative;z-index:2;max-width:min(560px,48vw);display:grid;align-content:center;gap:var(--s4);
+  padding-block:clamp(var(--s6),7vh,var(--s8));padding-inline:var(--gutter);margin:0 auto;width:100%;
+  max-width:1180px;pointer-events:none}
+.mid > .col{max-width:min(560px,48vw);display:grid;gap:var(--s4);pointer-events:auto}
+.card-obj{position:fixed;right:var(--gutter);bottom:var(--gutter);z-index:5;width:min(330px,calc(100vw - 28px));
+  background:var(--card);border:1px solid var(--line);border-top:4px solid var(--hue);border-radius:var(--r2);
+  padding:var(--s4) var(--s5) var(--s5);box-shadow:var(--float)}
+.card-obj[hidden]{display:none!important}
+.card-obj h2{font-size:20px;margin-bottom:var(--s1)}
+.card-obj p{color:var(--ink-2);font-size:14px;margin-bottom:var(--s3)}
+.card-obj .x{position:absolute;top:8px;right:10px;background:none;border:0;color:var(--ink-3);
+  font:500 18px/1 var(--mono);cursor:pointer}
+.card-obj .x:hover{color:var(--ink)}
+.hint{margin-left:auto}
+@media (max-width:980px){ .mid > .col{max-width:none} }
+@media (max-width:760px){ #scene{opacity:.5} .hint{display:none} }
 </style>
 
 <div class="stage">
-  <header class="top">
+  <nav class="bar">
     <a class="mark" href="/">DÆMN STUDIO®</a>
-    <nav>
-      <a href="/">Onboarding</a>
+    <span class="links">
+      <a href="/onboarding.html">Onboarding</a>
       <a href="/briefs/">Briefs</a>
       <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
-    </nav>
-  </header>
+    </span>
+  </nav>
 
-  <div class="mid">
+  <div class="mid"><div class="col">
     <p class="eyebrow">A production studio for generative advertising</p>
-    <h1>Ads, made<br>by the machine.</h1>
+    <h1>Ads, made by the machine.</h1>
     <p class="lede">Take a video that already worked, keep its structure, rebuild it for the brand. Every prompt is a readable file, and the tools are free. This is the room it runs from.</p>
-    <div class="doors">
+    <div class="btns">
       <a class="btn" href="/onboarding.html">Start here — onboarding</a>
       <a class="btn ghost" href="/briefs/">The briefs</a>
     </div>
-  </div>
+  </div></div>
 
   <footer class="bot">
     <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">The toolkit, open source</a>
     <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a>
     <a href="mailto:ddixon@gradientmediallc.com">Get in touch</a>
-    <span class="hint" id="hint">Drag to look around · click a thing on the desk</span>
+    <span class="hint label" id="hint">Drag to look around · click a thing on the desk</span>
   </footer>
 
-  <div id="scene" aria-hidden="true"></div>
+  <div id="scene" class="room" aria-hidden="true"></div>
 </div>
 
-<div class="card" id="card" hidden>
+<div class="card-obj" id="card" hidden>
   <button class="x" id="cardx" aria-label="close">×</button>
   <div class="k" id="cardk"></div>
   <h2 id="cardt"></h2>
@@ -114,16 +86,16 @@ const ROT_Y = -Math.PI / 2;          // the head mesh arrives facing +x; turn th
 // The four things on the desk. Each one opens a card and goes somewhere real.
 const DESK = [
   {id:'laptop', file:'desk-laptop.glb', pos:[1.15,-1.15,.5], rot:.35, size:.62,
-   k:'The tools', title:'The toolkit', href:'https://github.com/daemnapps/outlier', go:'Open the repo',
+   k:'The tools', title:'The toolkit', hue:'var(--violet)', href:'https://github.com/daemnapps/outlier', go:'Open the repo',
    body:'Every teardown, research and brief tool, free and readable. Clone it into Higgsfield Supercomputer and tell it what you want.'},
   {id:'journal', file:'desk-journal.glb', pos:[2.35,-1.0,.4], rot:-.3, size:.5,
-   k:'Where it starts', title:'Onboarding', href:'/onboarding.html', go:'Start here',
+   k:'Where it starts', title:'Onboarding', hue:'var(--indigo)', href:'/onboarding.html', go:'Start here',
    body:'The plan starts on paper, then the machine runs it. If you make the ads, this page is the whole job: two accounts, one prompt a day.'},
   {id:'headphones', file:'desk-headphones.glb', pos:[2.5,.75,.1], rot:.5, size:.52,
-   k:'The work', title:'The briefs', href:'/briefs/', go:'See the briefs',
+   k:'The work', title:'The briefs', hue:'var(--magenta)', href:'/briefs/', go:'See the briefs',
    body:'What the people making the content actually get: the swipes to study and the brief written from each one.'},
   {id:'phone', file:'desk-phone.glb', pos:[.85,.95,.3], rot:Math.PI+.5, size:.5,
-   k:'Say hello', title:'Get in touch', href:'mailto:ddixon@gradientmediallc.com', go:'Email Damon',
+   k:'Say hello', title:'Get in touch', hue:'var(--cyan)', href:'mailto:ddixon@gradientmediallc.com', go:'Email Damon',
    body:'Questions about the tools, the briefs, or working together.'},
 ];
 
@@ -152,6 +124,7 @@ function card(d){
   const a = $('#cardgo'); a.href = d.href;
   const external = /^https?:|^mailto:/.test(d.href);
   a.target = external ? '_blank' : '_self';
+  $('#card').style.setProperty('--hue', d.hue || 'var(--indigo)');
   $('#card').hidden = false;
 }
 $('#cardx').addEventListener('click', () => { $('#card').hidden = true; });
@@ -174,10 +147,10 @@ async function start(){
   // makes his skin and the metal on the desk read at all.
   const pm = new THREE.PMREMGenerator(R);
   scene.environment = pm.fromScene(new RoomEnvironment(), .04).texture;
-  scene.environmentIntensity = .75;
-  scene.add(new THREE.HemisphereLight(0xfff4e6, 0x0a1422, 1.15));
-  const key = new THREE.DirectionalLight(0xffe2bd, 1.9); key.position.set(2.5, 3, 4); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x6f98ff, 1.0); rim.position.set(-4, 1, -3); scene.add(rim);
+  scene.environmentIntensity = 1.15;   // bone paper, not a dark room
+  scene.add(new THREE.HemisphereLight(0xfffaf2, 0xd8cfc2, 1.35));   // sky warm, bounce off bone
+  const key = new THREE.DirectionalLight(0xfff0d8, 2.2); key.position.set(2.5, 3, 4); scene.add(key);
+  const rim = new THREE.DirectionalLight(0x9ab4ff, .8); rim.position.set(-4, 1, -3); scene.add(rim);
 
   // ---- the head
   try{
@@ -188,7 +161,7 @@ async function start(){
     pivot.traverse(o => { if(!o.isMesh) return;
       const m = o.material;
       o.material = new THREE.MeshStandardMaterial({map:m.map||null, normalMap:m.normalMap||null,
-        roughness:.78, metalness:0, envMapIntensity:.35});
+        roughness:.72, metalness:0, envMapIntensity:.6});
     });
   }catch(e){}
 

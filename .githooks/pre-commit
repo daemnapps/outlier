@@ -33,4 +33,14 @@ paths=$(git diff --cached -U0 | grep -E '^\+' | grep -oE '/Users/[a-z0-9._-]+/' 
 $(echo "$paths" | sed 's/^/    /')
 Use a relative path, or nothing."
 
+# 4 · the design system. daemn.co has ONE, and a page that ignores it never
+#     reaches the site: tools/design-check.py prints the line and the reason.
+if git diff --cached --name-only --diff-filter=ACMR | grep -qE '^docs/.*\.html$|^docs/studio\.css$'; then
+  if ! python3 tools/design-check.py --staged; then
+    printf '\n\033[1;31m  BLOCKED — off the design system\033[0m\n'
+    printf '  Nothing was committed. docs/DESIGN.md says what the system is.\n\n'
+    exit 1
+  fi
+fi
+
 exit 0
