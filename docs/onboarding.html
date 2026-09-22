@@ -8,10 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/studio.css?v=prizm2">
+<link rel="stylesheet" href="/studio.css?v=prizm3">
 <style>
-.hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:50px;align-items:start;padding-top:120px}
-@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:110px}}
+.hero{display:grid;grid-template-columns:.95fr 1.05fr;gap:var(--s7);align-items:start;padding-top:var(--s7)}
+
+@media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:var(--s5)}}
 .player{border:1px solid var(--line);border-radius:var(--r3);overflow:hidden;
   background:var(--card)}
 .player iframe{display:block;width:100%;aspect-ratio:16/9;border:0;background:var(--ink)}
@@ -77,6 +78,18 @@ pre.prompt mark{background:color-mix(in srgb,var(--violet) 18%,transparent);colo
   </span>
 </nav>
 
+<div class="rail" id="rail">
+  <div class="railin">
+    <a href="#setup">Set up</a>
+    <a href="#loop">The loop</a>
+    <a href="#prompts">The prompts</a>
+    <a href="#queue">The queue</a>
+    <a href="#asks">The asks</a>
+    <a href="#rules">The rules</a>
+    <a href="#fix">When it breaks</a>
+  </div>
+</div>
+
 <div class="wrap">
   <div class="hero">
     <div>
@@ -96,10 +109,11 @@ pre.prompt mark{background:color-mix(in srgb,var(--violet) 18%,transparent);colo
         <a class="btn" href="#setup">Set up — ten minutes</a>
         <a class="btn ghost" href="#prompts">The prompts</a>
       </div>
-      <div class="note">The video plays for anyone the walkthrough folder is shared with</div>
+
     </div>
     <div class="player">
       <iframe src="https://drive.google.com/file/d/1H5WVVLt5nbgXGjXxwsfVk2k9fzw9eQQh/preview" allow="autoplay; fullscreen" allowfullscreen title="Editor onboarding — the walkthrough"></iframe>
+      <details class="chaps"><summary>Chapters — 10 of them, 17 minutes</summary>
       <ul class="chapters">
         <li><span class="t">00:04</span>1 · Connect Google Drive and GitHub inside Higgsfield Supercomputer</li>
 <li><span class="t">03:03</span>2 · Put the shared brand folders in your own Drive (Organize → Add shortcut)</li>
@@ -111,7 +125,7 @@ pre.prompt mark{background:color-mix(in srgb,var(--violet) 18%,transparent);colo
 <li><span class="t">14:50</span>8 · Turn the pull into a skill</li>
 <li><span class="t">15:35</span>9 · Execute a brief — pull up its clips</li>
 <li><span class="t">16:34</span>10 · Pull in the AI video production workflows</li>
-      </ul>
+      </ul></details>
     </div>
   </div>
 
@@ -254,7 +268,7 @@ Rules, always:
     <div class="note">These are the same files the tools ship: <code>tools/21-editor-onboarding/prompts/</code>. When they change there, they change here.</div>
   </section>
 
-  <section id="queue">
+  <section id="queue" class="ref">
     <p class="eyebrow">04 — the queue</p>
     <h2>What is waiting</h2>
     <p class="lede"><code>briefs/QUEUE.md</code> in each brand folder on Drive. One row per brief: type, status,
@@ -269,7 +283,7 @@ Rules, always:
     <div class="note">Bounty and due dates are the owner's. The queue shows them; the folder does not set them.</div>
   </section>
 
-  <section id="asks">
+  <section id="asks" class="ref">
     <p class="eyebrow">05 — the asks</p>
     <h2>Beyond the base cut</h2>
     <p class="lede">Every brief ends with <b>THE ASKS</b> — six lines, each specified or refused with a reason.
@@ -285,7 +299,7 @@ Rules, always:
     </div>
   </section>
 
-  <section id="rules">
+  <section id="rules" class="ref">
     <div class="two">
       <div>
         <p class="eyebrow">06 — the rules that never move</p>
@@ -317,6 +331,18 @@ Rules, always:
 </div>
 
 <script>
+// The rail marks the section you are actually in — the page is long and the
+// question it kept failing to answer was "where am I".
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.railin a'));
+  var secs=links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function mark(){
+    var y=window.scrollY+120, cur=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=y) cur=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===cur); });
+  }
+  addEventListener('scroll', mark, {passive:true}); mark();
+})();
 (function(){
   var input=document.getElementById('brand');
   var folder=document.getElementById('folder');

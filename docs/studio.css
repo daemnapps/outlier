@@ -212,6 +212,21 @@ details summary::before{content:"+ "}
 details[open] summary::before{content:"– "}
 details > :not(summary){margin-top:var(--s3)}
 
+/* ── the section rail ───────────────────────────────────────────────────
+   A long page's answer to "where am I". Sticky under the nav, mono labels,
+   the section you are in marked with the action hue. Scrolls sideways on a
+   phone rather than wrapping into two rows. */
+.rail{position:sticky;top:0;z-index:5;background:var(--bone);border-bottom:1px solid var(--line)}
+.railin{max-width:1180px;margin:0 auto;padding-inline:var(--gutter);display:flex;gap:var(--s5);
+  overflow-x:auto;scrollbar-width:none;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase}
+.railin::-webkit-scrollbar{display:none}
+.railin a{color:var(--ink-3);text-decoration:none;white-space:nowrap;padding-block:var(--s3);
+  border-bottom:2px solid transparent}
+.railin a:hover{color:var(--ink)}
+.railin a.on{color:var(--ink);border-bottom-color:var(--indigo)}
+.rail ~ * section,section{scroll-margin-top:60px}
+
 /* ── footer ─────────────────────────────────────────────────────────── */
 footer.bot{width:100%;max-width:1180px;margin:var(--s7) auto 0;padding-inline:var(--gutter);
   padding-block:var(--s5) calc(var(--s5) + env(safe-area-inset-bottom,0px));
