@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/studio.css?v=prizm7">
+<link rel="stylesheet" href="/studio.css?v=prizm8">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <style>
 /* page layout only — everything else is /studio.css */
@@ -264,8 +264,8 @@ const DESK = [
    k:'The work', title:'The briefs', hue:'var(--magenta)', href:'/briefs/', go:'See the briefs',
    body:'What the people making the content actually get: the swipe to study and the brief written from it.'},
   {id:'phone', file:'desk-phone.glb', pos:[.85,.95,.3], m:[-.9,1.22,.3], rot:Math.PI+.5, size:.5,
-   k:'Say hello', title:'Get in touch', hue:'var(--cyan)', href:'mailto:ddixon@gradientmediallc.com', go:'Email Damon',
-   body:'Questions about the tools, the briefs, or working together.'},
+   k:'Questions', title:'Ask the machine', hue:'var(--cyan)', href:'#', go:'Ask a question', ask:true,
+   body:'How does a tool work? Where do I start? Ask, and it answers from the repo itself.'},
 ];
 
 const host = $('#scene');
@@ -292,8 +292,9 @@ function card(d){
   $('#cardk').textContent = d.k; $('#cardt').textContent = d.title;
   $('#cardp').textContent = d.body; $('#cardgo').textContent = d.go;
   const a = $('#cardgo'); a.href = d.href;
-  const external = /^https?:|^mailto:/.test(d.href);
+  const external = /^https?:/.test(d.href);
   a.target = external ? '_blank' : '_self';
+  a.onclick = d.ask ? (e => { e.preventDefault(); $('#card').hidden = true; window.openAsk && window.openAsk(); }) : null;
   $('#card').style.setProperty('--hue', d.hue || 'var(--indigo)');
   const em = $('#cardembed');
   if(d.embed){ if(!em.querySelector('iframe')) em.innerHTML = `<iframe class="radio" src="${d.embed}" title="Studio radio on Spotify" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`; em.hidden = false; }
@@ -454,8 +455,8 @@ try{
   <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">The toolkit, open source</a>
   <a href="/light.html">Light</a>
   <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a>
-  <a href="mailto:ddixon@gradientmediallc.com">Get in touch</a>
+  <a href="#" data-ask>Ask a question</a>
   <span class="right">DÆMN STUDIO® · MIT</span>
 </footer>
-<script src="/studio.js?v=2" defer></script>
+<script src="/studio.js?v=5" defer></script>
 </html>

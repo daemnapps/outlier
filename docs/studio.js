@@ -188,8 +188,90 @@
     root.style.setProperty('--sp', h > 0 ? (scrollY / h).toFixed(4) : 0); };
   addEventListener('scroll', () => { if (!spRaf) spRaf = requestAnimationFrame(sp); }, {passive:true}); sp();
 
+  /* ═══ ASK — the repo answers questions about itself ═══════════════════
+     Every guide in the repo is split into sections (docs/ask/knowledge.json,
+     built by tools/build_ask.py). A question is matched against them here in
+     the browser and answered with the passage that says it, and a link to it.
+     Set ASK_AI to the AI worker's address (receiver/ask-ai.js) and the same
+     box answers in plain sentences from the same sections instead. */
+  const ASK_AI = '';
+  let KB = null, panel, log, input;
+  const STOP = new Set('a an the is it to of and or in on for how do does i my me what where when why which who can you your with this that be are was will should get use from at by as about into'.split(' '));
+  const words = t => (t.toLowerCase().match(/[a-z0-9]+/g) || []).filter(w => w.length > 1 && !STOP.has(w)).map(w => w.replace(/(ing|ed|es|s)$/, ''));
+  async function kb(){
+    if (KB) return KB;
+    const d = await (await fetch('/ask/knowledge.json')).json();
+    const N = d.items.length, df = {};
+    d.items.forEach(it => { it.w = words(it.section + ' ' + it.section + ' ' + it.doc + ' ' + it.tool.replace(/-/g, ' ') + ' ' + it.text);
+      new Set(it.w).forEach(w => df[w] = (df[w] || 0) + 1); });
+    KB = {items:d.items, idf:w => Math.log(1 + N / (1 + (df[w] || 0)))};
+    return KB;
+  }
+  function best(q, K){
+    const qs = [...new Set(words(q))];
+    return K.items.map(it => {
+      let sc = 0; const tf = {}; it.w.forEach(w => tf[w] = (tf[w] || 0) + 1);
+      qs.forEach(w => { if (tf[w]) sc += K.idf(w) * (1 + Math.log(tf[w])); });
+      if (qs.some(w => (it.section + ' ' + it.tool).toLowerCase().includes(w))) sc *= 1.4;
+      return {it, sc};
+    }).filter(x => x.sc > 0).sort((a, b) => b.sc - a.sc).slice(0, 3);
+  }
+  const esc = t => t.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const md = t => esc(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`([^`]+)`/g, '<code>$1</code>');
+  function excerpt(text, q){
+    const qs = words(q), sents = text.replace(/\s+/g, ' ').split(/(?<=[.!?])\s+/);
+    const ranked = sents.map((s, i) => ({s, i, n:words(s).filter(w => qs.includes(w)).length})).sort((a, b) => b.n - a.n || a.i - b.i);
+    return ranked.slice(0, 3).sort((a, b) => a.i - b.i).map(x => x.s).join(' ').slice(0, 520);
+  }
+  function say(html, cls){ const d = document.createElement('div'); d.className = cls; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
+  async function answer(q){
+    q = q.trim(); if (!q) return;
+    say(esc(q), 'me');
+    const low = q.toLowerCase();
+    if (/\bprizm\b/.test(low)) { shatter(); return say('<p>You found one. ✦</p>', 'it'); }
+    if (/\bdaemn\b/.test(low) && low.length < 12) { window.dispatchEvent(new Event('daemn')); return say('<p>The machine is listening.</p>', 'it'); }
+    const wait = say('<p>Reading the repo…</p>', 'it');
+    try {
+      if (ASK_AI) {
+        const r = await fetch(ASK_AI, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({q})});
+        const d = await r.json(); if (!r.ok) throw new Error(d.error || 'ask failed');
+        const srcs = (d.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} →</a>`).join('');
+        wait.innerHTML = d.answer.split(/\n{2,}/).map(p => `<p>${md(p)}</p>`).join('') + (srcs ? `<div class="src">${srcs}</div>` : '');
+        return;
+      }
+      const K = await kb(), hits = best(q, K);
+      if (!hits.length) { wait.innerHTML = '<p>Nothing in the repo answers that yet. Try naming the tool, or <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">browse the repo</a>.</p>'; return; }
+      const top = hits[0].it;
+      wait.innerHTML = `<p><b>${esc(top.section)}</b>${top.tool ? ' · ' + esc(top.tool.replace(/^\d+-/, '').replace(/-/g, ' ')) : ''}</p><p>${md(excerpt(top.text, q))}</p>` +
+        `<div class="src">${hits.map(h => `<a href="${esc(h.it.url)}" target="_blank" rel="noopener">${esc(h.it.section)} — ${esc(h.it.path)} →</a>`).join('')}</div>`;
+    } catch (e) { wait.innerHTML = '<p>That didn’t go through. Try again in a moment.</p>'; }
+  }
+  function openAsk(q){
+    if (!panel) {
+      panel = document.createElement('div'); panel.className = 'ask-panel'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Ask the machine');
+      panel.innerHTML = `<div class="ask-head"><i class="ib" data-i="sparkles" style="--hue:var(--violet)">${icon('sparkles')}</i><b>Ask the machine</b><button class="x" aria-label="Close">×</button></div>
+        <div class="ask-log"><div class="it"><p>Ask how anything works: where to start, what a tool does, how to get updates. Answers come straight from the repo.</p>
+        <div class="ask-chips">${['Where do I start?','What does the video teardown do?','How do I get updates?','What is a brief?'].map(c => `<button type="button">${c}</button>`).join('')}</div></div></div>
+        <form class="ask-form"><input type="text" placeholder="Ask a question…" aria-label="Your question" autocomplete="off" enterkeyhint="send"><button type="submit" aria-label="Ask">${icon('send')}</button></form>`;
+      document.body.appendChild(panel);
+      log = panel.querySelector('.ask-log'); input = panel.querySelector('input');
+      panel.querySelector('.x').addEventListener('click', () => { panel.hidden = true; btn.hidden = false; });
+      panel.querySelector('form').addEventListener('submit', e => { e.preventDefault(); answer(input.value); input.value = ''; });
+      panel.querySelectorAll('.ask-chips button').forEach(b => b.addEventListener('click', () => answer(b.textContent)));
+      kb().catch(() => {});
+    }
+    panel.hidden = false; btn.hidden = true;
+    if (q) answer(q); else setTimeout(() => input.focus(), 50);
+  }
+  window.openAsk = openAsk;
+  const btn = document.createElement('button'); btn.className = 'askbtn'; btn.type = 'button';
+  btn.innerHTML = `<i class="ib">${icon('sparkles')}</i><span>Ask the machine</span>`; btn.setAttribute('aria-label', 'Ask the machine');
+  btn.addEventListener('click', () => openAsk()); document.body.appendChild(btn);
+  document.addEventListener('click', e => { const a = e.target.closest('[data-ask]'); if (a) { e.preventDefault(); openAsk(a.dataset.ask || ''); } });
+
   /* ═══ EASTER EGGS ════════════════════════════════════════════════════
-     1  Konami code, or type "prizm" — the page shatters into spectrum.
+     1  Konami code, or type "prizm" (on a phone: long-press the logo, or
+        ask the Ask box "prizm") — the page shatters into spectrum.
      2  Tap the ® in the logo three times — the whole page runs the prism.
      3  Open the console — a note for whoever reads source.
      4  (home only) double-tap the head — it spins. See index.html.
@@ -229,6 +311,16 @@
     if (typed.endsWith('daemn')) { typed = ''; toast('The machine is listening.'); window.dispatchEvent(new Event('daemn')); }
   });
 
+  // on a phone there is no keyboard: long-press the mark for the shatter,
+  // or type the words into the Ask box
+  const markEl = document.querySelector('nav.bar .mark');
+  if (markEl) {
+    let lp = 0, fired = false;
+    markEl.addEventListener('pointerdown', () => { fired = false; lp = setTimeout(() => { fired = true; shatter(); }, 650); });
+    ['pointerup','pointerleave','pointercancel'].forEach(t => markEl.addEventListener(t, () => clearTimeout(lp)));
+    markEl.addEventListener('click', e => { if (fired) { e.preventDefault(); fired = false; } });
+    markEl.addEventListener('contextmenu', e => e.preventDefault());
+  }
   // the ® in the mark, three taps
   const mark = document.querySelector('nav.bar .mark');
   if (mark && mark.textContent.includes('®')) {
