@@ -521,15 +521,16 @@ h3 .ib,h4 .ib{width:32px;height:32px;padding:7px;margin-right:var(--s3);vertical
      .aurora      the room's coloured light drifting slowly with the scroll
      .darkroom    a panel with the shutters closed, for light to show up in
    ═══════════════════════════════════════════════════════════════════════ */
-.beam{position:relative;z-index:2;height:clamp(90px,12vw,150px);margin-block:var(--s4)}
-.beam svg{width:100%;height:100%;overflow:visible}
-.beam .in{stroke:var(--ink);stroke-width:1.4;opacity:.55}
-.beam .glass{fill:color-mix(in srgb,var(--card) 70%,transparent);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
-.beam .ray{stroke-width:1.6;fill:none;opacity:.9}
-.beam path{stroke-dasharray:1;stroke-dashoffset:1}
-.beam.lit path{stroke-dashoffset:0;transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1)}
-.beam.lit .ray{transition-delay:calc(.5s + var(--k) * 45ms)}
-@media (prefers-reduced-motion:reduce){ .beam path{stroke-dashoffset:0} }
+/* a section break: one hairline, white light turning into the spectrum as it
+   crosses the page, a glint of light running along it */
+.beam{position:relative;z-index:2;height:1px;margin-block:clamp(var(--s6),8vw,var(--s8));
+  background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--ink) 18%,transparent) 30%,var(--indigo) 62%,var(--cyan) 70%,var(--green) 76%,var(--amber) 84%,var(--magenta) 94%,transparent);opacity:.55}
+.beam::after{content:"";position:absolute;inset:-1px auto -1px 0;width:18%;
+  background:linear-gradient(90deg,transparent,var(--card),transparent);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .beam.lit::after{animation:glint 6s cubic-bezier(.45,0,.2,1) infinite;opacity:1}
+  @keyframes glint{from{transform:translateX(-20vw)}to{transform:translateX(110vw)}}
+}
 
 .lightbar{position:fixed;right:0;top:0;width:3px;height:100%;z-index:50;pointer-events:none;
   background:linear-gradient(180deg,var(--violet),var(--indigo),var(--cyan),var(--green),var(--amber),var(--coral),var(--magenta));

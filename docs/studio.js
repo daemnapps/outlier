@@ -168,15 +168,7 @@
 
   /* ── light: the beam at each break, the bar, the drifting room light ── */
   const SPEC = ['var(--violet)','var(--indigo)','var(--cyan)','var(--green)','var(--amber)','var(--coral)','var(--magenta)'];
-  const drawBeam = b => {
-    const W = Math.max(320, Math.round(b.clientWidth || 1200)), c = W / 2;
-    const fan = SPEC.map((col, k) => `<path class="ray" pathLength="1" vector-effect="non-scaling-stroke" style="stroke:${col};--k:${k}" d="M${c + 20} ${40 + k * 4} L${W} ${12 + k * 16}"/>`).join('');
-    b.innerHTML = `<svg viewBox="0 0 ${W} 120" preserveAspectRatio="none" aria-hidden="true">
-      <path class="in" pathLength="1" vector-effect="non-scaling-stroke" d="M0 72 L${c - 12} 50"/>${fan}
-      <path class="glass" pathLength="1" d="M${c} 22 L${c + 30} 78 L${c - 30} 78 Z"/></svg>`;
-    b.setAttribute('aria-hidden', 'true');
-  };
-  document.querySelectorAll('.beam').forEach(drawBeam);
+  document.querySelectorAll('.beam').forEach(b => b.setAttribute('aria-hidden', 'true'));
   if ('IntersectionObserver' in window) {
     const bo = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('lit'); bo.unobserve(e.target); } }), {threshold:.6});
     document.querySelectorAll('.beam').forEach(b => bo.observe(b));
