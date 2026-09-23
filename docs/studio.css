@@ -611,10 +611,19 @@ h1 + .lede{margin-top:var(--s3)}
 .bc-hooks{margin:0;padding-left:1.2em;display:grid;gap:6px;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:-.01em}
 .bc-frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:var(--s3)}
 .bc-frame{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:var(--r2);overflow:hidden;display:flex;flex-direction:column}
-.bc-frame img,.bc-noimg{width:100%;aspect-ratio:9/14;object-fit:cover;background:var(--line)}
+.bc-noimg{width:100%;aspect-ratio:9/16;background:var(--line)}
 .bc-frame figcaption{padding:var(--s3);display:grid;gap:6px;font-size:13.5px}
 .bc-frame figcaption b{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--ink-2)}
 .bc-frame p{margin:0;max-width:none}
+.bc-shot{position:relative;overflow:hidden}
+.bc-shot img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--line)}
+.bc-over{position:absolute;left:8%;right:8%;top:50%;transform:translateY(-50%);text-align:center;
+  font-family:var(--body);font-weight:700;font-size:clamp(12px,1.35vw,15px);line-height:1.25;color:#fff;
+  text-shadow:0 0 3px color-mix(in srgb,var(--ink) 90%,transparent),0 1px 2px color-mix(in srgb,var(--ink) 90%,transparent);
+  -webkit-text-stroke:.4px color-mix(in srgb,var(--ink) 70%,transparent);white-space:pre-line}
+.bc-shot.gen::after{content:"AI scene";position:absolute;right:6px;bottom:6px;font:500 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  background:color-mix(in srgb,var(--ink) 65%,transparent);color:var(--bone);padding:3px 5px;border-radius:var(--r1)}
+.bc-orig{width:72px;aspect-ratio:9/16;object-fit:cover;border-radius:var(--r1);border:1px solid var(--line);margin:var(--s2) 0}
 .bc-screen{font-family:var(--display);font-weight:600;font-size:14.5px;letter-spacing:-.01em;color:var(--ink)}
 .bc-frame details{border:0;padding:0}
 .bc-list{margin:0;padding-left:1.2em;display:grid;gap:4px;max-width:70ch;font-size:15px}
