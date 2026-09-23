@@ -630,6 +630,9 @@ h1 + .lede{margin-top:var(--s3)}
 .bc-words{margin:0;padding:var(--s4) var(--s4) var(--s4) calc(var(--s4) + 1.4em);background:var(--paper);border:1px solid var(--line);border-radius:var(--r2);
   display:grid;gap:6px;font-size:15px;max-width:none;counter-reset:w}
 .bc-words li::marker{color:var(--ink-3);font-family:var(--mono);font-size:11px}
+.bc-cta{background:color-mix(in srgb,var(--green) 8%,transparent);border:1px solid color-mix(in srgb,var(--green) 25%,transparent);border-radius:var(--r2);padding:var(--s4)}
+.bc-cta p{margin:0;max-width:none;font-size:14.5px}
+.bc-swap{margin-top:var(--s2)!important;padding-top:var(--s2);border-top:1px dashed color-mix(in srgb,var(--amber) 45%,transparent);color:var(--ink)}
 .bc-folds details{padding-block:var(--s2)}
 .bc .brief{overflow-x:auto;max-width:100%}
 .bc .brief table{display:block;overflow-x:auto;max-width:100%}
