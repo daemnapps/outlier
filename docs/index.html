@@ -1,49 +1,61 @@
 <!doctype html>
 <html lang="en">
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#EFE9E1">
-<meta name="description" content="DÆMN STUDIO — a production studio for generative advertising. The onboarding for the people who make the ads, and the briefs they work from.">
-<title>DÆMN STUDIO®</title>
+<meta name="description" content="DÆMN STUDIO — the full stack for generative advertising. Swipe what works, tear it down, put your brand in it, make the video, images, email and pages, ship. Twenty-one tools, free.">
+<title>DÆMN STUDIO® — ads, made by the machine</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://daemn.co/">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DÆMN STUDIO®">
+<meta property="og:url" content="https://daemn.co/">
+<meta property="og:title" content="DÆMN STUDIO® — ads, made by the machine">
+<meta property="og:description" content="Swipe what already works. Tear it down. Put your brand in it. Make it. Ship it. Twenty-one free tools, one machine.">
+<meta property="og:image" content="https://daemn.co/media/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://daemn.co/media/share.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/studio.css?v=prizm5">
-<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}</script>
+<link rel="stylesheet" href="/studio.css?v=prizm7">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <style>
-/* page-specific only: the room fills the viewport behind the copy, and one
-   card opens when an object is clicked. Colour, type, radii, spacing and the
-   grain all come from /studio.css. */
-.stage{position:relative;min-height:min(100svh,780px);display:grid;grid-template-rows:auto 1fr auto}
+/* page layout only — everything else is /studio.css */
+.stage{position:relative;min-height:min(100svh,800px);display:grid;grid-template-rows:auto 1fr auto}
 #scene{inset:0}
-.mid{position:relative;z-index:2;max-width:min(560px,48vw);display:grid;align-content:center;gap:var(--s4);
-  padding-block:clamp(var(--s6),7vh,var(--s8));padding-inline:var(--gutter);margin:0 auto;width:100%;
-  max-width:1180px;pointer-events:none}
-.mid > .col{max-width:min(560px,48vw);display:grid;gap:var(--s4);pointer-events:auto}
-.card-obj{position:fixed;right:var(--gutter);bottom:var(--gutter);z-index:5;width:min(330px,calc(100vw - 28px));
-  background:var(--card);border:1px solid var(--line);border-top:4px solid var(--hue);border-radius:var(--r2);
-  padding:var(--s4) var(--s5) var(--s5);box-shadow:var(--float)}
-.card-obj[hidden]{display:none!important}
+.mid{position:relative;z-index:2;display:grid;align-content:center;padding:clamp(var(--s6),7vh,var(--s8)) var(--gutter);
+  margin:0 auto;width:100%;max-width:1180px;pointer-events:none}
+.mid > .col{max-width:min(580px,50vw);display:grid;gap:var(--s4);pointer-events:auto}
+.mid h1{font-size:clamp(40px,6.4vw,84px)}
+#hint{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;padding:0 var(--gutter) var(--s5);
+  color:var(--ink-2);font-size:12px}
+.card-obj{position:fixed;right:var(--gutter);bottom:calc(var(--gutter) + env(safe-area-inset-bottom,0px));z-index:60;
+  width:min(360px,calc(100vw - 28px));background:var(--card);border:1px solid var(--line);border-top:4px solid var(--hue);
+  border-radius:var(--r2);padding:var(--s4) var(--s5) var(--s5);box-shadow:var(--float)}
+.card-obj[hidden],#cardembed[hidden]{display:none!important}
 .card-obj h2{font-size:20px;margin-bottom:var(--s1)}
 .card-obj p{color:var(--ink-2);font-size:14px;margin-bottom:var(--s3)}
-.card-obj .x{position:absolute;top:8px;right:10px;background:none;border:0;color:var(--ink-3);
-  font:500 18px/1 var(--mono);cursor:pointer}
-.card-obj .x:hover{color:var(--ink)}
-.hint{margin-left:auto}
-/* the objects, doing the work of the page below the room */
-.duo{display:grid;grid-template-columns:.85fr 1.15fr;gap:var(--s7);align-items:center}
-.duo.flip{grid-template-columns:1.15fr .85fr}
-.duo.flip figure{order:-1}
-.duo figure{margin:0}
-.duo img{width:100%;max-width:400px;margin-inline:auto}
-.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--s5);margin-top:var(--s6)}
-.trio figure{margin:0 0 var(--s3);background:var(--paper);border:1px solid var(--line);border-radius:var(--r3)}
-.trio img{width:100%;aspect-ratio:1;object-fit:contain}
-.close{display:grid;gap:var(--s4);justify-items:center;text-align:center;padding-block:var(--s8)}
-.close img{width:min(300px,64vw)}
-@media (max-width:860px){ .duo,.duo.flip{grid-template-columns:1fr;gap:var(--s4)} .duo.flip figure{order:0} }
+.card-obj .x{position:absolute;top:4px;right:4px;width:44px;height:44px;background:none;border:0;color:var(--ink-2);font:500 20px/1 var(--mono);cursor:pointer}
+.duo{display:grid;grid-template-columns:.9fr 1.1fr;gap:var(--s7);align-items:center}
+.duo.flip{grid-template-columns:1.1fr .9fr}
+.duo.flip > .obj{order:2}
+.close{display:grid;gap:var(--s4);justify-items:center;text-align:center;padding-block:var(--s7) var(--s8)}
+.story{height:520vh}
+@media (max-width:860px){ .duo,.duo.flip{grid-template-columns:1fr;gap:var(--s4)} .duo.flip > .obj{order:0} .duo .obj{max-width:300px} }
 @media (max-width:980px){ .mid > .col{max-width:none} }
-@media (max-width:760px){ #scene{opacity:.5} .hint{display:none} }
+@media (max-width:760px){
+  .stage{display:flex;flex-direction:column;min-height:0}
+  .mid{padding-block:var(--s5) var(--s2)}
+  #scene{position:relative;inset:auto;order:3;height:min(66svh,520px)}
+  #hint{order:4;text-align:center}
+  .story{height:560vh}
+}
 </style>
 
 <div class="stage">
@@ -52,76 +64,114 @@
     <span class="links">
       <a href="/onboarding.html">Onboarding</a>
       <a href="/briefs/">Briefs</a>
-    <a href="/swipes/">Swipes</a>
+      <a href="/swipes/">Swipes</a>
+      <a href="/light.html">Light</a>
       <a href="/objects.html">Objects</a>
       <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
     </span>
   </nav>
 
   <div class="mid"><div class="col">
-    <p class="eyebrow">A production studio for generative advertising</p>
-    <h1>Ads, made by the machine.</h1>
-    <p class="lede">Take a video that already worked, keep its structure, rebuild it for the brand. Every prompt is a readable file, and the tools are free. This is the room it runs from.</p>
+    <p class="eyebrow">DÆMN STUDIO · generative advertising</p>
+    <h1 class="rise">Ads, made by the machine.</h1>
+    <p class="lede">Swipe what already works. Tear it down to its structure. Put your brand in it.
+      Make the video, the images, the emails and the page. Ship it. Twenty-one free tools, one machine.</p>
     <div class="btns">
-      <a class="btn" href="/onboarding.html">Start here — onboarding</a>
-      <a class="btn ghost" href="/briefs/">The briefs</a>
+      <a class="btn" href="/onboarding.html">Start here</a>
+      <a class="btn ghost" href="#stack">See the stack</a>
+      <button class="playbtn" type="button" data-radio><i class="ib" data-i="play"></i>Studio radio<span class="eq"><i></i><i></i><i></i></span></button>
     </div>
   </div></div>
 
-  <p class="label" style="padding-inline:var(--gutter);max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2"
-     id="hint">Drag to look around · click a thing on the desk</p>
-
+  <p class="label" id="hint">Drag to look around · click anything on the desk</p>
   <div id="scene" class="room" aria-hidden="true"></div>
 </div>
 
 <div class="wrap">
+  <div class="beam"></div>
+  <div class="stats" aria-label="The machine, in numbers">
+    <div class="stat"><span class="v" data-to="6269">6,269</span><span class="k">competitor ads pulled apart</span></div>
+    <div class="stat"><span class="v" data-to="377">377</span><span class="k">organic posts studied</span></div>
+    <div class="stat"><span class="v" data-to="48">48</span><span class="k">formats that keep working</span></div>
+    <div class="stat"><span class="v" data-to="21">21</span><span class="k">tools, one machine</span></div>
+    <div class="stat"><span class="v" data-to="0" data-pre="$">$0</span><span class="k">free, MIT, forever</span></div>
+  </div>
+</div>
 
-  <hr class="prism">
+<section class="story" id="stack" style="--hue:var(--violet)">
+  <div class="wrap story-pin">
+    <div class="obj xl" data-obj="lens"><img src="media/objects/lens.webp" alt="A glass lens in a chrome bezel" loading="lazy"></div>
+    <div>
+      <p class="eyebrow">The whole stack</p>
+      <div class="story-steps">
+        <div class="story-step" data-step-obj="lens" data-hue="var(--cyan)">
+          <i class="ib lg" data-i="search" style="--hue:var(--cyan)"></i>
+          <h3>Swipe</h3>
+          <p>Pull what's already winning: competitor ads, organic posts, landing pages, emails. Ranked by how hard the market is betting on them.</p></div>
+        <div class="story-step" data-step-obj="prism" data-hue="var(--violet)">
+          <i class="ib lg" data-i="scissors" style="--hue:var(--violet)"></i>
+          <h3>Tear it down</h3>
+          <p>Every piece split into its structure: the hook, the beats, the argument, the offer, separated from the brand that made it.</p></div>
+        <div class="story-step" data-step-obj="ribbon" data-hue="var(--magenta)">
+          <i class="ib lg" data-i="target" style="--hue:var(--magenta)"></i>
+          <h3>Put your brand in</h3>
+          <p>Same structure, your problem, your product, your customer's words. Nothing invented that the market didn't say first.</p></div>
+        <div class="story-step" data-step-obj="cube" data-hue="var(--amber)">
+          <i class="ib lg" data-i="layers" style="--hue:var(--amber)"></i>
+          <h3>Make it</h3>
+          <p>One brief becomes the video, the images, the emails, the landing page and the copy. Hooks, variations and formats, as a batch.</p></div>
+        <div class="story-step" data-step-obj="cards" data-hue="var(--indigo)">
+          <i class="ib lg" data-i="send" style="--hue:var(--indigo)"></i>
+          <h3>Edit and ship</h3>
+          <p>Cut, checked for slop, delivered to the folder, with a brief a creator can shoot the same day.</p></div>
+        <div class="story-step" data-step-obj="torus" data-hue="var(--green)">
+          <i class="ib lg" data-i="loop" style="--hue:var(--green)"></i>
+          <h3>Then again</h3>
+          <p>When one lands, the machine makes more like it. When one misses, one prompt gets fixed and everything after it is better.</p></div>
+      </div>
+      <div class="story-dots"></div>
+    </div>
+  </div>
+</section>
 
-  <section class="sec">
-    <p class="eyebrow">What the machine actually does</p>
-    <h2>Three moves, over and over.</h2>
-    <p class="lede">Nothing here is clever. It is the same three moves run at a
-      volume a person cannot match by hand.</p>
-    <div class="trio">
-      <div>
-        <figure><img src="media/objects/lens.webp" alt="A convex glass lens in a chrome bezel, bending the light behind it into a spectrum" loading="lazy"></figure>
-        <p class="label hue" style="--hue:var(--cyan)">01 · Read it</p>
-        <h3>Tear the thing down</h3>
-        <p>A post that already worked goes in. What comes out is its structure —
-          the hook, the beats, the argument — separated from the brand that made it.</p>
-      </div>
-      <div>
-        <figure><img src="media/objects/ribbon.webp" alt="A twisted chrome ribbon, one continuous band turning back on itself" loading="lazy"></figure>
-        <p class="label hue" style="--hue:var(--magenta)">02 · Turn it</p>
-        <h3>Put our brand in it</h3>
-        <p>The same surface, turned. The structure holds; the problem, the product
-          and the words become ours. Nothing is invented that the market did not say.</p>
-      </div>
-      <div>
-        <figure><img src="media/objects/cube.webp" alt="A glass beam-splitter cube with a spectrum inside it" loading="lazy"></figure>
-        <p class="label hue" style="--hue:var(--amber)">03 · Split it</p>
-        <h3>One brief, many assets</h3>
-        <p>A brief fans out — hooks, variations, formats, a whole batch — each one
-          a real test rather than four unrelated pictures.</p>
-      </div>
+<div class="wrap">
+  <div class="beam"></div>
+
+  <section class="sec" id="tools">
+    <p class="eyebrow">Twenty-one tools</p>
+    <h2 class="rise">Everything between the swipe and the shipped ad.</h2>
+    <p class="lede">Every tool is a folder of readable prompts. Clone the repo into Higgsfield Supercomputer or Claude Code and tell it what you want.</p>
+    <div class="shelf">
+      <div style="--hue:var(--cyan)"><i class="ib" data-i="search"></i><h3>Swipe</h3><p>Where the proof comes from.</p>
+        <ul><li>Paid ad swipe pack</li><li>Organic swipe pack</li><li>Swipe library</li><li>Intake</li></ul></div>
+      <div style="--hue:var(--violet)"><i class="ib" data-i="scissors"></i><h3>Tear down</h3><p>Any format, reduced to structure.</p>
+        <ul><li>Video</li><li>Image</li><li>Copy</li><li>Email</li><li>Landing page</li></ul></div>
+      <div style="--hue:var(--magenta)"><i class="ib" data-i="pen"></i><h3>Write</h3><p>The brief and every word on it.</p>
+        <ul><li>Copywriter</li><li>Story builder</li><li>Outlier brief</li></ul></div>
+      <div style="--hue:var(--amber)"><i class="ib" data-i="video"></i><h3>Make</h3><p>From one brief, every asset.</p>
+        <ul><li>AI video production</li><li>Image production</li><li>Email production</li><li>Landing pages</li></ul></div>
+      <div style="--hue:var(--coral)"><i class="ib" data-i="film"></i><h3>Edit</h3><p>Programmed, not hand-calibrated.</p>
+        <ul><li>Video edit</li><li>Premiere line</li><li>Asset index</li></ul></div>
+      <div style="--hue:var(--green)"><i class="ib" data-i="calendar"></i><h3>Plan and ship</h3><p>What goes out, when, and who makes it.</p>
+        <ul><li>Marketing calendar</li><li>Editor onboarding</li><li>Brief queue</li></ul></div>
+    </div>
+    <div class="btns" style="margin-top:var(--s6)">
+      <a class="btn" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Open the repo</a>
+      <a class="btn ghost" href="/onboarding.html">How editors use it</a>
     </div>
   </section>
 
   <section class="sec">
     <div class="duo">
-      <figure><img src="media/objects/cards.webp" alt="A stack of bone cards with chrome edges" loading="lazy"></figure>
+      <div class="obj" data-obj="cards"><img src="media/objects/cards.webp" alt="A stack of bone cards with chrome edges" loading="lazy"></div>
       <div>
         <p class="eyebrow">The output</p>
-        <h2>It ends in a brief someone can shoot.</h2>
-        <p class="lede">Not a strategy deck. A document a clipper or a creator
-          opens, matches against the post it came from, and makes.</p>
-        <p>Every brief shows what it was built from, carries its own Google Doc
-          and a Drive folder with the deliverables, and names the offer, the
-          product and where the traffic goes.</p>
+        <h2 class="rise">It ends in a brief someone can shoot.</h2>
+        <p class="lede">Not a strategy deck. A page a creator opens, matches against the post it came from, and makes.</p>
+        <p>Every brief shows what it was built from, carries its own Google Doc and a Drive folder for the deliverables, and names the offer, the product and where the traffic goes.</p>
         <div class="btns" style="margin-top:var(--s4)">
           <a class="btn" href="/briefs/">See the briefs</a>
-          <a class="btn ghost" href="/objects.html">The object library</a>
+          <a class="btn ghost" href="/swipes/">See the swipes</a>
         </div>
       </div>
     </div>
@@ -129,40 +179,54 @@
 
   <section class="sec">
     <div class="duo flip">
+      <div class="obj" data-obj="torus"><img src="media/objects/torus.webp" alt="A brushed chrome torus" loading="lazy"></div>
       <div>
         <p class="eyebrow">Why it keeps working</p>
-        <h2>The loop is the product.</h2>
-        <p class="lede">When a brief lands, the machine makes more like it. When
-          one is wrong, one prompt gets fixed and every brief after it is better.</p>
-        <p>That is the whole reason the prompts are readable files rather than a
-          black box — the thing you improve is the instruction, not the output.</p>
+        <h2 class="rise">The loop is the product.</h2>
+        <p class="lede">You don't fix the output. You fix the instruction, once, and every brief after it is better.</p>
+        <p>That's why every prompt is a readable file rather than a black box. Read them, change them, make them yours.</p>
         <div class="btns" style="margin-top:var(--s4)">
           <a class="btn ghost" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Read the prompts</a>
         </div>
       </div>
-      <figure><img src="media/objects/torus.webp" alt="A brushed chrome torus with no beginning and no end" loading="lazy"></figure>
     </div>
   </section>
 
-  <hr>
+  <section class="sec">
+    <div class="duo">
+      <div class="obj" data-obj="glb:desk-headphones"><img src="media/objects/sphere.webp" alt="Headphones" loading="lazy"></div>
+      <div>
+        <p class="eyebrow">The soundtrack</p>
+        <h2 class="rise">The studio works to jazz.</h2>
+        <p class="lede">Put on what the machine is made to. It keeps playing while you look around.</p>
+        <div class="btns" style="margin-top:var(--s4)">
+          <button class="playbtn" type="button" data-radio><i class="ib" data-i="play"></i>Play studio radio<span class="eq"><i></i><i></i><i></i></span></button>
+          <a class="btn ghost" href="https://open.spotify.com/playlist/0Ai8Cym5dafFxc0w9lTuC2" target="_blank" rel="noopener">Open in Spotify</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="beam"></div>
 
   <div class="close">
-    <img src="media/objects/prizm.webp" alt="A faceted glass prism splitting light into a spectrum" loading="lazy">
+    <div class="obj xl" data-obj="prism"><img src="media/objects/prizm.webp" alt="A faceted glass prism splitting light into a spectrum" loading="lazy"></div>
     <p class="eyebrow" style="justify-content:center">Prizm</p>
-    <h2>One beam in. Everything out.</h2>
-    <p class="lede" style="max-width:44ch">If you make the ads, start with the
-      onboarding. It is two accounts and one prompt a day.</p>
+    <h2 class="rise">One beam in. Everything out.</h2>
+    <p class="lede" style="max-width:46ch">One ad that already worked goes in. Every format, every variation, every brief comes out. If you make the ads, start with onboarding: two accounts, one prompt a day.</p>
     <div class="btns" style="justify-content:center">
       <a class="btn" href="/onboarding.html">Start here</a>
+      <a class="btn ghost" href="/light.html">Where the name comes from</a>
     </div>
   </div>
 </div>
 
-<div class="card-obj" id="card" hidden>
-  <button class="x" id="cardx" aria-label="close">×</button>
-  <div class="k" id="cardk"></div>
+<div class="card-obj" id="card" hidden role="dialog" aria-labelledby="cardt">
+  <button class="x" id="cardx" aria-label="Close">×</button>
+  <div class="label" id="cardk"></div>
   <h2 id="cardt"></h2>
   <p id="cardp"></p>
+  <div id="cardembed" hidden></div>
   <a class="go" id="cardgo" target="_blank" rel="noopener"></a>
 </div>
 
@@ -172,38 +236,47 @@ import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
 import {DRACOLoader} from 'three/addons/loaders/DRACOLoader.js';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {makeObject} from '/objects3d.js?v=1';
 
 const $ = s => document.querySelector(s);
 const CALM = matchMedia('(prefers-reduced-motion:reduce)').matches;
-const ROT_Y = -Math.PI / 2;          // the head mesh arrives facing +x; turn the face to camera
+const TOUCH = matchMedia('(pointer:coarse)').matches;
+const PHONE = matchMedia('(max-width:760px)');
+const HEAD = {file:'head.glb', rotY:-Math.PI / 2, size:2.1};   // the mesh arrives facing +x; turn the face to camera
 
 // The four things on the desk. Each one opens a card and goes somewhere real.
+// `pos` is the wide screen, `m` is a phone: the head in the middle, the desk
+// around it, everything inside a narrow frame.
 // The prism is deliberately NOT here: image-to-3D cannot read transparent
 // glass and returned a folded white card. It carries the brand as a still,
 // on this page's closing block and across the object library.
 const DESK = [
-  {id:'laptop', file:'desk-laptop.glb', pos:[1.15,-1.15,.5], rot:.35, size:.62,
+  {id:'laptop', file:'desk-laptop.glb', pos:[1.15,-1.15,.5], m:[-.78,-1.32,.5], rot:.35, size:.62,
    k:'The tools', title:'The toolkit', hue:'var(--violet)', href:'https://github.com/daemnapps/outlier', go:'Open the repo',
    body:'Every teardown, research and brief tool, free and readable. Clone it into Higgsfield Supercomputer and tell it what you want.'},
-  {id:'journal', file:'desk-journal.glb', pos:[2.35,-1.0,.4], rot:-.3, size:.5,
+  {id:'journal', file:'desk-journal.glb', pos:[2.35,-1.0,.4], m:[.82,-1.3,.4], rot:-.3, size:.5,
    k:'Where it starts', title:'Onboarding', hue:'var(--indigo)', href:'/onboarding.html', go:'Start here',
    body:'The plan starts on paper, then the machine runs it. If you make the ads, this page is the whole job: two accounts, one prompt a day.'},
-  {id:'headphones', file:'desk-headphones.glb', pos:[2.5,.75,.1], rot:.5, size:.52,
+  {id:'headphones', file:'desk-headphones.glb', pos:[2.5,.75,.1], m:[.92,1.25,.1], rot:.5, size:.52,
+   k:'The soundtrack', title:'Studio radio', hue:'var(--green)', href:'https://open.spotify.com/playlist/0Ai8Cym5dafFxc0w9lTuC2', go:'Open in Spotify',
+   body:'What the studio works to. Press play and keep looking around.', embed:'https://open.spotify.com/embed/playlist/0Ai8Cym5dafFxc0w9lTuC2?utm_source=generator'},
+  {id:'cards', make:'cards', pos:[3.2,-.2,.1], m:[.05,-1.7,.7], rot:.15, size:.55,
    k:'The work', title:'The briefs', hue:'var(--magenta)', href:'/briefs/', go:'See the briefs',
-   body:'What the people making the content actually get: the swipes to study and the brief written from each one.'},
-  {id:'phone', file:'desk-phone.glb', pos:[.85,.95,.3], rot:Math.PI+.5, size:.5,
+   body:'What the people making the content actually get: the swipe to study and the brief written from it.'},
+  {id:'phone', file:'desk-phone.glb', pos:[.85,.95,.3], m:[-.9,1.22,.3], rot:Math.PI+.5, size:.5,
    k:'Say hello', title:'Get in touch', hue:'var(--cyan)', href:'mailto:ddixon@gradientmediallc.com', go:'Email Damon',
    body:'Questions about the tools, the briefs, or working together.'},
 ];
 
 const host = $('#scene');
-let R, scene, cam, ctl, headPivot, desk = [], deskMeshes = [];
+let R, scene, cam, ctl, headPivot, headMeshes = [], desk = [], deskMeshes = [];
+let look = {x:0, y:0, tx:0, ty:0, last:0}, spin = null, running = true;
 
 function normalise(root, rotY, target){
   const box = new THREE.Box3().setFromObject(root), size = box.getSize(new THREE.Vector3()), ctr = box.getCenter(new THREE.Vector3());
-  const pivot = new THREE.Group();
-  root.position.sub(ctr); pivot.add(root);
-  pivot.rotation.y = rotY || 0;
+  const pivot = new THREE.Group(), inner = new THREE.Group();
+  root.position.sub(ctr); inner.add(root); pivot.add(inner);
+  inner.rotation.y = rotY || 0;
   pivot.scale.setScalar(target / Math.max(size.x, size.y, size.z));
   pivot.updateMatrixWorld(true);
   return pivot;
@@ -222,86 +295,140 @@ function card(d){
   const external = /^https?:|^mailto:/.test(d.href);
   a.target = external ? '_blank' : '_self';
   $('#card').style.setProperty('--hue', d.hue || 'var(--indigo)');
+  const em = $('#cardembed');
+  if(d.embed){ if(!em.querySelector('iframe')) em.innerHTML = `<iframe class="radio" src="${d.embed}" title="Studio radio on Spotify" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`; em.hidden = false; }
+  else em.hidden = true;
   $('#card').hidden = false;
 }
+// the hero's play button opens the same card, with or without the room
+window.openRadio = () => card(DESK.find(d => d.embed));
+document.querySelectorAll('[data-radio]').forEach(b => b.addEventListener('click', () => window.openRadio()));
 $('#cardx').addEventListener('click', () => { $('#card').hidden = true; });
 
+// skin, not plastic: soft sheen at grazing angles, no metal, a little
+// roughness variation from the mesh's own map where it has one
+// The glow: skin with a soft sheen at grazing angles and a whisper of
+// clearcoat, under a warm key, a fill and two coloured rims. No metal — the
+// mesh ships a metalness map that would turn the face to chrome. (Damon
+// picked this look on 2026-09-23: same head, the glowing light.)
+function skin(m){
+  return new THREE.MeshPhysicalMaterial({
+    map:m.map || null, normalMap:m.normalMap || null, roughnessMap:m.roughnessMap || null,
+    roughness:.62, metalness:0, envMapIntensity:.55,
+    sheen:.35, sheenRoughness:.75, sheenColor:new THREE.Color(0xffd9c2),
+    clearcoat:.04, clearcoatRoughness:.6,
+  });
+}
+
+function layout(){
+  const phone = PHONE.matches;
+  if(headPivot){ headPivot.position.set(phone ? 0 : 1.65, phone ? .02 : -.05, 0); headPivot.scale.setScalar(headPivot.userData.s * (phone ? .92 : 1)); }
+  for(const p of desk){ const d = p.userData.desk; const at = phone ? d.m : d.pos; p.position.set(...at); p.userData.y0 = at[1]; }
+  cam.position.set(0, .15, phone ? 7.4 : 6.2); ctl.target.set(0, phone ? -.05 : -.05, 0);
+}
+
 async function start(){
-  R = new THREE.WebGLRenderer({antialias:true, alpha:true});
-  R.setPixelRatio(Math.min(2, devicePixelRatio));
+  R = new THREE.WebGLRenderer({antialias:true, alpha:true, powerPreference:'high-performance'});
+  R.setPixelRatio(Math.min(TOUCH ? 1.5 : 2, devicePixelRatio));
   R.outputColorSpace = THREE.SRGBColorSpace;
+  R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 1.08;
   host.appendChild(R.domElement);
 
   scene = new THREE.Scene();
   cam = new THREE.PerspectiveCamera(36, 1, .1, 50);
-  cam.position.set(0, .15, 6.2);
   ctl = new OrbitControls(cam, R.domElement);
-  Object.assign(ctl, {enableDamping:true, enablePan:false, minDistance:3, maxDistance:8,
-    minAzimuthAngle:-.7, maxAzimuthAngle:.7, minPolarAngle:1.0, maxPolarAngle:2.0, autoRotate:false});
-  ctl.target.set(0, -.05, 0);
+  Object.assign(ctl, {enableDamping:true, enablePan:false, enableZoom:false, minDistance:3, maxDistance:9,
+    minAzimuthAngle:-.7, maxAzimuthAngle:.7, minPolarAngle:1.0, maxPolarAngle:2.0});
+  // On a phone the page has to scroll: one finger never belongs to the room.
+  if(TOUCH){ ctl.enabled = false; R.domElement.style.touchAction = 'pan-y'; }
 
-  // A shiny material with nothing to reflect renders black — the room is what
-  // makes his skin and the metal on the desk read at all.
+  // A studio, not a dark room: the environment gives skin and chrome
+  // something to reflect, a warm key models the face, a soft fill keeps the
+  // shadow side alive, and a cool rim separates his hair from the paper.
   const pm = new THREE.PMREMGenerator(R);
   scene.environment = pm.fromScene(new RoomEnvironment(), .04).texture;
-  scene.environmentIntensity = 1.15;   // bone paper, not a dark room
-  scene.add(new THREE.HemisphereLight(0xfffaf2, 0xd8cfc2, 1.35));   // sky warm, bounce off bone
-  const key = new THREE.DirectionalLight(0xfff0d8, 2.2); key.position.set(2.5, 3, 4); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x9ab4ff, .8); rim.position.set(-4, 1, -3); scene.add(rim);
+  scene.environmentIntensity = 1.0;
+  scene.add(new THREE.HemisphereLight(0xfff6ec, 0xcfc3b4, 1.1));
+  const key = new THREE.DirectionalLight(0xffe8d0, 2.6); key.position.set(-2.2, 2.4, 4.2); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xf3eadf, .7); fill.position.set(3.5, .5, 3); scene.add(fill);
+  const rim = new THREE.DirectionalLight(0xa8c0ff, 1.5); rim.position.set(2.5, 2.5, -4); scene.add(rim);
+  const rim2 = new THREE.DirectionalLight(0xffc6e4, .6); rim2.position.set(-3, 1.5, -3.5); scene.add(rim2);
 
   // ---- the head
   try{
-    const pivot = normalise(await load('head.glb'), ROT_Y, 2.1);
-    pivot.position.set(1.65, -.05, 0); scene.add(pivot); headPivot = pivot;
-    // Skin is not metal: the mesh ships a metalness map that turns the face to
-    // chrome. Keep the colour and the surface detail, drop the metal.
-    pivot.traverse(o => { if(!o.isMesh) return;
-      const m = o.material;
-      o.material = new THREE.MeshStandardMaterial({map:m.map||null, normalMap:m.normalMap||null,
-        roughness:.72, metalness:0, envMapIntensity:.6});
-    });
+    const pivot = normalise(await load(HEAD.file), HEAD.rotY, HEAD.size);
+    pivot.userData.s = pivot.scale.x;
+    scene.add(pivot); headPivot = pivot;
+    pivot.traverse(o => { if(!o.isMesh) return; o.material = skin(o.material); headMeshes.push(o); });
   }catch(e){}
 
   // ---- the desk
   for(const d of DESK){
     try{
-      const pivot = normalise(await load(d.file), d.rot, d.size);
-      pivot.position.set(...d.pos);
-      pivot.userData = {desk:d, y0:d.pos[1], r0:d.rot};
+      const pivot = normalise(d.make ? await makeObject(d.make) : await load(d.file), d.rot, d.size);
+      pivot.userData = {desk:d, y0:0, r0:0};   // the turn toward camera lives on the inner group
       scene.add(pivot); desk.push(pivot);
       pivot.traverse(o => { if(o.isMesh){ o.userData.deskOf = pivot; deskMeshes.push(o); } });
     }catch(e){}
   }
+  layout();
 
   const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
   let hover = null;
-  const pick = ev => {
+  const cast = ev => {
     const r = R.domElement.getBoundingClientRect();
     ptr.x = ((ev.clientX - r.left) / r.width) * 2 - 1;
     ptr.y = -((ev.clientY - r.top) / r.height) * 2 + 1;
     ray.setFromCamera(ptr, cam);
-    const hit = ray.intersectObjects(deskMeshes, true)[0];
-    return hit ? hit.object.userData.deskOf : null;
   };
+  const pick = ev => { cast(ev); const hit = ray.intersectObjects(deskMeshes, true)[0]; return hit ? hit.object.userData.deskOf : null; };
+  const onHead = ev => { cast(ev); return ray.intersectObjects(headMeshes, true).length > 0; };
+
+  // his eyes follow you: the head turns a little toward the pointer
+  addEventListener('pointermove', ev => {
+    look.tx = (ev.clientX / innerWidth - .5) * 2; look.ty = (ev.clientY / innerHeight - .5) * 2; look.last = performance.now();
+  }, {passive:true});
   R.domElement.addEventListener('pointermove', ev => {
+    if(TOUCH) return;
     hover = pick(ev);
-    R.domElement.style.cursor = hover ? 'pointer' : 'grab';
+    R.domElement.style.cursor = hover ? 'pointer' : (onHead(ev) ? 'help' : 'grab');
   });
-  R.domElement.addEventListener('click', ev => {
-    const p = pick(ev);
-    if(p) card(p.userData.desk);
+  R.domElement.addEventListener('click', ev => { const p = pick(ev); if(p) card(p.userData.desk); });
+
+  // easter egg: double-tap (or double-click) the head and it spins
+  let lastTap = 0;
+  const spinHead = msg => { if(!headPivot || spin) return; spin = {t0:performance.now()}; if(msg && window.studioToast) window.studioToast(msg); };
+  R.domElement.addEventListener('pointerup', ev => {
+    if(!onHead(ev)) return;
+    const now = performance.now();
+    if(now - lastTap < 350){ spinHead('Yep. That’s Damon.'); lastTap = 0; } else lastTap = now;
   });
+  addEventListener('daemn', () => spinHead());
 
   function size(){
     const w = host.clientWidth, h = host.clientHeight;
     R.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
   }
   addEventListener('resize', size); size();
+  PHONE.addEventListener('change', () => { layout(); size(); });
 
-  (function loop(t){
+  // pause when nobody can see it — the battery is the visitor's
+  new IntersectionObserver(es => { running = es[0].isIntersecting; if(running) requestAnimationFrame(loop); }).observe(host);
+  document.addEventListener('visibilitychange', () => { if(!document.hidden && running) requestAnimationFrame(loop); });
+
+  function loop(t){
+    if(!running || document.hidden) return;
     ctl.update();
+    if(headPivot && !CALM){
+      const idle = performance.now() - look.last > 2500;
+      const tx = idle ? .28 * Math.sin(t / 3800) : look.tx * .42;
+      const ty = idle ? .04 * Math.sin(t / 5100) : look.ty * .12;
+      look.x += (tx - look.x) * .05; look.y += (ty - look.y) * .05;
+      let extra = 0;
+      if(spin){ const k = Math.min(1, (performance.now() - spin.t0) / 1300); extra = Math.PI * 2 * (1 - Math.pow(1 - k, 3)); if(k >= 1) spin = null; }
+      headPivot.rotation.set(look.y, look.x + extra, 0);
+    }
     if(!CALM){
-      if(headPivot) headPivot.rotation.y = ROT_Y + .28 * Math.sin(t / 3800);
       for(const p of desk){
         const d = p.userData;
         p.position.y = d.y0 + .05 * Math.sin(t / 2200 + d.desk.pos[0]);
@@ -310,7 +437,9 @@ async function start(){
     }
     R.render(scene, cam);
     requestAnimationFrame(loop);
-  })(0);
+  }
+  requestAnimationFrame(loop);
+  $('#hint').textContent = TOUCH ? 'Tap anything on the desk · double-tap me' : 'Drag to look around · click anything on the desk';
 }
 
 // WebGL missing or refused: the page is already complete without the room.
@@ -320,10 +449,13 @@ try{
   else $('#hint').textContent = '';
 }catch(e){ $('#hint').textContent = ''; }
 </script>
+
 <footer class="bot">
   <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">The toolkit, open source</a>
+  <a href="/light.html">Light</a>
   <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a>
   <a href="mailto:ddixon@gradientmediallc.com">Get in touch</a>
   <span class="right">DÆMN STUDIO® · MIT</span>
 </footer>
+<script src="/studio.js?v=2" defer></script>
 </html>

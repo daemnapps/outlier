@@ -36,8 +36,8 @@ Bone, never pure white. Warm near-black ink, never `#000`.
 | `--paper` | `#F7F4EF` | a recessed panel, a table head, code |
 | `--card` | `#FFFFFF` | a card that has to lift off the page |
 | `--ink` | `#171512` | all reading copy |
-| `--ink-2` | `#6A635A` | secondary copy — the floor; never dim below this |
-| `--ink-3` | `#9A9287` | labels and signage only, never a sentence |
+| `--ink-2` | `#4B453E` | secondary copy — the floor; never dim below this |
+| `--ink-3` | `#716960` | labels and signage only, never a sentence |
 
 ## The spectrum, with jobs
 
@@ -120,3 +120,16 @@ Bump the version on the stylesheet link in every page (`/studio.css?v=prizmN`).
 Visitors cache the file aggressively; without the bump, a returning reader gets
 the old system against new markup, which is how a page looks broken for exactly
 the people who have been here before.
+
+## Darker ink, real objects (2026-09-23)
+
+Damon: the grey copy read too light. `--ink-2` and `--ink-3` are darker, labels
+went from 10px to 11px, and sections have more air.
+
+The chrome and glass objects are no longer only stills. `/objects3d.js` renders
+each one in real 3D wherever a page puts `<div class="obj" data-obj="torus">`,
+with the still inside as its poster. One renderer serves the whole page. Kinds:
+prism, lens, ribbon, cube, torus, sphere, monolith, cards, and `glb:<file>` for
+the desk models. Icons are `<i class="ib" data-i="name"></i>`, drawn by
+`/studio.js` from one set, and wear the block's `--hue`.
+

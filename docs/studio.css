@@ -30,8 +30,8 @@
   --paper:#F7F4EF;
   --card:#FFFFFF;
   --ink:#171512;
-  --ink-2:#6A635A;
-  --ink-3:#9A9287;
+  --ink-2:#4B453E;
+  --ink-3:#716960;
   --line:rgba(23,21,18,.14);
   --line-2:rgba(23,21,18,.26);
 
@@ -121,10 +121,10 @@ p + p{margin-top:var(--s3)}
 .lede{font-size:clamp(16px,1.5vw,18px);color:var(--ink-2);max-width:50ch}
 /* The eyebrow is the terminal register, and its leading rule is the prism —
    that one device is what makes a page read as an instrument. */
-.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
   display:flex;align-items:center;gap:var(--s2)}
 .eyebrow::before{content:"";width:26px;height:2px;background:var(--prism);flex:none;border-radius:2px}
-.label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .label.hue{color:var(--hue)}
 .mono{font-family:var(--mono);font-size:.92em}
 .num{font-variant-numeric:tabular-nums}
@@ -139,7 +139,7 @@ ul.plain{list-style:none;padding:0}
 
 /* ── sections ───────────────────────────────────────────────────────── */
 .hero{padding-block:clamp(var(--s7),9vh,var(--s9)) var(--s7);display:grid;gap:var(--s4)}
-.sec{padding-block:var(--s7)}
+.sec{padding-block:clamp(var(--s8),11vw,140px)}
 .sec > .eyebrow{margin-bottom:var(--s3)}
 .sec h2 + .lede{margin-top:var(--s3)}
 
@@ -336,6 +336,212 @@ footer.bot .right{margin-left:auto}
 details{margin:8px 0}summary{cursor:pointer;font-weight:600;color:var(--indigo)}
 .foot{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--ink-2);font-size:13px}
 @media (max-width:560px){.strip img{height:150px}}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PHONES, TOUCH AND MOTION — added 2026-09-23 for the public launch.
+   Rules this section keeps: a tap target is at least 44px; nothing on a
+   phone scrolls sideways except a strip that is meant to; hover effects
+   only where there is a real pointer; motion is slow, small, and off for
+   anyone who asked their device for less.
+   ═══════════════════════════════════════════════════════════════════════ */
+@view-transition{navigation:auto}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.28s}
+p,li,td,dd,figcaption{overflow-wrap:break-word}
+.lede,p{hyphens:manual}
+
+/* the nav on a phone: the mark on one line, the five doors on the next,
+   each one a full thumb tall, the row scrolling sideways if a phone is
+   narrower than the words */
+@media (max-width:760px){
+  nav.bar{gap:0;padding-top:calc(var(--s3) + env(safe-area-inset-top,0px));padding-bottom:0;align-items:center}
+  nav.bar .mark{padding-block:var(--s3);font-size:15px}
+  nav.bar .links{margin-inline:calc(var(--gutter) * -1);width:calc(100% + var(--gutter) * 2);
+    padding-inline:calc(var(--gutter) - 8px);overflow-x:auto;scrollbar-width:none;gap:0;
+    justify-content:space-between;flex-wrap:nowrap;font-size:10.5px;border-bottom:1px solid var(--line)}
+  nav.bar .links::-webkit-scrollbar{display:none}
+  nav.bar .links a{display:inline-flex;align-items:center;min-height:44px;padding-inline:7px;white-space:nowrap;flex:none}
+  nav.bar .links a[aria-current]{border:0;padding-bottom:0;
+    background:var(--prism) no-repeat;background-size:calc(100% - 16px) 2px;background-position:8px calc(100% - 9px)}
+  .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  footer.bot{gap:0 var(--s5)}
+  footer.bot a,footer.bot span{display:inline-flex;align-items:center;min-height:44px}
+  footer.bot .right{margin-left:0;width:100%}
+  details summary{padding-block:10px}
+  /* a table that is really a list of rows reads as stacked cards on a phone */
+  table.stack thead{display:none}
+  table.stack,table.stack tbody,table.stack tr,table.stack td{display:block;width:100%}
+  table.stack tr{padding-block:var(--s3);border-bottom:1px solid var(--line)}
+  table.stack td{border:0;padding:2px 0}
+  table.stack td:first-child{padding-bottom:var(--s1)}
+}
+@media (max-width:400px){ nav.bar .links{font-size:9.5px;letter-spacing:.06em} }
+/* a small text link keeps its look and gets a thumb-sized hit area */
+@media (pointer:coarse){
+  .go,.railin a{position:relative}
+  .go::after{content:"";position:absolute;inset:-14px -10px}
+}
+/* hover only where something can hover */
+@media (hover:none){
+  .btn:hover{background:var(--indigo);border-color:var(--indigo)}
+  .btn.ghost:hover{background:transparent;color:var(--ink);border-color:var(--line-2)}
+}
+
+/* ── motion. Every piece is opted into by /studio.js, so a page with no
+   script is simply still. ── */
+@media (prefers-reduced-motion:no-preference){
+  html.moving [data-rv]{opacity:0;transform:translateY(12px);
+    transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);
+    transition-delay:calc(var(--i,0) * 70ms)}
+  html.moving [data-rv].in{opacity:1;transform:none}
+  /* the chrome objects breathe: a few pixels, over nine seconds */
+  html.moving img[data-float]{animation:drift 9s ease-in-out infinite alternate;animation-delay:calc(var(--i,0) * -1.7s)}
+  @keyframes drift{from{transform:translateY(0) rotate(0)}to{transform:translateY(-7px) rotate(.6deg)}}
+  /* the one prism hairline is light moving through glass */
+  hr.prism{background-size:200% 100%;animation:sweep 14s linear infinite}
+  @keyframes sweep{to{background-position:200% 0}}
+  .eyebrow::before{background-size:200% 100%;animation:sweep 14s linear infinite}
+}
+/* a faint spectrum under a real pointer — light, following the hand */
+.glint{position:fixed;left:0;top:0;width:520px;height:520px;margin:-260px 0 0 -260px;border-radius:50%;
+  background:radial-gradient(circle,color-mix(in srgb,var(--indigo) 9%,transparent),color-mix(in srgb,var(--magenta) 5%,transparent) 40%,transparent 70%);
+  pointer-events:none;z-index:1;opacity:0;transition:opacity .6s;will-change:transform}
+.glint.on{opacity:1}
+/* the mark catches the light on hover */
+@media (hover:hover){
+  nav.bar .mark:hover{background:var(--prism);-webkit-background-clip:text;background-clip:text;color:transparent}
+}
+/* a note from the machine — used by the easter eggs */
+.toast{position:fixed;left:50%;bottom:calc(var(--s5) + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);
+  z-index:10000;background:var(--card);border:1px solid var(--line);border-top:2px solid transparent;
+  border-image:var(--prism) 1;padding:10px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .35s,transform .35s;pointer-events:none;
+  box-shadow:var(--float);max-width:calc(100vw - 32px);text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.shards{position:fixed;inset:0;z-index:9998;pointer-events:none}
+html.spectrum body{animation:spectrum 1.6s ease-in-out}
+@keyframes spectrum{50%{filter:hue-rotate(180deg) saturate(1.4)}}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   OBJECTS, ICONS, THE SCROLL STORY — added 2026-09-23.
+     .obj            a slot one of the chrome/glass objects renders into, in
+                     real 3D (/objects3d.js). The <img> inside is its poster.
+     .ib             an icon on a tinted tile; its colour is the block's --hue
+     .ico            a bare inline icon
+     .story          a section that pins while its steps scroll past
+     .stats          big numbers, counted up as they arrive
+     .rise           a headline whose words rise into place
+   ═══════════════════════════════════════════════════════════════════════ */
+.obj{position:relative;aspect-ratio:1;width:100%;max-width:420px;margin-inline:auto}
+.obj > img{width:100%;height:100%;object-fit:contain;transition:opacity .6s;mix-blend-mode:multiply}
+.obj > canvas{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .9s}
+.obj.live > img{opacity:0}
+.obj.live > canvas{opacity:1}
+.obj.sm{max-width:120px;margin-inline:0}
+.obj.md{max-width:220px}
+.obj.xl{max-width:560px}
+figure .obj{background:transparent}
+/* an object floating in the corner of a section, beside its heading */
+.obj.corner{float:right;width:clamp(96px,15vw,180px);max-width:none;margin:0 0 var(--s3) var(--s4);shape-outside:circle(50%)}
+.ask > .ib,.map > div > .ib,.shelf > div > .ib{margin-bottom:var(--s2)}
+
+.ico{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.18em;flex:none}
+.ico svg,.ib svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ib{display:inline-grid;place-items:center;width:40px;height:40px;padding:9px;flex:none;border-radius:var(--r2);
+  color:var(--hue,var(--indigo));background:color-mix(in srgb,var(--hue,var(--indigo)) 11%,transparent);
+  border:1px solid color-mix(in srgb,var(--hue,var(--indigo)) 22%,transparent)}
+.ib.lg{width:52px;height:52px;padding:12px;border-radius:var(--r3)}
+h3 .ib,h4 .ib{width:32px;height:32px;padding:7px;margin-right:var(--s3);vertical-align:-9px}
+
+/* the pinned story: the object holds still in the middle of the screen and
+   changes as each step scrolls past it */
+.story{position:relative}
+.story-pin{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:var(--s7)}
+.story-pin .obj{max-width:min(520px,44vw)}
+.story-steps{position:relative;min-height:min(420px,60svh)}
+.story-step{position:absolute;inset:auto 0;top:50%;transform:translateY(-40%);opacity:0;
+  transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);pointer-events:none}
+.story-step.on{opacity:1;transform:translateY(-50%);pointer-events:auto}
+.story-step h3{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.03em;margin:var(--s3) 0}
+.story-step p{font-size:clamp(16px,1.6vw,19px);color:var(--ink-2);max-width:42ch}
+.story-dots{display:flex;gap:6px;margin-top:var(--s5)}
+.story-dots i{width:22px;height:3px;border-radius:2px;background:var(--line-2);transition:background .4s,width .4s}
+.story-dots i.on{background:var(--hue,var(--indigo));width:44px}
+@media (max-width:760px){
+  .story-pin{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:0;align-content:center}
+  .story-pin .obj{max-width:min(300px,70vw);margin-top:var(--s6)}
+  .story-steps{min-height:260px}
+  .story-step{top:0;transform:translateY(12px)}
+  .story-step.on{transform:none}
+}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:var(--s5) var(--s4);padding-block:var(--s7)}
+.stat .v{display:block;font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,64px);letter-spacing:-.04em;line-height:1;
+  font-variant-numeric:tabular-nums;background:linear-gradient(180deg,var(--ink),color-mix(in srgb,var(--ink) 70%,var(--violet)));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .k{display:block;margin-top:var(--s2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+
+/* a tool shelf: every part of the stack, with its icon */
+.shelf{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:var(--s3);margin-top:var(--s6)}
+.shelf > div{background:var(--card);border:1px solid var(--line);border-radius:var(--r3);padding:var(--s5);display:grid;gap:var(--s3);align-content:start}
+.shelf h3{font-size:19px;margin:0}
+.shelf p{color:var(--ink-2);font-size:14.5px}
+.shelf ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.shelf li{margin:0;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 9px;border-radius:var(--r1);background:var(--paper);color:var(--ink-2)}
+
+/* headlines rise a word at a time (studio.js splits them) */
+@media (prefers-reduced-motion:no-preference){
+  html.moving .rise .w{display:inline-block;overflow:clip;overflow-clip-margin:.15em;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+  html.moving .rise .w > span{display:inline-block;transform:translateY(105%);transition:transform 1s cubic-bezier(.22,1,.36,1);
+    transition-delay:calc(var(--wi) * 60ms)}
+  html.moving .rise.in .w > span{transform:none}
+}
+
+/* the studio radio */
+.radio{width:100%;border:0;border-radius:var(--r2);margin-top:var(--s3);min-height:152px;background:var(--paper)}
+.playbtn{display:inline-flex;align-items:center;gap:var(--s2);font-family:var(--mono);font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink);background:var(--card);border:1px solid var(--line-2);border-radius:var(--r4);
+  padding:10px 16px 10px 12px;min-height:44px;cursor:pointer}
+.playbtn .ib{width:26px;height:26px;padding:5px;border-radius:var(--r4);--hue:var(--green)}
+.playbtn .eq{display:inline-flex;gap:2px;align-items:flex-end;height:12px}
+.playbtn .eq i{width:2px;background:var(--green);height:30%;border-radius:1px}
+@media (prefers-reduced-motion:no-preference){
+  .playbtn .eq i{animation:eq 1.1s ease-in-out infinite alternate}
+  .playbtn .eq i:nth-child(2){animation-delay:-.4s}.playbtn .eq i:nth-child(3){animation-delay:-.8s}
+  @keyframes eq{to{height:100%}}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LIGHT — the idea the studio is named for, moving through every page.
+     .beam        a section break: one white beam enters, meets a prism, and
+                  leaves as the spectrum; it draws itself as you scroll to it
+     .lightbar    the right edge fills with the spectrum as you read down
+     .aurora      the room's coloured light drifting slowly with the scroll
+     .darkroom    a panel with the shutters closed, for light to show up in
+   ═══════════════════════════════════════════════════════════════════════ */
+.beam{position:relative;z-index:2;height:clamp(90px,12vw,150px);margin-block:var(--s4)}
+.beam svg{width:100%;height:100%;overflow:visible}
+.beam .in{stroke:var(--ink);stroke-width:1.4;opacity:.55}
+.beam .glass{fill:color-mix(in srgb,var(--card) 70%,transparent);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.beam .ray{stroke-width:1.6;fill:none;opacity:.9}
+.beam path{stroke-dasharray:1;stroke-dashoffset:1}
+.beam.lit path{stroke-dashoffset:0;transition:stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1)}
+.beam.lit .ray{transition-delay:calc(.5s + var(--k) * 45ms)}
+@media (prefers-reduced-motion:reduce){ .beam path{stroke-dashoffset:0} }
+
+.lightbar{position:fixed;right:0;top:0;width:3px;height:100%;z-index:50;pointer-events:none;
+  background:linear-gradient(180deg,var(--violet),var(--indigo),var(--cyan),var(--green),var(--amber),var(--coral),var(--magenta));
+  transform-origin:top;transform:scaleY(var(--sp,0));opacity:.8}
+.aurora{position:fixed;inset:-20%;z-index:0;pointer-events:none;opacity:.55;
+  background:
+    radial-gradient(30% 24% at calc(20% + var(--sp,0) * 50%) 20%, color-mix(in srgb,var(--violet) 9%,transparent), transparent 70%),
+    radial-gradient(26% 22% at calc(80% - var(--sp,0) * 40%) 60%, color-mix(in srgb,var(--cyan) 8%,transparent), transparent 70%),
+    radial-gradient(28% 22% at 50% calc(90% - var(--sp,0) * 30%), color-mix(in srgb,var(--magenta) 7%,transparent), transparent 70%);
+  transform:rotate(calc(var(--sp,0) * 25deg))}
+
+.darkroom{position:relative;background:var(--ink);color:var(--bone);border-radius:var(--r3);overflow:hidden}
+.darkroom canvas{display:block;width:100%;height:100%;touch-action:pan-y}
+.darkroom .label,.darkroom .eyebrow{color:color-mix(in srgb,var(--bone) 70%,transparent)}
 
 /* ── swipe teardowns — generated by publish_swipes.py; edit page.css, not this ── */
 .td{--ground:var(--bone);--surface:var(--card);--surface-2:var(--paper);--muted:var(--ink-2);--rule:var(--line);--accent:var(--violet);--accent-soft:color-mix(in srgb,var(--violet) 10%,transparent);--good:var(--green);--good-soft:color-mix(in srgb,var(--green) 12%,transparent);--serif:var(--body);--sans:var(--body);--shadow:none;}
