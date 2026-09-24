@@ -16,7 +16,7 @@ I am a new editor/designer starting on {BRAND}. Set me up, then show me what is 
 
 1. CONNECTIONS. Confirm Google Drive and GitHub are both connected in this chat. If either is not, stop and tell me exactly which one, in one line — nothing below works without both.
 
-2. THE TOOLS. Clone https://github.com/daemnapps/outlier (if it is already cloned, pull it so it is current). Then read tools/21-editor-onboarding/SOP.md in full. That file is the way we work; treat it as standing instructions for every session with me from now on.
+2. THE TOOLS. Clone https://github.com/daemnapps/prizm-labs (if it is already cloned, pull it so it is current). Then read tools/21-editor-onboarding/SOP.md in full. That file is the way we work; treat it as standing instructions for every session with me from now on.
 
 3. THE BRAND FOLDER. Open this Google Drive folder directly: {FOLDER LINK} — that is the {BRAND} folder. Do not search for it by name. Inside it, open the folder named `briefs`. If the link does not open, tell me in one line; do not look for another folder with the same name.
 

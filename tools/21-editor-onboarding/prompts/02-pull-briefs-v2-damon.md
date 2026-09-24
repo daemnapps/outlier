@@ -18,7 +18,7 @@ menu are inline so the prompt works on its own; the ASKS menu is the one in
 Working session on {BRAND}. Brief: {BRIEF} (or "newest open"). Do these in order; stop and show me at every ⏸.
 
 ## 1. SYNC — always first, never skipped
-- Pull https://github.com/daemnapps/outlier for updates and say in one line whether anything changed under tools/21-editor-onboarding/ or tools/05-ai-video-production/. If tools/21-editor-onboarding/SOP.md changed, re-read it.
+- Pull https://github.com/daemnapps/prizm-labs for updates and say in one line whether anything changed under tools/21-editor-onboarding/ or tools/05-ai-video-production/. If tools/21-editor-onboarding/SOP.md changed, re-read it.
 - Open `briefs/QUEUE.md` in the {BRAND} folder on Google Drive. Read it live — not a copy from an earlier chat.
 - Show me the open and claimed briefs, newest first: brief · type · status · who · bounty · due.
 

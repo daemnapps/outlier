@@ -221,7 +221,7 @@
     say(esc(q), 'me');
     const low = q.toLowerCase();
     if (/\bprizm\b/.test(low)) { shatter(); return say('<p>You found one. ✦</p>', 'it'); }
-    if (/\bdaemn\b/.test(low) && low.length < 12) { window.dispatchEvent(new Event('daemn')); return say('<p>The machine is listening.</p>', 'it'); }
+    if (/\blabs\b/.test(low) && low.length < 12) { window.dispatchEvent(new Event('labs')); return say('<p>The machine is listening.</p>', 'it'); }
     const wait = say('<p>Reading the repo…</p>', 'it');
     try {
       if (ASK_AI) {
@@ -232,7 +232,7 @@
         return;
       }
       const K = await kb(), hits = best(q, K);
-      if (!hits.length) { wait.innerHTML = '<p>Nothing in the repo answers that yet. Try naming the tool, or <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">browse the repo</a>.</p>'; return; }
+      if (!hits.length) { wait.innerHTML = '<p>Nothing in the repo answers that yet. Try naming the tool, or <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">browse the repo</a>.</p>'; return; }
       const top = hits[0].it;
       wait.innerHTML = `<p><b>${esc(top.section)}</b>${top.tool ? ' · ' + esc(top.tool.replace(/^\d+-/, '').replace(/-/g, ' ')) : ''}</p><p>${md(excerpt(top.text, q))}</p>` +
         `<div class="src">${hits.map(h => `<a href="${esc(h.it.url)}" target="_blank" rel="noopener">${esc(h.it.section)} — ${esc(h.it.path)} →</a>`).join('')}</div>`;
@@ -267,7 +267,7 @@
      2  Tap the ® in the logo three times — the whole page runs the prism.
      3  Open the console — a note for whoever reads source.
      4  (home only) double-tap the head — it spins. See index.html.
-     5  Type "daemn" — the machine answers.
+     5  Type "labs" — the machine answers.
   */
   const shatter = () => {
     toast('One beam in. Everything out.');
@@ -300,7 +300,7 @@
     if (seq.join() === KONAMI.join()) { seq = []; shatter(); }
     if (e.key.length === 1) typed = (typed + e.key.toLowerCase()).slice(-12);
     if (typed.endsWith('prizm')) { typed = ''; shatter(); }
-    if (typed.endsWith('daemn')) { typed = ''; toast('The machine is listening.'); window.dispatchEvent(new Event('daemn')); }
+    if (typed.endsWith('labs')) { typed = ''; toast('The machine is listening.'); window.dispatchEvent(new Event('labs')); }
   });
 
   // on a phone there is no keyboard: long-press the mark for the shatter,
@@ -327,7 +327,7 @@
   }
 
   try {
-    console.log('%cDÆMN STUDIO®', 'font:800 22px Unbounded,sans-serif;background:linear-gradient(96deg,#6D3BF5,#2F5BFF,#00A8CC,#12A06F,#F09000,#F04A2E,#DB2A8C);-webkit-background-clip:text;color:transparent');
-    console.log('%cYou read source. You are our kind of person.\nEvery prompt behind this site is a readable file: https://github.com/daemnapps/outlier\n(try typing "prizm" on the page)', 'font:12px "DM Mono",monospace;color:#6A635A');
+    console.log('%cPRIZM LABS', 'font:800 22px Unbounded,sans-serif;background:linear-gradient(96deg,#6D3BF5,#2F5BFF,#00A8CC,#12A06F,#F09000,#F04A2E,#DB2A8C);-webkit-background-clip:text;color:transparent');
+    console.log('%cYou read source. You are our kind of person.\nEvery prompt behind this site is a readable file: https://github.com/daemnapps/prizm-labs\n(try typing "prizm" on the page)', 'font:12px "DM Mono",monospace;color:#6A635A');
   } catch (e) {}
 })();

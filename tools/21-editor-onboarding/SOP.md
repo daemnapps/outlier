@@ -86,7 +86,7 @@ bounty and due dates.
 | No credits / "no chats" | Wrong Higgsfield workspace, or the free credits are used | Switch workspace (top-left) and refresh, or ask the owner |
 | It found the wrong `briefs` folder | Two folders share the name | Give it the path or the link; it must not guess |
 | The queue shows a brief you already delivered as open | The files are not in `delivered/<brief>/` under that exact brief name | Check the folder name matches the queue's Brief column |
-| "Pull my GitHub repository" says no updates but the SOP changed | The clone is stale | Say "clone https://github.com/daemnapps/outlier again, fresh" |
+| "Pull my GitHub repository" says no updates but the SOP changed | The clone is stale | Say "clone https://github.com/daemnapps/prizm-labs again, fresh" |
 
 ## Coming next (not yet — do not wait for it)
 

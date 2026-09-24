@@ -196,7 +196,7 @@ td.b{{color:var(--ink);font-weight:500}}
   <a class="link" href="{PAGE}" target="_blank" rel="noopener"><div class="k">Public page</div><b>daemn.co/onboarding.html</b><span>live once the repo is pushed (GitHub Pages)</span></a>
   <a class="link" href="https://daemn.co/onboarding-desk.html" target="_blank" rel="noopener"><div class="k">For Steph</div><b>daemn.co/onboarding-desk.html</b><span>the onboarder's side: folders by link once per brand, one message per editor, what to check</span></a>
   <a class="link" href="{FOLDER}" target="_blank" rel="noopener"><div class="k">Drive folder</div><b>Shared Assets / onboarding</b><span>the edited video + the full transcript — share this with editors</span></a>
-  <a class="link" href="https://github.com/daemnapps/outlier/tree/main/tools/21-editor-onboarding" target="_blank" rel="noopener"><div class="k">The tool</div><b>tools/21-editor-onboarding</b><span>SOP, prompts, the queue, the cut list</span></a>
+  <a class="link" href="https://github.com/daemnapps/prizm-labs/tree/main/tools/21-editor-onboarding" target="_blank" rel="noopener"><div class="k">The tool</div><b>tools/21-editor-onboarding</b><span>SOP, prompts, the queue, the cut list</span></a>
 </div>
 </section>
 
@@ -294,7 +294,7 @@ td.b{{color:var(--ink);font-weight:500}}
 <section id="sync">
 <p class="eyebrow">09 · always in step</p>
 <h2>How Drive and the tools stay synced</h2>
-<p><b>Two homes, on purpose.</b> The tools live in the public repo (outlier). The briefs — runs, packs, brand material — live in the private workspace (ai-workspace) and on Drive, and never touch the public repo. The bridge between them is one verb, run for you every hour.</p>
+<p><b>Two homes, on purpose.</b> The tools live in the public repo (Prizm Labs). The briefs — runs, packs, brand material — live in the private workspace (ai-workspace) and on Drive, and never touch the public repo. The bridge between them is one verb, run for you every hour.</p>
 <div class="steps">
   <div class="step"><span class="n">→</span><div><b>Workspace → Drive</b><span>Every finished run in ai-workspace (its pack cleared the gates) is zipped and dropped into the brand's <span class="mono">briefs/</span> on Drive, once — never twice, never over something an editor has claimed. <span class="mono">queue.py ship --auto</span>, hourly.</span></div></div>
   <div class="step"><span class="n">→</span><div><b>Tools → editors</b><span>The Pull-briefs prompt pulls the repo before anything else, every session. Whatever is committed reaches every editor next time they sit down.</span></div></div>

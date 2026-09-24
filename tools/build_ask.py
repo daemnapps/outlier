@@ -13,7 +13,7 @@ import json, re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-REPO = "https://github.com/daemnapps/outlier/blob/main/"
+REPO = "https://github.com/daemnapps/prizm-labs/blob/main/"
 # WALKTHROUGH.md is left out: it only points elsewhere now
 FILES = ["README.md", "ASK.md"] + sorted(
     str(p.relative_to(ROOT)) for p in ROOT.glob("tools/*/*.md") if p.name in ("README.md", "SOP.md"))

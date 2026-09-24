@@ -172,7 +172,7 @@ def index_md(F, V, FE, SW) -> str:
          "| What | How much | Where |",
          "|---|---|---|",
          f"| **Organic formats** — the structures under posts that worked | {len([k for k in by_fmt if not k.startswith('one-off')])} library formats in use of {len(F)} · {len([k for k in by_fmt if k.startswith('one-off')])} one-offs | "
-         "public pack: github.com/daemnapps/outlier → tools/03-organic-swipe-pack |",
+         "public pack: github.com/daemnapps/prizm-labs → tools/03-organic-swipe-pack |",
          f"| **Swipe videos** — every post torn down, filed under its format | {len(torn)} torn down · {len(V) - len(torn)} waiting | "
          "`lab/damon/swipe-organic/records/swipe-videos/<code>/` — `video.mp4`, `handoff.md` (the rebuild sheet), `sheet.jpg` (the beats) |",
          f"| **My Feeds** — one feed per sub-avatar: what that person actually watches | {len(FE)} feeds · {sum(f['kept'] for f in FE):,} posts kept of {sum(f['total'] for f in FE):,} seen | "
@@ -238,10 +238,10 @@ def public_page(F, V, SW, FE) -> str:
         shapes.append((p.stem, first))
     E = html.escape
     fmt_html = "".join(f'<div class="card"><div class="num">{n} REFERENCE{"S" if n != 1 else ""}</div><h3>{E(name.replace("-", " "))}</h3>'
-                       f'<p>{E(first[:180])}</p><div class="foot"><a class="mono" href="https://github.com/daemnapps/outlier/tree/main/tools/03-organic-swipe-pack/formats/{E(name)}" target="_blank" rel="noopener">open →</a></div></div>'
+                       f'<p>{E(first[:180])}</p><div class="foot"><a class="mono" href="https://github.com/daemnapps/prizm-labs/tree/main/tools/03-organic-swipe-pack/formats/{E(name)}" target="_blank" rel="noopener">open →</a></div></div>'
                        for name, first, n in fmts)
     shape_html = "".join(f'<div class="card"><h3>{E(name.replace("-", " "))}</h3><p>{E(first[:200])}</p>'
-                         f'<div class="foot"><a class="mono" href="https://github.com/daemnapps/outlier/blob/main/tools/04-paid-ad-swipe-pack/angle-shapes/{E(name)}.md" target="_blank" rel="noopener">open →</a></div></div>'
+                         f'<div class="foot"><a class="mono" href="https://github.com/daemnapps/prizm-labs/blob/main/tools/04-paid-ad-swipe-pack/angle-shapes/{E(name)}.md" target="_blank" rel="noopener">open →</a></div></div>'
                          for name, first in shapes)
     return f"""<!doctype html>
 <html lang="en">
@@ -249,7 +249,7 @@ def public_page(F, V, SW, FE) -> str:
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#EDE0DC">
 <meta name="description" content="Every structure we have pulled out of posts and ads that worked — the organic formats and the paid angle shapes — in one place, free.">
-<title>The Swipe Library — DÆMN STUDIO®</title>
+<title>The Swipe Library — PRIZM LABS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
@@ -268,12 +268,12 @@ def public_page(F, V, SW, FE) -> str:
 </style>
 
 <nav>
-  <a class="mark" href="/">DÆMN STUDIO®</a>
+  <a class="mark" href="/">PRIZM LABS</a>
   <span class="sp"></span>
   <a class="link" href="/workflows.html">The tools</a>
   <a class="link" href="/swipe-library.html" aria-current="page">Swipe library</a>
   <a class="link" href="/onboarding.html">Onboarding</a>
-  <a class="link" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
+  <a class="link" href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a>
 </nav>
 
 <div class="wrap">
@@ -283,8 +283,8 @@ def public_page(F, V, SW, FE) -> str:
       <h1>What<br>worked.</h1>
       <p class="lede">Every structure we have pulled out of posts and ads that already earned their audience — the organic <b>formats</b> and the paid <b>angle shapes</b>. Pick one, put your brand in, make it.</p>
       <div class="btns">
-        <a class="btn" href="https://github.com/daemnapps/outlier/tree/main/tools/03-organic-swipe-pack" target="_blank" rel="noopener">Organic formats — in the repo</a>
-        <a class="btn ghost" href="https://github.com/daemnapps/outlier/tree/main/tools/04-paid-ad-swipe-pack" target="_blank" rel="noopener">Paid angle shapes — in the repo</a>
+        <a class="btn" href="https://github.com/daemnapps/prizm-labs/tree/main/tools/03-organic-swipe-pack" target="_blank" rel="noopener">Organic formats — in the repo</a>
+        <a class="btn ghost" href="https://github.com/daemnapps/prizm-labs/tree/main/tools/04-paid-ad-swipe-pack" target="_blank" rel="noopener">Paid angle shapes — in the repo</a>
       </div>
       <div class="note">Structures only. No brand, no creator, no competitor is named anywhere in these.</div>
     </div>
@@ -323,8 +323,8 @@ def public_page(F, V, SW, FE) -> str:
   </section>
 
   <footer>
-    <span>DÆMN STUDIO® · the tools are free · MIT</span>
-    <span><a href="/workflows.html">The tools</a> · <a href="/onboarding.html">Onboarding</a> · <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a></span>
+    <span>PRIZM LABS · the tools are free · MIT</span>
+    <span><a href="/workflows.html">The tools</a> · <a href="/onboarding.html">Onboarding</a> · <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a></span>
   </footer>
 </div>
 </html>

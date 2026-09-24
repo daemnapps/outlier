@@ -46,4 +46,4 @@ fill in that part.
 
 ---
 
-*Open Source Outliers — daemn.co. Free, MIT licensed.*
+*Prizm Labs — daemn.co. Free, MIT licensed.*

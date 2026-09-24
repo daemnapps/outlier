@@ -11,7 +11,7 @@ anything. You say what you want and it runs the chain.
 
 1. In Supercomputer: **Connectors → Explore** → connect **GitHub** and
    **Google Drive**.
-2. New chat → paste `https://github.com/daemnapps/outlier` and say
+2. New chat → paste `https://github.com/daemnapps/prizm-labs` and say
    **"clone this"**.
 3. Any time after: **"pull my GitHub repository and look for updates."**
    That is the whole update process.

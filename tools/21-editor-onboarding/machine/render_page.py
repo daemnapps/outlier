@@ -61,7 +61,7 @@ page = f"""<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#EDE0DC">
 <meta name="description" content="Onboarding for the editors and designers who make our ads: the walkthrough video, the way we work, and the two prompts you paste into Higgsfield Supercomputer.">
-<title>Onboarding — DÆMN STUDIO®</title>
+<title>Onboarding — PRIZM LABS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
@@ -125,12 +125,12 @@ pre.prompt mark{{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var
 </style>
 
 <nav>
-  <a class="mark" href="/">DÆMN STUDIO®</a>
+  <a class="mark" href="/">PRIZM LABS</a>
   <span class="sp"></span>
   <a class="link" href="/workflows.html">The tools</a>
   <a class="link" href="/swipe-library.html">Swipe library</a>
   <a class="link" href="/onboarding.html" aria-current="page">Onboarding</a>
-  <a class="link" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
+  <a class="link" href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a>
 </nav>
 
 <div class="wrap">
@@ -270,15 +270,15 @@ pre.prompt mark{{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var
           <li><b>No credits · "no chats"</b>You are in the wrong Higgsfield workspace. Switch to the shared one (top-left) and refresh.</li>
           <li><b>It found the wrong briefs folder</b>Two folders share the name. Give it the path or the link — it must not guess.</li>
           <li><b>A delivered brief still shows open</b>The files are not in <code>delivered/&lt;brief&gt;/</code> under the exact brief name from the queue.</li>
-          <li><b>"No updates" but the way of working changed</b>The clone is stale. Say: <i>clone https://github.com/daemnapps/outlier again, fresh</i>.</li>
+          <li><b>"No updates" but the way of working changed</b>The clone is stale. Say: <i>clone https://github.com/daemnapps/prizm-labs again, fresh</i>.</li>
         </ul>
       </div>
     </div>
   </section>
 
   <footer>
-    <span>DÆMN STUDIO® · the tools are free · MIT</span>
-    <span><a href="/onboarding-desk.html">Onboarding someone? The desk</a> · <a href="/workflows.html">The tools</a> · <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a></span>
+    <span>PRIZM LABS · the tools are free · MIT</span>
+    <span><a href="/onboarding-desk.html">Onboarding someone? The desk</a> · <a href="/workflows.html">The tools</a> · <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a></span>
   </footer>
 </div>
 
@@ -329,7 +329,7 @@ desk = f"""<!doctype html>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#EDE0DC">
 <meta name="description" content="For whoever brings editors in: open the folders by link once per brand, send one message per editor, and what to check in their first session and first delivery.">
-<title>Onboarding desk — DÆMN STUDIO®</title>
+<title>Onboarding desk — PRIZM LABS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Archivo:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap">
@@ -362,13 +362,13 @@ pre.msg mark{{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var(--
 </style>
 
 <nav>
-  <a class="mark" href="/">DÆMN STUDIO®</a>
+  <a class="mark" href="/">PRIZM LABS</a>
   <span class="sp"></span>
   <a class="link" href="/workflows.html">The tools</a>
   <a class="link" href="/swipe-library.html">Swipe library</a>
   <a class="link" href="/onboarding.html">Onboarding</a>
   <a class="link" href="/onboarding-desk.html" aria-current="page">Desk</a>
-  <a class="link" href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a>
+  <a class="link" href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a>
 </nav>
 
 <div class="wrap">
@@ -437,13 +437,13 @@ pre.msg mark{{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var(--
       <tr><td>What they delivered</td><td><code>briefs/delivered/&lt;brief&gt;/</code></td></tr>
       <tr><td>Bounties and due dates</td><td>You don't edit the queue. Tell the owner "&lt;brief&gt; $&lt;amount&gt; by &lt;date&gt;" — it shows within the hour.</td></tr>
       <tr><td>What they are stuck on</td><td>Ask for the last line Supercomputer said — it names the door that failed.</td></tr>
-      <tr><td>The way we work, verbatim</td><td><a href="https://github.com/daemnapps/outlier/tree/main/tools/21-editor-onboarding" target="_blank" rel="noopener">tools/21-editor-onboarding</a> — SOP.md and the prompts</td></tr>
+      <tr><td>The way we work, verbatim</td><td><a href="https://github.com/daemnapps/prizm-labs/tree/main/tools/21-editor-onboarding" target="_blank" rel="noopener">tools/21-editor-onboarding</a> — SOP.md and the prompts</td></tr>
     </table>
   </section>
 
   <footer>
-    <span>DÆMN STUDIO® · the tools are free · MIT</span>
-    <span><a href="/onboarding.html">Onboarding</a> · <a href="https://github.com/daemnapps/outlier" target="_blank" rel="noopener">Repo</a></span>
+    <span>PRIZM LABS · the tools are free · MIT</span>
+    <span><a href="/onboarding.html">Onboarding</a> · <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a></span>
   </footer>
 </div>
 

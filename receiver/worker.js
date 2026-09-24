@@ -117,7 +117,7 @@ export default {
       headers: {
         Authorization: `Bearer ${env.GH_TOKEN}`,
         Accept: "application/vnd.github+json",
-        "User-Agent": "outlier-ask",
+        "User-Agent": "prizm-labs-ask",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({

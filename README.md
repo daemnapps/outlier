@@ -1,4 +1,4 @@
-# DÆMN STUDIO — the tools
+# PRIZM LABS — the tools
 
 A production studio for generative advertising, giving away its machine.
 
