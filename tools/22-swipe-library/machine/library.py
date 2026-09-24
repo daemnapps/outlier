@@ -351,9 +351,8 @@ def main():
                 shutil.copy2(src, dest / name)
     INDEX.write_text(index_md(F, V, FE, SW))
     print(f"wrote Shared Assets/{INDEX.name} and {len(FE)} FEED.md files")
-    out = REPO / "docs" / "swipe-library.html"
-    out.write_text(public_page(F, V, SW, FE))
-    print(f"wrote {out.relative_to(REPO)}")
+    # The public half is the Swipes page (docs/swipes/, daemn.co/swipes/) —
+    # ruled 2026-09-24: one swipe page on the site, not a second one.
 
 
 if __name__ == "__main__":

@@ -5,11 +5,11 @@ torn-down videos, one feed per customer type, every competitor's live ads —
 written where the team already looks, and a public page for the half that
 can be public.
 
-**The page:** [daemn.co/swipe-library.html](https://daemn.co/swipe-library.html)
+**The page:** [daemn.co/swipes/](https://daemn.co/swipes/)
 
 | | |
 |---|---|
-| `machine/library.py` | reads the private workspace and writes: `SWIPE LIBRARY.md` at the root of the shared drive, a `FEED.md` in every feed's folder on Drive, and `docs/swipe-library.html` |
+| `machine/library.py` | reads the private workspace and writes: `SWIPE LIBRARY.md` at the root of the shared drive, a `FEED.md` in every feed's folder on Drive, and `docs/swipes/` |
 | `context/artifacts.md` | the pages that show this work |
 
 ## What is in the library, and where each half lives
