@@ -2,7 +2,7 @@
 
 The generative marketing machine. This is Damon's brain for the business: the
 strategy, the brands and the calls stay with him. What's here are the tools our
-editors and designers use to turn those calls into finished work.
+creative marketers use to turn those calls into finished work.
 
 Take a video that already worked — a competitor's ad, an organic post,
 anything — keep its structure, and rebuild it for one of our brands. You get a
@@ -55,7 +55,7 @@ put our brand where theirs was.
 | **15** | **Outlier brief** — the second door. Start from an idea instead of someone else's video. | [`tools/15-outlier-brief/`](tools/15-outlier-brief/) |
 | **16** | **Video edit** — cut sheets, in plain words rather than a timeline. | [`tools/16-video-edit/`](tools/16-video-edit/) |
 | **20** | **Asset index** — a folder of footage becomes records you can search. | [`tools/20-asset-index/`](tools/20-asset-index/) |
-| **21** | **Editor onboarding** — the front door for editors and designers: the walkthrough, the SOP, the two prompts they paste into Higgsfield, and the brief queue. | [`tools/21-editor-onboarding/`](tools/21-editor-onboarding/) · [the page](https://daemn.co/onboarding.html) |
+| **21** | **Editor onboarding** — the front door for creative marketers: the walkthrough, the SOP, the two prompts they paste into Higgsfield, and the brief queue. | [`tools/21-editor-onboarding/`](tools/21-editor-onboarding/) · [the page](https://daemn.co/onboarding.html) |
 | **22** | **Swipe library** — one front door to everything swiped: the formats, the torn-down videos, one feed per customer type, every competitor's live ads. Public half on the site, the rest on Drive. | [`tools/22-swipe-library/`](tools/22-swipe-library/) · [the page](https://daemn.co/swipes/) |
 
 ### The shared parts

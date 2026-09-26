@@ -1,4 +1,4 @@
-# How editors and designers work with us — the SOP
+# How creative marketers work with us — the SOP
 
 You never install anything and never touch code. You work inside **Higgsfield
 Supercomputer**, which reads our Google Drive and our tools directly. Briefs

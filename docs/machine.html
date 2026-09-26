@@ -26,6 +26,13 @@
 .vs.thin .track{height:22px}
 .vs.thin .row{grid-template-columns:minmax(160px,248px) 1fr auto;align-items:baseline}
 .vs .sub{display:block;font-family:var(--mono);font-weight:400}
+.big .ib,.grid .ib{margin-bottom:var(--s2)}
+.big.five{grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr))}
+@media(min-width:900px){
+  .hero{grid-template-columns:1fr minmax(0,300px);column-gap:var(--s6)}
+  .hero > .obj{grid-column:2;grid-row:1/-1;align-self:center;margin:0}
+  .hero > :not(.obj){grid-column:1}
+}
 </style>
 
 <nav class="bar">
@@ -41,6 +48,7 @@
 
 <div class="wrap">
   <div class="hero">
+    <div class="obj" data-obj="cube"><img src="media/objects/cube.webp" alt="A glass beam-splitter cube with a spectrum inside it" loading="eager"></div>
     <p class="eyebrow">Build log · June → September 2026</p>
     <h1>A competitor's video in. A brief you can shoot from out. Forty-eight minutes.</h1>
     <p class="lede">I started on June 1 with nothing that worked. By July 8 I had a
@@ -56,6 +64,7 @@
   </div>
 
   <section class="sec">
+    <div class="obj corner" data-obj="ribbon"><img src="media/objects/ribbon.webp" alt="A twisted chrome ribbon with no seam" loading="lazy"></div>
     <p class="eyebrow">The line</p>
     <h2>Eighteen stages, one unbroken pass.</h2>
     <p class="lede">Every stage keeps its own clock. These are <b>medians across the
@@ -82,28 +91,33 @@
     <p class="lede">Six days, two brands, one person running it. These are counts of
       finished work carrying a full stage record, not things started. September's
       entire tool bill was $1,823, and this week sits inside it.</p>
-    <div class="big">
+    <div class="big five">
       <div class="card hued" style="--hue:var(--magenta)">
+        <i class="ib" data-i="pen"></i>
         <p class="label hue">Briefs</p>
         <p class="n">52</p>
         <p>Image ad concepts, each through all six stages — teardown, spec, injection, hooks, variations, work order.</p>
       </div>
       <div class="card hued" style="--hue:var(--green)">
+        <i class="ib" data-i="check"></i>
         <p class="label hue">Done</p>
         <p class="n">70</p>
         <p>Finished ad frames, carried through 183 edit passes to get there.</p>
       </div>
       <div class="card hued" style="--hue:var(--cyan)">
+        <i class="ib" data-i="video"></i>
         <p class="label hue">Video</p>
         <p class="n">4</p>
         <p>Video ads cut and delivered. Not storyboards — finished files.</p>
       </div>
       <div class="card hued" style="--hue:var(--indigo)">
+        <i class="ib" data-i="layers"></i>
         <p class="label hue">Pages</p>
         <p class="n">3 · 23</p>
         <p>Three complete funnels, twenty-three built pages: landing, quiz, checkout, presell, upsells, receipt.</p>
       </div>
       <div class="card hued" style="--hue:var(--green)">
+        <i class="ib" data-i="calendar"></i>
         <p class="label hue">Ready</p>
         <p class="n">20</p>
         <p>A full month of email placed across seven segments, anchored to real dates rather than dropped on a grid.</p>
@@ -119,12 +133,14 @@
       overrule.</p>
     <div class="grid" style="margin-top:var(--s5)">
       <div class="card hued" style="--hue:var(--coral)">
+        <i class="ib" data-i="alert"></i>
         <p class="label hue">Refused</p>
         <h3>81 frames rejected</h3>
         <p>On the way to seventy good ones. A frame that drifts off the product,
           invents a face, or misses its reference doesn't get a vote.</p>
       </div>
       <div class="card hued" style="--hue:var(--coral)">
+        <i class="ib" data-i="scissors"></i>
         <p class="label hue">Refused</p>
         <h3>12 email concepts cut</h3>
         <p>Each with its reason written down. An arc that couldn't stand whole —
@@ -132,6 +148,7 @@
           shipping half-built.</p>
       </div>
       <div class="card hued" style="--hue:var(--amber)">
+        <i class="ib" data-i="eye"></i>
         <p class="label hue">Waiting on a person</p>
         <h3>Nothing ships itself</h3>
         <p>Forty-nine of those fifty-two concepts are sitting in review. Produced
@@ -145,21 +162,25 @@
     <h2>What changed.</h2>
     <div class="big">
       <div class="card hued" style="--hue:var(--green)">
+        <i class="ib" data-i="zap"></i>
         <p class="label hue">To first winner</p>
         <p class="n">37 days</p>
         <p>June 1 to July 8.</p>
       </div>
       <div class="card hued" style="--hue:var(--indigo)">
+        <i class="ib" data-i="target"></i>
         <p class="label hue">Cost per acquisition</p>
         <p class="n">−$20</p>
         <p>A new hero page the system built, against our own baseline.</p>
       </div>
       <div class="card hued" style="--hue:var(--cyan)">
+        <i class="ib" data-i="plug"></i>
         <p class="label hue">To run the machine</p>
         <p class="n">~$1.5k</p>
         <p>A month, every tool included.</p>
       </div>
       <div class="card hued" style="--hue:var(--magenta)">
+        <i class="ib" data-i="sparkles"></i>
         <p class="label hue">Saved</p>
         <p class="n">~$18.8k</p>
         <p>A month, against the people doing the same job. About $225k a year.</p>
@@ -213,20 +234,24 @@
   </section>
 
   <section class="sec">
+    <div class="obj corner" data-obj="torus"><img src="media/objects/torus.webp" alt="A brushed chrome torus" loading="lazy"></div>
     <p class="eyebrow">Why it scales</p>
     <h2>One person does the bulk. Everyone else works from it.</h2>
     <div class="grid" style="margin-top:var(--s5)">
       <div class="card hued" style="--hue:var(--violet)">
+        <i class="ib" data-i="sync"></i>
         <p class="label hue">The bulk runs</p>
         <h3>Made once, reused</h3>
         <p>Swipes, teardowns, briefs and baseline assets are made in big runs. That's where the credits go.</p>
       </div>
       <div class="card hued" style="--hue:var(--magenta)">
+        <i class="ib" data-i="grid"></i>
         <p class="label hue">The team</p>
         <h3>A light plan each</h3>
         <p>People work from finished components and briefs, so their adjustments cost a few credits, not a fresh generation.</p>
       </div>
       <div class="card hued" style="--hue:var(--green)">
+        <i class="ib" data-i="target"></i>
         <p class="label hue">Creators and clippers</p>
         <h3>Paid on results</h3>
         <p>They get the tools and the flows on their own accounts, and they're paid on performance. Fixed cost becomes performance plus tokens.</p>
