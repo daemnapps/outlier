@@ -1140,4 +1140,4 @@ tabs.forEach(function(t){t.addEventListener('click',function(){show(t.getAttribu
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-tab]');if(a){e.preventDefault();show(a.getAttribute('data-tab'));window.scrollTo({top:0})}});
 var s=null;try{s=localStorage.getItem('kit-tab')}catch(e){}var h=location.hash.replace('#','');
 if(h&&document.getElementById(h))show(h);else if(s&&document.getElementById(s))show(s);})();
-</script><script src="/studio.js?v=6" defer></script></body></html>
+</script><script src="/studio.js?v=7" defer></script></body></html>

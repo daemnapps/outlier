@@ -204,7 +204,17 @@
     return K.items.map(it => {
       let sc = 0; const tf = {}; it.w.forEach(w => tf[w] = (tf[w] || 0) + 1);
       qs.forEach(w => { if (tf[w]) sc += K.idf(w) * (1 + Math.log(tf[w])); });
-      if (qs.some(w => (it.section + ' ' + it.tool).toLowerCase().includes(w))) sc *= 1.4;
+      // Two boosts, because one was not enough. A flat "any title word matched"
+      // bonus scored image and video teardown identically for "what does the
+      // video teardown do?" — and so did counting title hits, because the image
+      // tool's own title says "the static-ad twin of the video chain". The tool's
+      // SLUG is what actually separates them: image-teardown vs video-teardown.
+      const head = (it.section + ' ' + it.tool).toLowerCase();
+      const slug = (it.tool || '').toLowerCase().replace(/^\d+-/, '').replace(/-/g, ' ');
+      const headHits = qs.filter(w => head.includes(w)).length;
+      const slugHits = qs.filter(w => slug.includes(w)).length;
+      if (headHits) sc *= 1 + 0.4 * headHits;
+      if (slugHits) sc *= 1 + 0.8 * slugHits;
       return {it, sc};
     }).filter(x => x.sc > 0).sort((a, b) => b.sc - a.sc).slice(0, 3);
   }
@@ -243,7 +253,7 @@
       panel = document.createElement('div'); panel.className = 'ask-panel'; panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Ask the machine');
       panel.innerHTML = `<div class="ask-head"><i class="ib" data-i="sparkles" style="--hue:var(--violet)">${icon('sparkles')}</i><b>Ask the machine</b><button class="x" aria-label="Close">×</button></div>
         <div class="ask-log"><div class="it"><p>Ask how anything works: where to start, what a tool does, how to get updates. Answers come straight from the repo.</p>
-        <div class="ask-chips">${['Where do I start?','What does the video teardown do?','How do I get updates?','What is a brief?'].map(c => `<button type="button">${c}</button>`).join('')}</div></div></div>
+        <div class="ask-chips">${['What does the video teardown do?','What is the paid ad swipe pack?','How does the email calendar work?','What is a brief?'].map(c => `<button type="button">${c}</button>`).join('')}</div></div></div>
         <form class="ask-form"><input type="text" placeholder="Ask a question…" aria-label="Your question" autocomplete="off" enterkeyhint="send"><button type="submit" aria-label="Ask">${icon('send')}</button></form>`;
       document.body.appendChild(panel);
       log = panel.querySelector('.ask-log'); input = panel.querySelector('input');

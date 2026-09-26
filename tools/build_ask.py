@@ -15,8 +15,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 REPO = "https://github.com/daemnapps/prizm-labs/blob/main/"
 # WALKTHROUGH.md is left out: it only points elsewhere now
+# A tool's front door is not always called README. Eight of the twenty-one —
+# the video teardown among them, which is the tool the whole site is about —
+# use START-HERE, HOW-TO-RUN-IT or CLAUDE instead, and every one of them was
+# invisible to the Ask box until 2026-09-26. Anything at a tool's top level
+# counts as a guide; everything deeper (prompts, machine internals, the chain)
+# does not, so the answers stay in the reader's language.
+GUIDES = {"README.md", "SOP.md", "START-HERE.md", "HOW-TO-RUN-IT.md",
+          "CLAUDE.md", "WHICH-MODELS.md", "MACHINE-README.md"}
 FILES = ["README.md", "ASK.md"] + sorted(
-    str(p.relative_to(ROOT)) for p in ROOT.glob("tools/*/*.md") if p.name in ("README.md", "SOP.md"))
+    str(p.relative_to(ROOT)) for p in ROOT.glob("tools/*/*.md") if p.name in GUIDES)
 MAX = 1600
 
 
@@ -26,6 +34,12 @@ def anchor(h):
 
 def clean(t):
     t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
+    # Fenced commands out. The Ask box answers in sentences, and a shell block
+    # flattened into prose reads as noise — "python3 machine/line.py teardown
+    # <video> --brand <brand> swipe in, spec out python3 …". The source link
+    # beside every answer goes to the file that has the command in full.
+    t = re.sub(r"```.*?```", " ", t, flags=re.S)
+    t = re.sub(r"^ {4,}\S.*$", "", t, flags=re.M)              # indented code
     t = re.sub(r"!\[[^\]]*\]\([^)]*\)", "", t)                 # images
     t = re.sub(r"\[([^\]]+)\]\([^)]*\)", r"\1", t)              # links → their words
     t = re.sub(r"^\|[\s:|-]+\|\s*$", "", t, flags=re.M)           # table rules
