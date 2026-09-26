@@ -1,10 +1,12 @@
 # PRIZM LABS — the tools
 
-The generative marketing machine: the tools our editors and designers work from.
+The generative marketing machine. This is Damon's brain for the business: the
+strategy, the brands and the calls stay with him. What's here are the tools our
+editors and designers use to turn those calls into finished work.
 
 Take a video that already worked — a competitor's ad, an organic post,
-anything — keep its structure, and rebuild it for your own brand in whatever
-world you like. You get a script, a shot list, and a prompt for every frame.
+anything — keep its structure, and rebuild it for one of our brands. You get a
+script, a shot list, and a prompt for every frame.
 
 **One way to use it:** clone this repo into Higgsfield Supercomputer (or Claude
 Code) and tell it what you want. No kits, no copies.
@@ -21,12 +23,12 @@ updates" and it stays current.
 
 | | What it is | Read it |
 |---|---|---|
-| **01** | **Your brand folder** — the one thing you fill in. Every tool reads it, so you set your brand up once and never explain it again. | [`brands/_TEMPLATE/`](brands/_TEMPLATE/) |
+| **01** | **The brand folder** — every tool reads it, so a brand is set up once and never explained again. | [`brands/_TEMPLATE/`](brands/_TEMPLATE/) |
 
 ### Take something apart
 
 Something already worked. These pull it down to the structure underneath, then
-put your brand where the other brand was.
+put our brand where theirs was.
 
 | | What it is | Read it |
 |---|---|---|
@@ -50,7 +52,7 @@ put your brand where the other brand was.
 
 | | What it is | Read it |
 |---|---|---|
-| **15** | **Outlier brief** — the second door. Start from your own idea instead of someone else's video. | [`tools/15-outlier-brief/`](tools/15-outlier-brief/) |
+| **15** | **Outlier brief** — the second door. Start from an idea instead of someone else's video. | [`tools/15-outlier-brief/`](tools/15-outlier-brief/) |
 | **16** | **Video edit** — cut sheets, in plain words rather than a timeline. | [`tools/16-video-edit/`](tools/16-video-edit/) |
 | **20** | **Asset index** — a folder of footage becomes records you can search. | [`tools/20-asset-index/`](tools/20-asset-index/) |
 | **21** | **Editor onboarding** — the front door for editors and designers: the walkthrough, the SOP, the two prompts they paste into Higgsfield, and the brief queue. | [`tools/21-editor-onboarding/`](tools/21-editor-onboarding/) · [the page](https://daemn.co/onboarding.html) |
@@ -93,12 +95,12 @@ on Auto.
 ## The two rules
 
 **Copy the structure, not the content.** The shape is what earned the views;
-your product is what changes. A scalp treatment and a countertop demo can be
+the product is what changes. A scalp treatment and a countertop demo can be
 the same format — that's the whole point.
 
-**Nothing invented.** If your brand folder doesn't say what your product looks
-like or how your customer talks, the tools tell you they don't know rather than
-guessing. That's them working correctly. Go fill that part in.
+**Nothing invented.** If the brand folder doesn't say what the product looks
+like or how the customer talks, the tools say they don't know rather than
+guessing. That's them working correctly. Ask Damon for that part.
 
 ---
 
@@ -113,9 +115,8 @@ Those are hard stops in the prompts, not guidelines.
 
 ## What you need
 
-A Higgsfield account (or whichever generator you use) and Claude. You pay them
-directly, from your own account. The Higgsfield link on the site is ours and
-costs you nothing extra.
+A Higgsfield account and Claude. Sign up to Higgsfield through the link on the
+site.
 
 ---
 
@@ -123,8 +124,8 @@ costs you nothing extra.
 
 | | |
 |---|---|
-| [`docs/`](docs/) | The site itself — daemn.co is served straight from this folder. Fork it. |
+| [`docs/`](docs/) | The site itself — daemn.co is served straight from this folder. |
 | [`SECURITY.md`](SECURITY.md) | What's exposed, what isn't, and the commit guard that keeps keys out. |
-| [`receiver/`](receiver/) | An optional Cloudflare Worker, if you want forms that file themselves. Not required. |
+| [`receiver/`](receiver/) | The small workers behind the site's Ask box and forms. |
 
 License: MIT (see [`LICENSE`](LICENSE)).
