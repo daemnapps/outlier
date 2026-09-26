@@ -34,6 +34,17 @@ function pick(q, K, n = 10) {
   return K.items.map(it => {
     const tf = {}; it.w.forEach(w => tf[w] = (tf[w] || 0) + 1);
     let sc = 0; qs.forEach(w => { if (tf[w]) sc += K.idf(w) * (1 + Math.log(tf[w])); });
+    // Same two boosts the browser box uses (docs/studio.js). Without them this
+    // asked the model about the IMAGE teardown when the question said video —
+    // the image tool's own title reads "the static-ad twin of the video chain",
+    // so only the tool's slug separates them. Retrieval feeds the answer here,
+    // so a wrong section is a wrong answer, stated confidently.
+    const head = `${it.section} ${it.tool}`.toLowerCase();
+    const slug = (it.tool || "").toLowerCase().replace(/^\d+-/, "").replace(/-/g, " ");
+    const headHits = qs.filter(w => head.includes(w)).length;
+    const slugHits = qs.filter(w => slug.includes(w)).length;
+    if (headHits) sc *= 1 + 0.4 * headHits;
+    if (slugHits) sc *= 1 + 0.8 * slugHits;
     return { it, sc };
   }).filter(x => x.sc > 0).sort((a, b) => b.sc - a.sc).slice(0, n).map(x => x.it);
 }
