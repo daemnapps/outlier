@@ -323,7 +323,7 @@ def public_page(F, V, SW, FE) -> str:
   </section>
 
   <footer>
-    <span>PRIZM LABS · the tools are free · MIT</span>
+    <span>PRIZM LABS</span>
     <span><a href="/workflows.html">The tools</a> · <a href="/onboarding.html">Onboarding</a> · <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a></span>
   </footer>
 </div>

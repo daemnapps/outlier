@@ -1,13 +1,13 @@
 # PRIZM LABS — the tools
 
-A production studio for generative advertising, giving away its machine.
+The generative marketing machine: the tools our editors and designers work from.
 
 Take a video that already worked — a competitor's ad, an organic post,
 anything — keep its structure, and rebuild it for your own brand in whatever
 world you like. You get a script, a shot list, and a prompt for every frame.
 
-**Free. MIT licensed. One way to use it:** clone this repo into Higgsfield
-Supercomputer (or Claude Code) and tell it what you want. No kits, no copies.
+**One way to use it:** clone this repo into Higgsfield Supercomputer (or Claude
+Code) and tell it what you want. No kits, no copies.
 
 **→ [daemn.co](https://daemn.co)** — see it working, with the same ad rebuilt
 three different ways.
@@ -111,15 +111,11 @@ Those are hard stops in the prompts, not guidelines.
 
 ---
 
-## What it costs
+## What you need
 
-The tools are free and stay free. The models are not — you pay Higgsfield (or
-whichever generator you use) directly, at their prices, from your own account.
-Nothing bills through us.
-
-Affiliate links to tools we actually use are the only way this project makes
-money. They cost you nothing extra and everything works identically without
-them.
+A Higgsfield account (or whichever generator you use) and Claude. You pay them
+directly, from your own account. The Higgsfield link on the site is ours and
+costs you nothing extra.
 
 ---
 
@@ -131,4 +127,4 @@ them.
 | [`SECURITY.md`](SECURITY.md) | What's exposed, what isn't, and the commit guard that keeps keys out. |
 | [`receiver/`](receiver/) | An optional Cloudflare Worker, if you want forms that file themselves. Not required. |
 
-MIT licensed. Take it, strip it, use it on your own brands.
+License: MIT (see [`LICENSE`](LICENSE)).

@@ -277,7 +277,7 @@ pre.prompt mark{{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var
   </section>
 
   <footer>
-    <span>PRIZM LABS · the tools are free · MIT</span>
+    <span>PRIZM LABS</span>
     <span><a href="/onboarding-desk.html">Onboarding someone? The desk</a> · <a href="/workflows.html">The tools</a> · <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a></span>
   </footer>
 </div>
@@ -442,7 +442,7 @@ pre.msg mark{{background:color-mix(in srgb,#E9C7D6 70%,transparent);color:var(--
   </section>
 
   <footer>
-    <span>PRIZM LABS · the tools are free · MIT</span>
+    <span>PRIZM LABS</span>
     <span><a href="/onboarding.html">Onboarding</a> · <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a></span>
   </footer>
 </div>
