@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#EFE9E1">
+<meta name="description" content="AI Slop — a 38.7-second DAEMN loop to Gotts Street Park's Lost &amp; Found. Real trip footage, AI made only from real photos of me, and lifelike 3D objects, cut as one.">
+<meta property="og:title" content="AI Slop">
+<meta property="og:description" content="A 38.7-second loop. Real footage, AI built from real photos of me, lifelike 3D. Life is a game, a loop, you define yourself.">
+<meta property="og:image" content="https://daemn.co/ai-slop/poster.jpg">
+<meta property="og:video" content="https://daemn.co/ai-slop/ai-slop.mp4">
+<meta property="og:type" content="video.other">
+<meta name="twitter:card" content="summary_large_image">
+<title>AI Slop — DAEMN</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/studio.css?v=prizm12">
+<style>
+/* Layout only. */
+.piece{display:grid;justify-items:center;gap:var(--s4);margin-top:var(--s5)}
+.piece video{width:min(440px,100%);aspect-ratio:9/16;display:block}
+.piece .hero{text-align:center;max-width:none}
+.frames{margin-top:var(--s6)}
+.ride{padding-top:0}
+.carousel{position:relative;width:100%;height:560px;margin-top:var(--s5);touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.carousel.grabbing{cursor:grabbing}
+.carousel canvas{display:block;width:100%;height:100%;touch-action:pan-y}
+.ride .label{text-align:center;margin:var(--s3) auto 0;max-width:none;min-height:1.4em}
+@media (max-width:720px){.carousel{height:70vh;height:70svh}.ride .label{min-height:2.8em}}
+</style>
+
+<nav class="bar">
+  <a class="mark" href="/">PRIZM LABS</a>
+  <span class="links">
+    <a href="/machine.html">Machine</a><a href="/onboarding.html">Onboarding</a>
+    <a href="/briefs/">Briefs</a>
+    <a href="/swipes/">Swipes</a>
+    <a href="/light.html">Light</a>
+    <a href="https://github.com/daemnapps/prizm-labs" target="_blank" rel="noopener">Repo</a>
+  </span>
+</nav>
+
+<div class="wrap">
+  <section class="piece">
+    <div class="hero">
+      <p class="eyebrow">DAEMN · a visual + audio mix</p>
+      <h1>AI Slop.</h1>
+      <p class="lede">“Life is a game, a loop, you define yourself.”</p>
+    </div>
+    <video class="card" src="ai-slop.mp4" poster="poster.jpg" autoplay muted loop playsinline controls preload="auto"></video>
+    <p class="label">38.7s loop · to Gotts Street Park — Lost &amp; Found · made to read with the sound off</p>
+  </section>
+
+  <section class="sec frames">
+    <p class="eyebrow">Frames from the piece</p>
+    <div class="strip">
+      <img src="f-iris.jpg" alt="A koi swims inside my iris" loading="lazy">
+      <img src="f-tongue.jpg" alt="Black and white, tongue out" loading="lazy">
+      <img src="f-bike.jpg" alt="Selfie on the motorbike" loading="lazy">
+      <img src="f-volley.jpg" alt="Padel, left-handed volley" loading="lazy">
+      <img src="f-ball.jpg" alt="The ball hits the lens" loading="lazy">
+      <img src="f-stone.jpg" alt="Frozen in marble at the falls" loading="lazy">
+      <img src="f-avatar.jpg" alt="The AI me catches the koi beside the real me" loading="lazy">
+      <img src="f-toy.jpg" alt="A tiny carousel by the phone, glowing purple" loading="lazy">
+    </div>
+    <hr class="prism">
+  </section>
+
+  <section class="sec ride">
+    <p class="eyebrow">The objects</p>
+    <h2>Ride the carousel.</h2>
+    <p class="lede">Every object in the piece, on one carousel. Spin it.</p>
+    <div class="carousel" id="carousel" role="img" aria-label="A 3D carousel carrying every object from the piece. Drag sideways or use the arrow keys to spin it."></div>
+    <p class="label" id="carousel-label" aria-live="polite">Koi — swims through the iris</p>
+  </section>
+</div>
+
+<footer class="bot">
+  <span>DAEMN</span>
+  <span class="right"><a href="/">PRIZM LABS</a> · <a href="https://higgsfield.ai?fpr=damon61" target="_blank" rel="noopener">Higgsfield</a></span>
+</footer>
+<script src="/studio.js?v=7" defer></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
+<script type="module" src="carousel.js?v=3"></script>
+</html>
