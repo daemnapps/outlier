@@ -486,20 +486,39 @@ export function mountCarousel(el, label){
   }
   const perf = {frames:0, time:0, fps:0};
 
-  /* ── size, camera, render only while seen ─────────────────────────── */
+  /* ── size, camera, render only while seen ─────────────────────────────
+     The camera is fitted to the whole ride on every size: the carousel's
+     bounds (measured once from the built geometry: deck, canopy rim, finial)
+     are sampled as a hull, and the camera backs off along its fixed viewing
+     angle until every hull point sits inside the frame with a margin. So a
+     phone sees the whole carousel with room round it, and a wide desktop
+     canvas sees it at full height. */
+  const bb = new THREE.Box3().setFromObject(ride);
+  // never smaller than the parts we know are there (instanced parts can measure short)
+  const rad = Math.max(-bb.min.x, bb.max.x, -bb.min.z, bb.max.z, RIM + .12),
+        yLo = Math.min(bb.min.y, -.46), yHi = Math.max(bb.max.y, TOP + HC + .62);
+  const hull = [new THREE.Vector3(0, yHi, 0)];
+  for(let i = 0; i < 32; i++){ const a = i / 32 * Math.PI * 2, cx = Math.sin(a) * rad, cz = Math.cos(a) * rad;
+    hull.push(new THREE.Vector3(cx, yLo, cz), new THREE.Vector3(cx, TOP + .1, cz)); }
+  const centreY = (yLo + yHi) / 2, ELEV = .21, pv = new THREE.Vector3();
+  function spread(dist){                                   // how far the hull reaches across the frame, 1 = the edge
+    cam.position.set(0, centreY + Math.sin(ELEV) * dist, Math.cos(ELEV) * dist);
+    cam.lookAt(0, centreY, 0); cam.updateMatrixWorld(); cam.updateProjectionMatrix();
+    let m = 0; for(const p of hull){ pv.copy(p).project(cam); m = Math.max(m, Math.abs(pv.x), Math.abs(pv.y)); }
+    return m;
+  }
   function fit(){
     const w = el.clientWidth, h = el.clientHeight; if(!w || !h) return;
     renderer.setPixelRatio(pr); renderer.setSize(w, h, false);
     composer.setPixelRatio(pr); composer.setSize(w, h);
     bloomComposer.setPixelRatio(pr / 2); bloomComposer.setSize(w, h);
-    const aspect = w / h, narrow = aspect < 1;
-    cam.fov = narrow ? 40 : 30; cam.aspect = aspect;
-    const vt = Math.tan(THREE.MathUtils.degToRad(cam.fov / 2)), ht = vt * aspect;
-    const W = narrow ? 3.6 : (DECK + .5) * 2, H = narrow ? 4.4 : 5.6;            // phones frame the front seats; desktop the whole ride
-    const dist = Math.max(H / 2 / vt, W / 2 / ht);
-    const lookY = narrow ? 1.15 : 1.1, elev = .21;
-    cam.position.set(0, lookY + Math.sin(elev) * dist, Math.cos(elev) * dist);
-    cam.lookAt(0, lookY, 0); cam.updateProjectionMatrix();
+    const aspect = w / h, narrow = aspect < 1.2;
+    cam.fov = narrow ? 36 : 30; cam.aspect = aspect;
+    const fill = narrow ? .9 : .92;                        // the margin: the hull fills 90% of the frame
+    let lo = 2, hi = 80;
+    for(let i = 0; i < 30; i++){ const mid = (lo + hi) / 2; if(spread(mid) > fill) lo = mid; else hi = mid; }
+    const dist = hi; spread(dist);
+    const vt = Math.tan(THREE.MathUtils.degToRad(cam.fov / 2));
     ppu = h / (2 * (dist - R) * vt);
   }
   new ResizeObserver(() => { fit(); wake(); }).observe(el);
