@@ -43,8 +43,9 @@
       <h1>AI Slop.</h1>
       <p class="lede">“Life is a game, a loop, you define yourself.”</p>
     </div>
-    <video src="ai-slop.mp4" poster="poster.jpg" autoplay muted loop playsinline controls preload="auto"></video>
-    <p class="label">38.7s loop · to Gotts Street Park — Lost &amp; Found · made to read with the sound off</p>
+    <video id="piece" src="ai-slop.mp4?v=2" poster="poster.jpg" autoplay muted loop playsinline controls preload="auto"></video>
+    <div class="btns"><button class="btn" id="sound" type="button">Tap for sound</button></div>
+    <p class="label">38.7s loop · to Gotts Street Park — Lost &amp; Found · sound on for the full piece</p>
   </section>
 
   <section class="sec frames">
@@ -75,6 +76,12 @@
   <span>DAEMN</span>
   <span class="right">AI Slop · 2026</span>
 </footer>
+<script>
+(function(){var v=document.getElementById("piece"),b=document.getElementById("sound");
+ function sync(){b.textContent=v.muted?"Tap for sound":"Sound off"}
+ b.addEventListener("click",function(){v.muted=!v.muted;if(!v.muted){v.volume=1;var p=v.play();p&&p.catch&&p.catch(function(){})}sync()});
+ v.addEventListener("volumechange",sync);})();
+</script>
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"}}</script>
 <script type="module" src="carousel.js?v=3"></script>
 </html>
